@@ -1,0 +1,373 @@
+// Variables for premium feel because im lazy
+$ease-apple: cubic-bezier(0.2, 0.8, 0.2, 1);
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.05);
+$shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.1);
+$shadow-expanded: 0 40px 80px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+.tile {
+  position: relative;
+  padding: 1.5rem;
+//   border-radius: 12px;
+//   background-color: var(--bg);
+//   border: 1px solid var(--border-color);
+//   box-shadow: $shadow-sm;
+
+  height: auto;
+  min-height: 100px;
+  overflow: hidden;
+
+  &.blur {
+    // backdrop-filter: blur(10px);
+    // background-color: rgba(var(--bg));
+  }
+
+  transition: transform 0.3s $ease-apple,
+  box-shadow 0.3s $ease-apple,
+  border-color 0.3s ease;
+
+  &:hover {
+    // border-color: var(--accent-color); // Highlight border like an active window
+    // box-shadow: $shadow-hover;
+    // transform: translateY(-2px);
+  }
+
+  .expandableContent {
+    display: none;
+  }
+}
+
+.alwaysExpanded {
+  height: auto;
+  overflow: visible;
+
+  .expandableContent {
+    display: block;
+    opacity: 1;
+    transform: none;
+    margin-top: 1rem;
+  }
+}
+
+.ignorePointer {
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Hover clone overlay */
+.hoverClone {
+  position: fixed;
+//   border-radius: 12px;
+  background: var(--bg);
+  z-index: 1000;
+  pointer-events: auto;
+  padding: 1.5rem;
+  // box-shadow: $shadow-expanded;
+  transform-origin: center;
+//   border: 1px solid var(--accent-color); // Active state border
+
+  // Start collapsed at base height
+  max-height: var(--base-height);
+  opacity: 1;
+  transform: translateY(0);
+
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  scrollbar-width: none;
+
+  will-change: transform,
+  max-height,
+  opacity,
+  box-shadow;
+
+  transition: opacity 0.2s ease,
+  max-height 0.5s $ease-out-expo,
+  transform 0.5s $ease-out-expo,
+  background-color 0.3s ease;
+
+  &.FullReveal {
+    opacity: 1;
+    max-height: var(--max-clone-height, 1000px);
+    // background: var(--bg); // REMOVED to prevent flicker
+
+    transform: translateY(var(--y-offset, 0));
+
+    .expandableContent {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.15s;
+    }
+  }
+
+  .expandableContent {
+    display: block;
+  }
+
+  // Disable interaction during animation to prevent cursor flickering
+  &.animating {
+    cursor: default;
+    user-select: none;
+
+    * {
+      pointer-events: none;
+    }
+  }
+}
+
+/* Layout consistency */
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.iconWrapper {
+  position: relative;
+  flex-shrink: 0;
+
+  .jobIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    // background: var(--bg);
+    // border-radius: 8px; // "App icon" shape
+    // border: 1px solid var(--border-color);
+    color: var(--text-color);
+    transition: transform 0.3s $ease-apple;
+
+    svg {
+      width: 50%;
+      height: 50%;
+    }
+  }
+}
+
+.tile:hover,
+.hoverClone:hover {
+  // transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+
+.textContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .titleRow {
+    .position {
+      // font-family: var(--font-family, sans-serif); // Keep main font for readability
+      font-size: 1.35rem;
+      font-weight: 100; // Slimmer weight
+      color: var(--text-color);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    // font-family: var(--monospace-font, monospace); // Code font for metadata
+
+    .company {
+      color: var(--text-color);
+      font-weight: 500; // Slimmer weight
+    }
+
+    .dot {
+      color: var(--accent-color);
+      font-size: 0.6em;
+      opacity: 0.6;
+    }
+  }
+
+  .duration {
+    // font-family: var(--monospace-font, monospace);
+    font-size: 0.75rem; // Slightly smaller
+    color: var(--accent-color);
+    opacity: 0.9;
+    margin-top: 0.25rem;
+    letter-spacing: 0.02em;
+    background: rgba(var(--accent-rgb), 0.08); // Subtler background
+    padding: 2px 6px;
+    border-radius: 4px;
+    align-self: flex-start; // Wrap tightly
+  }
+
+  .expandableContent {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s $ease-out-expo;
+
+    &.alwaysVisible {
+      opacity: 1;
+      transform: none;
+      margin-top: 1.25rem;
+    }
+  }
+
+  .responsibilities {
+    margin-top: 1.5rem;
+    font-size: 0.9rem; // Slightly smaller body text
+    line-height: 1.6;
+    list-style: none;
+    padding: 0;
+    color: var(--secondary-text);
+    // font-family: var(--font-family, sans-serif); // Main font for body text
+
+    li {
+      margin-bottom: 0.6rem; // Tighter spacing
+      padding-left: 1.5rem;
+      position: relative;
+
+      &::before {
+        content: ">"; // Terminal prompt style
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+        font-family: var(--monospace-font, monospace);
+        font-weight: 500; // Slimmer prompt
+        opacity: 0.6; // Subtler prompt
+      }
+    }
+  }
+
+  .techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; // Tighter gap
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border-color); // Dashed line for "code block" feel
+
+    .techItem {
+      // font-family: var(--monospace-font, monospace);
+      font-size: 0.7rem; // Slimmer font
+      padding: 0.25rem 0.5rem; // Slimmer padding
+      border-radius: 4px; // Code block shape
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+      color: var(--secondary-text); // Subtler text color
+      transition: all 0.2s ease;
+      cursor: default;
+
+      &:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+        background: rgba(var(--accent-rgb), 0.1);
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+
+// --- MODAL POPUP STYLES ---
+
+.BasicTileContent {
+  height: 100vh;
+  display: flex;
+  width: 100%;
+  margin: 1rem;
+  gap: 1rem;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+
+  transform: scale(0.9) rotate(-2deg) translateY(30px);
+  animation: popBounceIn 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+  .position {
+    font-size: clamp(1rem, 3.5rem, 5rem);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    animation: textReveal 0.5s 0.1s ease-out both;
+  }
+
+  .company {
+    font-size: clamp(1rem, 1.8rem, 3rem);
+    animation: textReveal 0.5s 0.2s ease-out both;
+  }
+
+  .responsibilities,
+  .techStack {
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeUp 0.5s ease-out 0.25s forwards;
+  }
+
+  .iconContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // transform: rotate(-30deg) translateY(25%);
+    opacity: 0.04;
+    animation: spinSway 12s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes popBounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg) translateY(0);
+  }
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.05em;
+  }
+
+  100% {
+    opacity: 1;
+    letter-spacing: normal;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spinSway {
+  from {
+    transform: rotate(-33deg) translateY(23%);
+  }
+
+  to {
+    transform: rotate(-27deg) translateY(20%);
+  }
+}

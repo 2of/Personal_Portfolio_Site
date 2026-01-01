@@ -1,0 +1,77 @@
+// ================= Animation =================
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ================= Large Header =================
+.LargeTextHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em; // Natural word spacing
+  width: 100%;
+  padding: 3rem 0;
+  word-break: break-word;
+
+  p {
+    font-family: monospace;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+
+    &.highlight {
+      color: var(--accent-color);
+    }
+
+    /* Animate in */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: calc(var(--index, 0) * 0.08s);
+  }
+}
+
+// ================= Regular Header =================
+.RegularHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3em;
+  width: 100%;
+
+  p {
+    font-family: monospace;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--text-color);
+
+    &.highlight {
+      color: var(--accent-color);
+    }
+
+    /* Animate in */
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: calc(var(--index, 0) * 0.06s);
+  }
+}
+
+
+.spacer { 
+    flex-grow: 1;
+}

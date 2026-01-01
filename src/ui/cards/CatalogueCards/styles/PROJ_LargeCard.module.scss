@@ -1,0 +1,122 @@
+.cardLarge {
+  display: flex;
+  flex-direction: row;
+  height: 180px; // fixed height, adjust as needed
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  position: relative;
+  // background: var(--bg-l2);
+  // border-radius: 0.5rem;
+
+  &:hover {
+    // transform: translateY(-2px);
+  }
+
+  &:hover .Title {
+    color: var(--accent-color);
+  }
+}
+
+/* IMAGE */
+.ImgContainer {
+  width: 40%; // left side takes 40% of the card
+  height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+}
+
+.cardLarge:hover .image {
+  // transform: scale(1.03);
+  filter: saturate(1.05);
+}
+
+/* CONTENT */
+.ContentWrapper {
+  width: 60%; // right side takes 60%
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  backdrop-filter: blur(10px);
+  background: rgba(var(--bg-rgb), 0.3); // semi-transparent frosted look
+  color: var(--text-color);
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.Title {
+  font-size: 1.1rem;
+  font-weight: 200;
+  color: var(--accent-color);
+  transition: color 0.25s ease;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: rgba(var(--text-rgb), 0.6);
+  white-space: nowrap;
+}
+
+/* DESCRIPTION */
+.Description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(var(--text-rgb), 0.75);
+  max-width: 100%;
+}
+
+/* FOOTER */
+.Footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto; // keeps tags/buttons at bottom
+}
+
+.linkGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .cardLarge {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .ImgContainer {
+    width: 100%;
+    height: 140px;
+  }
+
+  .ContentWrapper {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .Footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

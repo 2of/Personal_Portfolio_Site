@@ -1,0 +1,131 @@
+.heroCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+//   background: var(--bg-l2); /* subtle card depth */
+
+  transition: transform 0.4s ease;
+
+  &:hover {
+    // transform: translateY(-4px);
+  }
+
+  &:hover .Title {
+    color: var(--accent-color);
+  }
+
+  &:hover .image {
+    // transform: scale(1.08);
+  }
+}
+
+/* IMAGE STAGE */
+.ImageStage {
+  position: relative;
+  flex: 1 1 80%;
+  min-height: 280px;
+  max-height: 65%;
+  overflow: hidden;
+//   background: var(--bg-l1);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+/* Gradient overlay for readability */
+.ImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--bg-rgb), 0.1),
+    rgba(var(--bg-rgb), 0.6)
+  );
+  pointer-events: none;
+}
+
+/* TITLE ON IMAGE */
+.HeroHeader {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 1.75rem;
+  right: 1.75rem;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.Title {
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-weight: 100;
+  letter-spacing: 0.6px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: rgba(var(--text-rgb), 0.65);
+  white-space: nowrap;
+}
+
+/* CONTENT */
+.Content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 45%;
+  padding: 1.5rem;
+  gap: 1.25rem;
+//   background: var(--bg-l3); /* subtle contrast for content */
+}
+
+/* DESCRIPTION */
+.Description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(var(--text-rgb), 0.75);
+  max-width: 75ch;
+}
+
+/* FOOTER — sticks to bottom */
+.Footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+/* LINKS */
+.linkGroup {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .ImageStage {
+    flex: none;
+    height: 320px;
+    max-height: none;
+  }
+
+  .HeroHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .Content {
+    padding: 1.25rem;
+  }
+}

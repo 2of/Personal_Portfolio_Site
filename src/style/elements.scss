@@ -1,0 +1,261 @@
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    color: var(--secondary-text);
+    background: transparent;
+    transition:
+        border-color 0.2s ease-out,
+        color 0.2s ease-out;
+
+    &::before {
+        content: '#';
+        opacity: 0.5;
+        margin-right: 0.1em;
+    }
+
+    &:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+
+    &.active {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+        background: var(--accent-color-transparent);
+    }
+}
+
+.tagContainer { 
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    background: var(--accent-color);
+    color: var(--bg);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* =============================
+   Dividers
+   ============================= */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--border-color) 15%,
+            var(--border-color) 85%,
+            transparent 100%);
+    margin: 1rem 0;
+    opacity: 0.5;
+}
+
+.divider-dashed {
+    height: 0;
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 1rem 0;
+    opacity: 0.5;
+}
+
+.divider-vertical {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            var(--border-color) 15%,
+            var(--border-color) 85%,
+            transparent 100%);
+    margin: 0 0.75rem;
+    opacity: 0.5;
+}
+
+/* =============================
+   List Items
+   ============================= */
+.list-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    font-family: monospace;
+    color: var(--text-color);
+    border-bottom: 1px dashed var(--border-color);
+    transition: color 0.2s ease-out;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &::before {
+        content: '>';
+        color: var(--accent-color);
+        opacity: 0.6;
+        flex-shrink: 0;
+    }
+
+    &:hover {
+        color: var(--accent-color);
+    }
+}
+
+.list-item-clickable {
+    cursor: pointer;
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+/* =============================
+   Status Indicators
+   ============================= */
+.status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--secondary-text);
+
+    &.active {
+        background: #4ade80;
+        box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+    }
+
+    &.warning {
+        background: #fbbf24;
+    }
+
+    &.error {
+        background: #f87171;
+    }
+}
+
+.status-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--secondary-text);
+}
+
+/* =============================
+   Loading States
+   ============================= */
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--bg-l1) 0%,
+            var(--bg-l2) 50%,
+            var(--bg-l1) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.loading-text {
+    font-family: monospace;
+    color: var(--secondary-text);
+
+    &::after {
+        content: '...';
+        animation: ellipsis 1.5s infinite;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes ellipsis {
+
+    0%,
+    20% {
+        content: '.';
+    }
+
+    40% {
+        content: '..';
+    }
+
+    60%,
+    100% {
+        content: '...';
+    }
+}
+
+/* =============================
+   Progress Indicator
+   ============================= */
+.progress-bar {
+    height: 4px;
+    background: var(--bg-l2);
+    border-radius: 2px;
+    overflow: hidden;
+
+    .progress-fill {
+        height: 100%;
+        background: var(--accent-color);
+        border-radius: 2px;
+        transition: width 0.3s ease-out;
+    }
+}
+
+/* =============================
+   Tooltips (CSS only)
+   ============================= */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+
+    &::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%) scale(0.95);
+        padding: 0.35rem 0.6rem;
+        font-family: monospace;
+        font-size: 0.7rem;
+        background: var(--text-color);
+        color: var(--bg);
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.2s ease-out,
+            transform 0.2s ease-out,
+            visibility 0.2s ease-out;
+        z-index: 100;
+        pointer-events: none;
+    }
+
+    &:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) scale(1);
+    }
+}

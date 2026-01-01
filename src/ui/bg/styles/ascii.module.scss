@@ -1,0 +1,49 @@
+.ascii {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* Typography */
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: clamp(8px, 1.1vw, 12px);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+
+  /* Color & transparency */
+  color: rgba(255, 255, 255, 0.12);
+  mix-blend-mode: lighten;
+
+  /* Layout */
+  white-space: pre;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+
+  /* Soft fade so it doesn't overpower UI */
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0.7) 55%,
+    rgba(0, 0, 0, 0.2) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  /* Fallback for browsers without mask support */
+  @supports not (mask-image: radial-gradient(white, black)) {
+    opacity: 0.15;
+  }
+}
+
+/* Optional: subtle animated drift */
+@keyframes asciiDrift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-12px);
+  }
+}
+
+.ascii--drift {
+  animation: asciiDrift 30s linear infinite alternate;
+}

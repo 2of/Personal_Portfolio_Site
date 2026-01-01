@@ -1,0 +1,134 @@
+[
+  {
+    "Main": [
+      {
+        "title": "Master's Project: CityScale Geolocalization",
+        "tags": ["Robotics", "AI", "Python"],
+        "variant": "large",
+
+        "links": [{ "label": "Repo", "to": "georepo", "icon":"github"},
+        { "label": "proposal", "to": "geothesis", "icon" : "book"},
+          { "label": "thesis", "to": "geothesis", "icon" : "book"},
+              { "label": "blogpost", "to": "/proj/geo", "icon" : "book"}
+      ],
+
+        "description": "A comprehensive study on pathfinding algorithms in dynamic environments using SLAM.",
+        "date": "2025-05-15",
+        "inprogress": true,
+        "image": "NewYork.png"
+      },
+      {
+        "title": "Monitor Minder",
+        "tags": ["productivity", "desktop"],
+        "variant": "large",
+        "links": [{ "label": "github", "to": "monitorminderrepo", "icon":"github"},{ "label": "site", "to": "monitormindersite", "icon" : "store"} ],
+        "description": "A lightweight system tray application that tracks screen time and encourages ergonomic breaks.",
+        "date": "2025-01-01",
+        "inprogress": false,
+        "image" : "monitorminder.png"
+      },
+      {
+        "title": "Personal Portfolio Website(s) (i.e. this website...)",
+        "tags": ["web", "design"],
+        "variant": "large",
+        "links": [{ "label": "live", "to": "https://myportfolio.com" }],
+        "description": "The site you are currently viewing, built with performance and SEO in mind.",
+        "date": "2025-02-15",
+        "image":"mac.png"
+      }
+      ,
+      {
+        "title": "Machine Learning to Defeat Dark Souls Bosses",
+        "tags": ["web", "design"],
+        "variant": "large",
+        "links": [{ "label": "live", "to": "https://myportfolio.com" }],
+        "description": "The site you are currently viewing, built with performance and SEO in mind.",
+        "date": "2025-02-15",
+              "inprogress": false,
+              "image":"asylumdemon.png"
+      }
+    ],"Odds and ends, Tools you may like": [
+      {
+        "title": "Machine Learning Pixel Art Generator",
+        "tags": ["API", "OAuth", "Frontend"],
+        "variant": "regular",
+        "links": [{ "label": "view project", "to": "https://social-hub.io" }],
+        "description": "Consolidates feeds from multiple platforms into a single, customizable stream.",
+        "date": "2025-07-01",
+        "inprogress": true,
+        "image" : "pixels.png"
+      },
+      {
+        "title": "Chrome Extension - Exchange Online / Azure Copy / Paste",
+        "tags": ["TypeScript", "Storybook"],
+        "variant": "regular",
+        "links": [{ "label": "docs", "to": "https://components.dev" }],
+        "description": "A strict TypeScript component library following Atomic Design principles.",
+        "date": "2025-08-15",
+        "image" : "chrome.png"
+      },
+      {
+        "title": "Chrome Extension - Retailer Filter Fix (no more marketplace)",
+     
+        "tags": ["TypeScript", "Storybook"],
+        "variant": "regular",
+        "links": [{ "label": "docs", "to": "https://components.dev" }],
+        "description": "A strict TypeScript component library following Atomic Design principles.",
+        "date": "2025-08-15",
+        "image" : "chrome.png"
+      }
+  ],
+    "Uni Stuff": [
+      {
+        "title": "Neural Network Visualizer",
+        "tags": ["AI", "deep learning", "education"],
+        "variant": "wide",
+        "links": [
+          { "label": "open", "to": "https://tensorflow-viz.com" },
+          { "label": "github", "to": "/repo/nn-viz" }
+        ],
+        "description": "Interactive 3D visualization of weight adjustments during backpropagation.",
+        "date": "2025-03-10",
+        "inprogress": false
+      },
+      {
+        "title": "Reinforcement Learning Agent",
+        "tags": ["RL", "OpenAI", "Gym"],
+        "variant": "wide",
+        "links": [{ "label": "paper", "to": "https://arxiv.org/example" }],
+        "description": "Training an agent to master classic arcade games using Q-Learning and Proximal Policy Optimization.",
+        "date": "2025-04-05"
+      },
+      {
+        "title": "Sentiment Analysis API",
+        "tags": ["NLP", "FastAPI"],
+        "variant": "wide",
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
+        "date": "2025-04-20"
+      }
+    ],
+    "Web Development": [
+      {
+        "title": "E-Commerce Dashboard",
+        "tags": ["React", "Stripe", "Next.js"],
+        "variant": "regular",
+        "links": [
+          { "label": "live", "to": "https://shop-admin.dev" },
+          { "label": "github", "to": "/repo/shop" }
+        ],
+        "description": "A full-stack commerce solution featuring real-time inventory tracking and financial reporting.",
+        "date": "2025-05-20",
+        "inprogress": false
+      },
+      {
+        "title": "CSS Grid Framework",
+        "tags": ["CSS", "Library"],
+        "variant": "regular",
+        "links": [{ "label": "npm", "to": "https://npmjs.com/package/grid-magic" }],
+        "description": "A lightweight utility-first CSS framework specifically designed for complex dashboard layouts.",
+        "date": "2025-06-12"
+      }
+    ]
+  }
+]

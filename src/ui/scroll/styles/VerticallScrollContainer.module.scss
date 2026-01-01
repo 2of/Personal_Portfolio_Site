@@ -1,0 +1,151 @@
+// ScrollableVerticalView.module.scss
+
+.scrollContainer {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    position: relative; // Establish stacking context
+
+    // Always enable vertical scrolling
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    // .paddedforNavBarDesktop and .paddedforNavBarMobile removed as they were empty
+}
+
+.staggerSpacer {
+    height: 8vh;
+    flex-shrink: 0;
+}
+
+.scrollContainerVelocity {
+    height: 100%;
+    overflow-y: auto;
+
+    &.padBottomForMobileFriendliness {
+        padding-bottom: 20vh;
+    }
+}
+
+.scrollContainerBounce {
+    height: auto;
+    overflow-y: visible;
+}
+
+.velocityInfo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    background: var(--bg-l1);
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--secondary-text);
+}
+
+.contentColumn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--maxWidth);
+    margin: 0 auto;
+    // Removed min-width hard constraint
+}
+
+
+.section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    // Better spacing between sections
+    // margin-bottom: 2rem;
+
+    // &.desktop padding removed
+
+    .sectionGradContainer {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+}
+
+.sectionHeaderContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+    z-index: 10; // Ensure header stays above content
+
+    // Sticky optimization
+    &.stickyHeader {
+        position: sticky;
+        top: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background: var(--bg-transparent); // Fallback
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); // Subtle separator when stuck
+        transition:
+            background 0.3s ease,
+            border-bottom 0.3s ease,
+            padding 0.3s ease;
+
+        // When not actually stuck visually (handled by scroll pos logic elsewhere usually), 
+        // but this ensures readable background always
+    }
+
+    .headerContentContainer {
+        width: 100%;
+        max-width: var(--maxWidth);
+        margin: 0 auto;
+
+        &.mobile {
+            max-width: 100%;
+        }
+    }
+
+    &.narrow {
+        max-width: 720px;
+    }
+}
+
+// .growFirst removed
+
+.sectionContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // max-width managed by contentColumn mostly
+}
+
+.progressBarOverlay {
+    position: fixed; // Fixed relative to viewport not scroll container
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-l1);
+    border: 1px solid var(--border-color);
+    border-radius: 99px;
+    z-index: 100;
+    pointer-events: none;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alignCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}

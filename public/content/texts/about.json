@@ -1,0 +1,216 @@
+{
+  "title": "welcome",
+  "subtitle": "I'm Noah and this is my Portfolio Catalogue Site",
+  "description": "The site is written from scratch",
+  "areatitle": "Here's some Links to get started",
+  "career"  : [
+
+
+    {
+      "position" :  "Senior SDA / It Project Support",
+      "company"  : "TeWhatuOra  - Health New Zealand",
+      "duration" : "March 2024 - Current",
+      "location" : "Remote - Contract" ,
+      "doing" : ["Supporting Significant tenancy migration",
+      "Shaping Mobile and Support Guides for adhoc & self driven programs",
+      "End User Support and Escalations",
+      "Triaging Queries, Phone and Remote Support",
+      "Troubleshooting Complex Tenancy Issues in a data critical environment"],
+      "coreskills" : ["AD", "M365", "Intune Device Management", "Network Support / VPN / ETC","End user support",
+      "Exchange Online, On Prem", "Contract work through DTSL Ltd"]
+
+
+
+
+    }, {
+      "position" :  "Contract IT Specialist",
+      "company"  : "PCMedia LTD",
+      "duration" : "2023-2024",
+      "location" : "Remote & Nelson, Tasman NZ" ,
+      "doing" : ["Medium Seat MSP support", "Network Deployment & Design", "Education IT support", "Education IT design", "Client Onboarding and tenancy Migrations",
+
+      "Ad-hoc and contract whilst studying towards my Masters", "IT Health Checks for generating leads"],
+      "coreskills" : ["EntraId", "AaD", "Network Troubleshooting", "Network Design", "Full IT environment Migrations",
+        "Onsite support ad-hoc as required","ABM, Intune", "Google Admin", "MS Teams Admin", "Exchange Online Management",
+      "Networking w/", "Ubiquiti, MicroTik, Fortinet & Grandstream Solutions"]
+
+
+
+    }, {
+      "position" :  "IT Specialist",
+      "company"  : "PCMedia LTD",
+      "duration" : "2022-2023",
+      "location" : "North Otago & South Canterbury, NZ" ,
+
+      "doing" : ["Small Business IT support and deployment", "Education IT support", "Education IT Deployment",
+
+      "Onsite support for Supermarket, and other 'no down time' clients' through contracts",
+      "Onsite warranty support for HP, Lenovo and Dell",
+      "Google Admin support / policy design for education",
+      "IT audits for client onboarding",
+      "Networking: Design and deployed reliable networks at 'mission critical' high bandwidth times given very limited resource (edu exams)",
+        "Network design, support and implementation"
+      ],
+      "coreskills" : ["EntraId", "AaD", "Network Troubleshooting", "Network Design", "Full IT environment Migrations",
+        "Onsite support ad-hoc as required","ABM, Intune", "Google Admin", "MS Teams Admin", "Exchange Online Management",
+        "Networking w/", "Ubiquiti, MicroTik, Fortinet & Grandstream Solutions", "Hardware repair", "Building out custom computers for clients, repairing client comptuers and making do with limited edu funding"]
+
+
+
+
+    }
+  , {
+      "position" :  "Tech Solutions Technician",
+      "company"  : "Noel Leeming Grooup",
+      "duration" : "2019-2022",
+      "location" : "South Canterbury & CHCH" ,
+
+      "doing" : ["Installed AV, TVs into client's homes", "Set up consumer laptops and other IT equipment both inhome and at an instore kiosk",
+      "Achieved a Minimal Revisit rate", "Consistently a region topping achiever as a salesperson", "This role was sales + 'tech solutions' where the latter started over a year into the role"],
+      "coreskills" : ["TV & Soundbar Installation ", "Security Camera Installation (Residential)" , "Laptop, SmartPhone setup and data transfer from 'everything' to 'everything",
+        "Self Directed Client Work", "Meeting Sales KPIs"]
+
+
+
+    }
+  ],
+
+  "qualifications": [
+    {
+      "title": "Bachelor Of Science",
+      "field": "Computer Science",
+      "gpatag": "",
+      "where": "University of Canterbury",
+      "year": 2020
+    },
+    {
+      "title": "Master  Of Artificial Intelligence",
+      "field": "Computer Science",
+      "gpatag": "Merit",
+      "where": "University of Canterbury",
+      "year": 2025
+    }
+
+  ],
+
+  "fullskills": [
+    {
+      "header": "Web Development",
+      "icon" : "Web",
+      "skills": ["REACT","JS","Node","Vue","Full Stack Web DEV","SQL","MongoDB","Rest"]
+    },
+    {
+      "header": "Languages",
+            "icon" : "code",
+      "skills": ["Python","Java","C/C++", "JS","Kotlin"]
+    },
+    {
+      "header": "Data Science / ML Frameworks",
+            "icon" : "data",
+      "skills": ["TensorFlow","Pytorch","R","Pandas","SparkScala","Hadoop"]
+    },
+    {
+      "header": "ML & AI",
+            "icon" : "ai",
+      "skills": ["Machine Learning", "Neural Network Design", "Heuristic Analysis", "Fine-Tuning"]
+    },
+    {
+      "header": "Data Analysis",
+            "icon" : "datanalysis",
+      "skills": ["Data Analysis", "Regression Analysis", "Large Data Processing","Map/Reduce"]
+    },
+    {
+      "header": "IT / Cloud Administration",
+            "icon" : "IT",
+      "skills": ["Microsoft Cloud Admin", "EXO & OnPrem", "Ad, Entra", "MS & Linux Servers"]
+    }
+  ],
+
+  "web": {
+    "title": "What's up with this website?",
+    "subtitle": "Aside from REACT's inbuilt stuff, some icon libs and react-router-dom this is all done from scratch",
+    "paragraph1": "So, there's about 90% of a full UI framework in here too, sans padding, margin predone things like you'd find in bootstrap and others.",
+    "paragraph2": "There's also a full writeup, using the inbuilt fancy-pants article renderer thingie (that I made, thingie is totally valid)",
+    "data": [
+      { "title": "React" },
+      { "title": "SCSS" },
+      { "title": "Webpack" },
+      { "title": "Vite" },
+      { "title": "React Router" },
+      { "title": "Custom Implemented Markdown rendering" },
+      { "title": "Almsot a whole component lib" },
+      { "title": "Component-first layout engine" },
+      { "title": "State management via A unch of react Contexts" }
+      
+    ]
+  },
+
+  "Machine Learning": {
+    "title": "Skip here for AI",
+    "subtitle": "I'm pretty good at doing Machine Learning things",
+    "paragraph1": "I have this Master's in Artificial Intelligence (with merit, might I add). The capstone project is below",
+    "paragraph2": "I focussed pretty heavily on the data science end of things. That is, regression analysis, Big data processing, distributed machine learning, Machine learning again, Network design and architecture analysis, heuristic analysis",
+    "data": [
+      { "title": "Python" },
+      { "title": "R" },
+      { "title": "TensorFlow" },
+      { "title": "PyTorch" },
+      { "title": "scikit-learn" },
+      { "title": "pandas" },
+      { "title": "NumPy" },
+      { "title": "Matplotlib & seaborn" },
+      { "title": "Jupyter Notebooks" },
+      { "title": "Spark (MLlib)" },
+      { "title": "SQL (for data wrangling)" },
+      { "title": "Keras" },
+      { "title": "XGBoost" },
+      { "title": "LangChain" },
+      { "title": "HuggingFace Transformers" }
+    ],
+    "lastline": "The values are mostly based on how much I enjoy the animation"
+  },
+
+  "IT": {
+    "title": "I'm also an IT person",
+    "subtitle": "Actually that's what im currently up to",
+    "paragraph1": "MSP work, Healthcare and Education IT. Shaping user support, implementing networks, I've done my share of IT support",
+    "paragraph2": "My favourite anecdote was a $100m+ firm who run an expired server 2012 trial that has to be reset every 6 or so months. But aside from that I've been front and center for Cloud First transformations in our secondary schools",
+    "data": [
+      { "title": "Active Directory (on-prem & Azure)" },
+      { "title": "Microsoft Entra ID" },
+      { "title": "Microsoft Exchange / Exchange Online" },
+      { "title": "Microsoft Intune" },
+            { "title": "Google Admin" },
+      { "title": "Microsoft 365 (Admin Center, Teams, SharePoint)" },
+      { "title": "Group Policy / GPO" },
+      { "title": "Windows Server (2016–2022)" },
+      { "title": "DNS / DHCP / Networking fundamentals" },
+      { "title": "PowerShell (begrudgingly)" },
+      { "title": "VPN + firewall config (FortiGate, UniFi, Mikrotik (Including climbing roofs for point to points) etc.)" },
+      { "title": "SaaS troubleshooting across environments" },
+      { "title": "License & asset management" }
+
+    ],
+    "lastline": "and so on"
+  },
+  "Softeng": {
+    "title": "Finally, Softeng & Programming bits",
+    "subtitle": "Actually that's what im currently up to",
+    "paragraph1": "A few other bits and bobs that are important to all of the above",
+    "paragraph2": "There are odds and ends over on my github. Essentially, this is the mix of things that aren't super duper relevant to anything above ;)",
+    "data": [
+      { "title": "GIT / Version Control" },
+      { "title": "OOP Design" },
+      { "title": "TDD" },
+      { "title": "Java, Kotlin too" },
+      { "title": "C++ & C" },
+      { "title": "Python" },
+      { "title": "Web (see above), throw in Manifest V3" },
+      { "title": "JS & node JS" },
+            { "title": "Vue" },
+                  { "title": "React Native" },
+      { "title": "A little swift" }
+    ],
+    "lastline": "Also all of the things that go with algorithm analysis, tractability, implementation and memory space, can't forget those"
+  }
+}

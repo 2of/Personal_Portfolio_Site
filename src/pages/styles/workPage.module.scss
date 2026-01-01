@@ -1,0 +1,50 @@
+.WorkPage {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  color: var(--text-main);
+}
+
+.introContent {
+  padding: 2rem 0;
+  max-width: 800px;
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+}
+
+// --- Grid Definitions ---
+
+.HeroGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; // Large breathing room for big projects
+  width: 100%;
+}
+
+.WideGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SmallGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.SingleLineGrid {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-color); // Optional: start of list line
+}

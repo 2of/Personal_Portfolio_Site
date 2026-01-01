@@ -1,0 +1,40 @@
+@use './style/standardBoxes';
+@use './style/typography';
+@use './style/elements';
+@use './style/layout';
+@use './style/bg';
+@use './style/transition';
+
+
+/* transition.scss */
+
+:global {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+}
+
+
+.container {
+  width: 100%;
+  max-width: var(--maxWidth, 1480px);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}

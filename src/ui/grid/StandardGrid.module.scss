@@ -1,0 +1,87 @@
+.standardGrid {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+
+  gap: 1rem;
+
+  // Dense layout
+  &.dense {
+    grid-auto-flow: dense;
+  }
+
+  // Free layout (dynamic height)
+  &.free {
+    grid-auto-rows: minmax(200px, auto);
+  }
+
+.standardGrid.fixed-regular {
+  grid-auto-rows: minmax(180px, 280px);
+}
+
+.standardGrid.fixed-proj {
+  grid-auto-rows: minmax(280px, 400px);
+}
+
+
+  // Column variants
+  &.cols-1 { grid-template-columns: 1fr; }
+  &.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  &.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  &.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  &.cols-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+  // Gap variants
+  &.gap-xs { gap: 0.25rem; }
+  &.gap-sm { gap: 0.5rem; }
+  &.gap-md { gap: 1rem; }
+  &.gap-lg { gap: 1.5rem; }
+  &.gap-xl { gap: 2rem; }
+
+  // Item sub-classes
+  .gridItem {
+    width: 100%;
+    min-width: 0; // prevent overflow
+    box-sizing: border-box;
+
+    &.animated {
+      opacity: 0.2;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    // Column span support
+    &.col-span-2 { grid-column: span 2; }
+    &.col-span-3 { grid-column: span 3; }
+    &.col-span-4 { grid-column: span 4; }
+    &.col-span-full { grid-column: 1 / -1; }
+
+    // Row span support
+    &.row-span-2 { grid-row: span 2; }
+    &.row-span-3 { grid-row: span 3; }
+    &.row-span-4 { grid-row: span 4; }
+    &.row-span-full { grid-row: 1 / -1; }
+  }
+}
+
+// Mobile Responsiveness
+@media (max-width: 768px) {
+  .standardGrid {
+    grid-template-columns: 1fr !important;
+
+    .gridItem {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(4px); // start slightly lower
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); // final position
+  }
+}

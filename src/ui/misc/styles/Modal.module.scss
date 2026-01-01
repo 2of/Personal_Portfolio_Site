@@ -1,0 +1,175 @@
+/* ----------------------------- */
+/* OVERLAY - NO SCALE, NO MOVE   */
+/* ----------------------------- */
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOutOverlay {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.overlay,
+.overlayAnimatingOut {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  
+  /* Overlay animation */
+  animation: fadeInOverlay 0.3s ease-out forwards;
+
+  &.hide { background: none; }
+
+  &.exiting,
+  &.overlayAnimatingOut {
+    animation: fadeOutOverlay 0.3s ease-in forwards;
+  }
+
+  transition: opacity 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
+}
+
+/* ----------------------------- */
+/* MODAL - CORE                  */
+/* ----------------------------- */
+
+.modal {
+  background: var(--bg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden; /* Clips the corners */
+  border-radius: 12px;
+  position: relative;
+
+  /* Animation */
+  animation: gentlePopIn 0.3s ease forwards;
+  transition: width 0.3s ease, height 0.3s ease;
+
+  /* ---------------------- */
+  /* SIZING VARIANTS        */
+  /* ---------------------- */
+
+  &.small {
+    width: 400px;
+    max-width: 90vw;
+    height: auto;
+    max-height: 90vh;
+  }
+
+  &.medium {
+    width: 600px;
+    max-width: 90vw;
+    height: auto;
+    max-height: 90vh;
+    min-height: 300px;
+  }
+
+  &.large {
+    width: 90%;
+    max-width: 1200px; /* Or var(--maxWidth) */
+    height: 90%;
+  }
+
+  &.fullScreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0;
+    border-radius: 0 !important;
+  }
+
+  /* ---------------------- */
+  /* TOP BAR                */
+  /* ---------------------- */
+
+  .topBar {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 1rem;
+    padding-left: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    
+    h2 {
+      font-weight: 200;
+      margin: 0;
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    /* Floating Nav Logic */
+    &.floatingnav {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: auto; /* Only take up necessary space */
+      background: transparent;
+      z-index: 10; /* CRITICAL: Must be above content */
+      padding: 0.5rem;
+    }
+
+    /* Fixed Nav Logic */
+    &.fixednav {
+      position: relative;
+      background-color: var(--bg-l2);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 5;
+    }
+  }
+
+  /* ---------------------- */
+  /* CONTENT                */
+  /* ---------------------- */
+
+  .content {
+    position: relative;
+    flex-grow: 1;
+    overflow-y: auto; /* Allows scrolling if content is too long */
+    padding: 1rem;
+    
+    /* Ensure content doesn't overlap floating buttons awkwardly */
+    will-change: transform, opacity;
+  }
+}
+
+/* ----------------------------- */
+/* ANIMATIONS                    */
+/* ----------------------------- */
+
+@keyframes gentlePopIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .modal.small,
+  .modal.medium,
+  .modal.large {
+    width: 95%;
+    height: auto;
+    max-height: 95vh;
+  }
+  
+  .modal.large {
+    height: 90%;
+  }
+}
