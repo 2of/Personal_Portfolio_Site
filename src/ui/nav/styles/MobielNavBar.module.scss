@@ -1,0 +1,30 @@
+.barContainer { 
+    // background-color: var(--text-color);
+    height: var(--mobileTopNavSafeArea);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--bg-l3);
+    // border-bottom: 1px solid green;
+    z-index: 40;
+    top: 0;
+
+    * { 
+        // color: var(--bg);
+    }
+    
+}
+
+
+.center { 
+    flex-grow: 1;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.right { 
+    display: flex;
+}

@@ -1,57 +1,25 @@
-.MainLayout {
+.DESKTOP_MainLayout {
     display: flex;
     flex-direction: row;
     height: 100vh;
     width: 100vw;
-    // background-color: var(--bg); // Assumes --bg is defined in global CSS
     overflow: hidden;
-    // color: #fff;
 }
 
 .Content {
     flex-grow: 1;
-    margin: 1rem 1rem 1rem 0; // Margin on top, right, bottom. 0 on left (nav side)
-    // padding: 2rem;
-
-    background-color: var(--bg);
-    /* Technical Glass */
-    // background: rgba(10, 10, 10, 0.7);
-    // backdrop-filter: blur(4px);
-    // border: 1px solid var(--border-color);
-    // border-radius: 4px;
-    // box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
-
-    // overflow-y: auto; // REMOVED: Nested scroll container breaks child scroll view
-    overflow: scroll; // Keep hidden so child ScrollableVerticalView constrains to this box
-    position: relative;
+    margin: 1rem 1rem 1rem 0;
+    overflow-y: auto;
     overflow-x: hidden;
-
-    // Scrollbar styling for a cleaner look
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
+    position: relative;
 }
 
 @keyframes pageTransition {
     0% {
         opacity: 0;
-        transform: translateY(10px) scale(0.99); // Subtle slide up and scale
-        filter: blur(4px); // Soft entry
+        transform: translateY(10px) scale(0.99);
+        filter: blur(4px);
     }
-
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -59,15 +27,76 @@
     }
 }
 
-.PageContainer {
-    height: 100%;
+.DesktopContent {
     width: 100%;
-
-    // Animation
-    // using a cubic-bezier for a "premium" snappy yet smooth feel
     animation: pageTransition 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-
-    // Optimize performance
     will-change: transform, opacity, filter;
     backface-visibility: hidden;
+
+}
+
+.MOBILE_MainLayout { 
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    // background-color: red;
+
+}
+
+.MobileContent_fixed { 
+
+    position: fixed;
+    // background-color: orange;
+    // margin-top: 100px;
+
+
+        display: flex;
+    flex-direction: row;
+    // height: 100vh;
+    // width: 100vw;
+    bottom: 0;
+    top: var(--mobileTopNavSafeArea);
+    overflow: hidden;
+            display: flex;
+    flex-direction: column;
+  
+}
+
+
+
+.MobileContent_free { 
+
+    // position: fixed;
+    // background-color: orange;
+    // margin-top: 100px;
+
+
+        display: flex;
+    flex-direction: row;
+    // height: 100vh;
+    // width: 100vw;
+    bottom: 0;
+    padding-top: var(--mobileTopNavSafeArea);
+    // overflow: hidden;
+            display: flex;
+    flex-direction: column;
+    // background-color: red;
+  
+}
+
+.MOBILE_PageContainer {
+    // width: 100%;
+    // animation: pageTransition 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    // will-change: transform, opacity, filter;
+    // backface-visibility: hidden;
+    // padding: 2rem; // Mobile padding
+    // top: var(--mobileTopNavSafeArea);
+    background-color: red;
+}
+
+.MainLayout {
+    // Empty or debug styles if needed
 }

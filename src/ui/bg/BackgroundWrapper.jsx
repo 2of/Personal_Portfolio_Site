@@ -3,6 +3,8 @@ import { useNav } from "../../contexts/NavContext";
 import TrackedDots from "./TrackedDots";
 import GradientBG from "./GradientBG";
 import { TextASCIIbg } from "./TextASCIIbg";
+import { AsciiArt } from "../misc/TextAsciiScroll";
+import asciiArtWindow from "../../../public/misc/asciiwindow";
 
 export const BackgroundWrapper = () => {
     const { navDetails } = useNav();
@@ -47,7 +49,7 @@ export const BackgroundWrapper = () => {
 
             return (
                 <BGWrapper>
-                    <TextASCIIbg />
+                    <AsciiArt art={asciiArtWindow} />
                     {/* <h1>test</h1> */}
                 </BGWrapper>
             );

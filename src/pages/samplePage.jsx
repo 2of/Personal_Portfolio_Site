@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./styles/samplepage.module.scss"
 import { useNav } from "../contexts/NavContext";
 // import { ScrollableVerticalView } from "../ui/scroll/VerticalScrollWithStickyHeaders";
@@ -19,6 +19,12 @@ import OrbitPicture from "../ui/misc/ImageOrbitView";
 import { StandardGrid } from "../ui/grid/StandardGrid";
 import { Card } from "../ui/cards/Card";
 import { BlackAndWhiteHoverReveal } from "../ui/images/BlackAndWhiteHoverReveal";
+import { AsciiArt } from "../ui/misc/TextAsciiScroll";
+import asciiArtWindow from "../../public/misc/asciiwindow";
+import { AboutCard } from "../ui/cards/discreteCards/aboutcard";
+import { AboutCardSmall } from "../ui/cards/AboutCard";
+
+
 export const SamplePage = () => {
     const { navDetails } = useNav();
     const navigateTo = useNavigateTo();
@@ -33,7 +39,6 @@ export const SamplePage = () => {
 
 
 
-
     const { getLink } = useLinks();
 
 
@@ -42,35 +47,17 @@ export const SamplePage = () => {
 
         <>
 
+there it is: 
 
+{/* <h1>ROUTES:  {navDetails.path} </h1> */}
+{/* <AboutCardSmall/> */}
+{/* {navDetails.path} */}
 
-            <h1>this da sample page</h1>
+{/*         
+            <ImageHandle src={SampleImage} /> */}
 
-            <h2> NAV : </h2>
-            {navDetails && (
-
-
-                <span>{navDetails.title}</span>
-            )}
-
-
-            <ImageHandle src={SampleImage} />
-
-            <OrbitPicture image={SampleImage} />
-            <div className="StandardBoxL1">
-
-                hello everyone
-            </div>
-
-            <div className="bg2">
-
-                hello everyone
-            </div>
-
-            <div className="StandardBoxL3">
-
-                hello everyone
-            </div>
+            {/* <OrbitPicture image={SampleImage} /> */}
+      
 
             <ModernButton
                 label="TEST FOR MODER NAVIGATE"
@@ -90,7 +77,7 @@ export const SamplePage = () => {
                 callback={() => dohandlearticle()}
             />
 
-
+{/* 
                 <BlackAndWhiteHoverReveal img={SampleImage} filterType="shift"/>
 
 
@@ -98,8 +85,8 @@ export const SamplePage = () => {
 <BlackAndWhiteHoverReveal img={SampleImage}  filterType="softglow" />
 <BlackAndWhiteHoverReveal img={SampleImage}  filterType="chromatic" />
 <BlackAndWhiteHoverReveal img={SampleImage}  filterType="glitch" />
-<BlackAndWhiteHoverReveal img={SampleImage}  /> {/* defaults to grayscale */}
-
+<BlackAndWhiteHoverReveal img={SampleImage}  /> 
+ */}
 
 
 
@@ -116,6 +103,24 @@ CARD:
 
             />
 
+            <div>
+                ascii: 
+
+                <AsciiArt art={asciiArtWindow} direction="bottom-up" maxOpacity={0.4}/>
+
+            </div>
+            <div className="StandardBoxPaper1">
+                 <br />
+            <br />
+             <br />
+            <br /> <br />
+            <br /> <br />
+            <br /> <br />
+            <br /> <br />
+            <br />
+                <h1>test</h1>
+                <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas incidunt suscipit libero atque officiis magni vero necessitatibus dolorem at quos!</h1>
+            </div>
             <br />
             <br />
             {/* <ShareSheet/> */}

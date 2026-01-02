@@ -16,6 +16,7 @@ html {
 body {
   font-family: monospace;
     font-family: 'Courier New', 'Monaco', monospace;
+      font-family: system-ui, sans-serif;
   font-size: var(--text-base);
   line-height: var(--leading-normal);
 

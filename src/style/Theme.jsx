@@ -4,9 +4,9 @@ export const baseTheme = {
   "--padding-large": "48px",
   "--spacing-small": "12px",
 
-  "--font-size-base": "15px", // Slightly tighter for information density
+  "--font-size-base": "15px",
   "--font-size-lg": "18px",
-  "--font-weight-bold": "500", // "Medium" often looks more premium than "Bold"
+  "--font-weight-bold": "500",
 
   "--navHeightDESKTOP": "60px",
   "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP))",
@@ -16,114 +16,112 @@ export const baseTheme = {
   "--mobileTopNavSafeArea": "60px",
   "--maxWidth": "1280px",
 
-  "--border-radius": "4px", // Tighter radius = more professional/technical look
-  "--blur-radius": "16px",
-  "--text-dark": "#111111",
-  "--darkbg": "#000000",
-  "--lighttext": "#EDEDED",
+  "--border-radius": "2px", // Sharp, technical edges
+  "--blur-radius": "20px",
+  "--text-dark": "#1C1C1C",
+  "--darkbg": "#0D0D0D",
+  "--lighttext": "#F5F5F5",
 };
 
 export const lightTheme = {
-  // THEME: "Swiss Typography"
-  // Stark, high-contrast, zero-noise. Like a printed architectural magazine.
+  // THEME: "Graphite Drafting"
+  // Clean white paper with sharp graphite lines
 
-  "--bg": "#FFFFFF",
-  "--bg-l1": "#FAFAFA", // Very subtle off-white for sidebars
-  "--bg-l2": "#F4F4F5", // Lightest grey for inputs
-  "--bg-l3": "#E4E4E7", // Border/Line weight
-  "--bg-transparent": "rgba(255, 255, 255, 0.92)",
+  "--bg": "#FEFEFE", // Pure white drafting paper
+  "--bg-l1": "#F8F8F8", // Subtle vellum
+  "--bg-l2": "#F0F0F0", // Light grey overlay
+  "--bg-l3": "#E0E0E0", // Grid underlay
+  "--bg-transparent": "rgba(254, 254, 254, 0.92)",
 
-  "--text-color": "#18181B", // Zinc-950 (Sharp, Ink Black)
-  "--secondary-text": "#71717A", // Zinc-500 (Clean neutral grey)
+  "--text-color": "#1C1C1C", // Sharp graphite
+  "--secondary-text": "#5C5C5C", // Soft pencil
 
   "--card-bg": "#FFFFFF",
-  "--border-color": "#E4E4E7", // Crisp separation
+  "--border-color": "#D4D4D4", // Clean line
   
-  "--grid-color": "#F1F5F9", // Slate-100
-  "--guide-color": "#E2E8F0", // Slate-200
-  "--dimension-line": "#94A3B8", // Slate-400
+  "--grid-color": "#EBEBEB", // Subtle grid
+  "--guide-color": "#DCDCDC", // Construction lines
+  "--dimension-line": "#8A8A8A", // Dimension marks
 
-  // The "Pro" Blue - Classic, trustworthy, calm.
-  "--accent": "#0F172A", // Using a dark Slate as the primary accent (classy)
-  "--accent-color": "#2563EB", // Royal Blue for active states only
-  "--accent-color-transparent": "rgba(37, 99, 235, 0.1)",
+  // Drafting Palette - Graphite and Red markup
+  "--accent": "#1C1C1C", // Technical black
+  "--accent-color": "#DC2626", // Red markup pen
+  "--accent-color-transparent": "rgba(220, 38, 38, 0.12)",
 
-  "--link": "#2563EB",
-  "--hover-accent": "#1D4ED8",
+  "--link": "#B91C1C", // Dark red
+  "--hover-accent": "#991B1B", // Deep red
 
-  "--herobg": "#FAFAFA",
-  "--feature-bg": "#F8FAFC",
+  "--herobg": "#F9F9F9",
+  "--feature-bg": "#FCFCFC",
   
-  // Shadows: Tight and localized. No big blurry spreads.
+  // Shadows: Precise and minimal
   "--drop-shadow": 
-    "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "0 1px 2px 0 rgba(28, 28, 28, 0.08)",
   "--card-shadow": 
-    "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)",
+    "0 2px 4px -1px rgba(28, 28, 28, 0.12), 0 1px 2px -1px rgba(28, 28, 28, 0.08)",
   "--elevated-shadow":
-    "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
-
-  "--inverse-transparent": "rgba(24, 24, 27, 0.95)",
-  "--inverse-shadow": "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+    "0 8px 16px -4px rgba(28, 28, 28, 0.16), 0 4px 8px -4px rgba(28, 28, 28, 0.1)",
+  "--navHeight": "4rem",
+  "--inverse-transparent": "rgba(28, 28, 28, 0.95)",
+  "--inverse-shadow": "0 16px 24px -4px rgba(28, 28, 28, 0.2)",
 };
 
 export const darkTheme = {
-  // THEME: "Midnight Titanium"
-  // No blue tint. No purple tint. Just pure, calibrated monochrome.
+  // THEME: "Charcoal Board"
+  // Dark drafting board with white chalk lines
   
-  // 1. The Backgrounds: Moving away from Pitch Black to "Rich Grey"
-  "--bg": "#0A0A0A", // Neutral Dark
-  "--bg-l1": "#111111", // Subtle elevation
-  "--bg-l2": "#171717", // Card surfaces
-  "--bg-l3": "#262626", // Input fields
-  "--bg-transparent": "rgba(10, 10, 10, 0.85)",
+  "--bg": "#0D0D0D", // Deep charcoal
+  "--bg-l1": "#1A1A1A", // Elevated surface
+  "--bg-l2": "#262626", // Slate layer
+  "--bg-l3": "#333333", // Input fields
+  "--bg-transparent": "rgba(13, 13, 13, 0.88)",
 
-  // 2. The Text: High readability, lowered contrast to reduce eye strain
-  "--text-color": "#EDEDED", // 93% White - Removes the harsh "strobe" effect
-  "--secondary-text": "#A1A1AA", // Zinc-400 - Perfectly legible grey
+  "--text-color": "#F5F5F5", // Chalk white
+  "--secondary-text": "#A3A3A3", // Soft grey
 
-  // 3. The Borders: The secret to Pro Dark Mode is defined borders, not shadows.
-  "--card-bg": "#121212", 
-  "--border-color": "#27272A", // Zinc-800 - Subtle visible structure
+  "--card-bg": "#1A1A1A", 
+  "--border-color": "#333333", // Technical border
   
-  "--grid-color": "#1A1A1A", // Very subtle grid
-  "--guide-color": "#262626",
-  "--dimension-line": "#525252",
+  "--grid-color": "#1C1C1C", // Subtle grid
+  "--guide-color": "#282828",
+  "--dimension-line": "#737373",
 
-  // 4. The Accents: Desaturated & Luminescent
-  "--accent": "#FFFFFF", // White accent conveys the highest level of luxury/minimalism
-  "--accent-color": "#3B82F6", // Blue-500 (Optical Blue)
-  "--accent-color-transparent": "rgba(59, 130, 246, 0.15)",
+  // White chalk with orange markup
+  "--accent": "#F5F5F5", // Chalk white
+  "--accent-color": "#F97316", // Orange markup
+  "--accent-color-transparent": "rgba(249, 115, 22, 0.18)",
 
-  "--link": "#60A5FA", // Blue-400
-  "--hover-accent": "#93C5FD", // Blue-300
+  "--link": "#FB923C", // Bright orange
+  "--hover-accent": "#FDBA74", // Light orange
 
-  "--herobg": "#000000",
-  "--feature-bg": "#0F0F0F",
+  "--herobg": "#080808",
+  "--feature-bg": "#141414",
   
-  // 5. The Shadows: 'Rim Lighting' technique
-  // We add a white pixel border (rgba(255,255,255,0.1)) inside the shadow 
-  // to make the object pop against the dark background.
+  // Shadows: Deep with subtle rim lighting
   "--drop-shadow": 
-    "0 0 0 1px rgba(255,255,255,0.08), 0 1px 2px rgba(0,0,0,0.5)",
+    "0 0 0 1px rgba(245, 245, 245, 0.06), 0 2px 4px rgba(0, 0, 0, 0.6)",
   "--card-shadow": 
-    "0 0 0 1px rgba(255,255,255,0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.5)",
+    "0 0 0 1px rgba(245, 245, 245, 0.08), 0 6px 12px -2px rgba(0, 0, 0, 0.5)",
   "--elevated-shadow":
-    "0 0 0 1px rgba(255,255,255,0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.7)",
+    "0 0 0 1px rgba(245, 245, 245, 0.1), 0 24px 32px -8px rgba(0, 0, 0, 0.7)",
 
-  "--inverse-transparent": "rgba(255, 255, 255, 0.9)",
-  "--inverse-shadow": "0 10px 30px rgba(0,0,0,0.5)",
+  "--inverse-transparent": "rgba(254, 254, 254, 0.92)",
+
+  // "--navHeight": "4rem",
+
+  "--inverse-shadow": "0 12px 36px rgba(0, 0, 0, 0.6)",
 };
 
 export const inlineNavHeight = {
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
-  "--mobileTopNavSafeArea": "82px",
+  "--mobileTopNavSafeArea": "182px",
 };
 
 export const hiddenNavHeight = {
   "--navHeight": "0rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
-  "--mobileTopNavSafeArea": "82px",
+  "--mobileTopNavSafeArea": "182px",
 };

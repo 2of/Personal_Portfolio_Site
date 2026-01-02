@@ -1,96 +1,45 @@
 import React from 'react';
 import styles from './StandardGrid.module.scss';
 
-const VARIANT_SPANS = {
-  hero:    { col: 2, row: 2 },
-  large:   { col: 2, row: 1 },
-  wide:    { col: 2, row: 1 },
-  tall:    { col: 1, row: 2 },
-  square:  { col: 1, row: 1 },
-  regular: { col: 1, row: 1 }
-};
-
 const StandardGrid = ({
   children,
-  columns = 'auto',
-  gap = 'md',
-  dense = false,
-  free = false,
+  template = 'regular',
   animated = false,
-  staggerDelay = 60,
-  reflow = false,
-  rowHeightVariant = '', // NEW: 'regular', 'proj', or ''
   className = '',
-  style = {},
   ...props
 }) => {
   const containerClasses = [
-styles.standardGrid,
-    styles[`cols-${columns}`],
-    styles[`gap-${gap}`],
-    dense ? styles.dense : '',
-    free ? styles.free : '',
-    reflow ? styles.reflow : '',
-    rowHeightVariant === 'regular' ? styles['fixed-regular'] : '',
-    rowHeightVariant === 'proj' ? styles['fixed-proj'] : '',
+    styles.grid,
+    styles[`template-${template}`],
+    animated && styles.animatedContainer,
     className
   ].filter(Boolean).join(' ');
 
   const renderedChildren = animated
-    ? React.Children.map(children, (child, index) => {
-        if (!React.isValidElement(child)) return child;
-        return React.cloneElement(child, {
-          className: `${child.props.className || ''} ${styles.animated}`.trim(),
-          style: {
-            ...child.props.style,
-            animationDelay: `${index * staggerDelay}ms`
-          }
-        });
-      })
+    ? React.Children.map(children, (child, index) =>
+        React.isValidElement(child)
+          ? React.cloneElement(child, {
+              style: {
+                ...child.props.style,
+                animationDelay: `${index * 80}ms`
+              }
+            })
+          : child
+      )
     : children;
 
   return (
-    <div className={containerClasses} style={style} {...props}>
+    <div className={containerClasses} {...props}>
       {renderedChildren}
     </div>
   );
 };
 
-StandardGrid.Item = ({
-  children,
-  variant = 'regular',
-  colSpan,
-  rowSpan,
-  className = '',
-  style = {},
-  ...props
-}) => {
-  const variantSpan = VARIANT_SPANS[variant] || VARIANT_SPANS.regular;
-
-  const resolvedColSpan = colSpan ?? variantSpan.col;
-  const resolvedRowSpan = rowSpan ?? variantSpan.row;
-
-  const itemClasses = [
-    styles.gridItem,
-    resolvedColSpan === 'full'
-      ? styles['col-span-full']
-      : resolvedColSpan > 1
-        ? styles[`col-span-${resolvedColSpan}`]
-        : '',
-    resolvedRowSpan === 'full'
-      ? styles['row-span-full']
-      : resolvedRowSpan > 1
-        ? styles[`row-span-${resolvedRowSpan}`]
-        : '',
-    className
-  ].filter(Boolean).join(' ');
-
-  return (
-    <div className={itemClasses} style={style} {...props}>
-      {children}
-    </div>
-  );
-};
+StandardGrid.Item = ({ children, className = '', ...props }) => (
+  <div className={[styles.item, className].filter(Boolean).join(' ')} {...props}>
+    {children}
+  </div>
+);
 
 export default StandardGrid;
 export { StandardGrid };

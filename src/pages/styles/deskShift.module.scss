@@ -1,0 +1,98 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .desc {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .heroImage {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .buttonrow { 
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+/* Subtitle Section */
+.subtitleSection {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  .subtitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+    color: #555;
+  }
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    text-align: center;
+
+    .featureImage {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .featureText {
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #555;
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+}

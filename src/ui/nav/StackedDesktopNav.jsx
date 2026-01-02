@@ -9,6 +9,7 @@ import { getLink } from "../../helpers/GetLink";
 import { Logo } from "../misc/Logo";
 import { useModal } from "../../contexts/ModalContext";
 import { ShareSheet } from "../misc/ShareSheet";
+import { AboutCardSmall } from "../cards/AboutCard";
 
 const COLLAPSE_ANIMATION_DURATION = 350;
 
@@ -129,7 +130,7 @@ export const StackedDesktopNav = () => {
                 </div>
 
                 <div className={s.Divider} />
-
+                
                 <ModernButton
                     label={darkMode ? ".light" : ".dark"}
                     variant="code_small"
@@ -138,7 +139,12 @@ export const StackedDesktopNav = () => {
                 <ModernButton
                     label=".info"
                     variant="code_small"
-                    callback={handleInfoModal}
+                     callback={() => showModal({
+                        title: "About This Website",
+                        content: <AboutCardSmall />,
+                        // floatnav: true,
+                        size: "medium"
+                    })}
                 />
                 <ModernButton
                     label=".share"

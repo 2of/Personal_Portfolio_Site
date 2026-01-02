@@ -1,6 +1,8 @@
 import { AboutPage } from "./pages/aboutPage";
 import { ArticlePage } from "./pages/articlePage";
+import { DeskShiftPage } from "./pages/deskShiftPage";
 import { HomePage } from "./pages/homePage";
+import { MorePage } from "./pages/morePage";
 import { SamplePage } from "./pages/samplePage";
 import { WorkPage } from "./pages/workPage";
 
@@ -12,7 +14,7 @@ export const routes = [
         title: "home",
         icon: "home",
         nav: "fixed",
-        expose_desktop_nav: true,
+        expose_desktop_nav: false,
         expose_mobile_nav: true,
         element: <HomePage />
 
@@ -25,9 +27,12 @@ export const routes = [
         expose_desktop_nav: true,
         expose_mobile_nav: true,
         element: <AboutPage />,
-        bg: "main"
+        bg: "main",
+        scrollOverride: "true"
 
     },
+
+     
     {
         path: "/projects",
         title: "projects",
@@ -36,6 +41,27 @@ export const routes = [
         expose_desktop_nav: true,
         expose_mobile_nav: true,
         element: <WorkPage />,
+        bg: "main",
+        scrollOverride: "true"
+
+    },  {
+        path: "/MonitorMinder",
+        title: "deskshift",
+        icon: "about",
+        nav: "fixed",
+        expose_desktop_nav: true,
+        expose_mobile_nav: true,
+        element: <DeskShiftPage />,
+        bg: "main"
+
+    },{
+        path: "/more",
+        title: "more",
+        icon: "about",
+        nav: "fixed",
+        expose_desktop_nav: true,
+        expose_mobile_nav: true,
+        element: <MorePage />,
         bg: "main"
 
     },
@@ -44,10 +70,10 @@ export const routes = [
         title: "sample",
         icon: "test",
         nav: "fixed",
-        expose_desktop_nav: true,
+        expose_desktop_nav: false,
         expose_mobile_nav: true,
         element: <SamplePage />,
-    bg: "text"
+    bg: "main"
 
     },
       {

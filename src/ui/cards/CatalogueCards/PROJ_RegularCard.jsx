@@ -13,23 +13,37 @@ export const PROJCARD_Regular = ({
   tags,
   links,
   link,
-  image
+  image,
+  inprogress
 }) => {
   const gotoURL = useNavigateTo();
 
   return (
    <div className={`${styles.cardRegular} StandardBoxL2`}>
-  <div className={styles.ImgContainer}>
-    {/* Base color image */}
-    <BlackAndWhiteHoverReveal img={image || defaultImg}/>
 
-    {/* Black & white overlay */}
-    <img
-      src={image || defaultImg}
-      alt={title}
-      className={`${styles.image} ${styles.bw}`}
-    />
-  </div>
+    {/* <h2>test, image {image}</h2> */}
+ 
+       {image && (
+ 
+         <div className={styles.ImgContainer}>
+ 
+           {/* <BlackAndWhiteHoverReveal img={image || defaultImg} filterType="grayscale"/> */}
+           <img
+             src={image}
+             alt={title}
+             className={styles.image}
+           />
+ 
+ 
+           <img
+             src={image}
+             alt={title}
+             className={styles.imageCover}
+           />
+         </div>
+ 
+ 
+       )}
 
   <div className={styles.ContentWrapper}>
     <div className={styles.Header}>

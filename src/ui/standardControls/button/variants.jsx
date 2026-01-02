@@ -11,6 +11,7 @@ import { ModernButtonVariant } from "./ModernButtonVariant";
 import { DevStyleButton } from "./DevStyleButton";
 import { TextButton, RichButton, NavButton } from "./MiscButtons";
 import { StoreButton } from "./StoreButtons";
+import { MobileButton } from "./MobileButtons";
 
 export const VARIANT_COMPONENTS = {
   default: BaseButton,
@@ -40,6 +41,12 @@ export const VARIANT_COMPONENTS = {
   appstore: StoreButton,
   googleplay: StoreButton,
   github: StoreButton,
+genericstore: StoreButton,
+mobileNav: MobileButton,
+mobileNavWithLabel: MobileButton, 
+mobileNavLargeMenu: MobileButton
+
+
 
 
 

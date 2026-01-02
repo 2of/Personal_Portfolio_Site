@@ -1,0 +1,10 @@
+{
+    "title": "DeskShift",
+    "desc1": "DeskShift is a menubar utility application which applies custom Mac settings profiles depending on the currently connected monitor(s). Essentially, you can make the most of your 13.6 inch mac display when you're out and about and automatically bring back the dock or apply other relevant settings when you're plugged in to monitors at work or home.",
+    "subtitle": "Seamless Workspace Switching",
+    "desc2": "Say goodbye to manually rearranging windows or resizing apps every time you switch environments. DeskShift keeps your workflow smooth and uninterrupted, giving you more time to focus on what matters. From multi-monitor setups to single-display configurations, your workspace always feels just right.",
+    "header1" : "Heaps of Settings",
+    "header1details" : "Dock settings, Stage Manager, Positioning, Scaling... All the things you really wish would change... but ... don't when you plug in to a dock",
+    "header2" : "Customize, Rename Profiles",
+    "header2details" : "Profiles are hashed by a combination of the serial numbers of all connected displays. You, however, can rename them for sanity!"
+}

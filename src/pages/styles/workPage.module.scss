@@ -48,3 +48,9 @@
   flex-direction: column;
   border-top: 1px solid var(--border-color); // Optional: start of list line
 }
+
+.bgContainer { 
+  // background-color: red;
+  position: absolute;
+  top: 0;
+}

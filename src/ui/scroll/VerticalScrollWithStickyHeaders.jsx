@@ -184,7 +184,7 @@ const isStaggeredForNav = true;
 
   return (
     <div ref={scrollRef} className={containerClass}>
-      {true && (trackVelocity || trackScrollPercent) && (
+      {false && (trackVelocity || trackScrollPercent) && (
         <div className={styles.velocityInfo}>
           {trackVelocity && (
             <>

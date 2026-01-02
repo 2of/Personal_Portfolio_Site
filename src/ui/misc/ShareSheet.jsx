@@ -32,7 +32,7 @@ const socialMediaServices = [
 
 export const ShareSheet = ({
   url,
-  title = "Share something exciting",
+  title = "Share something from my website ",
   description: initialDescription = "",
   onClose,
 }) => {

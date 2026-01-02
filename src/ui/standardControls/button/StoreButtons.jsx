@@ -19,6 +19,11 @@ export const StoreButton = ({ variant, label, onClick, link, className = "", ...
         subtitle = "View Source on";
         title = "GitHub";
         variantClass = styles.github;
+    } else if (variant === "genericstore") {
+        iconName = "portfolio";
+        subtitle = "Check it out";
+        title = "GitHub";
+        variantClass = styles.github;
     } else {
         // Default to App Store
         iconName = "apple";

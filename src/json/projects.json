@@ -1,88 +1,142 @@
-[
-  {
-    "Main": [
+{
+  "Main": {
+    "title": "The ",
+    "title_highlight": "Main things",
+    "variant": "hero",
+    "projects": [
       {
         "title": "Master's Project: CityScale Geolocalization",
-        "tags": ["Robotics", "AI", "Python"],
-        "variant": "large",
-
-        "links": [{ "label": "Repo", "to": "georepo", "icon":"github"},
-        { "label": "proposal", "to": "geothesis", "icon" : "book"},
-          { "label": "thesis", "to": "geothesis", "icon" : "book"},
-              { "label": "blogpost", "to": "/proj/geo", "icon" : "book"}
-      ],
-
-        "description": "A comprehensive study on pathfinding algorithms in dynamic environments using SLAM.",
+        "tags": [
+          "AI",
+          "Tensorflow",
+          "Large Data Processing",
+          "Data PipeLining",
+          "Transfer Learning",
+          "Fine Tuning",
+          "HyperParameter tuning",
+          "Model design and implementation",
+          "Lots of maths",
+          "ensemble learning",
+          "clustering",
+          "Attention Networks",
+          "CNN networks",
+          "Single GPU"
+        ],
+        "links": [
+          { "label": "Repo", "to": "georepo", "icon": "github" },
+          { "label": "proposal", "to": "geothesis", "icon": "book" },
+          { "label": "thesis", "to": "geothesis", "icon": "book" },
+          { "label": "blogpost", "to": "/proj/geo", "icon": "book" }
+        ],
+        "description": "It's essentially a 'Geuguessr Bot' ... Using a psuedo ensemble of machine learning methods to improve significantly on a src distirbution about a 20km^2 area.",
         "date": "2025-05-15",
-        "inprogress": true,
         "image": "NewYork.png"
       },
       {
         "title": "Monitor Minder",
-        "tags": ["productivity", "desktop"],
-        "variant": "large",
-        "links": [{ "label": "github", "to": "monitorminderrepo", "icon":"github"},{ "label": "site", "to": "monitormindersite", "icon" : "store"} ],
-        "description": "A lightweight system tray application that tracks screen time and encourages ergonomic breaks.",
+        "tags": ["swift", "macbook", "utility"],
+        "links": [
+          { "label": "github", "to": "monitorminderrepo", "icon": "github" },
+          { "label": "site", "to": "monitormindersite", "icon": "store" }
+        ],
+        "description": "WFH / Office monitor configuration utility. Applies customization profiles based on a user's monitor configuration",
         "date": "2025-01-01",
-        "inprogress": false,
-        "image" : "monitorminder.png"
+        "image": "monitorminder.png"
       },
       {
         "title": "Personal Portfolio Website(s) (i.e. this website...)",
-        "tags": ["web", "design"],
-        "variant": "large",
+        "tags": ["web", "REACT", "JS" , "CSS & SCSS", "Custom Hooks", "REST Consumption (there's no auth here just for articles... )" , "responsive mobile design", "Responsive general design", "Cool things"],
         "links": [{ "label": "live", "to": "https://myportfolio.com" }],
-        "description": "The site you are currently viewing, built with performance and SEO in mind.",
-        "date": "2025-02-15",
-        "image":"mac.png"
-      }
-      ,
-      {
+        "description": "The site you are currently viewing. It's not much to say 'hey this website is a portfolio piece' ... but there's a lot of stuff here. It's also been spun off into it's own hook/context/ui lib",
+        "date": "2025-02-15"
+      },
+    {
         "title": "Machine Learning to Defeat Dark Souls Bosses",
-        "tags": ["web", "design"],
-        "variant": "large",
+        "tags": [
+          "Tensorflow",
+          "Machine Learning",
+          "lua",
+          "python",
+          "real time combat",
+          "Kinda reinforcement learning"
+        ],
         "links": [{ "label": "live", "to": "https://myportfolio.com" }],
-        "description": "The site you are currently viewing, built with performance and SEO in mind.",
+        "description": "Specifically, the Asylum Demon Tutorial Fight. Unlike other bosses, this one is pretty trivially bested with few inputs. CheatEngine used to hook the game, CV and ML used to extract features, determine locations etc. Custom interface available too. Transfer learning and synthetic data generation,",
         "date": "2025-02-15",
-              "inprogress": false,
-              "image":"asylumdemon.png"
+        "inprogress": true,
+        "image": "asylumdemon.png"
+      },
+      {
+        "title": "Free Chess ELO Estimation Tool",
+        "tags": [
+          "Tensorflow",
+          "Machine Learning",
+          "lua",
+          "python",
+          "real time combat",
+          "Kinda reinforcement learning"
+        ],
+        "links": [{ "label": "live", "to": "https://myportfolio.com" }],
+        "description": "Trained w/ 33m games, free alternative to the elo estimation tool on chess.com. Usually you'd need to check in with stockfish at each step to make this determination, but there's so much data through the lichess database that we get pretty close. Hosted on github pages",
+        "date": "2025-02-15",
+        "image": "asylumdemon.png"
       }
-    ],"Odds and ends, Tools you may like": [
+    ]
+  },
+
+  "Odds and ends, Tools you may like": {
+    "title": "Odds and ends",
+    "title_highlight": "Tools you may like",
+    "variant": "regular",
+    "projects": [
       {
         "title": "Machine Learning Pixel Art Generator",
-        "tags": ["API", "OAuth", "Frontend"],
-        "variant": "regular",
-        "links": [{ "label": "view project", "to": "https://social-hub.io" }],
-        "description": "Consolidates feeds from multiple platforms into a single, customizable stream.",
+        "tags": ["ML", "Clustering", "JS + REACT"],
+        "links": [{ "label": "Live Tool", "to": "https://social-hub.io" }],
+        "description": "Clustering for colour extraction + rebuild",
         "date": "2025-07-01",
         "inprogress": true,
-        "image" : "pixels.png"
+        "image": "pixels.png"
       },
       {
         "title": "Chrome Extension - Exchange Online / Azure Copy / Paste",
-        "tags": ["TypeScript", "Storybook"],
-        "variant": "regular",
-        "links": [{ "label": "docs", "to": "https://components.dev" }],
-        "description": "A strict TypeScript component library following Atomic Design principles.",
+        "tags": ["ManifestV3"],
+        "links": [
+          {
+            "label": "Chrome Store",
+            "icon": "chrome",
+            "to": "https://components.dev"
+          }
+        ],
+        "description": "Sanity for IT people",
         "date": "2025-08-15",
-        "image" : "chrome.png"
+        "image": "chrome.png"
       },
       {
         "title": "Chrome Extension - Retailer Filter Fix (no more marketplace)",
-     
-        "tags": ["TypeScript", "Storybook"],
-        "variant": "regular",
-        "links": [{ "label": "docs", "to": "https://components.dev" }],
-        "description": "A strict TypeScript component library following Atomic Design principles.",
+        "tags": ["manifestV3", "URL Param Override"],
+        "links": [
+          {
+            "label": "Chrome Store",
+            "icon": "chrome",
+            "to": "https://components.dev"
+          }
+        ],
+        "description": "Sanity for... Shoppers?",
         "date": "2025-08-15",
-        "image" : "chrome.png"
+        "image": "chrome.png"
       }
-  ],
-    "Uni Stuff": [
+    ]
+  },
+
+  "Uni Stuff": {
+    "title": "Uni",
+    "title_highlight": "Stuff",
+    "variant": "regular",
+    "projects": [
       {
         "title": "Neural Network Visualizer",
         "tags": ["AI", "deep learning", "education"],
-        "variant": "wide",
         "links": [
           { "label": "open", "to": "https://tensorflow-viz.com" },
           { "label": "github", "to": "/repo/nn-viz" }
@@ -94,7 +148,6 @@
       {
         "title": "Reinforcement Learning Agent",
         "tags": ["RL", "OpenAI", "Gym"],
-        "variant": "wide",
         "links": [{ "label": "paper", "to": "https://arxiv.org/example" }],
         "description": "Training an agent to master classic arcade games using Q-Learning and Proximal Policy Optimization.",
         "date": "2025-04-05"
@@ -102,17 +155,21 @@
       {
         "title": "Sentiment Analysis API",
         "tags": ["NLP", "FastAPI"],
-        "variant": "wide",
         "links": [{ "label": "docs", "to": "/api/docs" }],
         "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
         "date": "2025-04-20"
       }
-    ],
-    "Web Development": [
+    ]
+  },
+
+  "Web Development": {
+    "title": "Web",
+    "title_highlight": "Development",
+    "variant": "regular",
+    "projects": [
       {
         "title": "E-Commerce Dashboard",
         "tags": ["React", "Stripe", "Next.js"],
-        "variant": "regular",
         "links": [
           { "label": "live", "to": "https://shop-admin.dev" },
           { "label": "github", "to": "/repo/shop" }
@@ -124,11 +181,15 @@
       {
         "title": "CSS Grid Framework",
         "tags": ["CSS", "Library"],
-        "variant": "regular",
-        "links": [{ "label": "npm", "to": "https://npmjs.com/package/grid-magic" }],
+        "links": [
+          {
+            "label": "npm",
+            "to": "https://npmjs.com/package/grid-magic"
+          }
+        ],
         "description": "A lightweight utility-first CSS framework specifically designed for complex dashboard layouts.",
         "date": "2025-06-12"
       }
     ]
   }
-]
+}

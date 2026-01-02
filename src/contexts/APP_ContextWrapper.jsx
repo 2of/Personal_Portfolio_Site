@@ -17,6 +17,7 @@ import { AppThemeProvider } from "./ThemeContext";
 import { NavProvider } from "./NavContext";
 import { LinksProvider } from "./LinksContext";
 import { ContentProvider } from "./ContentContext";
+import { NavStackProvider } from "./NavigationButtonsStack";
 
 function InnerThemeWrapper({ children }) {
     const { darkMode: isDark } = useDarkMode();
@@ -48,12 +49,13 @@ export const ContextWrapper = ({ children }) => {
     // const screenSize = useScreenSize();
     return (
         <DarkModeProvider>
+        
             <AlertMenuProvider>
                 <ContentProvider>
                 <LinksProvider>
                     <AppThemeProvider>
                         <NavProvider>
-
+                        <NavStackProvider>
                             <ModalMenuProvider>
                                 <ScreenSizeProvider>
                                     <ThemeProvider>
@@ -63,7 +65,7 @@ export const ContextWrapper = ({ children }) => {
                                     </ThemeProvider>
                                 </ScreenSizeProvider>
                             </ModalMenuProvider>
-
+</NavStackProvider>
                         </NavProvider>
                     </AppThemeProvider>
                 </LinksProvider>
