@@ -5,6 +5,7 @@ import GradientBG from "./GradientBG";
 import { TextASCIIbg } from "./TextASCIIbg";
 import { AsciiArt } from "../misc/TextAsciiScroll";
 import asciiArtWindow from "../../../public/misc/asciiwindow";
+import { DarkModeTile } from "../wrappers/DarkModeFancyTile";
 
 export const BackgroundWrapper = () => {
     const { navDetails } = useNav();
@@ -29,12 +30,13 @@ export const BackgroundWrapper = () => {
 
     switch (bgVariant) {
         case "main":
-            return <BGWrapper className="bg-crosshatch" />; // Empty background for 'main'
+            return <BGWrapper className="bg-dots-fade " />; // Empty background for 'main'
         case "ledger":
             return <BGWrapper className="bg-ledger" />; // Empty background for 'main'
       case "vellum":
             return <BGWrapper className="bg-dots-vellum" />; // Empty background for 'main'
-
+        case "WTF":
+   return <BGWrapper className="bg-grad-dots-dense" />;
         case "dots":
 
             return (

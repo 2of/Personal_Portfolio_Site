@@ -7,6 +7,7 @@ import { useLinks } from "../contexts/LinksContext";
 import { useNavigateTo } from "../hooks/useNavigate";
 import DS1 from "../../public/content/discretepages/deskShift/DS1.png"
 import DS2 from "../../public/content/discretepages/deskShift/DS2.png"
+import DS3 from "../../public/content/discretepages/deskShift/DS3.jpg"
 import ImageHandle from "../ui/images/ImageHandle";
 
 
@@ -24,8 +25,14 @@ export const DeskShiftPage = () => {
         <h1 className={s.title}>{srcText.title}</h1>
         <p className={s.desc}>{srcText.desc1}</p>
    
-   <ImageHandle src={DS2} alt={"cool image of the thing"}/>
 
+   <div className={s.heroImage}> 
+
+
+
+
+   <ImageHandle src={DS2} alt={"cool image of the thing"}/>
+   </div>
         <div className={s.buttonrow}>
         <ModernButton
             label="Find on Github"
@@ -77,7 +84,7 @@ export const DeskShiftPage = () => {
 
         <div className={s.feature}>
 
-            <ImageHandle src={DS1} alt={"cool image of the thing"}/>
+            <ImageHandle src={DS3} alt={"AI Gen'd Placeholder - Image of a macbook on a messy desk  "}/>
           {/* <img
            src={DS1}
             alt="Workflow Profiles"

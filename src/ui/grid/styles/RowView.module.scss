@@ -1,0 +1,123 @@
+.rowViewPlatter { 
+  display: flex;
+  flex-direction: column;
+//   width: 100%;
+  // max-width: 99%;
+  // background-color: var(--bg);
+  border: 1px solid var(--border-color);
+//   border-radius: 12px;
+  
+  overflow: hidden;
+  width: 100%;
+  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+
+  &.mobile { 
+    border: none;
+    width: 100vw;
+
+    border-radius: 0;
+  }
+}
+
+.row { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.2s ease;
+
+  background-color: var(--bg);
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    flex: none;
+    // width: 200px;
+    text-align: left;
+    max-width: 80%;
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+
+  .component {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    height: 42px;
+    // background-color: orange;
+    width: 44px;
+  }
+
+  .paragraph {
+    flex: 1;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--text-subtle, #666);
+  }
+
+  &.justLabel {
+    padding-top: 1rem;
+    font-style: italic;
+    justify-content: flex-start;
+  background-color: var(--text-color);
+
+
+    .label {
+      width: 100%;
+        color: var(--bg);
+    }
+  }
+
+  &.labelAndParagraph {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .label {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .paragraph {
+      width: 100%;
+    }
+  }
+
+  &.labelAndComponent {
+    // default layout
+  }
+
+  &.fullRow {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .label {
+      margin-bottom: 4px;
+    }
+
+    .component {
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .paragraph {
+      margin-top: 8px;
+      width: 100%;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    .label,
+    .component,
+    .paragraph {
+      color: var(--text-disabled, #999);
+    }
+  }
+}

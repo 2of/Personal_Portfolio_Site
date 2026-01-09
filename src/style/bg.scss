@@ -61,3 +61,81 @@
         linear-gradient(90deg, var(--bg-l3) 1px, transparent 1px);
     background-size: 40px 40px;
 }
+
+
+
+
+
+.bg-grad-dots {
+  background: 
+    /* Sparse dot grid */
+    radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    /* Gradient overlay */
+    radial-gradient(ellipse 100% 80% at center bottom, hsl(240, 10%, 25%) 0%, hsl(240, 10%, 20%) 40%, rgba(44, 44, 44, 0) 90%),
+    /* Base color */
+    var(--bg);
+  
+  background-size: 
+    40px 40px,  /* Dot grid spacing */
+    100% 100%,  /* Gradient fills container */
+    100% 100%;  /* Base color fills container */
+  
+  background-position: 
+    0 0,        /* Dots start at origin */
+    center,     /* Gradient centered */
+    center;     /* Base color centered */
+}
+
+/* Light mode variant with darker dots */
+:global(.light-mode) .bg-grad-dots {
+  background: 
+    radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    radial-gradient(ellipse 100% 80% at center bottom, hsl(240, 10%, 92%) 0%, hsl(240, 10%, 96%) 40%, rgba(250, 250, 250, 0) 90%),
+    var(--bg);
+  
+  background-size: 
+    40px 40px,
+    100% 100%,
+    100% 100%;
+  
+  background-position: 
+    0 0,
+    center,
+    center;
+}
+
+/* Denser dots variant */
+.bg-grad-dots-dense {
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(ellipse 100% 80% at center bottom, hsl(240, 10%, 25%) 0%, hsl(240, 10%, 20%) 40%, rgba(44, 44, 44, 0) 90%),
+    var(--bg);
+  
+  background-size: 
+    24px 24px,  /* Tighter grid */
+    100% 100%,
+    100% 100%;
+  
+  background-position: 
+    0 0,
+    center,
+    center;
+}
+
+/* Sparser dots variant */
+.bg-grad-dots-sparse {
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(ellipse 100% 80% at center bottom, hsl(240, 10%, 25%) 0%, hsl(240, 10%, 20%) 40%, rgba(44, 44, 44, 0) 90%),
+    var(--bg);
+  
+  background-size: 
+    60px 60px,  /* Very sparse */
+    100% 100%,
+    100% 100%;
+  
+  background-position: 
+    0 0,
+    center,
+    center;
+}

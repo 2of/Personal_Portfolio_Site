@@ -33,11 +33,12 @@
         "image": "NewYork.png"
       },
       {
-        "title": "Monitor Minder",
+        "title": "DeskShift - Monitor Minder",
         "tags": ["swift", "macbook", "utility"],
         "links": [
           { "label": "github", "to": "monitorminderrepo", "icon": "github" },
-          { "label": "site", "to": "monitormindersite", "icon": "store" }
+          { "label": "site", "to": "monitormindersite", "icon": "store" },
+                   { "label": "Info", "to": "/MonitorMinder", "icon": "about" }
         ],
         "description": "WFH / Office monitor configuration utility. Applies customization profiles based on a user's monitor configuration",
         "date": "2025-01-01",

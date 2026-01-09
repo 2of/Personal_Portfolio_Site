@@ -31,7 +31,7 @@ export const lightTheme = {
   "--bg-l1": "#F8F8F8", // Subtle vellum
   "--bg-l2": "#F0F0F0", // Light grey overlay
   "--bg-l3": "#E0E0E0", // Grid underlay
-  "--bg-transparent": "rgba(254, 254, 254, 0.92)",
+  "--bg-transparent": "rgba(254, 254, 254, 0.65)",
 
   "--text-color": "#1C1C1C", // Sharp graphite
   "--secondary-text": "#5C5C5C", // Soft pencil
@@ -45,7 +45,7 @@ export const lightTheme = {
 
   // Drafting Palette - Graphite and Red markup
   "--accent": "#1C1C1C", // Technical black
-  "--accent-color": "#DC2626", // Red markup pen
+  "--accent-color": "#e18752ff", // Red markup pen
   "--accent-color-transparent": "rgba(220, 38, 38, 0.12)",
 
   "--link": "#B91C1C", // Dark red

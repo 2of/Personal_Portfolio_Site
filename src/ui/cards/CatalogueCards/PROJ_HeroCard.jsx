@@ -45,7 +45,7 @@ export const PROJCARD_HeroCard = ({
       {inprogress && (
         <div className={styles.badge}>
           {getIcon("smile")}
-          <span>In Early Progress</span>
+          <span>In Early Progress - But cool af</span>
         </div>
       )}
 

@@ -1,0 +1,21 @@
+.page { 
+    // background-color: red;
+    height: 100%;
+    // background-color: orange;
+    display: flex;
+    // align-items: start;
+    // justify-content: start;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    // background-color: red;
+}
+.rowViewContainer { 
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    width: 100%;
+    // background-color: orange;
+    // background-color: red;
+}

@@ -1,0 +1,12 @@
+{
+  "geo": {
+    "dirname": "geo",
+    "heroImage": "",
+    "description": "lorem ipsum"
+  },
+  "other": {
+    "dirname": "other",
+    "heroImage": "",
+    "description": "lorem ipsum"
+  }
+}

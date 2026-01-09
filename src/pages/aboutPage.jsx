@@ -120,7 +120,7 @@ const getElTextEls = ({ elements = [] }) => {
 if (!hasLoaded) return <Loader fillparent />;
 
 return (
-    <ScrollableVerticalView >
+    <ScrollableVerticalView  animateIn>
         <Section
             sticky
             Header={() => (

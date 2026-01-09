@@ -50,6 +50,8 @@ export const HomePage = () => {
 
 
 
+            <div className={styles.CenteredContainer}> 
+
 
             <h1 className={styles.title}>
                 <p>Hello</p> <p className={styles.highlight}>There</p>
@@ -72,13 +74,14 @@ export const HomePage = () => {
 
                 <ModernButton label={".resume"} variant={"code"} external link={getLink("resume")} />
                 <ModernButton label={".linkedin"} variant={"code"} external link={getLink("linkedin")} />
-                                <ModernButton label={".linkedin22"} variant={"code"} external to="/home" link={getLink("linkedin")} />
+                                {/* <ModernButton label={".linkedin22"} variant={"code"} external to="/home" link={getLink("linkedin")} /> */}
                 <ModernButton label={".github"} variant={"code"} external link={getLink("github")} />
                 <ModernButton label={!darkMode ? ".dark" : ".light"} variant={"code"} callback={() => toggleDarkMode()} />
                 {/* <StandardButton label={"meta"} type={"code"} /> */}
             </div>
 
-
+                
+            </div>
         </>
     )
 

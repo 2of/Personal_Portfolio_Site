@@ -20,6 +20,8 @@
   width: 100%;
   padding: clamp(2rem, 5vw, 3rem) 0;
   word-break: break-word;
+  background-color: var(--bg-transparent);
+  backdrop-filter: blur(12px);
   position: relative;
 
   p {
@@ -67,9 +69,12 @@
   align-items: baseline;
   gap: clamp(0.25em, 0.8vw, 0.3em);
   width: 100%;
-  padding: clamp(1.25rem, 3vw, 2rem) 0;
+  padding: clamp(1.25rem, 3vw, 1.5rem) 0;
   position: relative;
-  
+    background-color: var(--bg);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border-color);
+// margin-bottom: 1rem;
   p {
     font-family: monospace;
     font-size: clamp(0.875rem, 2.5vw + 0.25rem, 1.2rem);

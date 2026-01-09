@@ -1,0 +1,198 @@
+{
+  "title": "welcome",
+  "subtitle": "I'm Noah and this is my Portfolio Catalogue Site",
+  "description": "The site is written from scratch",
+  "areatitle": "Here's some Links to get started",
+  "career"  : [
+
+
+    {
+      "position" :  "Senior SDA / It Project Support",
+      "company"  : "TeWhatuOra  - Health New Zealand",
+      "duration" : "March 2024 - Current",
+      "location" : "Remote - Contract" ,
+      "doing" : ["Supporting Significant tenancy migration",
+      "Shaping Mobile and Support Guides for adhoc & self driven programs",
+      "End User Support and Escalations",
+      "Triaging Queries, Phone and Remote Support",
+      "Troubleshooting Complex Tenancy Issues in a data critical environment"],
+      "coreskills" : ["AD", "M365", "Intune Device Management", "Network Support / VPN / ETC","End user support",
+      "Exchange Online, On Prem", "Contract work through DTSL Ltd"]
+
+
+
+
+    }, {
+      "position" :  "Contract IT Specialist",
+      "company"  : "PCMedia LTD",
+      "duration" : "2023-2024",
+      "location" : "Remote & Nelson, Tasman NZ" ,
+      "doing" : ["Medium Seat MSP support", "Network Deployment & Design", "Education IT support", "Education IT design", "Client Onboarding and tenancy Migrations",
+
+      "Ad-hoc and contract whilst studying towards my Masters", "IT Health Checks for generating leads"],
+      "coreskills" : ["EntraId", "AaD", "Network Troubleshooting", "Network Design", "Full IT environment Migrations",
+        "Onsite support ad-hoc as required","ABM, Intune", "Google Admin", "MS Teams Admin", "Exchange Online Management",
+      "Networking w/", "Ubiquiti, MicroTik, Fortinet & Grandstream Solutions"]
+
+
+
+    }, {
+      "position" :  "IT Specialist",
+      "company"  : "PCMedia LTD",
+      "duration" : "2022-2023",
+      "location" : "North Otago & South Canterbury, NZ" ,
+
+      "doing" : ["Small Business IT support and deployment", "Education IT support", "Education IT Deployment",
+
+      "Onsite support for Supermarket, and other 'no down time' clients' through contracts",
+      "Onsite warranty support for HP, Lenovo and Dell",
+      "Google Admin support / policy design for education",
+      "IT audits for client onboarding",
+      "Networking: Design and deployed reliable networks at 'mission critical' high bandwidth times given very limited resource (edu exams)",
+        "Network design, support and implementation"
+      ],
+      "coreskills" : ["EntraId", "AaD", "Network Troubleshooting", "Network Design", "Full IT environment Migrations",
+        "Onsite support ad-hoc as required","ABM, Intune", "Google Admin", "MS Teams Admin", "Exchange Online Management",
+        "Networking w/", "Ubiquiti, MicroTik, Fortinet & Grandstream Solutions", "Hardware repair", "Building out custom computers for clients, repairing client comptuers and making do with limited edu funding"]
+
+
+
+
+    }
+  , {
+      "position" :  "Tech Solutions Technician",
+      "company"  : "Noel Leeming Grooup",
+      "duration" : "2019-2022",
+      "location" : "South Canterbury & CHCH" ,
+
+      "doing" : ["Installed AV, TVs into client's homes", "Set up consumer laptops and other IT equipment both inhome and at an instore kiosk",
+      "Achieved a Minimal Revisit rate", "Consistently a region topping achiever as a salesperson", "This role was sales + 'tech solutions' where the latter started over a year into the role"],
+      "coreskills" : ["TV & Soundbar Installation ", "Security Camera Installation (Residential)" , "Laptop, SmartPhone setup and data transfer from 'everything' to 'everything",
+        "Self Directed Client Work", "Meeting Sales KPIs"]
+
+
+
+    }
+  ],
+
+  "qualifications": [
+    {
+      "title": "Bachelor Of Science",
+      "field": "Computer Science",
+      "gpatag": "",
+      "where": "University of Canterbury",
+      "year": 2020
+    },
+    {
+      "title": "Master  Of Artificial Intelligence",
+      "field": "Computer Science",
+      "gpatag": "Merit",
+      "where": "University of Canterbury",
+      "year": 2025
+    }
+
+  ],
+
+  "fullskills": [
+    {
+      "header": "Web Development",
+      "icon" : "Web",
+      "skills": ["REACT","JS","Node","Vue","Full Stack Web DEV","SQL","MongoDB","Rest"]
+    },
+    {
+      "header": "Languages",
+            "icon" : "code",
+      "skills": ["Python","Java","C/C++", "JS","Kotlin"]
+    },
+    {
+      "header": "Data Science / ML Frameworks",
+            "icon" : "data",
+      "skills": ["TensorFlow","Pytorch","R","Pandas","SparkScala","Hadoop"]
+    },
+    {
+      "header": "ML & AI",
+            "icon" : "ai",
+      "skills": ["Machine Learning", "Neural Network Design", "Heuristic Analysis", "Fine-Tuning"]
+    },
+    {
+      "header": "Data Analysis",
+            "icon" : "datanalysis",
+      "skills": ["Data Analysis", "Regression Analysis", "Large Data Processing","Map/Reduce"]
+    },
+    {
+      "header": "IT / Cloud Administration",
+            "icon" : "IT",
+      "skills": ["Microsoft Cloud Admin", "EXO & OnPrem", "Ad, Entra", "MS & Linux Servers"]
+    }
+  ],
+
+  
+  "texts": 
+   {
+    "preamble": {
+      "tags": ["intro", "portfolio", "AI", "Data Science"],
+      "content": [
+        { "content": "You've found my little portfolio site....", "highlight": false },
+        { "content": "I'm Noah,", "highlight": true },
+        { "content": "I'm a", "highlight": false },
+        { "content": "Master of Artificial Intelligence", "highlight": true },
+        { "content": "grad looking for", "highlight": false },
+        { "content": "Data Science,", "highlight": true },
+        { "content": "Machine Learning,", "highlight": true },
+        { "content": "Development", "highlight": true },
+        { "content": "or", "highlight": false },
+        { "content": "Software Engineering", "highlight": true },
+        { "content": "roles..... This website is a bit of fun, Feel free to look around at my projects and work history", "highlight": false }
+      ]
+    },
+
+ 
+    "career_transition": {
+      "tags": ["IT", "Development", "Career", "SDA", "Software", "ML", "Data Engineering"],
+      "content": [
+        { "content": "I’m an experienced", "highlight": false },
+        { "content": "IT Senior SDA", "highlight": true },
+        { "content": "with a solid background in", "highlight": false },
+        { "content": "support,", "highlight": true },
+        { "content": "administration,", "highlight": true },
+        { "content": "and systems management.", "highlight": true },
+        { "content": "Now I’m looking to take on my next challenge in", "highlight": false },
+        { "content": "software development,", "highlight": true },
+        { "content": "data engineering,", "highlight": true },
+        { "content": "or", "highlight": false },
+        { "content": "machine learning.", "highlight": true }
+      ]
+    },
+
+
+    "introduction": {
+      "tags": ["intro", "important"],
+      "content": [
+        { "content": "Welcome to the app", "highlight": false },
+        { "content": "IMPORTANT", "highlight": true },
+        { "content": "Read carefully", "highlight": false }
+      ]
+    },  "experience": {
+      "tags": ["IT", "Healthcare", "Education", "Networking", "Azure", "Entra", "Google Admin", "Systems"],
+      "content": [
+        { "content": "I’ve delivered", "highlight": false },
+        { "content": "IT support", "highlight": true },
+        { "content": "and project contracts across", "highlight": false },
+        { "content": "healthcare", "highlight": true },
+        { "content": "and", "highlight": false },
+        { "content": "education", "highlight": true },
+        { "content": "in New Zealand.", "highlight": false },
+
+        { "content": "My experience spans", "highlight": false },
+        { "content": "enterprise networking,", "highlight": true },
+        { "content": "Azure and Entra administration,", "highlight": true },
+        { "content": "Microsoft 365,", "highlight": true },
+        { "content": "Google Admin,", "highlight": true },
+        { "content": "DNS and network architecture design,", "highlight": true },
+        { "content": "and implementing", "highlight": false },
+        { "content": "medium-sized business IT environments.", "highlight": true }
+      ]
+    }
+  }
+
+}

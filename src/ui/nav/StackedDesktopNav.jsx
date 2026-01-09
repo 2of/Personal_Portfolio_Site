@@ -10,6 +10,7 @@ import { Logo } from "../misc/Logo";
 import { useModal } from "../../contexts/ModalContext";
 import { ShareSheet } from "../misc/ShareSheet";
 import { AboutCardSmall } from "../cards/AboutCard";
+import { DarkModeTile } from "../wrappers/DarkModeFancyTile";
 
 const COLLAPSE_ANIMATION_DURATION = 350;
 
@@ -130,7 +131,14 @@ export const StackedDesktopNav = () => {
                 </div>
 
                 <div className={s.Divider} />
-                
+                        {/* <div className={s.DarkModeTileContainer}>
+
+
+                        <DarkModeTile/>
+                    </div>
+
+                      <div className={s.Divider} /> */}
+
                 <ModernButton
                     label={darkMode ? ".light" : ".dark"}
                     variant="code_small"
@@ -156,6 +164,11 @@ export const StackedDesktopNav = () => {
                         size: "small"
                     })}
                 />
+
+            
+
+
+                {/* <DarkModeTile/> */}
             </div>
         </nav>
     );

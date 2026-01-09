@@ -82,6 +82,7 @@ export const AboutCardSmall = () => {
                  <p className={s.bio}>
 I may have extensively used generative AI for css... but the meat and potatoes is all me... and maybe stack overflow... 
 
+
         </p>
     </div>
   );

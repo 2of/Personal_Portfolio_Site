@@ -5,6 +5,7 @@ import { routes } from './routes'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { MainLayout } from './layout/MainLayout'
 import { ContextWrapper } from './contexts/APP_ContextWrapper'
+import { DefaultNotFound } from './pages/404'
 
 const AppContent = () => {
   return (
@@ -17,6 +18,9 @@ const AppContent = () => {
             element={route.element}
           />
         ))}
+
+
+            <Route path="*" element={<DefaultNotFound />} />
       </Route>
     </Routes>
   )

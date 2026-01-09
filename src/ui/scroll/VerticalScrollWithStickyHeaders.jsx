@@ -23,6 +23,7 @@ export const Section = ({
   color = "bg",
   index,
   isFirst,
+  animateIn
 }) => {
   const { getColor } = useAppTheme();
   const screenSize = useScreenSize();
@@ -70,6 +71,7 @@ export const Section = ({
         </div>
       )}
       <div className={styles.sectionContent}>
+        <h1>{animateIn ? "in with " : "nothing"} {index}</h1>
         {Header && (
           <div className={headerClass}>
             <div
@@ -91,6 +93,7 @@ export const ScrollableVerticalView = ({
   trackScrollPercent,
   staggerStart = false,
   alignCenter = false,
+  animateIn = false
 }) => {
   const scrollRef = useRef(null);
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
@@ -171,6 +174,7 @@ const isStaggeredForNav = true;
   const enhancedChildren = React.Children.map(children, (child, index) => {
     if (!React.isValidElement(child)) return child;
     const originalSticky = child.props.sticky;
+  
     const isSection = child.type?.name === "Section";
     return isSection
       ? React.cloneElement(child, {
@@ -178,6 +182,7 @@ const isStaggeredForNav = true;
         narrow: child.props.narrow,
         index,
         isFirst: index === 0,
+        animateIn: animateIn
       })
       : child;
   });

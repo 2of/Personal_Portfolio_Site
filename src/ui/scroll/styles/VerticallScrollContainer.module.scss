@@ -72,7 +72,7 @@
     justify-content: flex-start;
     margin-bottom: clamp(2rem, 5vw, 4rem);
     scroll-margin-top: 1rem; // Smooth scroll offset for anchors
-    
+
     // Responsive spacing
     @media (max-width: 768px) {
         margin-bottom: 2.5rem;
@@ -106,32 +106,32 @@
     z-index: 10;
     isolation: isolate; // Create new stacking context
     // Break out of content column padding using negative margins
-    margin-left: calc(-1 * clamp(1rem, 4vw, 2rem));
-    margin-right: calc(-1 * clamp(1rem, 4vw, 2rem));
-    padding-left: clamp(1rem, 4vw, 2rem);
-    padding-right: clamp(1rem, 4vw, 2rem);
+    // margin-left: calc(-1 * clamp(1rem, 4vw, 2rem));
+    // margin-right: calc(-1 * clamp(1rem, 4vw, 2rem));
+    // padding-left: clamp(1rem, 4vw, 2rem);
+    // padding-right: clamp(1rem, 4vw, 2rem);
     
-    // Responsive margin adjustments
-    @media (max-width: 768px) {
-        margin-left: -1.25rem;
-        margin-right: -1.25rem;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-    }
+    // // Responsive margin adjustments
+    // @media (max-width: 768px) {
+    //     margin-left: -1.25rem;
+    //     margin-right: -1.25rem;
+    //     padding-left: 1.25rem;
+    //     padding-right: 1.25rem;
+    // }
     
-    @media (max-width: 480px) {
-        margin-left: -1rem;
-        margin-right: -1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
+    // @media (max-width: 480px) {
+    //     margin-left: -1rem;
+    //     margin-right: -1rem;
+    //     padding-left: 1rem;
+    //     padding-right: 1rem;
+    // }
     
-    @media (max-width: 375px) {
-        margin-left: -0.875rem;
-        margin-right: -0.875rem;
-        padding-left: 0.875rem;
-        padding-right: 0.875rem;
-    }
+    // @media (max-width: 375px) {
+    //     margin-left: -0.875rem;
+    //     margin-right: -0.875rem;
+    //     padding-left: 0.875rem;
+    //     padding-right: 0.875rem;
+    // }
     
     &.stickyHeader {
         position: sticky;
@@ -157,12 +157,12 @@
     
     .headerContentContainer {
         width: 100%;
-        max-width: var(--maxWidth, 1200px);
+        // max-width: var(--maxWidth, 1200px);
         margin: 0 auto;
         padding: 0; // Padding is now handled by parent container
         position: relative;
         z-index: 1;
-        
+        // background-color: orange;
         &.mobile {
             max-width: 100%;
         }
@@ -178,26 +178,14 @@
         }
     }
     
-    @media (max-width: 768px) {
-
-        &.stickyHeader {
-            // backdrop-filter: blur(16px) saturate(150%);
-            // -webkit-backdrop-filter: blur(16px) saturate(150%);
-        }
-    }
-    
-    @media (max-width: 480px) {
-        &.stickyHeader {
-            // backdrop-filter: blur(12px) saturate(120%);
-         
-        }
-    }
+   
 }
 
 .sectionContent {
     width: 100%;
     display: flex;
     flex-direction: column;
+        padding-top: 2rem;
 }
 
 .progressBarOverlay {

@@ -23,6 +23,8 @@ import { AsciiArt } from "../ui/misc/TextAsciiScroll";
 import asciiArtWindow from "../../public/misc/asciiwindow";
 import { AboutCard } from "../ui/cards/discreteCards/aboutcard";
 import { AboutCardSmall } from "../ui/cards/AboutCard";
+import RowView from "../ui/grid/RowView";
+import { DarkModeTile } from "../ui/wrappers/DarkModeFancyTile";
 
 
 export const SamplePage = () => {
@@ -47,17 +49,19 @@ export const SamplePage = () => {
 
         <>
 
-there it is: 
+            there it is:
 
-{/* <h1>ROUTES:  {navDetails.path} </h1> */}
-{/* <AboutCardSmall/> */}
-{/* {navDetails.path} */}
+            <DarkModeTile />
 
-{/*         
+            {/* <h1>ROUTES:  {navDetails.path} </h1> */}
+            {/* <AboutCardSmall/> */}
+            {/* {navDetails.path} */}
+
+            {/*         
             <ImageHandle src={SampleImage} /> */}
 
             {/* <OrbitPicture image={SampleImage} /> */}
-      
+
 
             <ModernButton
                 label="TEST FOR MODER NAVIGATE"
@@ -77,7 +81,7 @@ there it is:
                 callback={() => dohandlearticle()}
             />
 
-{/* 
+            {/* 
                 <BlackAndWhiteHoverReveal img={SampleImage} filterType="shift"/>
 
 
@@ -91,8 +95,8 @@ there it is:
 
 
             <Loader />
-CARD:
-            <Card/>
+            CARD:
+            <Card />
             <ProgressBar
                 animated
                 val={50}
@@ -103,21 +107,27 @@ CARD:
 
             />
 
-            <div>
-                ascii: 
 
-                <AsciiArt art={asciiArtWindow} direction="bottom-up" maxOpacity={0.4}/>
+            <div>
+
+                rowview
+                <RowView />
+            </div>
+            <div>
+                ascii:
+
+                <AsciiArt art={asciiArtWindow} direction="bottom-up" maxOpacity={0.4} />
 
             </div>
             <div className="StandardBoxPaper1">
-                 <br />
-            <br />
-             <br />
-            <br /> <br />
-            <br /> <br />
-            <br /> <br />
-            <br /> <br />
-            <br />
+                <br />
+                <br />
+                <br />
+                <br /> <br />
+                <br /> <br />
+                <br /> <br />
+                <br /> <br />
+                <br />
                 <h1>test</h1>
                 <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas incidunt suscipit libero atque officiis magni vero necessitatibus dolorem at quos!</h1>
             </div>
