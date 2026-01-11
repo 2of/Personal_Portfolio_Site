@@ -25,6 +25,10 @@ import { AboutCard } from "../ui/cards/discreteCards/aboutcard";
 import { AboutCardSmall } from "../ui/cards/AboutCard";
 import RowView from "../ui/grid/RowView";
 import { DarkModeTile } from "../ui/wrappers/DarkModeFancyTile";
+import { RoadTransition } from "../ui/misc/DarkModeTransition.jsx/RoadTransition";
+import { FancyStateTransition } from "../ui/misc/DarkModeTransition.jsx/FancyStateTransition";
+import { useToast } from "../contexts/ToastContext";
+import { useDarkMode } from "../contexts/DarkMode";
 
 
 export const SamplePage = () => {
@@ -32,7 +36,8 @@ export const SamplePage = () => {
     const navigateTo = useNavigateTo();
 
     const { getArticle, getArticleImageUrl } = useContent();
-
+  const { showToast } = useToast();
+    const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
     const dohandlearticle = async () => {
         console.log("TEST");
         const article = await getArticle("geo");
@@ -43,7 +48,17 @@ export const SamplePage = () => {
 
     const { getLink } = useLinks();
 
+ const showOpenToast = ({ title = "That was ... a lot", text = "The 'Dark Mode transition' has been deactivated btw ... You can go to /more to turn it back on. I thought it was over the top yet kinda fun" } = {}) => {
+  showToast({
+    open: true,
+    title,
+    text: text,
+  });
+};
 
+const openDarkModeThing = () => { 
+    StartFullScreenTransition();
+}
 
     return (
 
@@ -51,7 +66,23 @@ export const SamplePage = () => {
 
             there it is:
 
-            <DarkModeTile />
+            {/* <DarkModeTile /> */}
+
+            {/* <RoadTransition/> */}
+
+            <FancyStateTransition/>
+
+            <ModernButton
+            label="TOAST SOMETHING"
+            variant="dev"
+            callback={() => showOpenToast()}/>
+
+
+            <ModernButton
+            label="SHOW FULL SCREEN TRANSITION"
+            variant="dev"
+            callback={() => openDarkModeThing()}/>
+
 
             {/* <h1>ROUTES:  {navDetails.path} </h1> */}
             {/* <AboutCardSmall/> */}
@@ -93,67 +124,6 @@ export const SamplePage = () => {
  */}
 
 
-
-            <Loader />
-            CARD:
-            <Card />
-            <ProgressBar
-                animated
-                val={50}
-                showBounds
-                upperBound={100}
-
-
-
-            />
-
-
-            <div>
-
-                rowview
-                <RowView />
-            </div>
-            <div>
-                ascii:
-
-                <AsciiArt art={asciiArtWindow} direction="bottom-up" maxOpacity={0.4} />
-
-            </div>
-            <div className="StandardBoxPaper1">
-                <br />
-                <br />
-                <br />
-                <br /> <br />
-                <br /> <br />
-                <br /> <br />
-                <br /> <br />
-                <br />
-                <h1>test</h1>
-                <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas incidunt suscipit libero atque officiis magni vero necessitatibus dolorem at quos!</h1>
-            </div>
-            <br />
-            <br />
-            {/* <ShareSheet/> */}
-
-            <Firefly />
-            <h2>TEST FOR GET LINK: {getLink("linkedin")}</h2>
-
-            <ExpandableCareerTile />
-
-            <section style={{ padding: '2rem 0' }}>
-                <h2>Standard Grid Demo (Animated)</h2>
-                <StandardGrid columns={3} gap="md" animated>
-                    <StandardGrid.Item style={{ background: 'rgba(255,255,255,0.1)', padding: '1rem', border: '1px solid #333' }}>
-                        Item 1
-                    </StandardGrid.Item>
-                    <StandardGrid.Item style={{ background: 'rgba(255,255,255,0.1)', padding: '1rem', border: '1px solid #333' }}>
-                        Item 2
-                    </StandardGrid.Item>
-                    <StandardGrid.Item style={{ background: 'rgba(255,255,255,0.1)', padding: '1rem', border: '1px solid #333' }}>
-                        Item 3
-                    </StandardGrid.Item>
-                </StandardGrid>
-            </section>
 
             <section style={{ padding: '2rem 0' }}>
                 <h2>Dense Grid (Col/Row Spans)</h2>

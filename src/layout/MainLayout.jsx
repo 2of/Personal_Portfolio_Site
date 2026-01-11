@@ -10,6 +10,8 @@ import { useScreenSize } from "../contexts/ScreenSizeContext";
 import { MobileNavBar } from "../ui/nav/MobileNavBar";
 import MobileNavMenu from "../ui/nav/MobileNavMenu";
 import { useNav } from "../contexts/NavContext";
+import { useToast } from "../contexts/ToastContext";
+import { Toast } from "../ui/misc/Toast";
 
 const Desktop = React.memo(({ location }) => {
     return (
@@ -45,6 +47,7 @@ const Mobile = React.memo(({scrollfixed}) => {
 export const MainLayout = () => {
     const location = useLocation();
     const { modalVisible } = useModal();
+    const {toastVisible} = useToast();
     const screenSize = useScreenSize();
     const {navDetails} = useNav();
     // console.log(navDetails.scrollOverride || "NONE")
@@ -52,6 +55,7 @@ export const MainLayout = () => {
         <>
             <BackgroundWrapper />
             {modalVisible && <ModalContainer />}
+            {toastVisible && <Toast />}
             {screenSize === "sm" ? <Mobile scrollfixed={navDetails.scrollOverride ?? false}  /> : <Desktop location={location} />}
         </>
     );

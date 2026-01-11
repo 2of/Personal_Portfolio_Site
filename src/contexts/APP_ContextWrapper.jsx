@@ -18,6 +18,7 @@ import { NavProvider } from "./NavContext";
 import { LinksProvider } from "./LinksContext";
 import { ContentProvider } from "./ContentContext";
 import { NavStackProvider } from "./NavigationButtonsStack";
+import { ToastMenuProvider } from "./ToastContext";
 
 function InnerThemeWrapper({ children }) {
     const { darkMode: isDark } = useDarkMode();
@@ -49,8 +50,7 @@ export const ContextWrapper = ({ children }) => {
     // const screenSize = useScreenSize();
     return (
         <DarkModeProvider>
-        
-            <AlertMenuProvider>
+        <ToastMenuProvider>            <AlertMenuProvider>
                 <ContentProvider>
                 <LinksProvider>
                     <AppThemeProvider>
@@ -71,6 +71,8 @@ export const ContextWrapper = ({ children }) => {
                 </LinksProvider>
                 </ContentProvider>
             </AlertMenuProvider>
+            </ToastMenuProvider>
+
         </DarkModeProvider>
     );
 };

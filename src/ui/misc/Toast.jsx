@@ -1,0 +1,97 @@
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { useToast } from "../../contexts/ToastContext";
+import styles from "./styles/Toast.module.scss";
+import ProgressBar from "../standardControls/ProgressBar";
+
+const AUTO_DISMISS_MS = 8000;
+
+export const Toast = () => {
+  const { toastState, hideToast } = useToast();
+
+  const [mounted, setMounted] = useState(false);
+  const [animatingOut, setAnimatingOut] = useState(false);
+  const [remainingSeconds, setRemainingSeconds] = useState(
+    AUTO_DISMISS_MS / 1000
+  );
+
+  // Enter animation
+  useEffect(() => {
+    if (toastState.open) {
+      setMounted(false);
+      setRemainingSeconds(AUTO_DISMISS_MS / 1000);
+      requestAnimationFrame(() => setMounted(true));
+    }
+  }, [toastState.open]);
+
+  // Countdown + auto-dismiss
+  useEffect(() => {
+    if (!toastState.open) return;
+
+    const start = Date.now();
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const remaining = Math.max(
+        0,
+        Math.ceil((AUTO_DISMISS_MS - elapsed) / 1000)
+      );
+      setRemainingSeconds(remaining);
+    }, 250);
+
+    const timeout = setTimeout(() => {
+      setAnimatingOut(true);
+    }, AUTO_DISMISS_MS);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [toastState.open]);
+
+  // Exit animation
+  useEffect(() => {
+    if (!animatingOut) return;
+
+    const timer = setTimeout(() => {
+      hideToast();
+      setAnimatingOut(false);
+      setMounted(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [animatingOut, hideToast]);
+
+  const handleCloseAnimation = () => {
+    setAnimatingOut(true);
+  };
+
+  if (!toastState.open && !animatingOut) return null;
+
+  return ReactDOM.createPortal(
+    <div
+      className={`${styles.toast}
+        ${mounted ? styles.toastIn : ""}
+        ${animatingOut ? styles.toastOut : ""}`}
+      onClick={handleCloseAnimation}
+      role="alert"
+    >
+
+
+      {toastState.title && (
+        <h4 className={styles.title}>{toastState.title}</h4>
+      )}
+
+      {toastState.content && (
+        <div className={styles.content}>{toastState.content}</div>
+      )}
+
+      <div className={styles.countdown}>
+        {/* Disappears in {remainingSeconds}s */}
+
+<ProgressBar val={remainingSeconds}  lowerBound={1} upperBound={AUTO_DISMISS_MS/1000}/>
+      </div>
+    </div>,
+    document.body
+  );
+};

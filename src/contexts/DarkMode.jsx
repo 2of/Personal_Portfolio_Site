@@ -2,12 +2,16 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 const DarkModeContext = createContext({
   darkMode: false,
-  toggleDarkMode: () => {},
+  toggleDarkMode: () => { },
 });
 
 export const useDarkMode = () => useContext(DarkModeContext);
 
 export const DarkModeProvider = ({ children }) => {
+
+
+
+  const [fullscreentransition, setfullscreentransition] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     if (saved !== null) return saved === "true";
@@ -31,12 +35,21 @@ export const DarkModeProvider = ({ children }) => {
 
   const toggleDarkMode = () => {
     console.log("TOGGLEDARKMODE")
-    
-    
+
+
     setDarkMode((prev) => !prev);
   }
+
+
+  const StartFullScreenTransition = () => { 
+    setfullscreentransition(true)
+  }
+
+   const ClearFullScreenTransition = () => { 
+    setfullscreentransition(false)
+  }
   return (
-    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition}}>
       {children}
     </DarkModeContext.Provider>
   );

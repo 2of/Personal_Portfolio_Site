@@ -1,0 +1,591 @@
+// ============================================
+// TRIGGER BUTTON
+// ============================================
+.triggerButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 1000;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// OVERLAY CONTAINER
+// ============================================
+.transitionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+// ============================================
+// SKY - INITIAL & FINAL STATES
+// ============================================
+.sky {
+  position: absolute;
+  inset: 0;
+  transition: background 1.5s ease-in-out;
+}
+
+// Day state
+.sky-day {
+  background: linear-gradient(to bottom, 
+    #87CEEB 0%,
+    #98D8E8 50%,
+    #F0E68C 100%
+  );
+}
+
+// Night state
+.sky-night {
+  background: linear-gradient(to bottom,
+    #0a1128 0%,
+    #1a2642 50%,
+    #2d4263 100%
+  );
+}
+
+// ============================================
+// CELESTIAL BODY (SUN/MOON)
+// ============================================
+.celestial {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  top: 15%;
+  right: 20%;
+  transition: all 1.5s ease-in-out;
+}
+
+.celestial-day {
+  background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+}
+
+.celestial-night {
+  background: radial-gradient(circle, #F4F6F9 0%, #D3DCE6 100%);
+  box-shadow: 0 0 40px rgba(244, 246, 249, 0.6);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #C5D3E0;
+    border-radius: 50%;
+    top: 20%;
+    left: 25%;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #C5D3E0;
+    border-radius: 50%;
+    bottom: 30%;
+    right: 30%;
+  }
+}
+
+// ============================================
+// CLOUDS
+// ============================================
+.cloud {
+  position: absolute;
+  border-radius: 100px;
+  transition: background 1.5s ease-in-out;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 100px;
+    transition: background 1.5s ease-in-out;
+  }
+}
+
+.cloud-day {
+  background: rgba(255, 255, 255, 0.9);
+  
+  &::before,
+  &::after {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.cloud-night {
+  background: rgba(100, 120, 150, 0.3);
+  
+  &::before,
+  &::after {
+    background: rgba(100, 120, 150, 0.3);
+  }
+}
+
+.cloud1 {
+  width: 120px;
+  height: 40px;
+  top: 20%;
+  left: 10%;
+  
+  &::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+  }
+  
+  &::after {
+    width: 60px;
+    height: 40px;
+    top: -15px;
+    right: 10px;
+  }
+}
+
+.cloud2 {
+  width: 100px;
+  height: 35px;
+  top: 30%;
+  right: 15%;
+  
+  &::before {
+    width: 45px;
+    height: 45px;
+    top: -20px;
+    left: 15px;
+  }
+  
+  &::after {
+    width: 50px;
+    height: 35px;
+    top: -12px;
+    right: 15px;
+  }
+}
+
+.cloud3 {
+  width: 90px;
+  height: 30px;
+  top: 25%;
+  left: 50%;
+  
+  &::before {
+    width: 40px;
+    height: 40px;
+    top: -18px;
+    left: 12px;
+  }
+  
+  &::after {
+    width: 45px;
+    height: 30px;
+    top: -10px;
+    right: 12px;
+  }
+}
+
+// ============================================
+// STARS
+// ============================================
+.stars {
+  position: absolute;
+  inset: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 6px;
+    background: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 1px;
+    background: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+// ============================================
+// HILLS - INITIAL & FINAL STATES
+// ============================================
+.hillsContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+}
+
+.hill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: background 1.5s ease-in-out;
+}
+
+.hillBack {
+  height: 25%;
+  clip-path: ellipse(80% 100% at 50% 100%);
+}
+
+.hillMiddle {
+  height: 35%;
+  clip-path: ellipse(70% 100% at 30% 100%);
+}
+
+.hillFront {
+  height: 45%;
+  clip-path: ellipse(60% 100% at 70% 100%);
+}
+
+// Day states
+.hill-day.hillBack {
+  background: linear-gradient(to bottom, #90EE90, #76c776);
+}
+
+.hill-day.hillMiddle {
+  background: linear-gradient(to bottom, #7CCD7C, #5fa35f);
+}
+
+.hill-day.hillFront {
+  background: linear-gradient(to bottom, #6BBF6B, #4a9a4a);
+}
+
+// Night states
+.hill-night.hillBack {
+  background: linear-gradient(to bottom, #1e3a28, #152820);
+}
+
+.hill-night.hillMiddle {
+  background: linear-gradient(to bottom, #152820, #0d1a15);
+}
+
+.hill-night.hillFront {
+  background: linear-gradient(to bottom, #0d1a15, #060f0a);
+}
+
+// ============================================
+// ROAD - INITIAL & FINAL STATES (SIDE VIEW)
+// ============================================
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  transition: background 1.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.road-day {
+  background: linear-gradient(to bottom, 
+    #3a3a3a 0%,
+    #505050 45%,
+    #505050 55%,
+    #3a3a3a 100%
+  );
+}
+
+.road-night {
+  background: linear-gradient(to bottom,
+    #151515 0%,
+    #1a1a1a 45%,
+    #1a1a1a 55%,
+    #151515 100%
+  );
+}
+
+.roadMarkings {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.roadLine {
+  flex-shrink: 0;
+  width: 60px;
+  height: 100%;
+  background: #FFD700;
+  border-radius: 2px;
+}
+
+.roadEdgeLeft,
+.roadEdgeRight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: white;
+}
+
+.roadEdgeLeft {
+  top: 15%;
+}
+
+.roadEdgeRight {
+  bottom: 15%;
+}
+
+// ============================================
+// ANIMATION STATES
+// ============================================
+
+// ENTERING: Everything animates IN
+.entering {
+  .sky {
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+  
+  .celestial {
+    animation: scaleIn 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+  }
+  
+  .cloud {
+    animation: slideInFromLeft 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  }
+  
+  .cloud1 {
+    animation-delay: 0.2s;
+  }
+  
+  .cloud2 {
+    animation-delay: 0.4s;
+  }
+  
+  .cloud3 {
+    animation-delay: 0.6s;
+  }
+  
+  .hill {
+    animation: slideUp 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  }
+  
+  .hillBack {
+    animation-delay: 0.4s;
+  }
+  
+  .hillMiddle {
+    animation-delay: 0.5s;
+  }
+  
+  .hillFront {
+    animation-delay: 0.6s;
+  }
+  
+  .road {
+    animation: slideUp 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s backwards;
+  }
+}
+
+// STABLE: Hold position while colors transition
+.stable {
+  .sky,
+  .celestial,
+  .cloud,
+  .hill,
+  .road {
+    animation: colorPulse 1.5s ease-in-out;
+  }
+}
+
+// EXITING: Everything animates OUT (different from entering)
+.exiting {
+  .sky {
+    animation: fadeAndScale 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
+  
+  .celestial {
+    animation: shrinkOut 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
+  
+  .cloud {
+    animation: slideOutToRight 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
+  
+  .cloud1 {
+    animation-delay: 0s;
+  }
+  
+  .cloud2 {
+    animation-delay: 0.1s;
+  }
+  
+  .cloud3 {
+    animation-delay: 0.2s;
+  }
+  
+  .hill {
+    animation: sinkDown 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
+  
+  .hillBack {
+    animation-delay: 0.2s;
+  }
+  
+  .hillMiddle {
+    animation-delay: 0.1s;
+  }
+  
+  .hillFront {
+    animation-delay: 0s;
+  }
+  
+  .road {
+    animation: sinkDown 1.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
+}
+
+// ============================================
+// KEYFRAME ANIMATIONS
+// ============================================
+
+// ENTERING ANIMATIONS
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// EXITING ANIMATIONS
+@keyframes fadeAndScale {
+  to {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes shrinkOut {
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutToRight {
+  to {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+}
+
+@keyframes sinkDown {
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+// COLOR TRANSITION ANIMATION
+@keyframes colorPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+}

@@ -1,0 +1,635 @@
+// === TIMING VARIABLES ===
+$transition-fast: 0.6s;
+$transition-medium: 1.2s;
+$warp-time: 1.4s;
+$bg-transition: 1.5s;
+$color-transition: 1.4s;
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out-warp: cubic-bezier(0.83, 0, 0.17, 1);
+$ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// === MONOCHROME THEME VARIABLES ===
+:root {
+    --transition-bg: var(--bg, #ffffff);
+    --transition-text: var(--text-color, #1a1a1a);
+    --transition-stroke: var(--text-color, #1a1a1a);
+    --transition-muted: var(--text-muted, #888888);
+    --transition-subtle: var(--text-subtle, #cccccc);
+}
+
+// === FULL SCREEN CONTAINER ===
+.fullScreenContainer {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    overflow: hidden;
+    pointer-events: all;
+    background: var(--transition-bg);
+    color: var(--transition-text);
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.7s $ease-out-expo, transform 0.7s $ease-out-expo, background-color $color-transition ease, color $color-transition ease;
+
+    &.idle {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+
+    &.entering,
+    &.warping,
+    &.stable {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    &.exiting {
+        opacity: 0;
+        transform: scale(0.98);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out, background-color $color-transition ease, color $color-transition ease;
+    }
+
+    &.day,
+    &.night {
+        background: var(--transition-bg);
+        
+    }
+
+    &.transitioning {
+        transition: opacity 0.7s $ease-out-expo, transform 0.7s $ease-out-expo, background-color $color-transition ease, color $color-transition ease;
+    }
+}
+
+// === ATMOSPHERE LAYER ===
+.atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+// === STAR FIELD ===
+.starField {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity $transition-medium ease;
+    bottom: 25%; // Above horizon
+
+    .night & {
+        opacity: 1;
+    }
+}
+
+.star {
+    position: absolute;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: calc(var(--twinkle-duration, 2) * 4px + 8px);
+    color: var(--transition-text);
+    opacity: var(--star-brightness, 0.7);
+    animation: twinkleAscii var(--twinkle-duration, 2s) ease-in-out infinite;
+    animation-delay: var(--twinkle-delay, 0s);
+    transition: color $color-transition ease;
+
+    &::before {
+        content: '*';
+    }
+
+    &:nth-child(3n)::before {
+        content: '+';
+    }
+
+    &:nth-child(5n)::before {
+        content: '·';
+    }
+
+    &:nth-child(7n)::before {
+        content: '✦';
+    }
+}
+
+@keyframes twinkleAscii {
+
+    0%,
+    100% {
+        opacity: calc(var(--star-brightness, 0.7) * 0.2);
+    }
+
+    50% {
+        opacity: var(--star-brightness, 0.7);
+    }
+}
+
+// === CELESTIAL BODIES ===
+.celestialBody {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    top: 15%;
+    left: 50%;
+    margin-left: -30px;
+    transition: transform $warp-time $ease-in-out-warp, opacity $transition-fast ease, background-color $color-transition ease, border-color $color-transition ease;
+    z-index: 5;
+    background: var(--transition-bg);
+    border: 2px solid var(--transition-text);
+}
+
+.sun {
+    opacity: 0;
+    transform: translate(-100vw, 150px) scale(0.5);
+
+    .day & {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    .night & {
+        opacity: 0;
+        transform: translate(100vw, 150px) scale(0.5);
+    }
+}
+
+.sunCore {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    // User requested sun style
+    background: radial-gradient(circle, hsl(48, 100%, 85%), hsl(48, 100%, 65%));
+    box-shadow: 0 0 20px hsl(48, 100%, 70%), 0 0 40px hsl(48, 100%, 60%), 0 0 60px hsl(48, 100%, 50%);
+    transition: background-color $color-transition ease;
+}
+
+.sunGlow {
+    display: none;
+}
+
+.sunRays {
+    position: absolute;
+    inset: -25px;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px dashed var(--transition-text);
+        border-radius: 50%;
+        opacity: 0.5;
+        transition: border-color $color-transition ease;
+    }
+
+    &::after {
+        inset: -10px;
+    }
+}
+
+.moon {
+    opacity: 0;
+    transform: translate(-100vw, 150px) scale(0.5);
+    overflow: visible;
+  background: radial-gradient(circle, hsl(240, 10%, 80%), hsl(240, 10%, 60%));
+  box-shadow: 0 0 30px hsl(240, 10%, 70%), 0 0 60px hsl(240, 10%, 50%), 0 0 90px hsl(240, 10%, 30%);
+    // box-shadow: none;
+
+    .night & {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    .day & {
+        opacity: 0;
+        transform: translate(100vw, 150px) scale(0.5);
+    }
+}
+
+.moonCrater {
+    position: absolute;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px dashed var(--transition-muted);
+    box-shadow: none;
+    transition: border-color $color-transition ease;
+}
+
+.moonGlow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    border: 1px dotted var(--transition-subtle);
+    background: none;
+    animation: none;
+    transition: border-color $color-transition ease;
+}
+
+// === CLOUD LAYER ===
+.cloudLayer {
+    position: absolute;
+    top: 0;
+    height: 60%;
+    width: 100%;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.cloudWrapper {
+    position: absolute;
+    right: -250px;
+    opacity: 0;
+    transition: opacity $transition-fast, filter 0.4s, transform 0.5s $ease-out-expo;
+    animation: driftCloud linear infinite;
+    animation-duration: var(--drift-speed, 15s);
+    filter: none;
+
+    .entering &,
+    .warping &,
+    .stable & {
+        opacity: 1;
+    }
+
+    .warping & {
+        opacity: 0.3;
+        transform: scaleX(10) scaleY(0.3) !important;
+        animation-duration: 0.2s !important;
+    }
+}
+
+.cloudBody {
+    width: 100px;
+    height: 35px;
+    background: var(--transition-bg);
+    border: 1.5px solid var(--transition-text);
+    border-radius: 100px;
+    position: relative;
+    transition: background-color $color-transition ease, border-color $color-transition ease;
+}
+
+.cloudPuff {
+    position: absolute;
+    background: var(--transition-bg);
+    border: 1.5px solid var(--transition-text);
+    border-radius: 50%;
+    transition: background-color $color-transition ease, border-color $color-transition ease;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--transition-bg);
+        border-radius: 50%;
+        transition: background-color $color-transition ease;
+    }
+}
+
+.cloudVariant0 .cloudBody {
+    width: 120px;
+    height: 40px;
+}
+
+.cloudVariant1 .cloudBody {
+    width: 90px;
+    height: 30px;
+}
+
+.cloudVariant2 .cloudBody {
+    width: 140px;
+    height: 45px;
+}
+
+@keyframes driftCloud {
+    from {
+        right: -300px;
+    }
+
+    to {
+        right: calc(100vw + 100px);
+    }
+}
+
+// === WARP VORTEX ===
+.warpVortex {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    .warping & {
+        opacity: 1;
+    }
+}
+
+.streak {
+    position: absolute;
+    right: -100px;
+    height: 0;
+    width: var(--streak-length, 300px);
+    border-top: 1px dashed var(--transition-text);
+    background: none;
+    animation: speedStreak 0.2s linear infinite;
+    border-radius: 0;
+    transition: border-color $color-transition ease;
+}
+
+@keyframes speedStreak {
+    from {
+        transform: translateX(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.7;
+    }
+
+    to {
+        transform: translateX(-150vw);
+        opacity: 0;
+    }
+}
+
+// === TERRAIN / OCEAN CONTAINER ===
+.terrain {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35%;
+    z-index: 20;
+    background: var(--transition-bg);
+    transition: background-color $color-transition ease;
+}
+
+// HORIZON LINE
+.horizonLine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    z-index: 10;
+    background: repeating-linear-gradient(90deg, var(--transition-text), var(--transition-text) 5px, transparent 5px, transparent 10px);
+    transition: background $color-transition ease;
+    width: 100%;
+}
+
+// === OCEAN LAYERS ===
+.ocean {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+        // background: linear-gradient(to left, hsl(210, 20%, 60%), hsla(210, 20%, 60%, 0.5), hsla(210, 20%, 60%, 0.5));
+    // Base ocean feel
+}
+
+// Common Wave Layer style
+%waveLayer {
+    position: absolute;
+    left: -10%;
+    width: 120%; // Wider to allow sliding
+    background-repeat: repeat-x;
+    transform: translate3d(0, 0, 0);
+    transition: background-color $color-transition ease;
+}
+
+// WAVE PATTERN using radial gradient for scallop
+@mixin wavePattern($size, $height) {
+    height: $height;
+    background-size: $size $size;
+    background-image: radial-gradient(circle at 50% 0, transparent 50%, var(--transition-text) 50%, var(--transition-text) 55%, transparent 55%);
+    // Actually simpler: Just standard bordered waves or ASCII approx?
+    // Let's use simple rounded div tops for "rolling waves" style instead of scallops, easier to animate smooth.
+    background: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: var(--transition-bg);
+        border-top: 1.5px solid var(--transition-text);
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0; // Curve
+        // BUT we need REPEATING waves.
+    }
+}
+
+// Let's use a simpler "Sine Wave" SVG-like URL or radial gradient strip
+$wave-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='currentColor'/%3E%3C/svg%3E");
+
+.waveLayerBack {
+    @extend %waveLayer;
+    bottom: 0;
+    height: 100%;
+    z-index: 1;
+    // Pattern: Sparse ripples (Wider gaps)
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 20px,
+            var(--transition-muted) 20px,
+            var(--transition-muted) 21px);
+    opacity: 0.2; // lighter
+    animation: waveSlide 10s linear infinite; // Slow
+
+    .warping & {
+        animation-duration: 0.5s;
+        opacity: 0.4;
+    }
+}
+
+
+
+.waveLayerMid {
+    @extend %waveLayer;
+    bottom: 20%;
+    height: 40%;
+    z-index: 2;
+    // Pattern: Medium waves (Wider circles)
+    background: repeating-radial-gradient(circle at 50% 100%,
+            transparent 0,
+            transparent 30px,
+            var(--transition-text) 30px,
+            var(--transition-text) 31px);
+    background-size: 100px 40px; // Very wide/flat
+    transform: scaleY(0.5);
+    animation: waveSlide 6s linear infinite reverse;
+
+    .warping & {
+        animation-duration: 0.3s;
+        opacity: 0.8;
+    }
+}
+
+.waveLayerFront {
+    @extend %waveLayer;
+    bottom: -10%;
+    height: 40%;
+    z-index: 3;
+    // Pattern: Large foreground waves (Huge spacing)
+    background: repeating-radial-gradient(circle at 50% 0%,
+            var(--transition-bg) 0,
+            var(--transition-bg) 50px,
+            var(--transition-text) 50px,
+            var(--transition-text) 52px);
+    background-size: 180px 60px;
+    animation: waveSlide 4s linear infinite;
+
+    .warping & {
+        animation-duration: 0.2s;
+    }
+}
+
+@keyframes waveSlide {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 300px 0;
+    }
+}
+
+// Reflection removed as requested
+
+// === AMBIENT PARTICLES (Bubbles/Mist) ===
+.particles {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    bottom: 30%;
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--transition-muted);
+    animation: floatUp var(--float-duration, 5s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+    opacity: 0;
+    transition: color $color-transition ease;
+
+    &::before {
+        content: 'o';
+    }
+
+    // Bubbles
+    .entering &,
+    .warping &,
+    .stable & {
+        opacity: 0.5;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(-30vh) translateX(10px);
+        opacity: 0;
+    }
+}
+
+// === TRIGGER BUTTON ===
+.triggerBtn {
+    padding: 0;
+    border-radius: 4px;
+    background: var(--transition-bg);
+    color: var(--transition-text);
+    border: 1.5px solid var(--transition-text);
+    font-weight: 500;
+    font-size: 13px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    cursor: pointer;
+    transition: all 0.2s ease, background-color $color-transition ease, color $color-transition ease, border-color $color-transition ease;
+    box-shadow: none;
+    overflow: hidden;
+
+    &:hover:not(:disabled) {
+        background: var(--transition-text);
+        color: var(--transition-bg);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(1px);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: wait;
+        border-style: dashed;
+    }
+}
+
+.btnContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+}
+
+.btnIcon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.btnText {
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+}
+
+.spinner {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--transition-subtle);
+    border-top-color: var(--transition-text);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    transition: border-color $color-transition ease;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// === DEBUG LABEL ===
+.debugLabel {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 10px;
+    color: var(--transition-muted);
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: color $color-transition ease;
+
+    &::before {
+        content: '// ';
+    }
+}
+
+// === SCANLINES OVERLAY ===
+.fullScreenContainer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.015) 2px, rgba(0, 0, 0, 0.015) 4px);
+    z-index: 999;
+}

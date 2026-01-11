@@ -29,6 +29,10 @@
   transition: background 0.2s ease;
 
   background-color: var(--bg);
+
+  &:hover { 
+    background-color: var(--border-color);
+  }
   &:last-child {
     border-bottom: none;
   }
