@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { StackedDesktopNav } from "../ui/nav/StackedDesktopNav";
 import s from "./MainLayout.module.scss";
@@ -12,6 +12,7 @@ import MobileNavMenu from "../ui/nav/MobileNavMenu";
 import { useNav } from "../contexts/NavContext";
 import { useToast } from "../contexts/ToastContext";
 import { Toast } from "../ui/misc/Toast";
+import { useCookies } from "../hooks/useCookies";
 
 const Desktop = React.memo(({ location }) => {
     return (
@@ -50,6 +51,35 @@ export const MainLayout = () => {
     const {toastVisible} = useToast();
     const screenSize = useScreenSize();
     const {navDetails} = useNav();
+    const { get, set } = useCookies();
+    const {showToast} = useToast();
+
+    const hasShownCookiesWarning = get("hasShownCookiesWarning")
+
+
+
+    useEffect(() => {
+        if (!hasShownCookiesWarning) { 
+            showToast({
+                open: true,
+                title:"Cookies!",
+                text:"Look I use cookies for dark mode, animation state and other things. Enable dev in the /more to access cookies manager. All cookies are just 5 hours max age... im not tracking anything, I just want to play my dumb animations :) ",
+                timeout: false
+            })
+
+            set("hasShownCookiesWarning", true)
+        }
+
+
+    } , 
+[])
+
+const showCookiesToast = () => { 
+
+}
+
+
+
     // console.log(navDetails.scrollOverride || "NONE")
     return (
         <>

@@ -11,16 +11,24 @@ import { useModal } from "../../contexts/ModalContext";
 import { ShareSheet } from "../misc/ShareSheet";
 import { AboutCardSmall } from "../cards/AboutCard";
 import { DarkModeTile } from "../wrappers/DarkModeFancyTile";
+import { CookieManagerForm } from "../../tools/cookiemanagergui";
+import { DarkModeAnimatedWithCoolDownToastButton } from "../wrappers/DarkModeWrapper";
+import { useAppState } from "../../contexts/StateContext";
+import { navigateTo } from "../../tools/navigator";
+import { useNavigateTo } from "../../hooks/useNavigate";
 
 const COLLAPSE_ANIMATION_DURATION = 350;
 
 export const StackedDesktopNav = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { darkMode, toggleDarkMode } = useDarkMode();
+    const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [showCollapsedIcons, setShowCollapsedIcons] = useState(false);
     const { showModal } = useModal();
+    
+    const navigateTo = useNavigateTo();
+      const { getFlag } = useAppState();
 
     const handleInfoModa2l = () => {
         alert("ETST")
@@ -139,11 +147,14 @@ export const StackedDesktopNav = () => {
 
                       <div className={s.Divider} /> */}
 
-                <ModernButton
+                {/* <ModernButton
                     label={darkMode ? ".light" : ".dark"}
                     variant="code_small"
                     callback={toggleDarkMode}
-                />
+                /> */}
+
+                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="code_small" darkstr=".dark" lightstr=".light"/>
+
                 <ModernButton
                     label=".info"
                     variant="code_small"
@@ -165,7 +176,35 @@ export const StackedDesktopNav = () => {
                     })}
                 />
 
+          
+            {getFlag("dev") &&
+            <>
+                        <div className={s.Divider} />
+                        <h4>Dev crap --- This may be disabled in /more</h4>
+
+                        {/* <p> </p> */}
+              <ModernButton
+                    label=".cookies manager"
+                    variant="code_small"
+                    callback={() => showModal({
+                        title: "Cookies",
+                        content: <CookieManagerForm />,
+                        floatnav: false,
+                        size: "medium"
+                    })}
+                />
+                <ModernButton
+                    label=".Junk and Crap"
+                    variant="code_small"
+              callback={() => navigate("/sample")}
+                     active={location.pathname === "/sample"}
+                />
+            <h4> {fullscreentransition ? "FS" : "WAIT" }</h4>
             
+            </>
+         
+                
+                }
 
 
                 {/* <DarkModeTile/> */}

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { useToast } from "../../contexts/ToastContext";
 import styles from "./styles/Toast.module.scss";
 import ProgressBar from "../standardControls/ProgressBar";
+import { ModernButton } from "../standardControls/button/Button";
 
 const AUTO_DISMISS_MS = 8000;
 
@@ -26,8 +27,9 @@ export const Toast = () => {
 
   // Countdown + auto-dismiss
   useEffect(() => {
+    console.log("TOAST CAME TO LIFE WITH ", toastState)
     if (!toastState.open) return;
-
+  if (toastState.timeout === false) return; 
     const start = Date.now();
 
     const interval = setInterval(() => {
@@ -73,7 +75,7 @@ export const Toast = () => {
       className={`${styles.toast}
         ${mounted ? styles.toastIn : ""}
         ${animatingOut ? styles.toastOut : ""}`}
-      onClick={handleCloseAnimation}
+      // onClick={handleCloseAnimation}
       role="alert"
     >
 
@@ -86,11 +88,29 @@ export const Toast = () => {
         <div className={styles.content}>{toastState.content}</div>
       )}
 
-      <div className={styles.countdown}>
-        {/* Disappears in {remainingSeconds}s */}
+  {toastState.timeout !== false && (
+  <div className={styles.countdown}>
+    <ProgressBar
+      val={Math.min(5, remainingSeconds)}
+      lowerBound={1}
+      upperBound={Math.min(5, AUTO_DISMISS_MS / 1000)}
+    />
+  </div>
+)}
 
-<ProgressBar val={remainingSeconds}  lowerBound={1} upperBound={AUTO_DISMISS_MS/1000}/>
-      </div>
+
+ {toastState.timeout === false && (
+  <div className={styles.dismiss}>
+    <ModernButton
+    label = "confirm"
+    variant="dev_chungus"
+   callback={() => handleCloseAnimation()}
+    />
+  </div>
+)}
+
+
+
     </div>,
     document.body
   );

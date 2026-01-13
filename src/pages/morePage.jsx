@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNav } from "../contexts/NavContext";
 import RowView from "../ui/grid/RowView";
 import { routes } from "../routes";
@@ -10,12 +10,44 @@ import { useScreenSize } from "../contexts/ScreenSizeContext";
 import { DarkModeWrapper } from "../ui/wrappers/DarkModeWrapper";
 import { getLink } from "../helpers/GetLink";
 import { useLinks } from "../contexts/LinksContext";
+import { useCookies } from "../hooks/useCookies";
+import StandardToggle from "../ui/standardControls/Toggle";
+import { useAppState } from "../contexts/StateContext";
+import { useModal } from "../contexts/ModalContext";
+import { CookieManagerForm } from "../tools/cookiemanagergui";
 
 export const MorePage = () => {
   const { navDetails } = useNav();
   const navigateTo = useNavigateTo();
-const screenSize = useScreenSize();
-const {getLink} = useLinks();
+  const screenSize = useScreenSize();
+  const { getLink } = useLinks();
+
+
+
+  const { getFlag, setFlag, clearFlag } = useAppState();
+  const { get, set } = useCookies();
+
+  const {showModal} = useModal();
+
+const [playTransitionAnimation, setPlayTransitionAnimation] = React.useState(
+  /// idk wtf this is but seems to work with weird ass react object
+    () => Boolean(get("playTransitionAnimation"))
+  );
+
+
+  const togglePlayTransitionAnimation = () => {
+    setPlayTransitionAnimation((prev) => {
+      const next = !prev;
+      set("playTransitionAnimation", next);
+      return next;
+    });
+  };
+
+
+const toggleDevFlag = () => {
+  getFlag("dev") ? clearFlag("dev") : setFlag("dev", true);
+};
+  // Intro rows
   const introRows = [
     {
       label: "More Page & Dir",
@@ -30,61 +62,102 @@ const {getLink} = useLinks();
     },
   ];
 
+  // Toggle rows
+  const toggleRows = () => [    {
+      label: "Settings and Toggles",
+      paragraph: "",
+      component: null,
+    },
+    {
+      label: "Dark Mode",
+      paragraph: "",
+      component: <DarkModeWrapper />,
+    },
+    {
+      label: "Always Play Dark Mode animation",
+      paragraph: "",
+      component: (
+        <StandardToggle
+          checked={playTransitionAnimation}
+          // firsticon={getIcon("smile")}
+                //  secondicon={getIcon("off")}
+                 type="modern"
+          callback={togglePlayTransitionAnimation}
+        />
+      ),
+    }, {
+      label: "Enable Dev Flag",
+      paragraph: "",
+      component: (
+        <StandardToggle
+          checked={getFlag("dev")}
+          // firsticon={getIcon("smile")}
+                //  secondicon={getIcon("off")}
+                 type="modern"
+          callback={toggleDevFlag}
+        />
+      ),
+    },{
+      label: "Cookie Editor",
+      paragraph: "",
+      component: (
+        <ModernButton
+         label="Open Rough Cookie Editor"
+         icon={getIcon("cookie")}
+        variant="dev"
+       callback={() => showModal({
+                               title: "Cookies",
+                               content: <CookieManagerForm />,
+                               floatnav: false,
+                               size: "medium"
+                           })}
 
-const toggleRows = () => { 
-    return [
-        {
-            label: "Dark Mode",
-            paragraph: "",
-            component: <DarkModeWrapper/>
-        },
-           {
-            label: "Dumb CSS mode",
-            paragraph: "",
-            component: <DarkModeWrapper/>
-        }
-    ]
-}
+        />
+      ),
+    },
+  ];
 
-
-const legacyLinks = () => { 
-    return [
-        {
-            label: "Old sites",
-            paragraph: "",
-            component: null
-        },
-           {
-            label: "",
-            paragraph: "I keep most of the major revisions to this front end still hosted on github pages for funsies",
-            component: null
-        }, {
-            label: "Old 1",
-            paragraph: "",
-            component: <ModernButton
+  // Legacy links
+  const legacyLinks = () => [
+    {
+      label: "Old sites",
+      paragraph: "",
+      component: null,
+    },
+    {
+      label: "",
+      paragraph:
+        "I keep most of the major revisions to this front end still hosted on github pages for funsies",
+      component: null,
+    },
+    {
+      label: "Old 1",
+      paragraph: "",
+      component: (
+        <ModernButton
           label="go"
           icon={getIcon("right")}
           variant="dev"
           callback={() => navigateTo(getLink("oldPortfolioSite1"))}
         />
-        },{
-            label: "Old 2",
-            paragraph: "",
-            component: <ModernButton
+      ),
+    },
+    {
+      label: "Old 2",
+      paragraph: "",
+      component: (
+        <ModernButton
           label="go"
           icon={getIcon("right")}
           variant="dev"
-     callback={() => navigateTo(getLink("oldPortfolio2"))}
+          callback={() => navigateTo(getLink("oldPortfolio2"))}
         />
-        }
-    ]
-}
+      ),
+    },
+  ];
 
-
-
-
-const directoryRows = () => {
-  return [
+  // Directory rows
+  const directoryRows = () => [
     {
       label: "Entire Directory",
       paragraph: "",
@@ -92,7 +165,7 @@ const directoryRows = () => {
     },
     ...routes.map((r) => ({
       label: r.title,
-      paragraph: r.paragraph, // or r.path if that's what you want
+      paragraph: r.paragraph,
       component: (
         <ModernButton
           label="go"
@@ -103,33 +176,36 @@ const directoryRows = () => {
       ),
     })),
   ];
-};
+
   return (
     <div className={s.page}>
       <header className={s.header}>
-
         <p className={s.subtle}>
           Current route: <span>{navDetails?.title}</span>
         </p>
 
-
-
         <p className={s.subtle}>
-      Welcome to more.SSee more options and so on in here... 
+          Welcome to more. See more options and so on in here...
         </p>
-
       </header>
 
       <section className={s.section}>
-
-
         <div className={s.rowViewContainer}>
-          <RowView rows={[...introRows,...toggleRows(), ...directoryRows()]} mobile={screenSize === "sm"} />
-        <p className={s.subtle}>
-      Here's some old versions of this site .. 
-        </p>
-                    <RowView rows={[ ...legacyLinks()]} mobile={screenSize === "sm"} />
+          <RowView
+            rows={[ ...toggleRows()]}
+            mobile={screenSize === "sm"}
+          />
+          {/* <p className={s.subtle}></p> */}
 
+
+           <RowView
+            rows={[...introRows, ...directoryRows()]}
+            mobile={screenSize === "sm"}
+          />
+          <p className={s.subtle}>Here's some old versions of this site:</p>
+
+
+          <RowView rows={[...legacyLinks()]} mobile={screenSize === "sm"} />
         </div>
       </section>
     </div>

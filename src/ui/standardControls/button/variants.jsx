@@ -31,6 +31,7 @@ export const VARIANT_COMPONENTS = {
   dev_icon_only_end_card: DevStyleButton,
 
   dev_block: DevStyleButton,
+  dev_chungus: DevStyleButton,
   
 
 

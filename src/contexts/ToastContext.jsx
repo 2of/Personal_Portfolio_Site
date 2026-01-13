@@ -12,11 +12,13 @@ export const ToastMenuProvider = ({ children }) => {
     });
 
     const showToast = (options = {}) => {
-        console.log('toast test')
+        console.log('toast test',options)
         setToastState({
             open: true,
             title: options.title || "",
             content: options.text || null,
+         timeout: options.timeout !== false
+
         });
     };
 
@@ -26,6 +28,7 @@ export const ToastMenuProvider = ({ children }) => {
             open: false,
             title: "",
             content: null,
+            timeout: true
         }));
     }, []);
 

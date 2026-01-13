@@ -18,12 +18,14 @@ export const FancyStateTransition = () => {
 
 
 useEffect(() => {
-    if (fullscreentransition) { 
-        // alert("DOING IT")
-    handleTransition()
+    console.log("FancyStateTransition sees fullscreentransition:", fullscreentransition);
+    if (fullscreentransition) {         
+        console.log("FANY SAW this but FS was true")
+        handleTransition();
+    } else { 
+        console.log("FANY SAW this but FS was false")
     }
-
-}, [fullscreentransition])
+}, [transitionTrigger])
 
     // Generate twinkling stars with varied properties
     const stars = useMemo(() => Array.from({ length: 80 }).map((_, i) => ({

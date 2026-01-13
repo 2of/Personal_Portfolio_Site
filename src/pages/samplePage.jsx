@@ -29,12 +29,14 @@ import { RoadTransition } from "../ui/misc/DarkModeTransition.jsx/RoadTransition
 import { FancyStateTransition } from "../ui/misc/DarkModeTransition.jsx/FancyStateTransition";
 import { useToast } from "../contexts/ToastContext";
 import { useDarkMode } from "../contexts/DarkMode";
+import { DarkModeAnimatedWithCoolDownToastButton } from "../ui/wrappers/DarkModeWrapper";
+import { useAppState } from "../contexts/StateContext";
 
 
 export const SamplePage = () => {
     const { navDetails } = useNav();
     const navigateTo = useNavigateTo();
-
+  const { setFlag, getFlag, getState, clearFlag } = useAppState();
     const { getArticle, getArticleImageUrl } = useContent();
   const { showToast } = useToast();
     const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
@@ -55,6 +57,14 @@ export const SamplePage = () => {
     text: text,
   });
 };
+ const showOpenToastThatdoesntdisappear = ({ title = "That was ... a lot", text = "The 'Dark Mode transition' has been deactivated btw ... You can go to /more to turn it back on. I thought it was over the top yet kinda fun" } = {}) => {
+  showToast({
+    open: true,
+    title,
+    text: text,
+    timeout: false
+  });
+};
 
 const openDarkModeThing = () => { 
     StartFullScreenTransition();
@@ -72,10 +82,17 @@ const openDarkModeThing = () => {
 
             <FancyStateTransition/>
 
+            <DarkModeAnimatedWithCoolDownToastButton/>
+
             <ModernButton
             label="TOAST SOMETHING"
             variant="dev"
             callback={() => showOpenToast()}/>
+
+            <ModernButton
+            label="TOAST SOMETHING amnnd confirm"
+            variant="dev"
+            callback={() => showOpenToastThatdoesntdisappear()}/>
 
 
             <ModernButton
@@ -110,6 +127,21 @@ const openDarkModeThing = () => {
                 label="fetch geo article"
                 variant="dev"
                 callback={() => dohandlearticle()}
+            />
+
+            <br/>
+            Hello: currently dev is set to getFlag("Dev") --- {getFlag("dev") ? "ON" : "off"}
+
+
+             <ModernButton
+                label="set on"
+                variant="dev"
+                callback={() => setFlag("dev")}
+            />
+             <ModernButton
+                label="set off"
+                variant="dev"
+                callback={() => setFlag("dev",false)}
             />
 
             {/* 

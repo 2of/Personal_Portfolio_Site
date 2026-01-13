@@ -15,6 +15,7 @@ export const DevStyleButton = ({
     let variantClass = "";
     if (variant === "dev_simple") variantClass = styles.simple;
     if (variant === "dev_highlight") variantClass = styles.highlight;
+        if (variant === "dev_chungus") variantClass = styles.chungus;
     if (variant === "dev_icon_only_end_card") variantClass = styles.endcard;
         if (variant === "dev_block") variantClass = styles.block;
     return (
