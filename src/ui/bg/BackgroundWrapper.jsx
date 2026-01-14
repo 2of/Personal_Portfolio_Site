@@ -30,7 +30,7 @@ export const BackgroundWrapper = () => {
 
     switch (bgVariant) {
         case "main":
-            return <BGWrapper className="bg-dots-fade " />; // Empty background for 'main'
+            return <BGWrapper className="bg_tight_detail" />; // Empty background for 'main'
         case "ledger":
             return <BGWrapper className="bg-ledger" />; // Empty background for 'main'
       case "vellum":

@@ -1,5 +1,5 @@
 import { DefaultNotFound } from "./pages/404";
-import { AboutPage } from "./pages/aboutPage";
+// import { AboutPage } from "./pages/aboutPage/aboutPage";
 import { ArticlePage } from "./pages/articlePage";
 import { ChessPage } from "./pages/chessPage";
 import { DeskShiftPage } from "./pages/deskShiftPage";
@@ -8,6 +8,7 @@ import { MorePage } from "./pages/morePage";
 import { SamplePage } from "./pages/samplePage";
 import { WorkPage } from "./pages/workPage";
 
+import AboutPage2 from "./pages/aboutPage";
 export const routes = [
 
 
@@ -21,14 +22,26 @@ export const routes = [
         element: <HomePage />
 
     },
-    {
+    // {
+    //     path: "/about",
+    //     title: "about",
+    //     icon: "about",
+    //     nav: "fixed",
+    //     expose_desktop_nav: true,
+    //     expose_mobile_nav: true,
+    //     element: <AboutPage />,
+    //     bg: "main",
+    //     scrollOverride: "true"
+
+    // },
+  {
         path: "/about",
         title: "about",
         icon: "about",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
-        element: <AboutPage />,
+        element: <AboutPage2 />,
         bg: "main",
         scrollOverride: "true"
 
@@ -73,7 +86,7 @@ export const routes = [
         icon: "test",
         nav: "fixed",
         expose_desktop_nav: false,
-        expose_mobile_nav: true,
+        expose_mobile_nav: false,
         element: <SamplePage />,
     bg: "main"
 
@@ -84,7 +97,7 @@ export const routes = [
      icon: "Catalogue",
      nav: "fixed",
              expose_desktop_nav: false,
-        expose_mobile_nav: true,
+             expose_mobile_nav: false,
 
         element: <ArticlePage />,
         bg: "main"
@@ -100,7 +113,7 @@ export const routes = [
         expose_mobile_nav: true,
 
         element: <ChessPage />,
-        bg: "WTF"
+        bg: "main"
 
 
 
@@ -113,7 +126,7 @@ export const routes = [
      icon: "map",
      nav: "fixed",
              expose_desktop_nav: false,
-        expose_mobile_nav: true,
+        expose_mobile_nav: false,
 
         element: <DefaultNotFound />,
         bg: "main"

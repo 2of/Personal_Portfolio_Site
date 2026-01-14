@@ -34,6 +34,8 @@ export const Section = ({
 
   const contentClass = clsx(styles.sectionContent, {
     [styles.narrow]: narrow,
+    
+    [screenSize === "sm"]: "mobile"
   });
 
   const displaycolor = () => {
@@ -70,8 +72,9 @@ export const Section = ({
           <Particles />
         </div>
       )}
-      <div className={styles.sectionContent}>
-        <h1>{animateIn ? "in with " : "nothing"} {index}</h1>
+      <div className={styles.sectionContainer}>
+        {/* TODO - this  */}
+        {/* <h1>{animateIn ? "in with " : "nothing"} {index}</h1> */}
         {Header && (
           <div className={headerClass}>
             <div
@@ -81,7 +84,12 @@ export const Section = ({
             </div>
           </div>
         )}
-        <div className={contentClass}>{children}</div>
+        <div className={contentClass}>
+          
+          {children}
+
+
+        </div>
       </div>
     </section>
   );
@@ -93,36 +101,35 @@ export const ScrollableVerticalView = ({
   trackScrollPercent,
   staggerStart = false,
   alignCenter = false,
-  animateIn = false
+  animateIn = false,
+  debug = false
 }) => {
   const scrollRef = useRef(null);
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
   const [direction, setDirection] = useState("None");
   const [scrollPercent, setScrollPercent] = useState(0);
-//   const { isDev } = useGlobalContext;
-//   const isStaggeredForNav = useIsMenuFloatingDesktop();
-//   const isMenuFloatingMobile = useIsMenuFloatingMobile();
-const isMenuFloatingMobile = false;
-const isStaggeredForNav = true;
+  //   const { isDev } = useGlobalContext;
+  //   const isStaggeredForNav = useIsMenuFloatingDesktop();
+  //   const isMenuFloatingMobile = useIsMenuFloatingMobile();
+  const isMenuFloatingMobile = false;
+  const isStaggeredForNav = true;
   const screenSize = useScreenSize();
   const MAX_SCROLL_VELOCITY = 3000;
 
-  const { setNavBgTransparent, shouldNavBgBeTransparent } = useNav();
+  const { isNavBgTransparent, setNavBgTransparent } = useNav();
 
   useEffect(() => {
-    // console.log(scrollPerscent)
+    if (!trackScrollPercent) return;
 
-    if (scrollPercent > 0.4) {
-      // console.log("1")
-      setNavBgTransparent(true);
-    } else {
-      // console.log("2")
-      setNavBgTransparent(false);
+    const shouldBeTransparent = scrollPercent > 0.4;
+    if (isNavBgTransparent !== shouldBeTransparent) {
+      setNavBgTransparent(shouldBeTransparent);
     }
-  }, [scrollPercent]);
+  }, [scrollPercent, isNavBgTransparent, trackScrollPercent]);
 
   useEffect(() => {
-    if (!trackVelocity && !trackScrollPercent) return;
+    // If we aren't tracking percent, and we aren't debugging velocity, we don't need this listener
+    if ((!trackVelocity && !trackScrollPercent) || (!trackScrollPercent && !debug)) return;
 
     let lastScrollTop = 0;
     let lastTime = performance.now();
@@ -136,7 +143,8 @@ const isStaggeredForNav = true;
       const deltaY = scrollTop - lastScrollTop;
       const deltaTime = now - lastTime || 1;
 
-      if (trackVelocity) {
+      // Only update state for velocity if we are in debug mode
+      if (trackVelocity && debug) {
         const rawVelocity = (deltaY / deltaTime) * 1000;
         const absVelocity = Math.abs(rawVelocity);
         const clamped = Math.min(absVelocity / MAX_SCROLL_VELOCITY, 1);
@@ -158,10 +166,11 @@ const isStaggeredForNav = true;
     el?.addEventListener("scroll", handleScroll);
 
     return () => el?.removeEventListener("scroll", handleScroll);
-  }, [trackVelocity, trackScrollPercent]);
+  }, [trackVelocity, trackScrollPercent, debug]);
 
   const containerClass = clsx(
     styles.scrollContainer,
+
     screenSize === "sm" && styles.padBottomForMobileFriendliness,
     trackVelocity
       ? styles.scrollContainerVelocity
@@ -171,21 +180,23 @@ const isStaggeredForNav = true;
     alignCenter && styles.alignCenter,
   );
 
-  const enhancedChildren = React.Children.map(children, (child, index) => {
-    if (!React.isValidElement(child)) return child;
-    const originalSticky = child.props.sticky;
-  
-    const isSection = child.type?.name === "Section";
-    return isSection
-      ? React.cloneElement(child, {
-        sticky: originalSticky,
-        narrow: child.props.narrow,
-        index,
-        isFirst: index === 0,
-        animateIn: animateIn
-      })
-      : child;
-  });
+  const enhancedChildren = React.useMemo(() => {
+    return React.Children.map(children, (child, index) => {
+      if (!React.isValidElement(child)) return child;
+      const originalSticky = child.props.sticky;
+
+      const isSection = child.type?.name === "Section";
+      return isSection
+        ? React.cloneElement(child, {
+          sticky: originalSticky,
+          narrow: child.props.narrow,
+          index,
+          isFirst: index === 0,
+          animateIn: animateIn
+        })
+        : child;
+    });
+  }, [children, animateIn]);
 
   return (
     <div ref={scrollRef} className={containerClass}>
@@ -219,11 +230,16 @@ const isStaggeredForNav = true;
       <div
         className={clsx(
           styles.contentColumn,
+          screenSize !== "sm" && styles.desktop,
           alignCenter && styles.alignCenter,
         )}
       >
         {staggerStart && <div className={styles.staggerSpacer} />}
-        {enhancedChildren}
+        <div className={styles.chunk}>
+          {enhancedChildren}
+
+        </div>
+
       </div>
     </div>
   );

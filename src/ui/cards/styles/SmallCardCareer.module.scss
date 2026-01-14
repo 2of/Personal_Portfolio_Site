@@ -1,0 +1,29 @@
+.tile { 
+  background-color: var(--bgL2);
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  * { 
+    // border: 1px solid red;
+  }
+
+  .textContent { 
+    // background-color: red;
+    flex-direction: column;
+    display: flex;
+
+    gap: 1rem;
+  }
+}
+
+.position { 
+  // font-weight: 1000;
+  // background-color: green;
+  font-size:1rem;
+}

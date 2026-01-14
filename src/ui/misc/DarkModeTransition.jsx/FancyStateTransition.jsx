@@ -9,23 +9,18 @@ const PortalOverlay = ({ children }) => {
 };
 
 export const FancyStateTransition = () => {
-    const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
+    const { darkMode, toggleDarkMode, ClearFullScreenTransition, fullscreentransition } = useDarkMode();
     const [animationState, setAnimationState] = useState("idle");
     const [visualMode, setVisualMode] = useState(darkMode ? "night" : "day");
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
 
-
-
-useEffect(() => {
-    console.log("FancyStateTransition sees fullscreentransition:", fullscreentransition);
-    if (fullscreentransition) {         
-        console.log("FANY SAW this but FS was true")
-        handleTransition();
-    } else { 
-        console.log("FANY SAW this but FS was false")
-    }
-}, [transitionTrigger])
+    useEffect(() => {
+        if (fullscreentransition) {
+            console.log("FANY TRIGGERING ANIMATION");
+            handleTransition();
+        }
+    }, [fullscreentransition]);
 
     // Generate twinkling stars with varied properties
     const stars = useMemo(() => Array.from({ length: 80 }).map((_, i) => ({
@@ -38,7 +33,7 @@ useEffect(() => {
         brightness: 0.4 + Math.random() * 0.6
     })), []);
 
-    // Generate clouds with better distribution
+    // Generate clouds with better distribution I guess
     const clouds = useMemo(() => Array.from({ length: 8 }).map((_, i) => ({
         id: i,
         top: `${8 + (i % 4) * 12}%`,
@@ -49,6 +44,7 @@ useEffect(() => {
     })), []);
 
     const handleTransition = () => {
+   
         if (animationState !== "idle") return;
 
         const startingMode = darkMode ? "night" : "day";
@@ -98,7 +94,7 @@ useEffect(() => {
 
     return (
         <>
-            <button className={s.triggerBtn} onClick={handleTransition} disabled={animationState !== "idle"}>
+            {/* <button className={s.triggerBtn} onClick={handleTransition} disabled={animationState !== "idle"}>
                 {animationState === "idle" ? (
                     <span className={s.btnContent}>
                         <span className={s.btnIcon}>{darkMode ? "☀️" : "🌙"}</span>
@@ -110,7 +106,7 @@ useEffect(() => {
                         <span className={s.btnText}>Shifting...</span>
                     </span>
                 )}
-            </button>
+            </button> */}
 
             {showOverlay && (
                 <PortalOverlay>

@@ -1,0 +1,66 @@
+import React from "react";
+import styles from "./styles/PROJ_MobileCard.module.scss";
+import getIcon from "../../../tools/iconRef";
+import { ModernButton } from "../../standardControls/button/Button";
+import { useNavigateTo } from "../../../hooks/useNavigate";
+
+export const Mobile_Card = ({
+  title,
+  description,
+  date,
+  tags,
+  links,
+  image,
+  inprogress,
+  fanciness = "regular", // regular | interesting | hero
+}) => {
+  const gotoURL = useNavigateTo();
+
+  return (
+    <div className={`${styles.mobileCard} ${styles[fanciness]}`}>
+      {image && (
+        <div className={styles.imageWrap}>
+          <img src={image} alt={title} />
+        </div>
+      )}
+
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <h3>{title}</h3>
+          {date && <span className={styles.date}>{date}</span>}
+        </div>
+
+        <p className={styles.description}>{description}</p>
+
+        {tags?.length > 0 && (
+          <div className={styles.tags}>
+            {tags.map((tag, i) => (
+              <span key={i}>{tag}</span>
+            ))}
+          </div>
+        )}
+
+        {links?.length > 0 && (
+          <div className={styles.actions}>
+            {links.map((l, i) => (
+              <ModernButton
+                key={i}
+                variant="dev"
+                icon={getIcon(l.icon || "right")}
+                label={l.label}
+                callback={() => gotoURL(l.to)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {inprogress && (
+        <div className={styles.progressBadge}>
+          {getIcon("smile")}
+          <span>Early Progress</span>
+        </div>
+      )}
+    </div>
+  );
+};

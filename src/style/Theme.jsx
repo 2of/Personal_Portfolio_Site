@@ -45,7 +45,7 @@ export const lightTheme = {
 
   // Drafting Palette - Graphite and Red markup
   "--accent": "#1C1C1C", // Technical black
-  "--accent-color": "#e18752ff", // Red markup pen
+  "--accent-color": "#52c4e1ff", // Red markup pen
   "--accent-color-transparent": "rgba(220, 38, 38, 0.12)",
 
   "--link": "#B91C1C", // Dark red
@@ -61,7 +61,7 @@ export const lightTheme = {
     "0 2px 4px -1px rgba(28, 28, 28, 0.12), 0 1px 2px -1px rgba(28, 28, 28, 0.08)",
   "--elevated-shadow":
     "0 8px 16px -4px rgba(28, 28, 28, 0.16), 0 4px 8px -4px rgba(28, 28, 28, 0.1)",
-  "--navHeight": "4rem",
+  "--navHeight": "4.2rem",
   "--inverse-transparent": "rgba(28, 28, 28, 0.95)",
   "--inverse-shadow": "0 16px 24px -4px rgba(28, 28, 28, 0.2)",
 };
@@ -88,7 +88,7 @@ export const darkTheme = {
 
   // White chalk with orange markup
   "--accent": "#F5F5F5", // Chalk white
-  "--accent-color": "#F97316", // Orange markup
+  "--accent-color": "#83c3e9ff", // Orange markup
   "--accent-color-transparent": "rgba(249, 115, 22, 0.18)",
 
   "--link": "#FB923C", // Bright orange
@@ -117,11 +117,13 @@ export const inlineNavHeight = {
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
   "--mobileTopNavSafeArea": "182px",
+    "--content-heght" :  "50px",
 };
 
 export const hiddenNavHeight = {
   "--navHeight": "0rem",
   "--content-height": "calc(100vh - var(--navHeight))",
+  "--content-heght" :  "50px",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
   "--mobileTopNavSafeArea": "182px",
 };

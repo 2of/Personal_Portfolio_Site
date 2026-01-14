@@ -7,6 +7,7 @@ import { useNavStack } from "../../contexts/NavigationButtonsStack";
 import StandardGrid from "../grid/StandardGrid";
 import { ModernButton } from "../standardControls/button/Button";
 import getIcon from "../../tools/iconRef";
+import { DarkModeAnimatedWithCoolDownToastButton } from "../wrappers/DarkModeWrapper";
 
 // Memoized MobileNavMenu to prevent re-renders unless necessary
 const MobileNavMenu = React.memo(({ direction }) => {
@@ -54,10 +55,9 @@ const MobileNavMenu = React.memo(({ direction }) => {
         });
       });
     } else if (!isNavigatingRef.current) {
-      // Menu should close (and we're not navigating)
       setIsAnimatingIn(false);
       
-      // Unmount after animation
+
       if (animationTimeoutRef.current) {
         clearTimeout(animationTimeoutRef.current);
       }
@@ -66,24 +66,17 @@ const MobileNavMenu = React.memo(({ direction }) => {
         animationTimeoutRef.current = null;
       }, 300);
     }
-    // If MobileNavIsOpen is false but we're navigating, keep menu visible
   }, [MobileNavIsOpen]);
 
-  // Handle location changes (navigation occurred)
   useEffect(() => {
     const currentPath = location.pathname;
     const previousPath = previousLocationRef.current;
     
-    // Only process if location actually changed
+    // Only process if location actually changed grre
     if (currentPath !== previousPath && isNavigatingRef.current) {
-      // We initiated this navigation - now animate out
       previousLocationRef.current = currentPath;
-      
-      // Ensure menu stays visible during animation
       setIsVisible(true);
-      
-      // Start fade out animation (remove fadeIn class to trigger CSS transition)
-      // Use a small delay to ensure navigation is visible first
+
       const startAnimationTimer = setTimeout(() => {
         setIsAnimatingIn(false);
       }, 10);
@@ -127,19 +120,19 @@ const MobileNavMenu = React.memo(({ direction }) => {
 
   // Memoize route buttons to prevent re-renders
   const routeButtons = useMemo(() => {
-    return routes.map((route, i) => (
+    return routes.filter(x => x.expose_mobile_nav).map((route, i) => (
       <StandardGrid.Item key={route.path || i}>
         <ModernButton
           label={route.title}
           icon={getIcon(route.icon)}
-          variant="featured"
+          variant="dev_chungus"
           callback={() => handleClick(route)}
         />
       </StandardGrid.Item>
     ));
   }, [handleClick]);
 
-  // Don't render if not visible
+
   if (!isVisible) {
     return null;
   }
@@ -158,12 +151,12 @@ const MobileNavMenu = React.memo(({ direction }) => {
         <div className={s.socialLinks}>
           <ModernButton
             icon={getIcon("github")}
-            variant="mobileNavWithLabel"
+            variant="dev"
             callback={() => {}}
           />
           <ModernButton
             icon={getIcon("linkedin")}
-            variant="mobileNavWithLabel"
+            variant="dev"
             callback={() => {}}
           />
         </div>
@@ -171,12 +164,14 @@ const MobileNavMenu = React.memo(({ direction }) => {
         <div className={s.divider} />
         
         <div className={s.themeToggle}>
-          <ModernButton
+          {/* <ModernButton
             label="Toggle Theme"
             icon={getIcon("sun")}
             variant="mobileNavWithLabel"
             callback={() => {}}
-          />
+          /> */}
+
+          <DarkModeAnimatedWithCoolDownToastButton  buttonvariantstr="dev_chungus" darkstr=".dark" lightstr=".light" />
         </div>
       </div>
     </div>

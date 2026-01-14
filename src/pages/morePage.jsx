@@ -102,7 +102,7 @@ const toggleDevFlag = () => {
       paragraph: "",
       component: (
         <ModernButton
-         label="Open Rough Cookie Editor"
+         label="Open <DEV>"
          icon={getIcon("cookie")}
         variant="dev"
        callback={() => showModal({

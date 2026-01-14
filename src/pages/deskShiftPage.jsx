@@ -9,6 +9,7 @@ import DS1 from "../../public/content/discretepages/deskShift/DS1.png"
 import DS2 from "../../public/content/discretepages/deskShift/DS2.png"
 import DS3 from "../../public/content/discretepages/deskShift/DS3.jpg"
 import ImageHandle from "../ui/images/ImageHandle";
+import { DrawText, TextWPath_DeskShift } from "../ui/misc/TextPath";
 
 
 
@@ -22,7 +23,12 @@ export const DeskShiftPage = () => {
       
       {/* Hero Section */}
       <section className={s.hero}>
-        <h1 className={s.title}>{srcText.title}</h1>
+        {/* <h1 className={s.title}>{srcText.title}</h1> */}
+
+        <DrawText duration={7} >
+<TextWPath_DeskShift width={310} height={200} />
+
+        </DrawText>
         <p className={s.desc}>{srcText.desc1}</p>
    
 

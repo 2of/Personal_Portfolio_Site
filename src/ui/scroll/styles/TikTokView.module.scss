@@ -1,0 +1,117 @@
+.wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: var(--navHeight); 
+//   background: green;
+  z-index: 100;
+  /* Ensure the wrapper itself doesn't scroll, only the child */
+  overflow: hidden; 
+}
+
+.pagedScroll {
+  position: relative;
+  height: 100%; /* Inherits remaining height from .wrapper */
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  // background-color: pink;
+
+  /* Hide scrollbar if desired, but keep functionality */
+//   scrollbar-width: none; 
+  &::-webkit-scrollbar {
+    // display: none;
+  }
+}
+
+.pagedSection {
+  /* Use the variable, but fallback to 100% of the .pagedScroll height */
+  height: var(--content-height, 100%); 
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  // background-color: blue;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &.bottomBorder {
+    // border-bottom: 1px solid black;
+  }
+}
+
+.halfSection {
+  height: 50%; /* Changed from vh to % to respect parent */
+  position: relative;
+}
+
+.quarterSection {
+  height: 25%; /* Changed from vh to % to respect parent */
+  position: relative;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120%; 
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateY(-10%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pageContent {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.nextButton {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--bg);
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 400;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0.85;
+
+  &:hover {
+    transform: translateX(-50%) translateY(-3px) scale(1.05);
+    opacity: 1;
+  }
+
+  &:active {
+    transform: translateX(-50%) scale(0.95);
+  }
+}

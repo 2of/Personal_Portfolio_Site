@@ -1,9 +1,10 @@
 .WorkPage {
   height: 100%;
-  width: 100%;
+  // width: 100%;
   overflow: hidden;
   position: relative;
   color: var(--text-main);
+  // background-color: red;
 }
 
 .introContent {
@@ -53,4 +54,28 @@
   // background-color: red;
   position: absolute;
   top: 0;
+}
+
+.introContent_m { 
+  // background-attachment: red;
+  // height: 1000px;
+  // background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.introContent_d { 
+  // background-attachment: red;
+  // height: 1000px;
+  // background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
 }

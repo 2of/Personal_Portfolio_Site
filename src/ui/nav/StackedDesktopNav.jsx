@@ -109,9 +109,14 @@ export const StackedDesktopNav = () => {
 
             {/* Expanded Nav Content */}
             <div className={s.NavItems}>
-                <Logo />
+
+                <div className={s.logocontainer}>
+    <Logo />
+
+                </div>
+            
                 <div className={s.Divider} />
-                <span>
+                <span className={s.textChunk}>
                     this is my personal portfolio site!, feel free to have a peep around....
                 </span>
                 <div className={s.Divider} />
@@ -153,7 +158,7 @@ export const StackedDesktopNav = () => {
                     callback={toggleDarkMode}
                 /> */}
 
-                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="code_small" darkstr=".dark" lightstr=".light"/>
+                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="code_small" darkstr=".dark‼️" lightstr=".light‼️"/>
 
                 <ModernButton
                     label=".info"

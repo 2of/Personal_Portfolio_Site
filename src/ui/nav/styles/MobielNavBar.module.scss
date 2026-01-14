@@ -1,13 +1,14 @@
 .barContainer { 
     // background-color: var(--text-color);
-    height: var(--mobileTopNavSafeArea);
+    height: var(--navHeight);
     display: flex;
     align-items: center;
     position: fixed;
     width: 100%;
     padding: 1rem;
-    background-color: var(--bg-l3);
-    // border-bottom: 1px solid green;
+    background-color: var(--bg-transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px dotted var(--border-color);
     z-index: 40;
     top: 0;
 
@@ -27,4 +28,11 @@
 
 .right { 
     display: flex;
+}
+
+
+.barContainer { 
+    position: fixed;
+    top: 0;
+    // background-color: red;
 }

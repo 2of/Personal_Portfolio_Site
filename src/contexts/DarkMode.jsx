@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 const DarkModeContext = createContext({
   darkMode: false,
-  toggleDarkMode: () => {},
+  toggleDarkMode: () => { },
 });
 
 export const useDarkMode = () => useContext(DarkModeContext);
@@ -23,36 +23,25 @@ const setCookie = (name, value, days = 365) => {
 
 
 
-
-
 export const DarkModeProvider = ({ children }) => {
   const [fullscreentransition, setfullscreentransition] = useState(false);
-
   const [darkMode, setDarkMode] = useState(() => {
-    // 1️⃣ cookie
     const cookieValue = getCookie("darkMode");
     if (cookieValue !== null) return cookieValue;
-
-    // 2️⃣ localStorage
     const stored = localStorage.getItem("darkMode");
     if (stored !== null) return stored === "true";
-
-    // 3️⃣ OS preference
     return (
       window.matchMedia?.("(prefers-color-scheme: dark)")?.matches || false
     );
   });
 
-  // Persist changes
   useEffect(() => {
     localStorage.setItem("darkMode", String(darkMode));
     setCookie("darkMode", darkMode);
   }, [darkMode]);
 
-  // OS sync ONLY if user never chose
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
     const handler = (e) => {
       if (
         localStorage.getItem("darkMode") === null &&
@@ -61,7 +50,6 @@ export const DarkModeProvider = ({ children }) => {
         setDarkMode(e.matches);
       }
     };
-
     mediaQuery.addEventListener("change", handler);
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
@@ -70,23 +58,18 @@ export const DarkModeProvider = ({ children }) => {
     setDarkMode((prev) => !prev);
   };
 
-
-  const [transitionTrigger, setTransitionTrigger] = useState(0);
-
-const startTransition = () => {
-  setTransitionTrigger((prev) => prev + 1);
-};
-
-const StartFullScreenTransition = () => {
-
+  // This function triggers the fullscreen transition
+  const StartFullScreenTransition = () => {
     setfullscreentransition(true);
-startTransition();
+    console.log("StartFullScreenTransition called");
+  };
 
-  console.log("StartFullScreenTransition called also the current thing is set to" ,fullscreentransition ? "Y" : "N" );
-
-};
   const ClearFullScreenTransition = () => {
     setfullscreentransition(false);
+  };
+
+  const FullScreenTransitionEnabled = () => {
+    return fullscreentransition;
   };
 
   return (
@@ -96,7 +79,9 @@ startTransition();
         toggleDarkMode,
         fullscreentransition,
         StartFullScreenTransition,
-        ClearFullScreenTransition,transitionTrigger
+        ClearFullScreenTransition,
+        FullScreenTransitionEnabled,
+        FullScreenTransitionEnabled,
       }}
     >
       {children}

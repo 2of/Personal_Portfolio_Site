@@ -7,7 +7,7 @@ import { useModal } from "../../contexts/ModalContext";
 const SHOW_DELAY = 100; // Snappy but deliberate
 const HIDE_DELAY = 200; // Forgiving for mouse movement
 
-const BasicTile = ({
+export const BasicTile = ({
     position,
     company = "Tech Innovasdftors Inc.",
     duration = "Jan 2021 - Present",

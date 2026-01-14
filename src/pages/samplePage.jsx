@@ -26,20 +26,24 @@ import { AboutCardSmall } from "../ui/cards/AboutCard";
 import RowView from "../ui/grid/RowView";
 import { DarkModeTile } from "../ui/wrappers/DarkModeFancyTile";
 import { RoadTransition } from "../ui/misc/DarkModeTransition.jsx/RoadTransition";
-import { FancyStateTransition } from "../ui/misc/DarkModeTransition.jsx/FancyStateTransition";
+
 import { useToast } from "../contexts/ToastContext";
 import { useDarkMode } from "../contexts/DarkMode";
 import { DarkModeAnimatedWithCoolDownToastButton } from "../ui/wrappers/DarkModeWrapper";
 import { useAppState } from "../contexts/StateContext";
+import { SmallCareerTileWithModal } from "../ui/cards/SmallCareerCardWithModal";
+import  { DrawText,TextWPath_HOWDY} from "../ui/misc/TextPath";
+import { StandardTab } from "../ui/scroll/StandardTabView";
+import Divider from "../ui/misc/Divider";
 
 
 export const SamplePage = () => {
     const { navDetails } = useNav();
     const navigateTo = useNavigateTo();
-  const { setFlag, getFlag, getState, clearFlag } = useAppState();
+    const { setFlag, getFlag, getState, clearFlag } = useAppState();
     const { getArticle, getArticleImageUrl } = useContent();
-  const { showToast } = useToast();
-    const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
+    const { showToast } = useToast();
+    const { darkMode, toggleDarkMode, ClearFullScreenTransition, StartFullScreenTransition, fullscreentransition } = useDarkMode();
     const dohandlearticle = async () => {
         console.log("TEST");
         const article = await getArticle("geo");
@@ -49,26 +53,29 @@ export const SamplePage = () => {
 
 
     const { getLink } = useLinks();
+    const tabs = {
+        Qualifications: () => (
+            <h2>QUALSI</h2> ),
+                    Career: () => (<h2>test</h2>)}
+    const showOpenToast = ({ title = "That was ... a lot", text = "The 'Dark Mode transition' has been deactivated btw ... You can go to /more to turn it back on. I thought it was over the top yet kinda fun" } = {}) => {
+        showToast({
+            open: true,
+            title,
+            text: text,
+        });
+    };
+    const showOpenToastThatdoesntdisappear = ({ title = "That was ... a lot", text = "The 'Dark Mode transition' has been deactivated btw ... You can go to /more to turn it back on. I thought it was over the top yet kinda fun" } = {}) => {
+        showToast({
+            open: true,
+            title,
+            text: text,
+            timeout: false
+        });
+    };
 
- const showOpenToast = ({ title = "That was ... a lot", text = "The 'Dark Mode transition' has been deactivated btw ... You can go to /more to turn it back on. I thought it was over the top yet kinda fun" } = {}) => {
-  showToast({
-    open: true,
-    title,
-    text: text,
-  });
-};
- const showOpenToastThatdoesntdisappear = ({ title = "That was ... a lot", text = "The 'Dark Mode transition' has been deactivated btw ... You can go to /more to turn it back on. I thought it was over the top yet kinda fun" } = {}) => {
-  showToast({
-    open: true,
-    title,
-    text: text,
-    timeout: false
-  });
-};
-
-const openDarkModeThing = () => { 
-    StartFullScreenTransition();
-}
+    const openDarkModeThing = () => {
+        StartFullScreenTransition();
+    }
 
     return (
 
@@ -80,25 +87,25 @@ const openDarkModeThing = () => {
 
             {/* <RoadTransition/> */}
 
-            <FancyStateTransition/>
 
-            <DarkModeAnimatedWithCoolDownToastButton/>
+
+            <DarkModeAnimatedWithCoolDownToastButton />
+<SmallCareerTileWithModal/> <h2>before</h2>
+            <ModernButton
+                label="TOAST SOMETHING"
+                variant="dev"
+                callback={() => showOpenToast()} />
 
             <ModernButton
-            label="TOAST SOMETHING"
-            variant="dev"
-            callback={() => showOpenToast()}/>
-
-            <ModernButton
-            label="TOAST SOMETHING amnnd confirm"
-            variant="dev"
-            callback={() => showOpenToastThatdoesntdisappear()}/>
+                label="TOAST SOMETHING amnnd confirm"
+                variant="dev"
+                callback={() => showOpenToastThatdoesntdisappear()} />
 
 
             <ModernButton
-            label="SHOW FULL SCREEN TRANSITION"
-            variant="dev"
-            callback={() => openDarkModeThing()}/>
+                label="SHOW FULL SCREEN TRANSITION"
+                variant="dev"
+                callback={() => openDarkModeThing()} />
 
 
             {/* <h1>ROUTES:  {navDetails.path} </h1> */}
@@ -111,6 +118,10 @@ const openDarkModeThing = () => {
             {/* <OrbitPicture image={SampleImage} /> */}
 
 
+
+ <DrawText duration={121.8} stagger={0.07}>
+      <TextWPath_HOWDY width={250} />
+    </DrawText>
             <ModernButton
                 label="TEST FOR MODER NAVIGATE"
                 variant="dev"
@@ -129,22 +140,25 @@ const openDarkModeThing = () => {
                 callback={() => dohandlearticle()}
             />
 
-            <br/>
+            <br />
             Hello: currently dev is set to getFlag("Dev") --- {getFlag("dev") ? "ON" : "off"}
 
 
-             <ModernButton
+            <ModernButton
                 label="set on"
                 variant="dev"
                 callback={() => setFlag("dev")}
             />
-             <ModernButton
+            <ModernButton
                 label="set off"
                 variant="dev"
-                callback={() => setFlag("dev",false)}
+                callback={() => setFlag("dev", false)}
             />
 
-            {/* 
+ <StandardTab tabs={tabs} variant="default" tabPosition="bottom" />
+      <StandardTab tabs={tabs} variant="outline" tabPosition="bottom" />
+      <StandardTab tabs={tabs}  tabPosition="bottom" />
+      <StandardTab tabs={tabs} variant="mobile" tabPosition="bottom" />            {/* 
                 <BlackAndWhiteHoverReveal img={SampleImage} filterType="shift"/>
 
 
@@ -155,7 +169,11 @@ const openDarkModeThing = () => {
 <BlackAndWhiteHoverReveal img={SampleImage}  /> 
  */}
 
-
+<Divider variant="solid" spacing="md" />
+<Divider variant="dashed" spacing="lg" />
+<Divider variant="dots" spacing="sm" />
+<Divider variant="fade" spacing="xl" />
+<Divider variant="wave" spacing="xl" />
 
             <section style={{ padding: '2rem 0' }}>
                 <h2>Dense Grid (Col/Row Spans)</h2>

@@ -13,6 +13,7 @@ import { useNav } from "../contexts/NavContext";
 import { useToast } from "../contexts/ToastContext";
 import { Toast } from "../ui/misc/Toast";
 import { useCookies } from "../hooks/useCookies";
+import { FancyStateTransition } from "../ui/misc/DarkModeTransition.jsx/FancyStateTransition";
 
 const Desktop = React.memo(({ location }) => {
     return (
@@ -26,20 +27,20 @@ const Desktop = React.memo(({ location }) => {
     );
 });
 
-const Mobile = React.memo(({scrollfixed}) => {
+const Mobile = React.memo(({ scrollfixed }) => {
     const location = useLocation();
     console.log("HIYA", scrollfixed)
     return (
         <div className={s.MOBILE_MainLayout}>
             <MobileNavBar />
 
-            <MobileNavMenu /> 
-            
+            <MobileNavMenu />
 
-            <div className={scrollfixed ? s.MobileContent_fixed :s.MobileContent_free} >
-              
-                    <Outlet />
-          
+
+            <div className={scrollfixed ? s.MobileContent_fixed : s.MobileContent_free} >
+
+                <Outlet />
+
             </div>
         </div>
     );
@@ -48,45 +49,50 @@ const Mobile = React.memo(({scrollfixed}) => {
 export const MainLayout = () => {
     const location = useLocation();
     const { modalVisible } = useModal();
-    const {toastVisible} = useToast();
+    const { toastVisible } = useToast();
     const screenSize = useScreenSize();
-    const {navDetails} = useNav();
+    const { navDetails } = useNav();
     const { get, set } = useCookies();
-    const {showToast} = useToast();
+    const { showToast } = useToast();
 
     const hasShownCookiesWarning = get("hasShownCookiesWarning")
 
 
 
     useEffect(() => {
-        if (!hasShownCookiesWarning) { 
-            showToast({
+        if (!hasShownCookiesWarning) {
+
+            setTimeout(() => { 
+    showToast({
                 open: true,
-                title:"Cookies!",
-                text:"Look I use cookies for dark mode, animation state and other things. Enable dev in the /more to access cookies manager. All cookies are just 5 hours max age... im not tracking anything, I just want to play my dumb animations :) ",
+                title: "Cookies!",
+                text: "Look I use cookies for dark mode, animation state and other things. Enable dev in the /more to access cookies manager. All cookies are just 5 hours max age... im not tracking anything, I just want to play my dumb animations :) ",
                 timeout: false
             })
+            },5000 )
+        
 
             set("hasShownCookiesWarning", true)
         }
 
 
-    } , 
-[])
+    },
+        [])
 
-const showCookiesToast = () => { 
+    const showCookiesToast = () => {
 
-}
+    }
 
 
 
     // console.log(navDetails.scrollOverride || "NONE")
     return (
         <>
+            <FancyStateTransition />
             <BackgroundWrapper />
             {modalVisible && <ModalContainer />}
             {toastVisible && <Toast />}
-            {screenSize === "sm" ? <Mobile scrollfixed={navDetails.scrollOverride ?? false}  /> : <Desktop location={location} />}
+            {screenSize === "sm" ? <Mobile scrollfixed={navDetails.scrollOverride ?? false} /> : <Desktop location={location} />}
         </>
     );
 };

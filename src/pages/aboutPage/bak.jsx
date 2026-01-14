@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
-import { ScrollableVerticalView, Section } from "../ui/scroll/VerticalScrollWithStickyHeaders";
-import { StandardHeader } from "../ui/misc/Headers";
-import s from "./styles/aboutPage.module.scss";
-import { useContent } from "../contexts/ContentContext";
-import { Loader } from "../ui/misc/Loader";
-import ExpandableCareerTile from "../ui/cards/ExpandOnHoverCardCareerTile";
-import StandardToggle from "../ui/standardControls/Toggle";
-import QualificationCard from "../ui/cards/QualificationCard";
-import StandardGrid from "../ui/grid/StandardGrid";
-import { SkillCard } from "../ui/cards/SkillCard";
-import { AboutCard } from "../ui/cards/discreteCards/aboutcard";
+import { ScrollableVerticalView, Section } from "../../ui/scroll/VerticalScrollWithStickyHeaders";
+import { StandardHeader } from "../../ui/misc/Headers";
+import s from "./aboutPage.module.scss";
+import { useContent } from "../../contexts/ContentContext";
+import { Loader } from "../../ui/misc/Loader";
+import ExpandableCareerTile from "../../ui/cards/ExpandOnHoverCardCareerTile";
+import StandardToggle from "../../ui/standardControls/Toggle";
+import QualificationCard from "../../ui/cards/QualificationCard";
+import StandardGrid from "../../ui/grid/StandardGrid";
+import { SkillCard } from "../../ui/cards/SkillCard";
+import { AboutCard } from "../../ui/cards/discreteCards/aboutcard";
+import { useScreenSize } from "../../contexts/ScreenSizeContext";
 
 
 
@@ -73,7 +74,7 @@ export const AboutPage = () => {
     const [srcData, setSrcData] = useState(null);
     const [expandAllCareerTiles, setExpandAllCareerTiles] = useState(false);
 
-
+    const screenSize = useScreenSize();
     useEffect(() => {
         const load = async () => {
             const data = await get("about");
@@ -146,10 +147,12 @@ return (
         </Section>
 
         <Section Header={CareerHeader} sticky>
+
+            {screenSize !== "sm" &&
             <CareerSectionContent
                 careerItems={careerItems}
                 expandAllCareerTiles={expandAllCareerTiles}
-            />
+            />}
         </Section>
         <Section
             sticky
@@ -176,6 +179,8 @@ return (
                 />
             )}
         >
+
+              {screenSize !== "sm" &&
             <div className={s.qualificationsSection}>
                 <StandardGrid animated template="hero">
                     {qualItems.map((qual, i) => (
@@ -192,6 +197,8 @@ return (
                     ))}
                 </StandardGrid>
             </div>
+
+                }
         </Section>
 
         <Section
@@ -220,6 +227,15 @@ return (
             )}
         >
             <div className={s.skillsSection}>
+{/* 
+
+                 {skillItems.map((s, i) => (
+                        // <StandardGrid.Item key={s.id ?? i} variant="square">
+                            <SkillCard chunk={s} />
+                        // </StandardGrid.Item>
+                    ))} */}
+
+
                 <StandardGrid columns={4} gap="md">
                     {skillItems.map((s, i) => (
                         <StandardGrid.Item key={s.id ?? i} variant="square">

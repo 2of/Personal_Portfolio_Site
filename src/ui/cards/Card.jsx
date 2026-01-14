@@ -8,7 +8,7 @@ import { getDefaultImage, getImagePath } from "../../tools/imageURLBuilder";
 
 
 const maps = {
-    hero : PROJCARD_HeroCard,
+    hero: PROJCARD_HeroCard,
     large: PROJCARD_Large,
     regular: PROJCARD_Regular,
     mobile: PROJCARD_Mobile
@@ -18,13 +18,17 @@ const maps = {
 // expects
 /// title, description, date, tags, links, link, inprogress, image 
 
-export const Card = ({ variant, image, ...props}) => { 
+export const Card = ({ variant, image, useMobile, ...props }) => {
+
+
+
+
 
     const Component = maps[variant] || maps.large;
 
-const imageURL = image ? getImagePath(image) : getDefaultImage();
-
-    return <Component carddetails image={imageURL} {...props}/>
+    const imageURL = image ? getImagePath(image) : getDefaultImage();
+    if (useMobile) return <PROJCARD_Mobile carddetails image={imageURL} variant={variant} {...props} />
+    return <Component carddetails image={imageURL} {...props} />
 
 
     // return <h1> {image}</h1>

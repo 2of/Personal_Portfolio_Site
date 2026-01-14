@@ -44,11 +44,11 @@ export const MobileNavBar = () => {
                             callback={() => showModal({
                                title: "About This Website",
                                content: <AboutCardSmall />,
-                               // floatnav: true,
+                               floatnav: true,
                                size: "medium"
                            })}
                        />
-                       <ModernButton
+                       {/* <ModernButton
                            label=".share"
                            variant="mobileNav"
                                     icon={getIcon("share")}
@@ -58,7 +58,7 @@ export const MobileNavBar = () => {
                                floatnav: true,
                                size: "small"
                            })}
-                       />
+                       /> */}
       </div>
     </div>
   );

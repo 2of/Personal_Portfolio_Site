@@ -1,211 +1,175 @@
-// ScrollableVerticalView.module.scss
 .scrollContainer {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+//   background-color: orange;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+//   justify-content: center;
+
+
+
+  * { 
+    // outline: 1px solid pink;
+  }
 }
 
 .staggerSpacer {
-    height: 8vh;
-    flex-shrink: 0;
+  height: 8vh;
+  flex-shrink: 0;
 }
 
 .scrollContainerVelocity {
-    height: 100%;
-    overflow-y: auto;
-    
-    &.padBottomForMobileFriendliness {
-        padding-bottom: 20vh;
-    }
+  height: 100%;
+  overflow-y: auto;
+  
+  &.padBottomForMobileFriendliness {
+    padding-bottom: 20vh;
+  }
 }
 
 .scrollContainerBounce {
-    height: auto;
-    overflow-y: visible;
+  height: auto;
+  overflow-y: visible;
 }
 
 .velocityInfo {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 999;
-    background: var(--bg-l1);
-    border-top: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    padding: 0.5rem 1rem;
-    font-family: monospace;
-    font-size: 0.75rem;
-    color: var(--secondary-text);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--bg-l1);
+  border-top: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--secondary-text);
 }
 
 .contentColumn {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: var(--maxWidth, 1200px);
-    margin: 0 auto;
-    padding: 0 clamp(1rem, 4vw, 2rem);
-    
-    // Responsive padding
-    @media (max-width: 768px) {
-        padding: 0 1.25rem;
-    }
-    
-    @media (max-width: 480px) {
-        padding: 0 1rem;
-    }
-    
-    @media (max-width: 375px) {
-        padding: 0 0.875rem;
-    }
+  display: flex;
+  flex-direction: column;
+  // background-color: beige;
+
+//   max-width: var(--maxWidth, 1200px);
+//   margin: 0 auto;
+//   padding: 0 1rem;
+  
+//   @media (max-width: 480px) {
+//     padding: 0 0.75rem;
+//   }
+
+  &.desktop { 
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
 }
 
 .section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: clamp(2rem, 5vw, 4rem);
-    scroll-margin-top: 1rem; // Smooth scroll offset for anchors
-
-    // Responsive spacing
-    @media (max-width: 768px) {
-        margin-bottom: 2.5rem;
-    }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content:center;
+  
+  margin-bottom: 2rem;
+  scroll-margin-top: 1rem;
+    // background-color: red;
+    // margin: 10rem;
+  .chunk { 
+    // background-color: blue;
     
-    @media (max-width: 480px) {
-        margin-bottom: 2rem;
-    }
-    
-    .sectionGradContainer {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        overflow: hidden;
-    }
-    
-    // Desktop-specific adjustments
-    &.desktop {
-        @media (min-width: 1025px) {
-            margin-bottom: 3rem;
-        }
-    }
+  }
+  
+  .sectionGradContainer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    // background-color: green;
+  }
+  
+//   &.desktop {
+//     @media (min-width: 1025px) {
+//       margin-bottom: 3rem;
+//     }
+//   }
 }
 
 .sectionHeaderContainer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // background-color: beige;
+  z-index: 10;
+  isolation: isolate;
+  
+  &.stickyHeader {
+    position: sticky;
+    top: 0;
+    margin-top: 0;
+    padding-top: 0;
+    transition:
+      background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .headerContentContainer {
     width: 100%;
-    z-index: 10;
-    isolation: isolate; // Create new stacking context
-    // Break out of content column padding using negative margins
-    // margin-left: calc(-1 * clamp(1rem, 4vw, 2rem));
-    // margin-right: calc(-1 * clamp(1rem, 4vw, 2rem));
-    // padding-left: clamp(1rem, 4vw, 2rem);
-    // padding-right: clamp(1rem, 4vw, 2rem);
-    
-    // // Responsive margin adjustments
-    // @media (max-width: 768px) {
-    //     margin-left: -1.25rem;
-    //     margin-right: -1.25rem;
-    //     padding-left: 1.25rem;
-    //     padding-right: 1.25rem;
-    // }
-    
-    // @media (max-width: 480px) {
-    //     margin-left: -1rem;
-    //     margin-right: -1rem;
-    //     padding-left: 1rem;
-    //     padding-right: 1rem;
-    // }
-    
-    // @media (max-width: 375px) {
-    //     margin-left: -0.875rem;
-    //     margin-right: -0.875rem;
-    //     padding-left: 0.875rem;
-    //     padding-right: 0.875rem;
-    // }
-    
-    &.stickyHeader {
-        position: sticky;
-        top: 0;
-        // background: var(--bg-transparent, rgba(0, 0, 0, 0.4));
-        // backdrop-filter: blur(20px) saturate(180%);
-        // -webkit-backdrop-filter: blur(20px) saturate(180%);
-        // border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        margin-top: 0;
-        padding-top: 0;
-        // box-shadow: 
-        //     0 1px 3px rgba(0, 0, 0, 0.1),
-        //     0 1px 2px rgba(0, 0, 0, 0.06);
-        transition:
-            background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-            border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-            box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-            backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        // Enhanced visual effect when sticky
-       
-    }
-    
-    .headerContentContainer {
-        width: 100%;
-        // max-width: var(--maxWidth, 1200px);
-        margin: 0 auto;
-        padding: 0; // Padding is now handled by parent container
-        position: relative;
-        z-index: 1;
-        // background-color: orange;
-        &.mobile {
-            max-width: 100%;
-        }
-    }
-    
-    &.narrow {
-        .headerContentContainer {
-            max-width: 720px;
-            
-            @media (max-width: 768px) {
-                max-width: 100%;
-            }
-        }
-    }
-    
-   
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .sectionContent {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-        padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  // background-color: red;
+  padding: 1rem;
+    // padding: 1rem;
 }
 
 .progressBarOverlay {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    padding: 0.75rem 1rem;
-    background: var(--bg-l1);
-    border: 1px solid var(--border-color);
-    border-radius: 99px;
-    z-index: 100;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-l1);
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  @media (max-width: 768px) {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 .alignCenter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }

@@ -12,7 +12,8 @@ export const PROJCARD_Mobile = ({
   links,
   link,
   image,
-  inprogress
+  inprogress,
+  variant,
 }) => {
   const gotoURL = useNavigateTo();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -27,9 +28,15 @@ export const PROJCARD_Mobile = ({
     }
   };
 
+  // ✅ VARIANT NORMALIZATION
+  const resolvedVariant =
+    variant === "large" ? "interesting" : variant || "regular";
+
+  const variantClass = styles[resolvedVariant] || styles.regular;
+
   return (
-    <div 
-      className={`${styles.mobileCard} StandardBoxL2`}
+    <div
+      className={`${styles.mobileCard} ${variantClass} StandardBoxL2`}
       onClick={handleCardClick}
     >
       {inprogress && (
@@ -56,7 +63,11 @@ export const PROJCARD_Mobile = ({
           {date && <span className={styles.date}>{date}</span>}
         </div>
 
-        <p className={`${styles.Description} ${isExpanded ? styles.expanded : ''}`}>
+        <p
+          className={`${styles.Description} ${
+            isExpanded ? styles.expanded : ""
+          }`}
+        >
           {description}
         </p>
 
@@ -66,18 +77,21 @@ export const PROJCARD_Mobile = ({
               <span key={i} className={styles.tag}>{tag}</span>
             ))}
             {tags.length > 3 && (
-              <span className={styles.tagMore}>+{tags.length - 3}</span>
+              <span className={styles.tagMore}>
+                +{tags.length - 3}
+              </span>
             )}
           </div>
         )}
 
+<h1>variant {variant}</h1>
         {links && links.length > 0 && (
           <div className={styles.linkGroup}>
-            {links.slice(0, 2).map((l, i) => (
+            {links.map((l, i) => (
               <ModernButton
                 key={i}
-                variant="dev_block"
-                icon={getIcon(l.icon || 'right')}
+                variant="dev_chungus"
+                icon={getIcon(l.icon || "right")}
                 label={l.label}
                 callback={(e) => {
                   e.stopPropagation();
@@ -91,5 +105,3 @@ export const PROJCARD_Mobile = ({
     </div>
   );
 };
-
-

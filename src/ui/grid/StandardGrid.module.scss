@@ -5,12 +5,20 @@
   width: 100%;
 }
 
-/* HERO: 2 columns, large tiles */
 .template-hero {
+  // Mobile default (phones)
   grid-template-columns: repeat(
     auto-fit,
-    minmax(500px, 1fr)
+    minmax(280px, 1fr)
   );
+
+  // Tablet & up
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(500px, 1fr)
+    );
+  }
 }
 
 /* LARGE: auto-fill, max 2 columns */

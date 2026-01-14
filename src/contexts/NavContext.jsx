@@ -13,8 +13,7 @@ export const useNav = () => {
 export const NavProvider = ({ children }) => {
   const { pathname } = useLocation();
 
-  // 1. Compute currentRoute immediately during render.
-  // We use useMemo so it only recalculates when the URL changes.
+
   const currentRoute = useMemo(() => {
     return (
       routes.find((route) =>
@@ -26,12 +25,10 @@ export const NavProvider = ({ children }) => {
     );
   }, [pathname]);
 
-  // 2. Local state for manual overrides (e.g., changing transparency on scroll)
   const [isNavBgTransparent, setIsNavBgTransparent] = useState(
     Boolean(currentRoute?.nav_bg_transparent)
   );
 
-  // 3. Sync the local state whenever the route changes
   useEffect(() => {
     setIsNavBgTransparent(Boolean(currentRoute?.nav_bg_transparent));
   }, [currentRoute]);

@@ -1,0 +1,315 @@
+.divider {
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+// ==========================================
+// SPACING VARIANTS
+// ==========================================
+.spacing-xs {
+  margin: 0.5rem 0;
+}
+
+.spacing-sm {
+  margin: 1rem 0;
+}
+
+.spacing-md {
+  margin: 1.5rem 0;
+}
+
+.spacing-lg {
+  margin: 2rem 0;
+}
+
+.spacing-xl {
+  margin: 3rem 0;
+}
+
+// ==========================================
+// VARIANT: SOLID (default)
+// ==========================================
+.solid {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--text-color) 10%,
+    var(--text-color) 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: DASHED
+// ==========================================
+.dashed {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--text-color) 0,
+    var(--text-color) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: DOTTED
+// ==========================================
+.dotted {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--text-color) 0,
+    var(--text-color) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: DOUBLE
+// ==========================================
+.double {
+  height: 3px;
+  background: linear-gradient(
+    to bottom,
+    var(--text-color) 0,
+    var(--text-color) 1px,
+    transparent 1px,
+    transparent 2px,
+    var(--text-color) 2px,
+    var(--text-color) 3px
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: THICK
+// ==========================================
+.thick {
+  height: 3px;
+  background: var(--text-color);
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: FADE (gradient edges)
+// ==========================================
+.fade {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--text-color) 20%,
+    var(--text-color) 80%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: DOTS (circular dots)
+// ==========================================
+.dots {
+  height: 4px;
+  background-image: radial-gradient(
+    circle,
+    var(--text-color) 1px,
+    transparent 1px
+  );
+  background-size: 12px 12px;
+  background-position: center;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: MINIMAL (very subtle)
+// ==========================================
+.minimal {
+  height: 1px;
+  background: var(--text-color);
+  opacity: 0.3;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: SPACED (dashed with larger gaps)
+// ==========================================
+.spaced {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--text-color) 0,
+    var(--text-color) 4px,
+    transparent 4px,
+    transparent 20px
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: INSET (looks indented)
+// ==========================================
+.inset {
+  height: 1px;
+  background: var(--text-color);
+  opacity: 0.5;
+  box-shadow: 
+    0 1px 0 var(--bg),
+    0 -1px 0 var(--text-color);
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: GRADIENT (color fade)
+// ==========================================
+.gradient {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--text-color) 50%,
+    transparent 100%
+  );
+}
+
+// ==========================================
+// VARIANT: WAVE (subtle zigzag)
+// ==========================================
+.wave {
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--text-color) 0,
+    var(--text-color) 1px,
+    transparent 1px,
+    transparent 6px,
+    var(--text-color) 6px,
+    var(--text-color) 7px,
+    transparent 7px,
+    transparent 12px
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}

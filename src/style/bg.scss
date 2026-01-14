@@ -30,6 +30,10 @@
     -webkit-mask-image: radial-gradient(circle at top left, black 30%, transparent 80%);
 }
 
+.bg_tight_detail { 
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.015) 2px, rgba(0, 0, 0, 0.015) 4px);
+}
+
 .bg-ledger {
     background-color: var(--bg-l1);
     background-image:

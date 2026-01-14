@@ -34,7 +34,7 @@ export const CookieManagerForm = () => {
   return (
     <div>
       {/* <h3>Cookies</h3> */}
-
+   <p>... you know there's no dev tools on ios.. ? </p>
       {entries.length === 0 ? (
         <p>No cookies found.</p>
       ) : (
@@ -53,6 +53,7 @@ export const CookieManagerForm = () => {
                   gap: "1rem",
                 }}
               >
+                     
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <strong>{name}</strong>
 

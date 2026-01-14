@@ -3,8 +3,8 @@ import React from "react";
 export const AsciiArt = ({
   art,
   direction = "top-down", // "top-down" | "bottom-up"
-  minOpacity = 0.1,
-  maxOpacity = 1,
+  minOpacity = 0,
+  maxOpacity = 0,
   showLineNumbers = false,
   className = "",
 }) => {

@@ -1,0 +1,242 @@
+// aboutpage/AboutPage.desktop.jsx
+import React from "react";
+import {
+    ScrollableVerticalView,
+    Section,
+} from "../../ui/scroll/VerticalScrollWithStickyHeaders";
+import { StandardHeader } from "../../ui/misc/Headers";
+import s from "./aboutPage.module.scss";
+import { Loader } from "../../ui/misc/Loader";
+import ExpandableCareerTile from "../../ui/cards/ExpandOnHoverCardCareerTile";
+import StandardToggle from "../../ui/standardControls/Toggle";
+import QualificationCard from "../../ui/cards/QualificationCard";
+import StandardGrid from "../../ui/grid/StandardGrid";
+import { SkillCard } from "../../ui/cards/SkillCard";
+import { AboutCard } from "../../ui/cards/discreteCards/aboutcard";
+import { useScreenSize } from "../../contexts/ScreenSizeContext";
+import { PagedScrollContainer } from "../../ui/scroll/TikTokMobileContainer";
+import { useEffect, useState } from "react";
+import { useNavStack } from "../../contexts/NavigationButtonsStack";
+import { GetElTextEls } from "./support";
+import { SmallCareerTileWithModal } from "../../ui/cards/SmallCareerCardWithModal";
+import { StandardTab } from "../../ui/scroll/StandardTabView";
+export function AboutPageMobile({
+    hasLoaded,
+    srcData,
+    expandAllCareerTiles,
+    toggleExpandAll,
+    careerItems,
+    qualItems,
+    skillItems,
+    textItems,
+}) {
+    const [scrollToNextMobileSection, setscrollToNextMobileSection] = useState(0)
+    const [scrollToPrevMobileSection, setscrollToPrevMobileSection] = useState(0)
+    const { addButton, removeButton } = useNavStack();
+    const { screenSize } = useScreenSize();
+
+    const triggerNext = () => {
+        setscrollToNextMobileSection(prev => prev + 1);
+        console.log("SCROLL");
+    };
+    let dataEntries = [1, 23]
+
+    const triggerPrev = () => {
+        setscrollToPrevMobileSection(prev => prev + 1);
+        console.log("SCROLL");
+    };
+
+
+    useEffect(() => {
+        // console.log("ModernAbout useEffect triggered. screenSize:", screenSize);
+        if (screenSize === "sm") {
+            console.log("Adding ScrollyNav button");
+            addButton({
+                id: "upnav",
+                callback: triggerPrev,
+                label: "up",
+                icon: getIcon("up"),
+            });
+        }
+
+        return () => {
+            removeButton({ id: "upnav" });
+        };
+    }, [screenSize, addButton, removeButton]);
+
+    useEffect(() => {
+        console.log("ModernAbout useEffect triggered. screenSize:", screenSize);
+        if (screenSize === "sm") {
+            console.log("Adding ScrollyNav button");
+            addButton({
+                id: "downnav",
+                callback: triggerNext,
+                label: "down",
+                icon: getIcon("down"),
+            });
+        }
+
+        return () => {
+            removeButton({ id: "downnav" });
+        };
+    }, [screenSize, addButton, removeButton]);
+
+    const tabs = {
+
+        Career: () => (
+            <>
+
+                <div className={s.careerstack}>
+                    {careerItems.map((c, i) => {
+
+                        return (
+
+                            <SmallCareerTileWithModal
+                                position={c.position}
+                                company={c.company}
+                                duration={c.duration}
+                                location={c.location}
+                                doing={c.doing}
+                                techStack={c.techStack}
+
+                            />
+
+
+                        )
+                        // <h2>test</h2>)
+                    })}
+
+
+
+                </div>
+
+            </>
+        ),
+
+        Qualifications: () => (
+            <>
+
+
+                <div className={s.stack}>
+
+                    {qualItems.map((c, i) => {
+
+                        return (
+                            <>
+                                {/* <button onClick={() => console.log(c)}>
+                                    test em
+                                </button> */}
+                                <QualificationCard
+                                    title={c.title}
+                                    institution={c.where}
+                                    year={c.year}
+                                    field={c.field}
+                                    gpatag={c.gpatag}
+
+                                />
+                            </>
+
+                        )
+                    })}
+
+
+
+                </div>
+
+
+            </>
+
+
+
+        ),   Certs: () => (
+            <>
+
+
+                <div className={s.stack}>
+
+                    {qualItems.map((c, i) => {
+
+                        return (
+                            <>
+                                {/* <button onClick={() => console.log(c)}>
+                                    test em
+                                </button> */}
+                                <QualificationCard
+                                    title={c.title}
+                                    institution={c.where}
+                                    year={c.year}
+                                    field={c.field}
+                                    gpatag={c.gpatag}
+
+                                />
+                            </>
+
+                        )
+                    })}
+
+
+
+                </div>
+
+
+            </>
+
+
+
+        ),
+    }
+
+    if (!hasLoaded) return <Loader fillparent />;
+
+    return (
+        <PagedScrollContainer staggerStart borders totalSections={3 + dataEntries.length} conductnext={scrollToNextMobileSection} conductprev={scrollToPrevMobileSection}>
+
+
+
+
+
+
+
+            <div sectionHeight="full" key="standard-header-1">
+                {/* <StandardTab tabs={tabs} tabPosition="bottom" /> */}
+                <AboutCard
+                    title={srcData.title}
+                    subtitle={srcData.subtitle}
+                    description={srcData.description}
+                    areatitle={srcData.areatitle}
+                />
+            </div>
+
+<div sectionHeight="half" key="standard-header-1">
+                <div className={`${s.MobileFS} ${s.TextChunk} StandardBoxL3` }>
+                    {GetElTextEls({ elements: textItems.preamble?.content ?? [] })}
+                </div>
+            </div>
+
+            <div sectionHeight="full" key="standard-header-1">
+
+                <div className={s.MobileFS}>
+
+                    <StandardTab tabs={tabs} tabPosition="bottom" />
+                    {/* {careerItems.map((c,i) => { 
+                        return ( <h1>test</h1>)
+                        // <SmallCareerTileWithModal/>
+                    })} */}
+                </div>
+            </div>
+
+            <div sectionHeight="full" key="standard-header-1">
+                <div className={s.MobileFS}>
+                    {GetElTextEls({ elements: textItems.preamble?.content ?? [] })}
+                </div>
+            </div>
+
+
+
+
+
+        </PagedScrollContainer>
+
+
+    )
+}
