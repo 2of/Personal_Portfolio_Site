@@ -9,6 +9,8 @@ import { SamplePage } from "./pages/samplePage";
 import { WorkPage } from "./pages/workPage";
 
 import AboutPage2 from "./pages/aboutPage";
+import { ConvertPage } from "./pages/converterPage";
+import { ToolsPage } from "./pages/toolsPage";
 export const routes = [
 
 
@@ -91,6 +93,33 @@ export const routes = [
     bg: "main"
 
     },
+
+      {
+        path: "/tools",
+        title: "tools",
+        icon: "tool",
+        nav: "fixed",
+        expose_desktop_nav: true,
+        expose_mobile_nav: true,
+        element: <ToolsPage />,
+        bg: "main",
+        scrollOverride: "true"
+
+    },
+
+     {
+        path: "/convert_svg_tool",
+        title: "svg to useful thing",
+        icon: "test",
+        nav: "fixed",
+        expose_desktop_nav: false,
+        expose_mobile_nav: false,
+        element: <ConvertPage />,
+    bg: "main"
+
+    },
+
+
       {
     path: "/proj/:projectId",
     title:"Project...",

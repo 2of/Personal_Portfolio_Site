@@ -84,7 +84,7 @@ export const PROJCARD_Mobile = ({
           </div>
         )}
 
-<h1>variant {variant}</h1>
+{/* <h1>variant {variant}</h1> */}
         {links && links.length > 0 && (
           <div className={styles.linkGroup}>
             {links.map((l, i) => (

@@ -74,7 +74,7 @@ export const PROJCARD_HeroCard = ({
       )}
 
 
-      <div className={styles.ContentWrapper}>
+      <div className={`${styles.ContentWrapper} ${showButtons ? styles.fadeback : ""}`}>
         <div className={styles.Header}>
           <h2 className={styles.Title}>{title}</h2>
           <span className={styles.date}>{date}</span>
@@ -89,7 +89,9 @@ export const PROJCARD_HeroCard = ({
 
          
 
-          <div className={`${styles.linkGroup} ${!showButtons ? styles.hideButtons : styles.showButtons}`}>
+         
+      </div>
+       <div className={`${styles.linkGroup} ${!showButtons ? styles.hideButtons : styles.showButtons}`}>
             {links?.map((l, i) => (
               <ModernButton
                 key={i}
@@ -102,7 +104,6 @@ export const PROJCARD_HeroCard = ({
 
 
         </div>
-      </div>
     </div>
   );
 };

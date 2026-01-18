@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 // import { useAppTheme } from "../../contexts/ThemeContext.jsx";
 import { useAppTheme } from "../../contexts/ThemeContext.jsx";
+import { useNavigateTo } from "../../hooks/useNavigate.jsx";
 export const Logo = ({ variant = "small", alwaysTrack = false }) => {
     const isLarge = variant === "large";
     const containerRef = useRef(null);
@@ -9,7 +10,7 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
     const [clicked, setClicked] = useState(false);
     const [trails, setTrails] = useState([]);
     const { getColor } = useAppTheme();
-
+    const navigateTo = useNavigateTo();
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
@@ -78,6 +79,7 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
 
     const handleClick = () => {
         setClicked(true);
+        navigateTo("/")
         setTimeout(() => setClicked(false), 600);
     };
 
@@ -134,7 +136,7 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
                 <div
                     style={{
                         fontSize: isLarge ? "1.5rem" : "1rem",
-                        // fontWeight: "bold",
+                        fontWeight: "bold",
                         display: "flex",
                         position: "relative",
                         letterSpacing: tracking ? "0.05em" : "0",

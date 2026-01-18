@@ -25,7 +25,7 @@ const get = (which) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(mapping[which] ?? null);
-    }, 500);
+    }, 100);
   });
 };
 

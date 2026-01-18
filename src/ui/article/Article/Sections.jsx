@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import ProgressBar from "../../standardControls/ProgressBar";
 // import { classNames } from "@react-pdf-viewer/core";
+import styles from "./ArticleMultiCol.module.scss"
 import clsx from "clsx";
 import ImageHandle from "../../images/ImageHandle";
 import { useNavigate } from "react-router-dom";
@@ -212,7 +213,7 @@ export const CodeSection = ({
   content = "",
   className,
   truncatable = false,
-  styles
+  // styles
 }) => {
   const [copied, setCopied] = useState(false);
 

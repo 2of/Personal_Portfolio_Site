@@ -66,7 +66,7 @@
    Code Block
    ============================= */
 .StandardBoxCode {
-  font-family: monospace;
+  
   font-size: 0.85rem;
   padding: 1rem;
   background: var(--bg-l1);
@@ -78,7 +78,7 @@
    Terminal Style
    ============================= */
 .StandardBoxTerminal {
-  font-family: monospace;
+  
   font-size: 0.85rem;
   // padding: 0.75rem 1rem;
   background: transparent;
@@ -96,7 +96,7 @@
    ============================= */
 .StandardBoxInline {
   display: inline-block;
-  font-family: monospace;
+  
   font-size: 0.85rem;
   // padding: 0.2rem 0.5rem;
   border: 1px solid var(--border-color);
@@ -259,7 +259,7 @@
     position: absolute;
     left: 0;
     top: 1rem;
-    font-family: monospace;
+    
     font-size: 0.7rem;
     color: var(--secondary-text);
     opacity: 0.5;

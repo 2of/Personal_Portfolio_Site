@@ -9,7 +9,7 @@ import DS1 from "../../public/content/discretepages/deskShift/DS1.png"
 import DS2 from "../../public/content/discretepages/deskShift/DS2.png"
 import DS3 from "../../public/content/discretepages/deskShift/DS3.jpg"
 import ImageHandle from "../ui/images/ImageHandle";
-import { DrawText, TextWPath_DeskShift } from "../ui/misc/TextPath";
+import { DrawText, SVGText, TextWPath_DeskShift } from "../ui/misc/TextPath";
 
 
 
@@ -24,22 +24,18 @@ export const DeskShiftPage = () => {
       {/* Hero Section */}
       <section className={s.hero}>
         {/* <h1 className={s.title}>{srcText.title}</h1> */}
-
-        <DrawText duration={7} >
+{/* 
+        <DrawText duration={7} strokeWidth={1} >
 <TextWPath_DeskShift width={310} height={200} />
 
+        </DrawText> */}
+
+        <DrawText strokeWidth={2}>
+          <SVGText text="deskshift2" height={200} width={300}/ >
         </DrawText>
         <p className={s.desc}>{srcText.desc1}</p>
    
-
-   <div className={s.heroImage}> 
-
-
-
-
-   <ImageHandle src={DS2} alt={"cool image of the thing"}/>
-   </div>
-        <div className={s.buttonrow}>
+  <div className={s.buttonrow}>
         <ModernButton
             label="Find on Github"
             icon={getIcon("Github")}
@@ -68,6 +64,14 @@ export const DeskShiftPage = () => {
         />
 
         </div>
+   <div className={s.heroImage}> 
+
+
+
+
+   <ImageHandle src={DS2} alt={"cool image of the thing"}/>
+   </div>
+      
       </section>
 
       {/* Subtitle Section */}

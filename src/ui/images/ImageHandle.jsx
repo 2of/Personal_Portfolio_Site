@@ -3,7 +3,9 @@
   import styles from "./styles/ImageHandle.module.scss";
 import getIcon from "../../tools/iconRef";
 
-  const ImageHandle = ({ src, alt }) => {
+  const ImageHandle = ({ src, alt, alwaysshowbg }) => {
+
+    console.log("Hello i am an imgehandle for" , src)
     const thumbRef = useRef(null);
     const [isZoomed, setIsZoomed] = useState(false);
     const [cloneStyles, setCloneStyles] = useState(null);

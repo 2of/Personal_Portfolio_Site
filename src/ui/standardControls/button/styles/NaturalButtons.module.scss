@@ -1,0 +1,318 @@
+.NatButtonContainer {
+  border-radius: 9999px;
+  padding: 3px 1rem;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--text-color);
+  gap: 0.5rem;
+  background-color: var(--bg-l1);
+  position: relative;
+  overflow: hidden;
+  transition: 
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  /* Texture */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, transparent 0.5px, transparent 0.5px),
+      radial-gradient(circle at 80% 50%, transparent 0.5px, transparent 0.5px);
+    background-size: 3px 3px, 4px 4px;
+    background-position: 0 0, 2px 2px;
+    opacity: 0.03;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Glow layer */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: var(--accent-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent-color);
+
+    &::before { opacity: 0.06; }
+    &::after  { opacity: 0.1; }
+  }
+
+  &:active {
+    transition-duration: 0.1s;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* -------------------------
+   NATURAL BASE
+------------------------- */
+
+.natural {
+  &:hover {
+    background-color: var(--accent-color);
+    border-style: dotted;
+
+    * { color: var(--bg); }
+
+    &::after { opacity: 0.15; }
+
+    .icon { filter: brightness(1.2); }
+  }
+}
+
+/* -------------------------
+   ICON ONLY
+------------------------- */
+
+.natural_icon_only {
+  padding: 0;
+  width: 30px;
+  min-width: 30px;
+  justify-content: center;
+
+  &:hover .icon {
+    filter: brightness(1.2);
+  }
+}
+
+/* -------------------------
+   LARGE TOUCH
+------------------------- */
+
+.natural_large_touch {
+  min-height: 48px;
+  height: auto;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-width: 2px;
+
+  &::before {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(255, 255, 255, 0.02) 4px
+      ),
+      radial-gradient(circle at 30% 40%, transparent 1px, transparent 1px);
+    background-size: 6px 6px, 5px 5px;
+    opacity: 0.08;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+    &::before { opacity: 0.15; }
+    &::after  { opacity: 0.15; }
+  }
+}
+
+/* -------------------------
+   SQUARED
+------------------------- */
+
+.natural_squared {
+  border-radius: 8px;
+
+  &::before {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.015) 1px,
+        rgba(255, 255, 255, 0.015) 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 1px,
+        rgba(255, 255, 255, 0.015) 1px,
+        rgba(255, 255, 255, 0.015) 2px
+      );
+    background-size: 2px 2px;
+    opacity: 0.05;
+  }
+
+  &:hover {
+    background-color: var(--accent-color);
+    border-radius: 12px;
+
+    * { color: var(--bg); }
+
+    &::before {
+      opacity: 0.1;
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    &::after { opacity: 0.15; }
+  }
+
+  &:active {
+    border-radius: 6px;
+  }
+}
+
+/* -------------------------
+   NAV (NO FLASH VERSION)
+------------------------- */
+
+.natural_nav {
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  height: 36px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  position: relative;
+
+
+  &.active { 
+    border: 1px solid var(--border-color);
+
+  }
+  &::before {
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.02) 0.5px, transparent 0.5px);
+    background-size: 8px 8px;
+    opacity: 0;
+  }
+
+  &:hover:not(.active):not([aria-current="page"]) {
+    background-color: var(--bg-l1);
+    border-color: var(--accent-color);
+
+    &::before { opacity: 0.05; }
+    &::after  { opacity: 0.1; }
+
+    .icon { filter: brightness(1.2); }
+  }
+
+  /* Active state (locked, no animation) */
+
+  &[aria-current="page"] {
+    border-color: var(--accent-color);
+
+    &::after {
+      opacity: 0.12;
+      animation: none;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0.12;
+        animation: none;
+      }
+    }
+  }
+}
+
+/* -------------------------
+   WIPE
+------------------------- */
+
+.natural_wipe {
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-start;
+
+  &::before { display: none; }
+
+  .button-content,
+  .button-content-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+
+  .button-content {
+    z-index: 1;
+  }
+
+  .button-content-overlay {
+    z-index: 3;
+    color: var(--bg);
+    clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+    transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    * { color: var(--bg); }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--text-color);
+    border-radius: inherit;
+    z-index: 2;
+    clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+    transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &::after,
+    .button-content-overlay {
+      clip-path: polygon(0 0, 0 100%, 105% 100%, 100% 0);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+
+    &::after,
+    .button-content-overlay {
+      clip-path: polygon(0 0, 0 100%, 108% 100%, 103% 0);
+    }
+  }
+}
+
+/* -------------------------
+   ANIMATIONS
+------------------------- */
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50%      { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+/* -------------------------
+   ACCESSIBILITY
+------------------------- */
+
+.NatButtonContainer:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}

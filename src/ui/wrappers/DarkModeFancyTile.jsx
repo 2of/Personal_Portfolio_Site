@@ -276,9 +276,9 @@ export const DarkModeTile = ({ grayscale = true }) => {
               [styles.hidden]: animdir === "none" && localstate === false,
             })}
           >
-            {/* <Light followMouse={true} animate={true} random={true} /> */}
-            {/* <Light followMouse={false} animate={true} random={true} /> */}
-            {/* <Light followMouse={false} animate={true} random={true} /> */}
+            <Light followMouse={true} animate={true} random={true} />
+            <Light followMouse={false} animate={true} random={true} />
+            <Light followMouse={false} animate={true} random={true} />
             <Light followMouse={true} animate={true} />
           </div>
 

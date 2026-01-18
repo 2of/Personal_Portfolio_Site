@@ -1,0 +1,25 @@
+.card {
+  padding: 1.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  line-height: 1.5;
+  flex-grow: 1;
+}

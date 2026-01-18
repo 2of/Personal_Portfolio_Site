@@ -1,0 +1,123 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg, #000);
+    /* Fallback to black if var not defined */
+    color: var(--text-color, #fff);
+    /* Fallback to white */
+}
+
+.asciiContainer {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+    font-size: clamp(8px, 1.2vw, 14px);
+    /* Responsive font size */
+    line-height: 1.1;
+    user-select: none;
+    mix-blend-mode: difference;
+    /* Adds some flair */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mountain {
+    color: var(--text-color);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+
+@keyframes enterWipe {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes exitWipe {
+    0% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+
+    100% {
+        clip-path: inset(0 0 0 100%);
+        opacity: 0;
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes sunRise {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.entering {
+    animation: enterWipe 0.5s cubic-bezier(0.8, 0, 0.1, 1) forwards;
+}
+
+.exiting {
+    animation: exitWipe 0.6s cubic-bezier(0.8, 0, 0.1, 1) forwards;
+}
+
+.sun {
+    color: #ffcc00;
+    /* ASCII sun color */
+    animation: sunRise 1s ease-out forwards;
+}
+
+/* Specific state styles if needed, mapping to standard states */
+.state_covering {
+    // When strictly 'covering' (middle of transition)
+    clip-path: inset(0 0 0 0);
+}
+
+.state_uncovering {
+    // When strictly 'uncovering' (end of transition)
+}

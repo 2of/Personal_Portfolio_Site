@@ -24,7 +24,7 @@
 }
 
 .tag {
-    font-family: monospace;
+    
     font-size: 0.75rem;
     font-weight: 400;
     color: var(--secondary-text);
@@ -37,14 +37,14 @@
 }
 
 .date {
-    font-family: monospace;
+    
     font-size: 0.75rem;
     color: var(--secondary-text);
     opacity: 0.5;
 }
 
 .title {
-    font-family: monospace;
+    
     color: var(--text-color);
     margin: 0;
     font-weight: 400;
@@ -57,7 +57,7 @@
 }
 
 .description {
-    font-family: monospace;
+    
     color: var(--secondary-text);
     margin: 0;
     line-height: 1.6;
@@ -262,7 +262,7 @@
     }
 
     .linkIndicator {
-        font-family: monospace;
+        
         font-size: 0.85rem;
         color: var(--accent-color);
         opacity: 0.4;
@@ -370,7 +370,7 @@
     }
 
     .wideTitle {
-        font-family: monospace;
+        
         font-size: 1.1rem; // Slightly larger
         font-weight: 500;
         color: var(--text-color);
@@ -385,7 +385,7 @@
     }
 
     .wideDescription {
-        font-family: monospace;
+        
         font-size: 0.9rem;
         line-height: 1.6;
         color: var(--secondary-text);
@@ -405,7 +405,7 @@
     }
 
     .wideLink {
-        font-family: monospace;
+        
         font-size: 0.8rem;
         color: var(--accent-color);
         opacity: 0.6;
@@ -498,7 +498,7 @@
     }
 
     .heroTitle {
-        font-family: monospace;
+        
         font-size: 1.5rem; // Larger title
         font-weight: 500;
         margin: 0;
@@ -514,7 +514,7 @@
     }
 
     .heroDescription {
-        font-family: monospace;
+        
         font-size: 0.95rem;
         line-height: 1.6;
         color: rgba(255, 255, 255, 0.8); // Light text
@@ -525,7 +525,7 @@
     .heroLink {
         display: inline-block;
         margin-top: 0.5rem;
-        font-family: monospace;
+        
         font-weight: 400;
         font-size: 0.8rem;
         color: var(--accent-color);
@@ -549,7 +549,7 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         color: #fff;
         padding: 0.25rem 0.75rem;
-        font-family: monospace;
+        
         font-size: 0.8rem;
         cursor: pointer;
         transition: all 0.2s ease;

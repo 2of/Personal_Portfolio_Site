@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Loader } from "../ui/misc/Loader";
 import { useContent } from "../contexts/ContentContext";
 import { Article } from "../ui/article/Article/Article";
+import { Post } from "../ui/Post/Post";
 
 export const ArticlePage = () => {
 const { getArticle, getArticleImageUrl } = useContent();
@@ -42,21 +43,27 @@ const { getArticle, getArticleImageUrl } = useContent();
   }
 
   return (
-    <div>
+    <div
+    
+    style= {{
+              height: "100%",
+              // padding:"3rem"
+    }}>
       {/* <h1>{articleData.title ?? projectId}</h1> */}
 
-    <div className="StandardBoxFloat"
+    {/* <div className="StandardBoxFloat"
     style={{
-        position: 'absolute',
+        position: 'relative',
+
         zIndex: 100,
         padding: '0.25rem',
         left: '0.25rem',
         top: '0.25rem'
-    }}>Article : // {projectId}</div>
+    }}>Article : // {projectId}</div> */}
 
-      <Article fixeddata={articleData} name={projectId}/>
+      {/* <Article fixeddata={articleData} name={projectId}/> */}
 
-
+    <Post postdata={articleData} artName={projectId}/>
 
       {/* <p>{articleData.description}</p> */}
     </div>

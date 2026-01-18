@@ -20,6 +20,7 @@ import { useNavStack } from "../../contexts/NavigationButtonsStack";
 import { GetElTextEls } from "./support";
 import { SmallCareerTileWithModal } from "../../ui/cards/SmallCareerCardWithModal";
 import { StandardTab } from "../../ui/scroll/StandardTabView";
+import { TimeLineContainer } from "../../ui/containers/TimeLineContainer";
 export function AboutPageMobile({
     hasLoaded,
     srcData,
@@ -74,7 +75,7 @@ export function AboutPageMobile({
                 label: "down",
                 icon: getIcon("down"),
             });
-        }
+    }
 
         return () => {
             removeButton({ id: "downnav" });
@@ -85,8 +86,10 @@ export function AboutPageMobile({
 
         Career: () => (
             <>
+                    <h3>Career</h3>
+                {/* <div className={s.careerstack}>
 
-                <div className={s.careerstack}>
+       
                     {careerItems.map((c, i) => {
 
                         return (
@@ -108,7 +111,30 @@ export function AboutPageMobile({
 
 
 
-                </div>
+                </div> */}
+
+
+
+                <TimeLineContainer>
+                    {careerItems.map((c,i) => { 
+                    return ( 
+                         <SmallCareerTileWithModal
+                                position={c.position}
+                                company={c.company}
+                                duration={c.duration}
+                                location={c.location}
+                                doing={c.doing}
+                                techStack={c.techStack}
+
+                            />
+
+                    )
+                    })}
+
+   
+                </TimeLineContainer>
+
+
 
             </>
         ),
@@ -118,6 +144,8 @@ export function AboutPageMobile({
 
 
                 <div className={s.stack}>
+
+             
 
                     {qualItems.map((c, i) => {
 
@@ -199,6 +227,9 @@ export function AboutPageMobile({
 
             <div sectionHeight="full" key="standard-header-1">
                 {/* <StandardTab tabs={tabs} tabPosition="bottom" /> */}
+
+
+
                 <AboutCard
                     title={srcData.title}
                     subtitle={srcData.subtitle}

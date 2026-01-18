@@ -15,6 +15,7 @@ import StandardToggle from "../ui/standardControls/Toggle";
 import { useAppState } from "../contexts/StateContext";
 import { useModal } from "../contexts/ModalContext";
 import { CookieManagerForm } from "../tools/cookiemanagergui";
+import { StandardPage } from "../ui/scroll/StandardPage";
 
 export const MorePage = () => {
   const { navDetails } = useNav();
@@ -104,7 +105,7 @@ const toggleDevFlag = () => {
         <ModernButton
          label="Open <DEV>"
          icon={getIcon("cookie")}
-        variant="dev"
+        variant="natural"
        callback={() => showModal({
                                title: "Cookies",
                                content: <CookieManagerForm />,
@@ -137,7 +138,7 @@ const toggleDevFlag = () => {
         <ModernButton
           label="go"
           icon={getIcon("right")}
-          variant="dev"
+          variant="natural"
           callback={() => navigateTo(getLink("oldPortfolioSite1"))}
         />
       ),
@@ -149,7 +150,7 @@ const toggleDevFlag = () => {
         <ModernButton
           label="go"
           icon={getIcon("right")}
-          variant="dev"
+          variant="natural"
           callback={() => navigateTo(getLink("oldPortfolio2"))}
         />
       ),
@@ -170,7 +171,7 @@ const toggleDevFlag = () => {
         <ModernButton
           label="go"
           icon={getIcon("right")}
-          variant="dev"
+          variant="natural"
           callback={() => navigateTo(r.path)}
         />
       ),
@@ -178,8 +179,12 @@ const toggleDevFlag = () => {
   ];
 
   return (
-    <div className={s.page}>
-      <header className={s.header}>
+   
+
+      <StandardPage>
+      <header className={`${s.header} StandardBoxL2`}>
+
+        <h3>Hello !</h3>
         <p className={s.subtle}>
           Current route: <span>{navDetails?.title}</span>
         </p>
@@ -208,6 +213,8 @@ const toggleDevFlag = () => {
           <RowView rows={[...legacyLinks()]} mobile={screenSize === "sm"} />
         </div>
       </section>
-    </div>
+
+      </StandardPage>
+
   );
 };

@@ -420,7 +420,7 @@
     background 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   overflow: hidden;
 }
 
@@ -433,9 +433,9 @@
   height: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
   border-radius: 999px;
   background: var(--bg);
-  box-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  // box-shadow:
+  //   0 3px 8px rgba(0, 0, 0, 0.25),
+  //   inset 0 0 0 1px rgba(255, 255, 255, 0.35);
   transform: translate(0, -50%);
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -467,9 +467,9 @@
 }
 
 .toggleBase .toggleCheckbox:checked+.toggleSlider {
-  background: var(--accent-color);
+  // background: var(--accent-color);
   border-color: var(--accent-color);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  // box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 
 .toggleBase .toggleCheckbox:checked+.toggleSlider::before {
@@ -504,26 +504,32 @@
   --toggle-width: 52px;
   --toggle-height: 28px;
   --toggle-padding: 3px;
+
 }
 
 .variantModern .toggleSlider {
   background: var(--bg-l2);
-  border: 1px solid transparent;
+  border: 1px dotted var(--text-color);
+  background: transparent;
   transition: background-color 0.2s ease;
+  
 }
 
 .variantModern .toggleSlider::before {
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: var(--bg);
+  border: 1px solid var(--text-color);
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .variantModern .toggleCheckbox:checked+.toggleSlider {
   background: var(--accent-color);
+    border: 1px solid var(--text-color);  
+    border: 1px dotted var(--text-color);
 }
 
 .variantModern .toggleCheckbox:checked+.toggleSlider::before {
-  background: #fff;
+  // background: #fff;
 }
 
 .variantModern .toggleIcon {
@@ -536,7 +542,7 @@
 }
 
 .variantModern .toggleCheckbox:checked+.toggleSlider .moonIcon {
-  color: rgba(255, 255, 255, 0.9);
+  // color: rgba(255, 255, 255, 0.9);
 }
 
 .variantModern .moonIcon {
@@ -570,11 +576,17 @@
   background: rgba(0, 0, 0, 0.04);
 }
 
+
+
+
+
+
 /* Variant: Minimal */
 .variantMinimal {
   --toggle-width: 64px;
   --toggle-height: 18px;
   --toggle-padding: 2px;
+
 }
 
 .variantMinimal .toggleSlider {
@@ -598,8 +610,8 @@
   width: 16px;
   height: 16px;
   background: var(--bg);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--text-color);
+  // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .variantMinimal .toggleCheckbox:checked+.toggleSlider::after {
@@ -872,6 +884,7 @@
 .variantDev .sunIcon {
   right: 6px;
 }
+
 /* ============================= */
 /* Variant: Checkbox (Reliable) */
 /* ============================= */
@@ -940,19 +953,19 @@
 /* Checked state         */
 /* ====================== */
 
-.variantCheckbox .toggleCheckbox:checked + .toggleSlider {
+.variantCheckbox .toggleCheckbox:checked+.toggleSlider {
   background-color: var(--bg);
 }
 
 /* X becomes visible */
-.variantCheckbox .toggleCheckbox:checked + .toggleSlider::before {
-   background-color: var(--accent-color);
+.variantCheckbox .toggleCheckbox:checked+.toggleSlider::before {
+  background-color: var(--accent-color);
   opacity: 1;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.variantCheckbox .toggleCheckbox:checked + .toggleSlider::after {
-   background-color: var(--accent-color);
+.variantCheckbox .toggleCheckbox:checked+.toggleSlider::after {
+  background-color: var(--accent-color);
   opacity: 1;
   transform: translate(-50%, -50%) rotate(-45deg);
 }

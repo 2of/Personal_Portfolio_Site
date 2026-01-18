@@ -42,18 +42,19 @@
 
 .badge {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 10;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: var(--bg-l1);
+  background: var(--accent-color);
   border: 1px solid var(--border-color);
   // border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 500;
+  // opacity: 0.6;
   color: var(--accent-color);
   // backdrop-filter: blur(8px);
   // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -108,6 +109,13 @@
   min-height: 100%;
   contain: layout style;
   will-change: transform;
+  transition: all 0.2s ease;
+
+  &.fadeback { 
+  //  filter: blur(8px);
+  //  transform: scale(0.98);
+  //  opacity: 0.9;
+  }
 }
 
 /* HEADER */
@@ -152,10 +160,22 @@
   position: absolute;
   bottom: 0;
   right: 0;
+
+  z-index:5;
+    align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+  display: flex;
   padding: 1.5rem 0;
+
+  background: linear-gradient(rgba(0,0,0,0), var(--bg));
+  // backdrop-filter: blur(2px);
 }
 
 .hideButtons {
+
+
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
@@ -165,4 +185,6 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
+
+
 }

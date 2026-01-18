@@ -12,6 +12,7 @@ import { DevStyleButton } from "./DevStyleButton";
 import { TextButton, RichButton, NavButton } from "./MiscButtons";
 import { StoreButton } from "./StoreButtons";
 import { MobileButton } from "./MobileButtons";
+import { NaturalButton } from "./NaturalButtons";
 
 export const VARIANT_COMPONENTS = {
   default: BaseButton,
@@ -42,6 +43,13 @@ export const VARIANT_COMPONENTS = {
   appstore: StoreButton,
   googleplay: StoreButton,
   github: StoreButton,
+
+natural: NaturalButton,
+natural_icon_only: NaturalButton,
+natural_nav: NaturalButton,
+natural_squared: NaturalButton,
+natural_wipe: NaturalButton,
+natural_large_touch: NaturalButton,
 genericstore: StoreButton,
 mobileNav: MobileButton,
 mobileNavWithLabel: MobileButton, 

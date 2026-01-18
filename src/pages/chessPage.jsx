@@ -5,6 +5,7 @@ import { ModernButton } from "../ui/standardControls/button/Button";
 import getIcon from "../tools/iconRef";
 import { useNavigateTo } from "../hooks/useNavigate";
 import { useLinks } from "../contexts/LinksContext";
+import { StandardPage } from "../ui/scroll/StandardPage";
 
 export const ChessPage = () => { 
 
@@ -48,12 +49,12 @@ export const ChessPage = () => {
     ]
 
     return ( 
-<div className={s.container}> 
+<StandardPage>
 
     <RowView rows={rows}/>
 
     
-</div>
+</StandardPage>
 
     )
 }

@@ -16,10 +16,12 @@ import { DarkModeAnimatedWithCoolDownToastButton } from "../wrappers/DarkModeWra
 import { useAppState } from "../../contexts/StateContext";
 import { navigateTo } from "../../tools/navigator";
 import { useNavigateTo } from "../../hooks/useNavigate";
+import { usePageTransition } from "../../contexts/PageTransition";
 
 const COLLAPSE_ANIMATION_DURATION = 350;
 
 export const StackedDesktopNav = () => {
+    const { startTransition, transitionState } = usePageTransition();
     const navigate = useNavigate();
     const location = useLocation();
     const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
@@ -116,10 +118,10 @@ export const StackedDesktopNav = () => {
                 </div>
             
                 <div className={s.Divider} />
-                <span className={s.textChunk}>
+                {/* <span className={s.textChunk}>
                     this is my personal portfolio site!, feel free to have a peep around....
                 </span>
-                <div className={s.Divider} />
+                <div className={s.Divider} /> */}
                 <div className={s.NavSection}>
                     {routes.filter(x => x.expose_desktop_nav)
                     
@@ -127,10 +129,10 @@ export const StackedDesktopNav = () => {
                     .map((route, idx) => (
                         <ModernButton
                             key={idx}
-                            variant="code_small"
+                            variant="natural_nav"
                             label={`.${route.title}`}
                             active={location.pathname === route.path}
-                            callback={() => navigate(route.path)}
+                            callback={() => startTransition(route.path)}
                         />
                     ))}
                 </div>
@@ -138,9 +140,9 @@ export const StackedDesktopNav = () => {
                 <div className={s.Divider} />
 
                 <div className={s.NavSection}>
-                    <ModernButton label=".resume" variant="code_small" external link={getLink("resume")} />
-                    <ModernButton label=".linkedin" variant="code_small" external link={getLink("linkedin")} />
-                    <ModernButton label=".github" variant="code_small" external link={getLink("github")} />
+                    <ModernButton label=".resume" variant="natural_nav" external link={getLink("resume")} />
+                    <ModernButton label=".linkedin" variant="natural_nav" external link={getLink("linkedin")} />
+                    <ModernButton label=".github" variant="natural_nav" external link={getLink("github")} />
                 </div>
 
                 <div className={s.Divider} />
@@ -158,11 +160,11 @@ export const StackedDesktopNav = () => {
                     callback={toggleDarkMode}
                 /> */}
 
-                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="code_small" darkstr=".dark‼️" lightstr=".light‼️"/>
+                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="natural_nav" darkstr=".dark‼️" lightstr=".light‼️"/>
 
                 <ModernButton
                     label=".info"
-                    variant="code_small"
+                    variant="natural_nav"
                      callback={() => showModal({
                         title: "About This Website",
                         content: <AboutCardSmall />,
@@ -172,7 +174,7 @@ export const StackedDesktopNav = () => {
                 />
                 <ModernButton
                     label=".share"
-                    variant="code_small"
+                    variant="natural_nav"
                     callback={() => showModal({
                         title: "TEST",
                         content: <ShareSheet />,
@@ -190,7 +192,7 @@ export const StackedDesktopNav = () => {
                         {/* <p> </p> */}
               <ModernButton
                     label=".cookies manager"
-                    variant="code_small"
+                    variant="natural_nav"
                     callback={() => showModal({
                         title: "Cookies",
                         content: <CookieManagerForm />,
@@ -200,7 +202,7 @@ export const StackedDesktopNav = () => {
                 />
                 <ModernButton
                     label=".Junk and Crap"
-                    variant="code_small"
+                    variant="natural_nav"
               callback={() => navigate("/sample")}
                      active={location.pathname === "/sample"}
                 />

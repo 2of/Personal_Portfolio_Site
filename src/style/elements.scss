@@ -2,7 +2,7 @@
 .tag {
     display: inline-flex;
     align-items: center;
-    font-family: monospace;
+    // 
     font-size: 0.7rem;
     padding: 0.2rem 0.5rem;
     border: 1px solid var(--border-color);
@@ -45,7 +45,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  font-family: monospace;
+//   
   font-size: 0.55rem;
   font-weight: 700;
   padding: 0.6rem 0.5rem;
@@ -172,7 +172,7 @@
     align-items: baseline;
     gap: 0.75rem;
     padding: 0.5rem 0;
-    font-family: monospace;
+    
     color: var(--text-color);
     border-bottom: 1px dashed var(--border-color);
     transition: color 0.2s ease-out;
@@ -229,7 +229,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: monospace;
+    
     font-size: 0.75rem;
     color: var(--secondary-text);
 }
@@ -248,7 +248,7 @@
 }
 
 .loading-text {
-    font-family: monospace;
+    
     color: var(--secondary-text);
 
     &::after {
@@ -315,7 +315,7 @@
         left: 50%;
         transform: translateX(-50%) scale(0.95);
         padding: 0.35rem 0.6rem;
-        font-family: monospace;
+        
         font-size: 0.7rem;
         background: var(--text-color);
         color: var(--bg);

@@ -29,13 +29,13 @@ const StandardControls = React.memo(({ data, mobile = false }) => {
   //   );
   // }, [openShareSheet, data]); // Dependencies for useCallback
 
-  const {showModal} = useModal();
+  const { showModal } = useModal();
 
-  const handleShare = () => { 
+  const handleShare = () => {
 
     showModal({
       title: "TEST",
-      content: <ShareSheet/>,
+      content: <ShareSheet />,
       floatnav: true,
       size: "small"
     })
@@ -203,7 +203,7 @@ export const Article = ({ metadata, fixeddata, name }) => {
   const titlePopupRef = useRef(null);
   const screenSize = useScreenSize();
 
-  const {getArticleImageUrl} = useContent();
+  const { getArticleImageUrl } = useContent();
 
   // console.log("ARTICLE METADATA", metadata);
   useEffect(() => {
@@ -244,7 +244,7 @@ export const Article = ({ metadata, fixeddata, name }) => {
     }
   }, [data]); // data is used in the image check, but stable after load
 
- 
+
 
 
   if (loadingState === "wait")
@@ -270,7 +270,7 @@ export const Article = ({ metadata, fixeddata, name }) => {
       ref={containerRef}
     >
 
-      
+
       <div className={`${styles.bgImageContainer} `}>
         <div
           className={styles.bgImage}
@@ -279,7 +279,7 @@ export const Article = ({ metadata, fixeddata, name }) => {
             data?.heroImage
               ? {
                 // backgroundImage: `url(${data.heroImage})`,
-                                backgroundImage: `url(${getArticleImageUrl(name,"1.png")})`,
+                backgroundImage: `url(${getArticleImageUrl(name, "1.png")})`,
                 backgroundAttachment: "fixed",
                 // Dynamic styles removed from here, now in useEffect
               }
@@ -327,8 +327,8 @@ export const Article = ({ metadata, fixeddata, name }) => {
       <div className={styles.contentSection}>
 
 
- 
-        <ArticleContent data={data}  articlename={name}/>
+
+        <ArticleContent data={data} articlename={name} />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 {
   "Main": {
     "title": "The ",
-    "title_highlight": "Main things",
+    "title_highlight": "Bigger Things",
     "variant": "hero",
     "projects": [
       {
@@ -66,7 +66,17 @@
         "date": "2025-02-15",
         "inprogress": true,
         "image": "asylumdemon.png"
-      },
+      }
+    ]
+  },
+
+  "Tools": { 
+
+
+   "title": "Handy",
+    "title_highlight": "Tools",
+    "variant": "hero",
+    "projects": [
       {
         "title": "Free Chess ELO Estimation Tool",
         "tags": [
@@ -81,24 +91,25 @@
         "description": "Trained w/ 33m games, free alternative to the elo estimation tool on chess.com. Usually you'd need to check in with stockfish at each step to make this determination, but there's so much data through the lichess database that we get pretty close. Hosted on github pages",
         "date": "2025-02-15",
         "image": "asylumdemon.png"
-      }
-    ]
-  },
-
-  "Odds and ends, Tools you may like": {
-    "title": "Odds and ends",
-    "title_highlight": "Tools you may like",
-    "variant": "regular",
-    "projects": [
+      },
       {
         "title": "Machine Learning Pixel Art Generator",
         "tags": ["ML", "Clustering", "JS + REACT"],
         "links": [{ "label": "Live Tool", "to": "https://social-hub.io" }],
         "description": "Clustering for colour extraction + rebuild",
         "date": "2025-07-01",
-        "inprogress": true,
+        
         "image": "pixels.png"
-      },
+      }
+    ]
+  },
+
+  "Odds and ends, Tools you may like": {
+    "title": "Odds &  ",
+    "title_highlight": "Ends",
+    "variant": "regular",
+    "projects": [
+      
       {
         "title": "Chrome Extension - Exchange Online / Azure Copy / Paste",
         "tags": ["ManifestV3"],
@@ -126,70 +137,75 @@
         "description": "Sanity for... Shoppers?",
         "date": "2025-08-15",
         "image": "chrome.png"
+      },
+       {
+        "title": "Custom React UI / Context LIB " ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "Turns out the stuff I wrote for this website is handy...",
+        "date": "2025-04-20"
       }
     ]
   },
 
   "Uni Stuff": {
-    "title": "Uni",
-    "title_highlight": "Stuff",
+    "title": "Things from Undergrad ",
+    "title_highlight": "... and Postgrad",
     "variant": "regular",
+    "preamble" : "There's quiet a lot of things here. These are the highlights. I've lumped a few of these together",
     "projects": [
       {
-        "title": "Neural Network Visualizer",
+        "title": "Stats, Regression Analysis (Machine Learning Bits)",
         "tags": ["AI", "deep learning", "education"],
         "links": [
           { "label": "open", "to": "https://tensorflow-viz.com" },
           { "label": "github", "to": "/repo/nn-viz" }
         ],
-        "description": "Interactive 3D visualization of weight adjustments during backpropagation.",
+        "description": "Kinda lumped in here together",
         "date": "2025-03-10",
         "inprogress": false
       },
       {
-        "title": "Reinforcement Learning Agent",
+        "title": "NodeJS Petition Website + Vue Front End",
         "tags": ["RL", "OpenAI", "Gym"],
         "links": [{ "label": "paper", "to": "https://arxiv.org/example" }],
         "description": "Training an agent to master classic arcade games using Q-Learning and Proximal Policy Optimization.",
         "date": "2025-04-05"
       },
       {
-        "title": "Sentiment Analysis API",
+        "title": "RGB Camera HID",
         "tags": ["NLP", "FastAPI"],
         "links": [{ "label": "docs", "to": "/api/docs" }],
         "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
         "date": "2025-04-20"
-      }
-    ]
-  },
-
-  "Web Development": {
-    "title": "Web",
-    "title_highlight": "Development",
-    "variant": "regular",
-    "projects": [
-      {
-        "title": "E-Commerce Dashboard",
-        "tags": ["React", "Stripe", "Next.js"],
-        "links": [
-          { "label": "live", "to": "https://shop-admin.dev" },
-          { "label": "github", "to": "/repo/shop" }
-        ],
-        "description": "A full-stack commerce solution featuring real-time inventory tracking and financial reporting.",
-        "date": "2025-05-20",
-        "inprogress": false
       },
-      {
-        "title": "CSS Grid Framework",
-        "tags": ["CSS", "Library"],
-        "links": [
-          {
-            "label": "npm",
-            "to": "https://npmjs.com/package/grid-magic"
-          }
-        ],
-        "description": "A lightweight utility-first CSS framework specifically designed for complex dashboard layouts.",
-        "date": "2025-06-12"
+       {
+        "title": "Massive Data Processing",
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
+        "date": "2025-04-20"
+      },
+       {
+        "title": "HTTP Downloader <C> from scratch" ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
+        "date": "2025-04-20"
+      },
+        {
+        "title": "Massive Data Weather Analysis" ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
+        "date": "2025-04-20"
+      },
+       {
+        "title": "Algorithm Analysis, Computability, Cryptography Things" ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "Just lumping these together",
+        "date": "2025-04-20"
       }
     ]
   }

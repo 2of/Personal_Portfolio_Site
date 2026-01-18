@@ -156,13 +156,13 @@
     backdrop-filter: blur(4px);
     background-color: var(--bg-transparent);
     gap: 0.8rem;
-    padding: 12px;
+   padding: 0.5rem 0.5rem;
     color: var(--text-color);
     border: 1px solid var(--border-color);
     // margin: 1rem auto;
     // margin-bottom: 4rem;
 
-    // position: absolute;
+    position: absolute;
     // bottom: 4rem;
     z-index: 55;
     width: fit-content;
@@ -183,10 +183,10 @@
     border-radius: 44px;
     font-style: italic;
     min-width: 90px;
-    padding: 1rem;
+   padding: 0.5rem 0.5rem;
     color: var(--text-color);
     // background-color: red;
-    background-color: var(--border-color);
+    background-color: var(--bg-l1);
 
     text-align: center;
     transition: all 0.3s cubic-bezier(0.3, 1, 0.4, 1);

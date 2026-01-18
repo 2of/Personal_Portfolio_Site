@@ -7,7 +7,7 @@ export function useAboutPageData() {
 
   const [hasLoaded, setHasLoaded] = useState(false);
   const [srcData, setSrcData] = useState(null);
-  const [expandAllCareerTiles, setExpandAllCareerTiles] = useState(false);
+
 
   useEffect(() => {
     const load = async () => {
@@ -18,9 +18,7 @@ export function useAboutPageData() {
     load();
   }, [get]);
 
-  const toggleExpandAll = useCallback(() => {
-    setExpandAllCareerTiles(v => !v);
-  }, []);
+
 
   const careerItems = useMemo(() => srcData?.career ?? [], [srcData]);
   const qualItems = useMemo(() => srcData?.qualifications ?? [], [srcData]);
@@ -30,8 +28,7 @@ export function useAboutPageData() {
   return {
     hasLoaded,
     srcData,
-    expandAllCareerTiles,
-    toggleExpandAll,
+
     careerItems,
     qualItems,
     skillItems,

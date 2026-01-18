@@ -26,23 +26,32 @@ import { AboutCardSmall } from "../ui/cards/AboutCard";
 import RowView from "../ui/grid/RowView";
 import { DarkModeTile } from "../ui/wrappers/DarkModeFancyTile";
 import { RoadTransition } from "../ui/misc/DarkModeTransition.jsx/RoadTransition";
-
+import { useState } from "react";
 import { useToast } from "../contexts/ToastContext";
 import { useDarkMode } from "../contexts/DarkMode";
 import { DarkModeAnimatedWithCoolDownToastButton } from "../ui/wrappers/DarkModeWrapper";
 import { useAppState } from "../contexts/StateContext";
 import { SmallCareerTileWithModal } from "../ui/cards/SmallCareerCardWithModal";
-import  { DrawText,TextWPath_HOWDY} from "../ui/misc/TextPath";
+import  { DrawText,SVGText,TextWPath_HOWDY} from "../ui/misc/TextPath";
 import { StandardTab } from "../ui/scroll/StandardTabView";
 import Divider from "../ui/misc/Divider";
+import { TextInput } from "../ui/standardControls/TextInput";
+import getIcon from "../tools/iconRef";
+import StandardToggle from "../ui/standardControls/Toggle";
+import { usePageTransition } from "../contexts/PageTransition";
+import { Post } from "../ui/Post/Post";
+import { VerticalScrollWithTracking } from "../ui/scroll/VerticalScrollingWithTracking";
 
 
 export const SamplePage = () => {
     const { navDetails } = useNav();
     const navigateTo = useNavigateTo();
+    const [email, setEmail] = useState("");
     const { setFlag, getFlag, getState, clearFlag } = useAppState();
     const { getArticle, getArticleImageUrl } = useContent();
     const { showToast } = useToast();
+
+const { startTransition, transitionState } = usePageTransition();
     const { darkMode, toggleDarkMode, ClearFullScreenTransition, StartFullScreenTransition, fullscreentransition } = useDarkMode();
     const dohandlearticle = async () => {
         console.log("TEST");
@@ -88,6 +97,17 @@ export const SamplePage = () => {
             {/* <RoadTransition/> */}
 
 
+ <>
+    <p>STATE: {transitionState}</p>
+
+    <button onClick={() => startTransition("/about")}>
+      Start
+    </button>
+  </>   
+
+
+
+
 
             <DarkModeAnimatedWithCoolDownToastButton />
 <SmallCareerTileWithModal/> <h2>before</h2>
@@ -116,9 +136,67 @@ export const SamplePage = () => {
             <ImageHandle src={SampleImage} /> */}
 
             {/* <OrbitPicture image={SampleImage} /> */}
+HERE:
+<DrawText>
+<SVGText
+  text="Sporty_Welcome"
+  width={300}
+  height={300}
+
+/>
+</DrawText>
+<StandardToggle type="modern"/>
+<ModernButton variant="natural" label="test"/>
+<br/>
+
+<VerticalScrollWithTracking>
+<ModernButton variant="natural_icon_only"  icon={getIcon("chess")}/>
+<ModernButton variant="natural_large_touch"  icon={getIcon("chess")}/>
+<ModernButton variant="natural_large_touch" label="test" icon={getIcon("chess")}/>
+<ModernButton variant="natural_nav" label="test" icon={getIcon("chess")}/>
+<ModernButton variant="natural_squared" label="test" icon={getIcon("chess")}/>
+<ModernButton variant="natural_wipe" label="test" icon={getIcon("chess")}/>
+<TextInput
+        title="Subscribe to the waitlist"
+        variant="regular"
+        placeholder="Enter your email"
+        value={email}
+        onChange={setEmail} // Trivial: state updates on every keystroke
+      />
+
+<DrawText stagger={0.5}>
+<SVGText
+  text="Unsure_hello"
+  width={300}
+  height={300}
+
+/><SVGText
+  text="Unsure_hello"
+  width={300}
+  height={300}
+
+/>  <SVGText
+  text="Unsure_hello"
+  width={300}
+  height={300}
+
+/><SVGText
+  text="Unsure_hello"
+  width={300}
+  height={300}
+
+/><SVGText
+  text="Unsure_hello"
+  width={300}
+  height={300}
+
+/>
+</DrawText>
 
 
 
+<Post/>
+</VerticalScrollWithTracking>
  <DrawText duration={121.8} stagger={0.07}>
       <TextWPath_HOWDY width={250} />
     </DrawText>

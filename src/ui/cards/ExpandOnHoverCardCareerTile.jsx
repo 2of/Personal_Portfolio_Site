@@ -231,7 +231,7 @@ const ExpandableCareerTile = ({
     };
 
     const TileContent = (
-        <div className={`${styles.content}  ` } aria-hidden={false}>
+        <div className={`${styles.content}  `} aria-hidden={false}>
             <div className={styles.iconWrapper}>
                 {/* <div className={styles.jobIcon}>
                     {icon ? icon : <FaBriefcase />}
@@ -274,17 +274,6 @@ const ExpandableCareerTile = ({
         </div>
     );
 
-    if (alwaysexpand) {
-        return (
-            <div
-                className={`${styles.tile} ${styles.alwaysExpanded} ${blur ? styles.blur : ""}`}
-                onClick={openasmodal ? handleModalOpen : undefined}
-            >
-                {TileContent}
-            </div>
-        );
-    }
-
     return (
         <>
             <div
@@ -293,18 +282,19 @@ const ExpandableCareerTile = ({
                     styles.tile,
                     blur ? styles.blur : "",
                     hovered ? styles.ignorePointer : "",
-                      "StandardBoxL2" 
-              
+                    alwaysexpand ? styles.alwaysExpanded : "",
+                    "StandardBoxL2"
+
                 ].join(" ")}
 
-                onMouseEnter={!openasmodal ? scheduleShowClone : undefined}
-                onMouseLeave={!openasmodal ? scheduleHideClone : undefined}
+                onMouseEnter={(!openasmodal && !alwaysexpand) ? scheduleShowClone : undefined}
+                onMouseLeave={(!openasmodal && !alwaysexpand) ? scheduleHideClone : undefined}
                 onClick={openasmodal ? handleModalOpen : undefined}
             >
                 {TileContent}
             </div>
 
-            {hovered && coords && createPortal(
+            {!alwaysexpand && hovered && coords && createPortal(
                 <div
                     ref={cloneRef}
                     className={`      ${styles.hoverClone} ${animateIn ? styles.FullReveal : ""} ${isAnimating ? styles.animating : ""}             StandardBoxL2 `}

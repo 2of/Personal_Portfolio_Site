@@ -25,6 +25,8 @@ export const Section = ({
   isFirst,
   animateIn
 }) => {
+
+  console.log("RENDER THE SCROLLER VIEW") // so fun thing, this print stops crazy re
   const { getColor } = useAppTheme();
   const screenSize = useScreenSize();
   const headerClass = clsx(styles.sectionHeaderContainer, {
@@ -34,7 +36,7 @@ export const Section = ({
 
   const contentClass = clsx(styles.sectionContent, {
     [styles.narrow]: narrow,
-    
+
     [screenSize === "sm"]: "mobile"
   });
 
@@ -85,7 +87,7 @@ export const Section = ({
           </div>
         )}
         <div className={contentClass}>
-          
+
           {children}
 
 

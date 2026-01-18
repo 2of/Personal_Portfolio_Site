@@ -28,8 +28,8 @@ export const AboutCard = ({
       {!ismobile && (
         <ComponentsWrapToImage image={profileImage} radius={40} gap={-10}>
           {/* <h1 className={styles.title}>{title}</h1> */}
-          <DrawText strokeWidth={1}>
-            <TextToSvgComponent_Welcome/>
+          <DrawText strokeWidth={2}>
+            <TextToSvgComponent_Welcome  width={200}/>
           </DrawText>
           <h2 className={styles.subtitle}>{subtitle}</h2>
           <p className={styles.description}>{description}</p>
@@ -48,7 +48,7 @@ export const AboutCard = ({
             />
             <ModernButton
               label="Github"
-              variant="dev"
+              variant="natural"
               icon={getIcon("github")}
               link={getLink("github")}
             />
@@ -89,19 +89,19 @@ export const AboutCard = ({
           <div className={styles.mobileActions}>
             <ModernButton
               icon={getIcon("resume")}
-              variant="dev_chungus"
+              variant="natural"
               label="Resume"
               link={getLink("resume")}
             />
             <ModernButton
               icon={getIcon("github")}
-              variant="dev_chungus"
+              variant="natural"
                         label="github"
               link={getLink("github")}
             />
             <ModernButton
               icon={getIcon("linkedin")}
-              variant="dev_chungus"
+              variant="natural"
                         label="linkedin"
               link={getLink("linkedin")}
             />

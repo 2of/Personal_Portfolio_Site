@@ -9,7 +9,7 @@ import { useModal } from "../../contexts/ModalContext";
 import { ShareSheet } from "../misc/ShareSheet";
 
 export const MobileNavBar = () => {
-  const { ToggleMobileNav, MobileNavIsOpen } = useNavStack();
+  const { ToggleMobileNav, MobileNavIsOpen,navstack } = useNavStack();
     const { navDetails } = useNav();
       const { showModal } = useModal();
   return (
@@ -48,6 +48,11 @@ export const MobileNavBar = () => {
                                size: "medium"
                            })}
                        />
+
+                       <button
+                       onClick={() => { console.log(navstack)}}>
+                        test
+                       </button>
                        {/* <ModernButton
                            label=".share"
                            variant="mobileNav"

@@ -4,6 +4,9 @@
   // overflow: hidden;
     margin: 1rem;
   
+    &:hover{ 
+
+    }
 }
 
 .thumbnail {
@@ -19,7 +22,7 @@
   transition: transform 300ms ease, box-shadow 300ms ease;
 
   &:hover {
-    // transform: scale(1.025);
+    transform: scale(1.025);
     // box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   }
 }

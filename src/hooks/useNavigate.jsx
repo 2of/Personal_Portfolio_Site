@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useLinks } from "../contexts/LinksContext";
+import { usePageTransition } from "../contexts/PageTransition";
 
 export function useNavigateTo() {
+
+  const {startTransition} = usePageTransition();
   const { getLink } = useLinks();
   const navigate = useNavigate();
 
-  const goToUrl = (url) => {
+  const goToUrl = (url,animate=true) => {
     console.log("TEST")
     if (!url) return;
 
@@ -16,7 +19,16 @@ export function useNavigateTo() {
       window.location.href = `https://${trimmed}`;
     } else {
       // internal route
+
+      if (animate) { 
+        startTransition(trimmed.startsWith("/") ? trimmed : `/${trimmed}`)
+      }
+      else { 
       navigate(trimmed.startsWith("/") ? trimmed : `/${trimmed}`);
+      }
+
+
+
     }
   };
 

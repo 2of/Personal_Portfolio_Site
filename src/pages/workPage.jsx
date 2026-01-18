@@ -33,6 +33,8 @@ export const WorkPage = () => {
   const screenSize = useScreenSize();
   const navigateTo = useNavigateTo();
 
+
+
   // Map section variant to a card component
   //   const CARD_MAP = {
   //     small: PROJCARD_Large,
@@ -45,23 +47,7 @@ export const WorkPage = () => {
   // Render a single project card
 
 
-  const MainHeader_desktop = () => {
-
-    return (
-      <div className={styles.introContent}>
-        <DrawText stagger={7}>
-          <TextToSvgComponent_Projects width={250} />
-        </DrawText>
-
-
-
-        <p>I've made a bunch of things</p>
-        <p>Each project is categorized by sector and technical complexity.</p>
-      </div>)
-  }
   const renderCard = (project, index, sectionVariant) => {
-
-
     return (
       <Card
         variant={sectionVariant}
@@ -82,14 +68,14 @@ export const WorkPage = () => {
   return (
     <div className={styles.WorkPage}>
 
-      <dic className={styles.bgContainer}>
+      <div className={styles.bgContainer}>
         {/* <AsciiArt art={asciiArtWindow}  direction="top-down" maxOpacity={0.4}/> */}
-      </dic>
+      </div>
 
 
 
 
-      <ScrollableVerticalView staggerStart>
+      <ScrollableVerticalView staggerStart trackScrollPercent>
         {/* Intro Header */}
 
 
@@ -98,18 +84,16 @@ export const WorkPage = () => {
           <Section
             key="intro"
             sticky
-            Header={() => (
-              <MainHeader_desktop />
-            )}
+            Header={MainHeader_desktop}
           ></Section>
         )}
 
         {screenSize === "sm" && (
-<Section
-          key="intro"
-          sticky
-          
-        >
+          <Section
+            key="intro"
+            sticky
+
+          >
 
 
 
@@ -145,21 +129,21 @@ export const WorkPage = () => {
 
             </div>
 
- 
-          
-          
-          
 
 
-          <Divider />
-          {/* <p>I've made a bunch of things</p> */}
-          {/* <p>Each project is categorized by sector and technical complexity.</p> */}
-          {/* </div> */}
-        </Section>
+
+
+
+
+            <Divider />
+            {/* <p>I've made a bunch of things</p> */}
+            {/* <p>Each project is categorized by sector and technical complexity.</p> */}
+            {/* </div> */}
+          </Section>
 
 
         )}
-        
+
 
         {/* Loop through sections */}
         {Object.entries(projData).map(([sectionKey, sectionData], sectionIndex) => (
@@ -174,6 +158,13 @@ export const WorkPage = () => {
               />
             )}
           >
+
+
+            {sectionData.preamble && <div className={styles.preamblecontainer}>
+              {sectionData.preamble}
+
+            </div>}
+
             <StandardGrid template={sectionData.variant}>
 
               {/* <h2>test {sectionData.variant}</h2> */}
@@ -192,3 +183,18 @@ export const WorkPage = () => {
     </div>
   );
 };
+
+const MainHeader_desktop = () => {
+
+  return (
+    <div className={styles.introContent_d}>
+      <DrawText stagger={7}>
+        <TextToSvgComponent_Projects width={250} />
+      </DrawText>
+
+
+
+      <p>I've made a bunch of things</p>
+      <p>This page is a bit of a mishmash and isn't cohesive.</p>
+    </div>)
+}

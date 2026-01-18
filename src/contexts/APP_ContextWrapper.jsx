@@ -20,6 +20,7 @@ import { ContentProvider } from "./ContentContext";
 import { NavStackProvider } from "./NavigationButtonsStack";
 import { ToastMenuProvider } from "./ToastContext";
 import { StateProvider } from "./StateContext";
+import { TransitionProvider } from "./PageTransition";
 
 function InnerThemeWrapper({ children }) {
     const { darkMode: isDark } = useDarkMode();
@@ -50,35 +51,38 @@ function InnerThemeWrapper({ children }) {
 export const ContextWrapper = ({ children }) => {
     // const screenSize = useScreenSize();
     return (
-                   <DarkModeProvider>
-        <StateProvider>
- 
-                <ToastMenuProvider>            <AlertMenuProvider>
-                    <ContentProvider>
-                        <LinksProvider>
-                            <AppThemeProvider>
-                                <NavProvider>
-                                    <NavStackProvider>
-                                        <ModalMenuProvider>
-                                            <ScreenSizeProvider>
-                                                <ThemeProvider>
+        <DarkModeProvider>
+            <StateProvider>
+                <ScreenSizeProvider>
+                    <TransitionProvider>
 
-                                                    <InnerThemeWrapper>{children}</InnerThemeWrapper>
+                        <ToastMenuProvider>
+                            <AlertMenuProvider>
+                                <ContentProvider>
+                                    <LinksProvider>
+                                        <AppThemeProvider>
+                                            <NavProvider>
+                                                <NavStackProvider>
+                                                    <ModalMenuProvider>
 
-                                                </ThemeProvider>
-                                            </ScreenSizeProvider>
-                                        </ModalMenuProvider>
-                                    </NavStackProvider>
-                                </NavProvider>
-                            </AppThemeProvider>
-                        </LinksProvider>
-                    </ContentProvider>
-                </AlertMenuProvider>
-                </ToastMenuProvider>
+                                                        <ThemeProvider>
 
-       
+                                                            <InnerThemeWrapper>{children}</InnerThemeWrapper>
 
-        </StateProvider>
-             </DarkModeProvider>
+                                                        </ThemeProvider>
+
+                                                    </ModalMenuProvider>
+                                                </NavStackProvider>
+                                            </NavProvider>
+                                        </AppThemeProvider>
+                                    </LinksProvider>
+                                </ContentProvider>
+                            </AlertMenuProvider>
+                        </ToastMenuProvider>
+                    </TransitionProvider>
+                </ScreenSizeProvider>
+
+            </StateProvider>
+        </DarkModeProvider>
     );
 };

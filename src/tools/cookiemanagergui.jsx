@@ -34,7 +34,9 @@ export const CookieManagerForm = () => {
   return (
     <div>
       {/* <h3>Cookies</h3> */}
-   <p>... you know there's no dev tools on ios.. ? </p>
+   <p>... you know there's no dev tools on ios.. ? only toglges bool vals or deletes. 
+    just usign individual values & not json here ..
+     </p>
       {entries.length === 0 ? (
         <p>No cookies found.</p>
       ) : (

@@ -4,39 +4,64 @@
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    position: relative;
+}
+
+.ContentWrapper {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .Content {
+    // Legacy/Shared
     flex-grow: 1;
     margin: 1rem 1rem 1rem 0;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-    
+    height: 100%;
 }
 
-@keyframes pageTransition {
-    0% {
-        opacity: 0;
-        transform: translateY(10px) scale(0.99);
-        filter: blur(4px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0px);
-    }
+.DesktopFrame {
+    // Outer "Box": Stable, holds background, border-radius (via class), and CROPS transition
+    flex-grow: 1;
+    margin: 1rem 1rem 1rem 0;
+    position: relative;
+    overflow: hidden; // Allows cropping of absolute children (TransitionCover)
+    border-radius: inherit; // If parent has rad? No, StandardBoxL2 adds it.
+
+    // From DesktopContent
+    // width: 100%;
+    background-color: var(--bg-l1);
+    display: flex; // To hold scroller
+    // background-color: red;
+    flex-direction: column;
+}
+
+.DesktopScrollArea {
+    // Inner "Page": Keyed, scrolls, has padding
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .DesktopContent {
+    // Deprecated for split, keeping for safety if referenced elsewhere or deleting? 
+    // It was used in MainLayout.jsx. We replace it.
     width: 100%;
-    animation: pageTransition 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    will-change: transform, opacity, filter;
     backface-visibility: hidden;
-
+    background-color: var(--bg-l1);
+    position: relative;
 }
 
-.MOBILE_MainLayout { 
+.MOBILE_MainLayout {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -47,46 +72,47 @@
 
 }
 
-.MobileContent_fixed { 
+.MobileContent_fixed {
 
     position: fixed;
     // background-color: orange;
     // margin-top: 100px;
 
 
-        display: flex;
+
+    display: flex;
     flex-direction: row;
     // height: 100vh;
     // width: 100vw;
     bottom: 0;
     top: var(--mobileTopNavSafeArea);
     overflow: hidden;
-            display: flex;
+    display: flex;
     flex-direction: column;
-  
+
 }
 
 
 
-.MobileContent_free { 
+.MobileContent_free {
 
     // position: fixed;
     // background-color: orange;
     // margin-top: 100px;
 
 
-        display: flex;
+    display: flex;
     flex-direction: row;
     // height: 100vh;
     // width: 100vw;
     bottom: 0;
     padding-top: var(--mobileTopNavSafeArea);
     // overflow: hidden;
-            display: flex;
+    display: flex;
     flex-direction: column;
     // background-color: orange;
     // background-color: red;
-  
+
 }
 
 .MOBILE_PageContainer {
@@ -101,4 +127,18 @@
 
 .MainLayout {
     // Empty or debug styles if needed
+}
+
+
+.cover {
+    height: 100px;
+    width: 100px;
+
+    &.active {
+        background-color: red;
+    }
+
+    &.inactive {
+        background-color: orange;
+    }
 }

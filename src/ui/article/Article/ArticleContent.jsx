@@ -1,5 +1,5 @@
 import React from "react";
-import reg_styles from "./ArticleContentMultiCol.module.scss";
+import reg_styles from "./ArticleMultiCol.module.scss";
 import {
   ParagraphSection,
   ImageSection,
