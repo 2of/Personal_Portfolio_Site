@@ -98,8 +98,8 @@
 
   &.chungus { 
     width: 100%;
-    border: 2px solid var(--border-color);
-    border-radius: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
   }
   /* Highlight — accent-filled */
   &.highlight {

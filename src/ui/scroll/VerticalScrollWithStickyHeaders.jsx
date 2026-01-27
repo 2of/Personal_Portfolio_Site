@@ -24,6 +24,7 @@ export const Section = ({
   index,
   isFirst,
   animateIn
+
 }) => {
 
   console.log("RENDER THE SCROLLER VIEW") // so fun thing, this print stops crazy re
@@ -104,7 +105,10 @@ export const ScrollableVerticalView = ({
   staggerStart = false,
   alignCenter = false,
   animateIn = false,
-  debug = false
+  debug = false,
+    updateScrollPercentExt = null,
+    updateScrollPixAmountExt = null,
+    displayTracker = false
 }) => {
   const scrollRef = useRef(null);
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
@@ -120,14 +124,14 @@ export const ScrollableVerticalView = ({
 
   const { isNavBgTransparent, setNavBgTransparent } = useNav();
 
-  useEffect(() => {
-    if (!trackScrollPercent) return;
+  // useEffect(() => {
+  //   if (!trackScrollPercent) return;
 
-    const shouldBeTransparent = scrollPercent > 0.4;
-    if (isNavBgTransparent !== shouldBeTransparent) {
-      setNavBgTransparent(shouldBeTransparent);
-    }
-  }, [scrollPercent, isNavBgTransparent, trackScrollPercent]);
+  //   const shouldBeTransparent = scrollPercent > 0.4;
+  //   if (isNavBgTransparent !== shouldBeTransparent) {
+  //     setNavBgTransparent(shouldBeTransparent);
+  //   }
+  // }, [scrollPercent, isNavBgTransparent, trackScrollPercent]);
 
   useEffect(() => {
     // If we aren't tracking percent, and we aren't debugging velocity, we don't need this listener
@@ -158,8 +162,18 @@ export const ScrollableVerticalView = ({
       }
 
       if (trackScrollPercent) {
+
+      
         const scrollHeight = el.scrollHeight - el.clientHeight;
         const percent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+
+          if (updateScrollPercentExt) {
+          updateScrollPercentExt(percent)
+        }
+
+        if (updateScrollPixAmountExt) {
+          updateScrollPixAmountExt(scrollTop)
+        }
         setScrollPercent(Math.min(Math.max(percent, 0), 100).toFixed(1));
       }
     };
@@ -216,7 +230,7 @@ export const ScrollableVerticalView = ({
         </div>
       )}
 
-      {trackScrollPercent && (
+      {displayTracker && (
         <div className={styles.progressBarOverlay}>
           <ProgressBar
             lowerBound={0}

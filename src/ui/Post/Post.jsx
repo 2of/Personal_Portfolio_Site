@@ -12,7 +12,7 @@ export const Post = ({postdata,artName,fetchpostfromtitle}) => {
 
 
   const [data, setData] = useState({});
-console.log(postdata)
+// console.log(postdata)
 
   useEffect(() => {
     if (postdata) { 
@@ -34,8 +34,8 @@ console.log(postdata)
 
  const Page = useMemo(() => {
     return screenSize !== "sm"
-      ? <PostContainerDesktop  data={data}  name = {artName}/>
-      : <PostContainerMobile {...data} />;
+      ? <PostContainerDesktop  data={data}  name = {artName}/> :
+   <PostContainerMobile  data={data}  name = {artName} />;
   }, [screenSize, data]);
 
   return Page;

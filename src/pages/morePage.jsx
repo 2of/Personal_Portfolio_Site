@@ -178,11 +178,11 @@ const toggleDevFlag = () => {
     })),
   ];
 
-  return (
-   
 
-      <StandardPage>
-      <header className={`${s.header} StandardBoxL2`}>
+  return ( 
+    <StandardPage>
+      {/* <h3>testasf</h3> */}
+           <header className={`${s.header} `}>
 
         <h3>Hello !</h3>
         <p className={s.subtle}>
@@ -193,28 +193,12 @@ const toggleDevFlag = () => {
           Welcome to more. See more options and so on in here...
         </p>
       </header>
+      <RowView rows={[...toggleRows()]}/>
+      <RowView rows={[...introRows, ...directoryRows()]}/>
+                <p className={s.subtle}>Here's some old versions of this site:</p>
 
-      <section className={s.section}>
-        <div className={s.rowViewContainer}>
-          <RowView
-            rows={[ ...toggleRows()]}
-            mobile={screenSize === "sm"}
-          />
-          {/* <p className={s.subtle}></p> */}
+            <RowView rows={[...legacyLinks()]}/>
+    </StandardPage>
+  )
 
-
-           <RowView
-            rows={[...introRows, ...directoryRows()]}
-            mobile={screenSize === "sm"}
-          />
-          <p className={s.subtle}>Here's some old versions of this site:</p>
-
-
-          <RowView rows={[...legacyLinks()]} mobile={screenSize === "sm"} />
-        </div>
-      </section>
-
-      </StandardPage>
-
-  );
 };

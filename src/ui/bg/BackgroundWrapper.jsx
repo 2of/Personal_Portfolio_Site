@@ -4,7 +4,7 @@ import TrackedDots from "./TrackedDots";
 import GradientBG from "./GradientBG";
 import { TextASCIIbg } from "./TextASCIIbg";
 import { AsciiArt } from "../misc/TextAsciiScroll";
-import asciiArtWindow from "../../../public/misc/asciiwindow";
+// import asciiArtWindow from "../../../public/misc/asciiwindow";
 import { DarkModeTile } from "../wrappers/DarkModeFancyTile";
 
 export const BackgroundWrapper = () => {
@@ -16,12 +16,15 @@ export const BackgroundWrapper = () => {
         <div
             className={className}
             style={{
-                position: "absolute",
+                position: "fixed",
                 inset: 0,
                 width: "100%",
                 height: "100%",
-                // backgroundColor: "red",
                 zIndex: -1,
+                pointerEvents: "none",
+                overflow: "hidden",
+
+                touchAction: "none"
             }}
         >
             {children}
@@ -33,10 +36,10 @@ export const BackgroundWrapper = () => {
             return <BGWrapper className="bg_tight_detail" />; // Empty background for 'main'
         case "ledger":
             return <BGWrapper className="bg-ledger" />; // Empty background for 'main'
-      case "vellum":
+        case "vellum":
             return <BGWrapper className="bg-dots-vellum" />; // Empty background for 'main'
         case "WTF":
-   return <BGWrapper className="bg-grad-dots-dense" />;
+            return <BGWrapper className="bg-grad-dots-dense" />;
         case "dots":
 
             return (
@@ -47,7 +50,7 @@ export const BackgroundWrapper = () => {
             );
 
 
-               case "text":
+        case "text":
 
             return (
                 <BGWrapper>

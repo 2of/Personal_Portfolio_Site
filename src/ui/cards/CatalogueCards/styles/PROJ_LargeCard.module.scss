@@ -7,19 +7,19 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   // border: 1px solid rgba(var(--text-rgb), 0.15);
-  
+
   &:hover {
     border-color: var(--accent-color);
   }
-  
+
   &:hover .Title {
     color: var(--accent-color);
   }
-  
+
   &:hover .imageCover {
     opacity: 0;
   }
-  
+
   &:hover .image {
     // transform: scale(1.08);
   }
@@ -32,7 +32,7 @@
   height: 200px;
   overflow: hidden;
   flex-shrink: 0;
-  
+
   .image {
     position: absolute;
     width: 100%;
@@ -40,7 +40,7 @@
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .imageCover {
     position: absolute;
     width: 100%;
@@ -90,7 +90,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  
+
 }
 
 /* DESCRIPTION */

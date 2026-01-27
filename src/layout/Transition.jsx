@@ -26,7 +26,7 @@ export const TransitionCover = ({ state = "idle" }) => {
             ? "translateX(100%)"
             : isCovering
             ? "translateX(0%)"
-            : "translateX(-100%)",
+            : "translateX(-102%)",
           transition: state === "idle"
             ? "none"
             : "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",

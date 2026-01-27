@@ -1,0 +1,98 @@
+
+
+
+// // PegboardStyle.module.scss
+// .pegboardContainer { 
+//     background-color: rgb(239, 152, 152);
+//     height: 100%;
+//     width: 100%;
+// }
+.pegboard {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background: var(--bg);
+  height: 100%;
+  width: 100%;
+//   background-color: red;    
+}
+.feather {
+  inset-inline: 0;
+  top: 0;
+  height: 100%;
+  pointer-events: none;
+z-index: 100;
+background: linear-gradient(to top, 
+                            var(--bg-l1) 0%, 
+                            var(--bg-l1) 60%, 
+                            transparent 100%);
+
+
+//   background-color: green;
+  z-index: 100;
+}
+
+
+.pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+//   opacity: 0.6;  
+z-index: -1;
+}
+
+.testShelf {
+  position: absolute;
+  left: 5rem;
+  top: 10rem;
+  width: 12rem;
+  height: 0.75rem;
+  z-index: -1;
+  background: var(--bg-l3);
+  border: 2px solid var(--bg-l);
+}
+
+.shelf {
+  position: absolute;
+ background: var(--bg-l2);
+  height: 20px;
+  z-index: -1;
+}
+
+.shelfBoard {
+  height: 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--bg-l2);
+}
+
+.bracketLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.375rem;
+  height: 1.25rem;
+  border-radius: 0.125rem;
+  background: var(--bg-l3);
+}
+
+.bracketRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0.375rem;
+  height: 1.25rem;
+  border-radius: 0.125rem;
+  background: var(--bg-l3);
+}
+
+.pegHole {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background: var(--bg-l1);
+}

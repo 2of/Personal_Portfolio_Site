@@ -2,7 +2,7 @@
   display: grid;
   gap: 1rem; // fixed gap now
   // background-color: orange;
-  width: 100%;
+  // width: 100%;
 }
 
 .template-hero {
@@ -11,6 +11,7 @@
     auto-fit,
     minmax(280px, 1fr)
   );
+  
 
   // Tablet & up
   @media (min-width: 900px) {
@@ -41,14 +42,28 @@
   // max-width: calc(3 * 280px);
 }
 
+.template-text { 
+  // background-color: red;
 
+  .item { 
+    // max-width: 500px;
+  }
+}
 .template-nav {
   grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-  grid-gap: 1.5rem; /* Optional: increase gap between items */
+  // background-color: beige;
+  width: 100%;
+grid-gap: 1rem; /* Optional: increase gap between items */
+  .item { 
+
+    width: 100%;
+  }
 }
 
 .item {
-  width: 100%;
+  // width: 100%;
+  
+  // background-color: red;
 }
 
 /* Optional animation */

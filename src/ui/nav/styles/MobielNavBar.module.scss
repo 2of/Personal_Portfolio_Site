@@ -7,7 +7,7 @@
     width: 100%;
     padding: 1rem;
     background-color: var(--bg-transparent);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(4px);
     border-bottom: 1px dotted var(--border-color);
     z-index: 40;
     top: 0;
@@ -28,6 +28,8 @@
 
 .right { 
     display: flex;
+
+    
 }
 
 
@@ -36,3 +38,9 @@
     top: 0;
     // background-color: red;
 }
+
+// .menubuttoncontainer { 
+//     height: 1rem;
+//     // padding: 0.25rem;
+//     border: 1px solid red;
+// }

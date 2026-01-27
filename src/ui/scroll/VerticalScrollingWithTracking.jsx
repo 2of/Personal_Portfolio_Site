@@ -44,7 +44,7 @@ export const VerticalScrollWithTracking = ({ update, children }) => {
       {children}
 
       {/* Optional: display scroll percent */}
-      <div
+      {/* <div
         style={{
           position: "fixed",
           top: 10,
@@ -56,7 +56,7 @@ export const VerticalScrollWithTracking = ({ update, children }) => {
         }}
       >
         {percent.toFixed(0)}%
-      </div>
+      </div> */}
     </div>
   );
 };

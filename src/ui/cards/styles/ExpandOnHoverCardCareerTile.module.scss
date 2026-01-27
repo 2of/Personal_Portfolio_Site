@@ -12,6 +12,7 @@ $shadow-expanded: 0 40px 80px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255,
   min-height: 100px;
   overflow: hidden;
 
+  border-radius: 8px;
   &.blur {
     // backdrop-filter handled by parent
   }
@@ -133,6 +134,7 @@ $shadow-expanded: 0 40px 80px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255,
 .tile:hover,
 .hoverClone:hover {
   border-color: var(--accent-color);
+  border-radius: 8px;
 }
 
 .textContent {

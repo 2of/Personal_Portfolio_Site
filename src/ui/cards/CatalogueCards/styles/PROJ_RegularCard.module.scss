@@ -1,11 +1,13 @@
 .cardRegular {
   display: flex;
-  flex-direction: column; /* image on top, content below */
+  flex-direction: column;
+  /* image on top, content below */
   height: 100%;
-  max-height: 480px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+
+
 
   &:hover {
     // box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -19,15 +21,18 @@
     opacity: 0;
   }
 
-  &:hover .image {
-    transform: scale(1.06);
-  }
+  // &:hover .image {
+  //   transform: scale(1.06);
+  // }
 }
 
 /* IMAGE */
 .ImgContainer {
-  width: 100%; /* full width */
-  height: 200px; /* fixed height for top image */
+  width: 100%;
+  /* full width */
+  // height: 200px; /* fixed height for top image */
+  // height: 30%;
+  height: 200px;
   overflow: hidden;
   position: relative;
   background: var(--bg-l1);
@@ -35,6 +40,7 @@
   .image {
     width: 100%;
     height: 100%;
+    // height: 120px;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
@@ -43,7 +49,7 @@
   .imageCover {
     position: absolute;
     inset: 0;
-     width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%) brightness(0.8);
@@ -57,7 +63,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 1.5rem 1.75rem;
+  // padding: 1.5rem 1.75rem;
+  padding: 1rem;
   gap: 1rem;
 }
 
@@ -94,6 +101,7 @@
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -113,6 +121,7 @@
   display: flex;
   gap: 0.5rem;
   flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 /* RESPONSIVE */
@@ -135,13 +144,24 @@
 
   .Description {
     -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 
   .Footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+    // flex-direction: /;
+    // align-items: flex-start;
+    // gap: 0.75rem;
+    background-color: black;
+
   }
+}
+
+.footer {
+  // background-color: blanchedalmond;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  padding: 1rem;
 }
 
 @media (max-width: 480px) {

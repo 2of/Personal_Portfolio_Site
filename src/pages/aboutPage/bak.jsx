@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { ScrollableVerticalView, Section } from "../../ui/scroll/VerticalScrollWithStickyHeaders";
 import { StandardHeader } from "../../ui/misc/Headers";
-import s from "./aboutPage.module.scss";
+import s from "./aboutPage.Desktop.module.scss";
 import { useContent } from "../../contexts/ContentContext";
 import { Loader } from "../../ui/misc/Loader";
 import ExpandableCareerTile from "../../ui/cards/ExpandOnHoverCardCareerTile";

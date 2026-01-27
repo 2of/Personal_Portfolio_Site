@@ -8,6 +8,7 @@ export const BaseButton = ({
   disabled,
   tooltip,
   onClick,
+  darkOverride,
   external
 }) => {
   const externalIcon = external ? getIcon("external") : null;

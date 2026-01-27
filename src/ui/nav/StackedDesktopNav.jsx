@@ -17,6 +17,7 @@ import { useAppState } from "../../contexts/StateContext";
 import { navigateTo } from "../../tools/navigator";
 import { useNavigateTo } from "../../hooks/useNavigate";
 import { usePageTransition } from "../../contexts/PageTransition";
+import { useNavStack } from "../../contexts/NavigationButtonsStack";
 
 const COLLAPSE_ANIMATION_DURATION = 350;
 
@@ -28,6 +29,7 @@ export const StackedDesktopNav = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [showCollapsedIcons, setShowCollapsedIcons] = useState(false);
     const { showModal } = useModal();
+      const { ToggleMobileNav, MobileNavIsOpen,navstack,allComponents, addComponent, hasCustomComponents } = useNavStack();
     
     const navigateTo = useNavigateTo();
       const { getFlag } = useAppState();
@@ -79,7 +81,8 @@ export const StackedDesktopNav = () => {
         <nav className={`${s.NavContainer} ${isCollapsed ? s.collapsed : ''}`}>
             {/* Toggle Button */}
             <ModernButton
-                icon={isCollapsed ? getIcon("menu") : getIcon("left")}
+            // label={ !isCollapsed ? "collapse" : "" }
+                icon={isCollapsed ? getIcon("menu") : getIcon("collapse")}
                 variant="dev_simple"
                 callback={handleToggle}
                 tooltip={isCollapsed ? "Expand" : "Collapse"}
@@ -116,7 +119,7 @@ export const StackedDesktopNav = () => {
     <Logo />
 
                 </div>
-            
+
                 <div className={s.Divider} />
                 {/* <span className={s.textChunk}>
                     this is my personal portfolio site!, feel free to have a peep around....
@@ -160,7 +163,7 @@ export const StackedDesktopNav = () => {
                     callback={toggleDarkMode}
                 /> */}
 
-                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="natural_nav" darkstr=".dark‼️" lightstr=".light‼️"/>
+                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="natural_nav" darkstr=".dark" lightstr=".light"/>
 
                 <ModernButton
                     label=".info"
@@ -183,7 +186,27 @@ export const StackedDesktopNav = () => {
                     })}
                 />
 
-          
+
+{/* {hasCustomComponents && <h3>test</h3>} */}
+                       {hasCustomComponents && (
+  <div className={s.CustomComponentContainer}>
+  <div className={s.Divider} />
+    <h4>Page Controls</h4>
+    
+    {/* <h3>Custom Components Found:</h3> */}
+    {allComponents.map((C, i) => (
+      <div key={i} className="wrapper">
+        {/* Render the actual component saved in state */}
+        {C} 
+        
+        {/* Debug button */}
+        {/* <button onClick={() => console.log("Component Data:", C)}>
+          Log Component {i}
+        </button> */}
+      </div>
+    ))}
+  </div>
+)}
             {getFlag("dev") &&
             <>
                         <div className={s.Divider} />

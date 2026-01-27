@@ -17,7 +17,7 @@ import { StandardHeader } from "../ui/misc/Headers";
 import { PROJCARD_Large } from "../ui/cards/CatalogueCards/PROJ_LargeCard";
 import { PROJCARD_Regular } from "../ui/cards/CatalogueCards/PROJ_RegularCard";
 import { Card } from "../ui/cards/Card";
-import { DrawText, TextToSvgComponent_Projects, TextWPath_HOWDY } from "../ui/misc/TextPath";
+import { DrawText, SVGText, TextToSvgComponent_Projects, TextWPath_HOWDY } from "../ui/misc/TextPath";
 import { useScreenSize } from "../contexts/ScreenSizeContext";
 import { ModernButton } from "../ui/standardControls/button/Button";
 import getIcon from "../tools/iconRef";
@@ -26,7 +26,9 @@ import Divider from "../ui/misc/Divider";
 import { getLink } from "../helpers/GetLink";
 import { useNavigateTo } from "../hooks/useNavigate";
 import { AsciiArt } from "../ui/misc/TextAsciiScroll";
-import asciiArtWindow from "../../public/misc/asciiwindow";
+import asciiArtWindow from "../../public/content/misc/asciiwindow";
+import PegboardBackground from "../ui/bg/PegBoard";
+import { DropDown } from "../ui/standardControls/DropDown";
 
 export const WorkPage = () => {
 
@@ -68,14 +70,29 @@ export const WorkPage = () => {
   return (
     <div className={styles.WorkPage}>
 
-      <div className={styles.bgContainer}>
+
+      <div className={styles.fixedcontrolpanel}>
+          <DropDown
+                              options={["View As List", "View As tinder Stack"]}
+                              // value={viewtype}
+                              // onChange={setViewType}
+                              placeholder="Select layout"
+                              // darkOverride
+                          />
+      </div>
+
+      <div className={` ${styles.bgContainer} bg-grid-blueprint `}>
+
+        <div className={styles.bgOverlay} />
+
+        {/* <PegboardBackground/> */}
         {/* <AsciiArt art={asciiArtWindow}  direction="top-down" maxOpacity={0.4}/> */}
       </div>
 
 
 
 
-      <ScrollableVerticalView staggerStart trackScrollPercent>
+      <ScrollableVerticalView  >
         {/* Intro Header */}
 
 
@@ -84,8 +101,13 @@ export const WorkPage = () => {
           <Section
             key="intro"
             sticky
-            Header={MainHeader_desktop}
-          ></Section>
+          // Header={MainHeader_desktop}
+          >
+
+            <MainHeader_desktop  screenSize={screenSize}/>
+
+
+          </Section>
         )}
 
         {screenSize === "sm" && (
@@ -98,13 +120,19 @@ export const WorkPage = () => {
 
 
             <div className={styles.introContent_m}>
-              <DrawText stagger={7}>
-                <TextToSvgComponent_Projects width={250} />
+
+
+              <DrawText stagger={7} strokeWidth={1} stroke="border" duration={12}>
+                {/* <TextToSvgComponent_Projects width={250} /> */}
+                <SVGText text="isoHello"  width={300} height={180} />
               </DrawText>
-              <p>I've made a bunch of things</p>
-              <p>I guess</p>
 
 
+
+              <p>I've made a few things</p>
+              <p>Many of these are a bit rough, they're mostly excuses to learn new things</p>
+
+{/* 
               <ModernButton
                 label={"Chess Related Things"}
                 icon={getIcon("chess")}
@@ -123,7 +151,7 @@ export const WorkPage = () => {
                 variant="dev"
                 callback={() => navigateTo("github")}
               />
-
+ */}
 
 
 
@@ -135,7 +163,7 @@ export const WorkPage = () => {
 
 
 
-            <Divider />
+            {/* <Divider /> */}
             {/* <p>I've made a bunch of things</p> */}
             {/* <p>Each project is categorized by sector and technical complexity.</p> */}
             {/* </div> */}
@@ -145,7 +173,6 @@ export const WorkPage = () => {
         )}
 
 
-        {/* Loop through sections */}
         {Object.entries(projData).map(([sectionKey, sectionData], sectionIndex) => (
           <Section
             key={sectionKey}
@@ -184,17 +211,41 @@ export const WorkPage = () => {
   );
 };
 
-const MainHeader_desktop = () => {
+const MainHeader_desktop = ({screenSize}) => {
 
   return (
     <div className={styles.introContent_d}>
-      <DrawText stagger={7}>
-        <TextToSvgComponent_Projects width={250} />
+
+      {screenSize === "lg" && 
+          <DrawText stagger={7} strokeWidth={0.5}  stroke="border" duration={12}>
+        {/* <TextToSvgComponent_Projects width={250} /> */}
+        <SVGText text="isoHello" width={800} height={400} />
       </DrawText>
+      
+      }
+
+        {screenSize === "md" && 
+ <DrawText stagger={7} strokeWidth={0.5} duration={12} stroke="border">
+  <SVGText
+    text="isoHello"
+    width={500}
+    height={400}
+    // fill="#f20707"
+    // colour="#000"
+  />
+</DrawText>
+      
+      }
+  
 
 
 
       <p>I've made a bunch of things</p>
       <p>This page is a bit of a mishmash and isn't cohesive.</p>
+
+     
+      
+
+
     </div>)
 }

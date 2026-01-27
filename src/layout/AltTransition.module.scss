@@ -1,123 +1,186 @@
+// === VARIABLES ===
+$bg-color: #0d0d0d; // Deep dark background
+
+$mountain-color-back: #333;
+$mountain-color-front: #555;
+$text-color: #eee;
+$transition-duration: 0.8s;
+$parallax-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
 .container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     z-index: 999999;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg, #000);
-    /* Fallback to black if var not defined */
-    color: var(--text-color, #fff);
-    /* Fallback to white */
-}
-
-.asciiContainer {
+    background-color: $bg-color;
+    color: $text-color;
     font-family: 'Courier New', Courier, monospace;
-    white-space: pre;
-    font-size: clamp(8px, 1.2vw, 14px);
-    /* Responsive font size */
-    line-height: 1.1;
-    user-select: none;
-    mix-blend-mode: difference;
-    /* Adds some flair */
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+    justify-content: flex-end; // Anchor mountains to bottom
+    pointer-events: none; // Default none
 
-.mountain {
-    color: var(--text-color);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
+    // Transition logic
+    opacity: 0;
+    transition: opacity 0.3s linear;
 
-/* Animations */
-
-@keyframes enterWipe {
-    0% {
-        clip-path: inset(0 100% 0 0);
-    }
-
-    100% {
-        clip-path: inset(0 0 0 0);
-    }
-}
-
-@keyframes exitWipe {
-    0% {
-        clip-path: inset(0 0 0 0);
+    &.active {
+        pointer-events: all;
         opacity: 1;
     }
-
-    100% {
-        clip-path: inset(0 0 0 100%);
-        opacity: 0;
-    }
 }
 
-@keyframes glitch {
-    0% {
-        transform: translate(0);
-    }
+// === LAYERS ===
 
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(-2px, -2px);
-    }
-
-    60% {
-        transform: translate(2px, 2px);
-    }
-
-    80% {
-        transform: translate(2px, -2px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
+.layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex; // For centering things if needed
+    justify-content: center;
+    align-items: center;
+    transition: transform $transition-duration $parallax-ease, opacity $transition-duration ease;
 }
 
-@keyframes sunRise {
-    0% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
+// Sky Layer (Sun removed)
+.skyLayer {
+    z-index: 10;
+    align-items: flex-start;
+    padding-top: 10vh;
 
-    100% {
+    // Keep parallax movement if we add other sky items later
+    transform: translateY(20vh);
+    opacity: 0;
+
+    .covering &,
+    .uncovering & {
         transform: translateY(0);
         opacity: 1;
     }
+
+    .exiting & {
+        transform: translateY(-20vh);
+        opacity: 0;
+    }
 }
 
-.entering {
-    animation: enterWipe 0.5s cubic-bezier(0.8, 0, 0.1, 1) forwards;
+// Cloud Layer
+.cloudLayer {
+    z-index: 20;
+    // Clouds will have their own internal floating animation
+    opacity: 0;
+    transition-delay: 0.2s;
+
+    .covering &,
+    .uncovering & {
+        opacity: 1;
+    }
 }
 
-.exiting {
-    animation: exitWipe 0.6s cubic-bezier(0.8, 0, 0.1, 1) forwards;
+// Mountains Layer (Back)
+.mountainBackLayer {
+    z-index: 30;
+    align-items: flex-end;
+    color: $mountain-color-back;
+    transform: translateY(100%);
+
+    .covering &,
+    .uncovering & {
+        transform: translateY(0);
+        transition-delay: 0.1s;
+    }
+
+    .exiting & {
+        transform: translateY(100%);
+    }
 }
 
-.sun {
-    color: #ffcc00;
-    /* ASCII sun color */
-    animation: sunRise 1s ease-out forwards;
+// Mountains Layer (Front)
+.mountainFrontLayer {
+    z-index: 40;
+    align-items: flex-end;
+    color: $mountain-color-front;
+    transform: translateY(100%);
+
+    .covering &,
+    .uncovering & {
+        transform: translateY(0);
+        transition-delay: 0.2s;
+    }
+
+    .exiting & {
+        transform: translateY(100%);
+    }
 }
 
-/* Specific state styles if needed, mapping to standard states */
-.state_covering {
-    // When strictly 'covering' (middle of transition)
-    clip-path: inset(0 0 0 0);
+// Bird Layer
+.birdLayer {
+    z-index: 25; // Behind back mountains, front of clouds? Or front of everything?
+    // Let's put them high up
+    pointer-events: none;
 }
 
-.state_uncovering {
-    // When strictly 'uncovering' (end of transition)
+
+// === ELEMENTS ===
+
+
+.cloud {
+    position: absolute;
+    white-space: pre;
+    color: rgba(255, 255, 255, 0.7);
+    animation: drift 20s linear infinite;
+    user-select: none;
+}
+
+.mountainASCII {
+    white-space: pre;
+    font-size: 10px; // Smaller font for detail
+    line-height: 8px;
+    overflow: hidden;
+    width: 120%; // Wider to cover edges
+    text-align: center;
+    user-select: none;
+}
+
+.bird {
+    position: absolute;
+    color: $text-color;
+    font-size: 14px;
+    font-weight: bold;
+    animation: flyAcross 8s linear infinite;
+    opacity: 0.8;
+}
+
+// === ANIMATIONS ===
+
+@keyframes drift {
+    from {
+        transform: translateX(-10vw);
+    }
+
+    to {
+        transform: translateX(110vw);
+    }
+}
+
+@keyframes flyAcross {
+    from {
+        transform: translateX(-10vw) translateY(0);
+    }
+
+    25% {
+        transform: translateX(20vw) translateY(-2vh);
+    }
+
+    50% {
+        transform: translateX(50vw) translateY(0);
+    }
+
+    75% {
+        transform: translateX(80vw) translateY(2vh);
+    }
+
+    to {
+        transform: translateX(110vw) translateY(0);
+    }
 }

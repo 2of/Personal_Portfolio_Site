@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useScreenSize } from "./ScreenSizeContext";
 
 const TransitionContext = createContext(null);
 
@@ -11,8 +12,18 @@ export const TransitionProvider = ({ children }) => {
   const navigate = useNavigate();
   // Prevent double-triggering
   const isRunningRef = useRef(false);
+  const screenSize = useScreenSize();
+
 
   const startTransition = (path = null) => {
+
+    if (screenSize === "sm") {
+      // Direct navigation on small screens
+      navigate(path);
+      return;
+    }
+
+
     if (isRunningRef.current) return;
     console.log("PATH", path)
 
@@ -33,7 +44,7 @@ export const TransitionProvider = ({ children }) => {
       setTransitionState("uncovering");
     }, 400);
 
-    // 4️⃣ Reset
+   
     setTimeout(() => {
       setTransitionState("idle");
       setTargetPath(null);

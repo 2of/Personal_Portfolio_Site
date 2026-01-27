@@ -17,6 +17,8 @@ import { FancyStateTransition } from "../ui/misc/DarkModeTransition.jsx/FancySta
 import { TransitionCover } from "./Transition";
 import { usePageTransition } from "../contexts/PageTransition";
 import AltTransition from "./AltTransition";
+import CoolTransition from "./CoolTransition";
+import GlassPushOverlay from "../ui/containers/GlassContainer";
 
 const Desktop = React.memo(({ location, state }) => {
     return (
@@ -30,8 +32,9 @@ const Desktop = React.memo(({ location, state }) => {
                 <div className={`${s.DesktopFrame} StandardBoxL2`}>
 
                     {/* Stable Transition: Persists across routes */}
-                    {/* <TransitionCover state={state} /> */}
-                    <AltTransition state={state}/>
+                    <TransitionCover state={state} />
+                    {/* <CoolTransition state={state} /> */}
+                    {/* <AltTransition state={state}/> */}
 
                     {/* Keyed Scroller: Re-renders/Scrolls on route change */}
                     <div key={location.pathname} className={`${s.DesktopScrollArea} StandardBoxPad`}>
@@ -59,12 +62,12 @@ const Mobile = React.memo(({state}) => {
 
             <MobileNavMenu />
 
-
             <div className={scrollfixed ? s.MobileContent_fixed : s.MobileContent_free} >
-               <TransitionCover state={state} />
+               {/* <TransitionCover state={state} /> */}
                 <Outlet />
 
             </div>
+
         </div>
     );
 });

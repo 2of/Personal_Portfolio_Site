@@ -8,6 +8,7 @@ export const NaturalButton = ({
   onClick,
   variant = "natural",
   className = "",
+  darkOverride = false,
   tooltip,
   active,
   ...props
@@ -22,10 +23,11 @@ export const NaturalButton = ({
   if (variant === "natural_nav") variantClass = styles.natural_nav;
   if (variant === "natural_squared") variantClass = styles.natural_squared;
   if (variant === "natural_wipe") variantClass = styles.natural_wipe;
+  if (variant === "natural_large_touch_nav_menu") variantClass = styles.natural_large_touch_nav_menu;
 
   return (
     <button
-      className={`${styles.NatButtonContainer} ${variantClass} ${className} ${active && styles.active}`}
+      className={`${styles.NatButtonContainer} ${variantClass} ${className} ${darkOverride && styles.darkOverride} ${active && styles.active}`}
       onClick={onClick}
       title={tooltip}
       {...props}

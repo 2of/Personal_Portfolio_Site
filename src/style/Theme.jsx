@@ -14,7 +14,7 @@ export const baseTheme = {
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
-  "--mobileTopNavSafeArea": "82px",
+  "--mobileTopNavSafeArea": "4rem",
   "--maxWidth": "1480px",
 
   "--border-radius": "2px",

@@ -1,16 +1,19 @@
+// ✨ HERO CARD - Newspaper/Editorial Style
 .heroCard {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 500px;
+  min-height: 500px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
   position: relative;
-  background: var(--bg-l1);
-  contain: layout style paint;
-  will-change: transform;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
 
   &.imagesLoading {
+
     .image,
     .imageCover {
       opacity: 0;
@@ -18,28 +21,17 @@
   }
 
   &.imagesReady {
+
     .image,
     .imageCover {
       opacity: 1;
-      transition: opacity 0.3s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.4s ease;
     }
   }
 
-  &:hover {
-    .Title {
-      color: var(--accent-color);
-    }
-
-    .imageCover {
-      opacity: 0;
-    }
-
-    .image {
-      transform: scale(1.08);
-    }
-  }
 }
 
+// ✨ BADGE - Clean Editorial Badge
 .badge {
   position: absolute;
   top: 1rem;
@@ -47,144 +39,124 @@
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--accent-color);
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg);
   border: 1px solid var(--border-color);
-  // border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  // opacity: 0.6;
-  color: var(--accent-color);
-  // backdrop-filter: blur(8px);
-  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
+// ✨ IMAGE CONTAINER - Clean, No Overlay
 .ImgContainer {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 300px;
   overflow: hidden;
-  z-index: 0;
   background: var(--bg-l1);
-  contain: layout style paint;
+  flex-shrink: 0;
 
   .image {
-    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    transition: opacity 0.4s ease;
   }
 
   .imageCover {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) brightness(0.8);
+    filter: grayscale(100%) brightness(0.9);
     opacity: 0;
     z-index: 1;
-    will-change: opacity;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    transition: opacity 0.4s ease;
   }
 }
 
+// ✨ CONTENT WRAPPER - Clean Layout Below Image
 .ContentWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2rem 2.5rem;
+  padding: 2rem;
   color: var(--text-color);
-  gap: 1.5rem;
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  background-color: var(--bg-transparent);
-  backdrop-filter: blur(8px);
-  min-height: 100%;
-  contain: layout style;
-  will-change: transform;
-  transition: all 0.2s ease;
+  gap: 1.25rem;
+  background: var(--surface);
+  flex: 1;
 
-  &.fadeback { 
-  //  filter: blur(8px);
-  //  transform: scale(0.98);
-  //  opacity: 0.9;
+  &.fadeback {
+    opacity: 0.98;
   }
 }
 
-/* HEADER */
+// ✨ HEADER - Editorial Style
 .Header {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(var(--text-rgb), 0.1);
+  border-bottom: 2px solid var(--border-color);
 }
 
+// ✨ TITLE - Newspaper Headline
 .Title {
-  font-size: 1.75rem;
-  font-weight: 00;
+  font-size: 1.875rem;
+  font-weight: 700;
   color: var(--text-color);
-  transition: all 0.3s ease;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  transition: color 0.3s ease;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  font-family: var(--font-serif, Georgia, serif);
 }
 
+// ✨ DATE - Editorial Metadata
 .date {
-  font-size: 0.875rem;
-  color: rgba(var(--text-rgb), 0.5);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
 }
 
-/* DESCRIPTION */
+// ✨ DESCRIPTION - Body Copy
 .Description {
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 400;
   line-height: 1.7;
-  color: rgba(var(--text-rgb), 0.8);
-  max-width: 100%;
+  color: var(--text-primary);
+  opacity: 0.9;
 }
 
+// ✨ LINK GROUP - Below Content
 .linkGroup {
   display: flex;
   gap: 0.75rem;
-  flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  flex-wrap: wrap;
+  transition: all 0.4s ease;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
 
-  z-index:5;
-    align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-  height: 50%;
+  &.hideButtons {
+    opacity: 0.7;
+  }
+
+  &.showButtons {
+    opacity: 1;
+  }
+}
+
+// ✨ TAG CONTAINER
+.fff.tagContainer {
   display: flex;
-  padding: 1.5rem 0;
-
-  background: linear-gradient(rgba(0,0,0,0), var(--bg));
-  // backdrop-filter: blur(2px);
-}
-
-.hideButtons {
-
-
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
-
-.showButtons {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-
-
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }

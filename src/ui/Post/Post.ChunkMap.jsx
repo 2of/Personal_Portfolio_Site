@@ -1,7 +1,8 @@
 import React from "react";
-import { Post_Chunk_Highlight, Post_Chunk_Paragraph } from "./Chunks/Post.Chunks.Text";
+import { Post_Chunk_Code, Post_Chunk_Highlight, Post_Chunk_Paragraph, Post_Chunk_Title } from "./Chunks/Post.Chunks.Text";
 import { Post_Chunk_Image } from "./Chunks/Post.Chunks.Image";
 import { useContent } from "../../contexts/ContentContext";
+import { Post_Chunk_Data } from "./Chunks/Post.Chunks.Data";
 
 /**
  * Chunk components TEMPORARY
@@ -51,6 +52,9 @@ const Mapping = {
   list: ListChunk,
   highlight: Post_Chunk_Highlight,
   image: imageMap,
+  title: Post_Chunk_Title,
+  code: Post_Chunk_Code,
+  data: Post_Chunk_Data,
 };
 
 

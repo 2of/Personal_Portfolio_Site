@@ -4,7 +4,7 @@ import styles from "./styles/StandardTab.module.scss";
 export const StandardTab = ({
   tabs = {},
   tabPosition = "bottom",
-  variant = "mobile", // default variant
+  variant = "outline", // default variant
 }) => {
   const tabKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabKeys[0]);

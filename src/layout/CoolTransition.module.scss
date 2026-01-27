@@ -1,0 +1,192 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    background: var(--text-color);
+
+    // Different positions for variety
+    &:nth-child(1) {
+        top: 5%;
+        left: 10%;
+    }
+
+    &:nth-child(2) {
+        top: 25%;
+        right: 15%;
+    }
+
+    &:nth-child(3) {
+        top: 45%;
+        left: 20%;
+    }
+
+    &:nth-child(4) {
+        top: 15%;
+        left: 60%;
+    }
+
+    &:nth-child(5) {
+        top: 60%;
+        right: 25%;
+    }
+
+    &:nth-child(6) {
+        top: 75%;
+        left: 40%;
+    }
+
+    &:nth-child(7) {
+        top: 35%;
+        right: 5%;
+    }
+}
+
+// Rectangle shapes
+.rect {
+    width: 200px;
+    height: 150px;
+
+    &.large {
+        width: 300px;
+        height: 200px;
+    }
+
+    &.medium {
+        width: 200px;
+        height: 150px;
+    }
+
+    &.small {
+        width: 150px;
+        height: 100px;
+    }
+}
+
+// Triangle shapes
+.triangle {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 150px solid var(--text-color);
+
+    &.large {
+        border-left-width: 150px;
+        border-right-width: 150px;
+        border-bottom-width: 200px;
+    }
+
+    &.medium {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-bottom-width: 150px;
+    }
+
+    &.small {
+        border-left-width: 75px;
+        border-right-width: 75px;
+        border-bottom-width: 100px;
+    }
+}
+
+// Circle shapes
+.circle {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+
+    &.large {
+        width: 200px;
+        height: 200px;
+    }
+
+    &.medium {
+        width: 150px;
+        height: 150px;
+    }
+
+    &.small {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+// Animation directions
+.left {
+    transform: translateX(-200%);
+}
+
+.right {
+    transform: translateX(200%);
+}
+
+// Covering animation
+.covering {
+    &.left {
+        animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    &.right {
+        animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+}
+
+// Uncovering animation
+.uncovering {
+    &.left {
+        animation: slideOutLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    &.right {
+        animation: slideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-200%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(200%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-200%);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(200%);
+    }
+}

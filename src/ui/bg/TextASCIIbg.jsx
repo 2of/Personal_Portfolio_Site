@@ -1,5 +1,5 @@
 import React from "react";
-import TextSrc from "../../../public/misc/asciiwindow.js"; // default export
+// import TextSrc from "../../../public/misc/asciiwindow.js"; // default export
 import s from "./styles/ascii.module.scss";
 
 /**

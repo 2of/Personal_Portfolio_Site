@@ -1,0 +1,42 @@
+/* PostChunkData.module.scss */
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #1f2937; // slate-800
+}
+
+.block {
+  margin-bottom: 3rem;
+    // border-bottom: 1px dashed var(--border-color);
+  //   padding: 1.25rem;
+// border: 1px solid red;
+  border-radius: 8px;
+//   background: #f9fafb; // gray-50
+
+}
+
+.datacontent { 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.overallLabel {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #374151; // gray-700
+}
+
+/* -------- Linear Bars -------- */
+
+.linearBarRow {
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+

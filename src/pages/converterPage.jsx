@@ -14,12 +14,12 @@ export const ConvertPage = () => {
   const handleConvert = () => {
     console.log("TEST")
     if (!inputText.trim()) {
-      setOutputText("// No SVG component provided");
+      setOutputText("// No SVG input component provided");
       return;
     }
 
     if (!entryName.trim()) {
-      setOutputText("// Please provide a name for the textMap entry");
+      setOutputText("// Please input a name ");
       return;
     }
 
@@ -37,33 +37,39 @@ export const ConvertPage = () => {
   return (
     <StandardPage>
 
-        <h3>Quick and Dirty converter for :
+      <h3>Quick and Dirty converter for :
 
 
-exported to jsx
-            
-        </h3>
+        exported to jsx
 
-How to use
-        <ul>
-            <li>  go to  https://text-to-svg.com/cutive-mono-font-to-svg</li>
-            <li>Make the svg</li>
-            <li>export as jsx</li>
-            <li> copy paste the component</li>
-        </ul>
+      </h3>
 
-<h4> then it can look like : </h4>
+      How to use
+      <ul>
+        <li>  go to  https://text-to-svg.com/cutive-mono-font-to-svg</li>
+        <li>Make the svg</li>
+        <li>export as jsx</li>
+        <li> copy paste the component</li>
+      </ul>
 
-<DrawText duration={122}>
-    <SVGText text={"Unsure_hello"}/>
-</DrawText>
+      <h4> then it can look like : </h4>
 
-        <h4> then we can use it in the library </h4>
+      <DrawText duration={122}>
+        <SVGText text={"Sporty_Welcome"} />
+      </DrawText>
 
-                <h4> This tool has zero use to anyone really except me doing this really specific task with like 100 bits of text for a lib ... 
+      <h4> then we can use it in the library </h4>
 
-                    Hence it's hidden
-                </h4>
+      <h4> This tool has zero use to anyone really except me doing this really specific task with like 100 bits of text for a lib ...
+
+        Hence it's hidden
+      </h4>
+      
+
+      <ul>
+        <li>I like tehse fonts </li>
+                <li> nabia = iso 3d project font </li>
+      </ul>
 
       <TextInput
         title="Entry name"

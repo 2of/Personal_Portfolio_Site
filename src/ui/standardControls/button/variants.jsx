@@ -50,6 +50,9 @@ natural_nav: NaturalButton,
 natural_squared: NaturalButton,
 natural_wipe: NaturalButton,
 natural_large_touch: NaturalButton,
+natural_large_touch_nav_menu: NaturalButton,
+
+
 genericstore: StoreButton,
 mobileNav: MobileButton,
 mobileNavWithLabel: MobileButton, 

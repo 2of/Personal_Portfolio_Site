@@ -17,38 +17,41 @@ const MobileNavMenu = React.memo(({ direction }) => {
   const gotoURL = useNavigateTo();
   const { ExitMobileNav, MobileNavIsOpen } = useNavStack();
   
-  // Refs to track state without causing re-renders
+
   const isNavigatingRef = useRef(false);
   const previousLocationRef = useRef(location.pathname);
   const gotoURLRef = useRef(gotoURL);
   const exitNavRef = useRef(ExitMobileNav);
   const animationTimeoutRef = useRef(null);
+  const Footer = { 
+    titlecc : "Uhh, copyright 2025-26 .. Me?",
+    note: "Thanks for visiting..."
+  }
 
-  // Keep refs updated
   useEffect(() => {
     gotoURLRef.current = gotoURL;
     exitNavRef.current = ExitMobileNav;
   }, [gotoURL, ExitMobileNav]);
 
-  // Initialize previous location
+
   useEffect(() => {
     previousLocationRef.current = location.pathname;
   }, []);
 
-  // Handle menu visibility based on context state
+
   useEffect(() => {
     if (MobileNavIsOpen) {
-      // Menu should be open
+
       setIsVisible(true);
       isNavigatingRef.current = false;
       
-      // Clear any pending animations
+   
       if (animationTimeoutRef.current) {
         clearTimeout(animationTimeoutRef.current);
         animationTimeoutRef.current = null;
       }
       
-      // Trigger animation in
+
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setIsAnimatingIn(true);
@@ -94,7 +97,7 @@ const MobileNavMenu = React.memo(({ direction }) => {
         setIsVisible(false);
         isNavigatingRef.current = false;
         animationTimeoutRef.current = null;
-      }, 350); // Slightly longer than transition to ensure it completes
+      }, 350); // Slight
       
       return () => {
         clearTimeout(startAnimationTimer);
@@ -104,28 +107,28 @@ const MobileNavMenu = React.memo(({ direction }) => {
         }
       };
     } else if (currentPath !== previousPath) {
-      // Location changed but we didn't initiate it - just update ref
+      // Location changed but we didn't initi
       previousLocationRef.current = currentPath;
     }
   }, [location.pathname]);
 
-  // Memoized click handler
+
   const handleClick = useCallback((route) => {
-    // Mark that we're navigating
+    // Mark that im navigating
     isNavigatingRef.current = true;
-    
-    // Navigate immediately - location change will trigger exit animation
+
     gotoURLRef.current(route.path);
   }, []);
 
-  // Memoize route buttons to prevent re-renders
+
   const routeButtons = useMemo(() => {
     return routes.filter(x => x.expose_mobile_nav).map((route, i) => (
       <StandardGrid.Item key={route.path || i}>
         <ModernButton
           label={route.title}
           icon={getIcon(route.icon)}
-          variant="dev_chungus"
+          variant="natural_large_touch_nav_menu"
+            active={location.pathname === route.path}
           callback={() => handleClick(route)}
         />
       </StandardGrid.Item>
@@ -148,20 +151,28 @@ const MobileNavMenu = React.memo(({ direction }) => {
       </div>
 
       <div className={s.footer}>
+
+        
         <div className={s.socialLinks}>
           <ModernButton
             icon={getIcon("github")}
-            variant="dev"
+            variant="natural_large_touch_nav_menu"
             callback={() => {}}
           />
           <ModernButton
             icon={getIcon("linkedin")}
-            variant="dev"
+            variant="natural_large_touch_nav_menu"
+            callback={() => {}}
+          />
+            <ModernButton
+            icon={getIcon("about")}
+            variant="natural_large_touch_nav_menu"
             callback={() => {}}
           />
         </div>
+        {/* <div className={s.divider} /> */}
         
-        <div className={s.divider} />
+        
         
         <div className={s.themeToggle}>
           {/* <ModernButton
@@ -171,8 +182,13 @@ const MobileNavMenu = React.memo(({ direction }) => {
             callback={() => {}}
           /> */}
 
-          <DarkModeAnimatedWithCoolDownToastButton  buttonvariantstr="dev_chungus" darkstr=".dark" lightstr=".light" />
+          <DarkModeAnimatedWithCoolDownToastButton  buttonvariantstr="natural_large_touch_nav_menu" darkstr=".dark" lightstr=".light" />
         </div>
+
+        <div className={s.footer_text}>
+          <h4>{Footer.titlecc}</h4>        <h4>{Footer.note}</h4>
+        </div>
+
       </div>
     </div>
   );

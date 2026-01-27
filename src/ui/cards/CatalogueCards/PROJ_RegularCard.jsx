@@ -17,62 +17,73 @@ export const PROJCARD_Regular = ({
   inprogress
 }) => {
   const gotoURL = useNavigateTo();
+  const tagsLength = tags?.length ?? 0;
+  const truncatedTags =
+    tagsLength > 6 ? tags.slice(0, 6) : tags;
+
+  const totalRemaining =
+    tagsLength > 6 ? tagsLength - 6 : 0;
 
   return (
-   <div className={`${styles.cardRegular} StandardBoxL2`}>
+    <div className={`${styles.cardRegular} StandardBoxL2`}>
 
-    {/* <h2>test, image {image}</h2> */}
- 
-       {image && (
- 
-         <div className={styles.ImgContainer}>
- 
-           {/* <BlackAndWhiteHoverReveal img={image || defaultImg} filterType="grayscale"/> */}
-           <img
-             src={image}
-             alt={title}
-             className={styles.image}
-           />
- 
- 
-           <img
-             src={image}
-             alt={title}
-             className={styles.imageCover}
-           />
-         </div>
- 
- 
-       )}
+      {/* <h2>test, image {image}</h2> */}
 
-  <div className={styles.ContentWrapper}>
-    <div className={styles.Header}>
-      <h4 className={styles.Title}>{title}</h4>
-      <span className={styles.date}>{date}</span>
-    </div>
+      {image && (
 
-    <p className={styles.Description}>{description}</p>
+        <div className={styles.ImgContainer}>
 
-    <div className={styles.Footer}>
-      <div className="tagContainer">
-        {tags?.map((tag, i) => (
-          <span key={i} className="tag">{tag}</span>
-        ))}
-      </div>
-
-      <div className={styles.linkGroup}>
-        {links?.map((l, i) => (
-          <ModernButton
-            key={i}
-            variant="dev_block"
-            icon={getIcon("right")}
-            label={l.label}
-            callback={() => gotoURL(l.to)}
+          {/* <BlackAndWhiteHoverReveal img={image || defaultImg} filterType="grayscale"/> */}
+          <img
+            src={image}
+            alt={title}
+            className={styles.image}
           />
-        ))}
+
+
+          <img
+            src={image}
+            alt={title}
+            className={styles.imageCover}
+          />
+        </div>
+
+
+      )}
+
+      <div className={styles.ContentWrapper}>
+        <div className={styles.Header}>
+          <h4 className={styles.Title}>{title}</h4>
+          <span className={styles.date}>{date}</span>
+          <p className={styles.Description}>{description}</p>
+        </div>
+      </div>
+
+
+      <div className={styles.footer}>
+        <div className="tagContainer">
+          {truncatedTags?.map((tag, i) => (
+            <span key={i} className="tag">{tag}</span>
+          ))}
+
+          {totalRemaining > 0 &&
+            <span className="tag"> + {totalRemaining} more </span>
+          }
+        </div>
+
+        <div className={styles.linkGroup}>
+          {links?.map((l, i) => (
+            <ModernButton
+              key={i}
+              variant="dev_block"
+              icon={getIcon("right")}
+              label={l.label}
+              callback={() => gotoURL(l.to)}
+            />
+          ))}
+
+        </div>
       </div>
     </div>
-  </div>
-</div>
   );
 };

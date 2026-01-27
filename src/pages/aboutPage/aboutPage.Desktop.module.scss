@@ -1,0 +1,310 @@
+.bgContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  // background-color: red;
+}
+
+.splitSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  // align-items: flex-end;
+}
+
+@media (max-width: 1200px) {
+  .splitSection {
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+.splitColumn {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ----------------------------------------
+   Editorial / Newspaper Layout
+----------------------------------------- */
+.editorialLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; // Give text slightly more space
+  gap: 4rem;
+  align-items: start;
+  position: relative;
+
+  // Vertical Divider Line
+  &::after {
+    content: '';
+    position: absolute;
+    left: calc(45% - 1px); // Position visually between columns
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.1) 10%,
+        rgba(0, 0, 0, 0.1) 90%,
+        rgba(0, 0, 0, 0) 100%);
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.editorialSidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.editorialContent {
+  padding-top: 1rem;
+}
+
+// .article {
+//   margin-bottom: 2rem;
+// }
+
+.articleHeader {
+  font-family: inherit; // Use system or specific serif if available
+  // font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  color: var(--text-color);
+}
+
+// .articleBody {
+//   // The "Modern Artsy" Typography
+//   // font-family: Georgia, 'Times New Roman', Times, serif; // Fallback to serif for editorial feel
+//   // font-size: 1.1rem;
+//   line-height: 1.8;
+//   color: rgba(0, 0, 0, 0.85);
+//   text-align: justify; // Newspaper style
+//   hyphens: auto; // Break words properly
+
+//   p {
+//     margin-bottom: 1.5rem;
+//   }
+// }
+
+// Drop Cap Logic
+.dropCapArticle {
+  .articleBody>p:first-of-type::first-letter {
+    float: left;
+    // font-size: 4.5rem;
+    line-height: 0.8;
+    font-weight: 700;
+    margin-right: 0.8rem;
+    margin-top: 0.2rem;
+    color: var(--accent-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; // Contrast font for drop cap
+  }
+}
+
+.editorialSeparator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  color: var(--accent-color);
+  // font-size: 1.5rem;
+  opacity: 0.6;
+
+  &::before,
+  &::after {
+    content: '';
+    height: 1px;
+    width: 50px;
+    background: currentColor;
+    margin: 0 1rem;
+  }
+}
+
+
+.BigHeader,
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroBg,
+.bgcontainer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ----------------------------------------
+   Intro text & narrative blocks
+----------------------------------------- */
+
+.preambleText,
+.transitionText {
+  padding: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  // font-size: clamp(0.9rem, 1.15vw, 0.975rem);
+  letter-spacing: 0.005em;
+  max-width: 68ch;
+}
+
+.preambleText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ----------------------------------------
+   Sections
+----------------------------------------- */
+
+.careerSection,
+.qualificationsSection,
+.skillsSection {
+  padding-top: 0;
+}
+
+.sectionDivider {
+  margin: clamp(2rem, 4vw, 3rem) 0;
+}
+
+/* ----------------------------------------
+   Section headers (title + controls)
+----------------------------------------- */
+
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* ----------------------------------------
+   Career grid / timeline helpers
+----------------------------------------- */
+
+.CareerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* ----------------------------------------
+   Skills
+----------------------------------------- */
+
+.skillsSection {
+  width: 100%;
+}
+
+/* ----------------------------------------
+   Utility layout
+----------------------------------------- */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.compactSection {
+  padding: 0;
+}
+
+.professionalContainer {
+  background: var(--bg);
+  border-radius: 4px;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* ----------------------------------------
+   Text rendering helpers
+----------------------------------------- */
+
+.textContainer {
+  display: inline-block;
+  word-spacing: 0.12rem;
+  letter-spacing: 0.015em;
+}
+
+.text {
+  display: inline;
+  margin-right: 0.3em;
+}
+
+.highlight {
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-right: 0.3em;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--accent-color);
+  margin-right: 0.12rem;
+}
+
+/* ----------------------------------------
+   Cards
+----------------------------------------- */
+
+.WelcomeCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// .TextChunk {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: clamp(1rem, 2vw, 1.5rem);
+//   margin: clamp(0.5rem, 1vw, 0.75rem);
+// }
+
+/* ----------------------------------------
+   Responsive helpers
+----------------------------------------- */
+
+.MobileFS {
+  height: 100%;
+}
+
+
+
+.bgOverlay {
+  background: linear-gradient(to top,
+      var(--bg) 0%,
+      var(--bg) 40%,
+      transparent 100%);
+  height: 100%;
+  width: 100%;
+}

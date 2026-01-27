@@ -11,13 +11,16 @@ import { useModal } from "../contexts/ModalContext.jsx";
 import { useScreenSize } from "../contexts/ScreenSizeContext.jsx";
 import { ModernButton } from "../ui/standardControls/button/Button.jsx";
 import { useDarkMode } from "../contexts/DarkMode.jsx";
+import { usePageTransition } from "../contexts/PageTransition.jsx";
 
 
 
 
 export const HomePage = () => {
     const navigate = useNavigate();
+        const { startTransition, transitionState } = usePageTransition();
     // const { getLink } = useGlobalContext();
+    
     // const { darkMode, toggleDarkMode } = useDarkMode();
     const {darkMode,toggleDarkMode} = useDarkMode();
     // const { modalState, showModal, hideModal, modalVisible } = useModal();
@@ -67,10 +70,8 @@ export const HomePage = () => {
 
 
             <div className={styles.ButtonContainer}>
-
-
-                <ModernButton label={".about"} variant={"code"} callback={() => navigate("/about")} />
-                <ModernButton label={".projects"} variant={"code"} callback={() => navigate("/projects")} />
+                <ModernButton label={".about"} variant={"code"} callback={() => startTransition("/about")} />
+                <ModernButton label={".projects"} variant={"code"} callback={() => startTransition("/projects")} />
 
                 <ModernButton label={".resume"} variant={"code"} external link={getLink("resume")} />
                 <ModernButton label={".linkedin"} variant={"code"} external link={getLink("linkedin")} />

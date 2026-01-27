@@ -25,8 +25,9 @@ export const StandardPage = ({ children }) => {
           gap: "1rem",
           flexDirection: "column",
           // backgroundColor: "red",
+          // padding:"1rem",
+            ...(screenSize=="sm" && {    padding: "1rem"}),
             ...(screenSize!=="sm" && {    padding: "1rem"}),
-         
         }}
       >
         {children}

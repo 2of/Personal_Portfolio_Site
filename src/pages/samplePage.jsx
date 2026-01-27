@@ -20,7 +20,7 @@ import { StandardGrid } from "../ui/grid/StandardGrid";
 import { Card } from "../ui/cards/Card";
 import { BlackAndWhiteHoverReveal } from "../ui/images/BlackAndWhiteHoverReveal";
 import { AsciiArt } from "../ui/misc/TextAsciiScroll";
-import asciiArtWindow from "../../public/misc/asciiwindow";
+import asciiArtWindow from "../../public/content/misc/asciiwindow";
 import { AboutCard } from "../ui/cards/discreteCards/aboutcard";
 import { AboutCardSmall } from "../ui/cards/AboutCard";
 import RowView from "../ui/grid/RowView";
@@ -41,6 +41,12 @@ import StandardToggle from "../ui/standardControls/Toggle";
 import { usePageTransition } from "../contexts/PageTransition";
 import { Post } from "../ui/Post/Post";
 import { VerticalScrollWithTracking } from "../ui/scroll/VerticalScrollingWithTracking";
+import HamburgerButtonWrapper from "../ui/misc/HamburgerMenuIconAnimated";
+import { StandardPage } from "../ui/scroll/StandardPage";
+import { DropDown } from "../ui/standardControls/DropDown";
+import TinderView from "../ui/containers/TinderCards";
+import { useNavStack } from "../contexts/NavigationButtonsStack";
+// import { PipesBg } from "../ui/bg/PipesBg";
 
 
 export const SamplePage = () => {
@@ -59,7 +65,7 @@ const { startTransition, transitionState } = usePageTransition();
         console.log(article);
     };
 
-
+  const { ToggleMobileNav, MobileNavIsOpen,navstack,allComponents, addComponent, hasCustomComponents } = useNavStack();
 
     const { getLink } = useLinks();
     const tabs = {
@@ -86,6 +92,87 @@ const { startTransition, transitionState } = usePageTransition();
         StartFullScreenTransition();
     }
 
+
+
+    return (
+        <StandardPage>
+
+                
+
+                    <ScrollableVerticalView staggerStart>
+            
+                      {Array.from({ length: 3 }).map((_, i) => (
+              <Section
+                      key={i}
+                      sticky={true}
+                      Header = {() => (<h1>header header</h1>)}
+                      >
+            
+            
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel dolore recusandae, cupiditate magnam quo consequuntur ratione facilis velit soluta eos. Amet iste odio, quidem ab atque ea provident ducimus voluptatibus fugit maxime hic impedit culpa molestiae fuga, dolores mollitia accusamus suscipit, in quibusdam. Ratione excepturi sapiente quisquam eos reprehenderit. Esse, soluta rerum. Hic voluptatem at, ipsum earum dicta vel repudiandae itaque repellat beatae adipisci. Voluptate architecto earum vitae, iste sequi molestiae aut, nostrum iure repellendus aspernatur eligendi provident assumenda laborum dolore! Harum explicabo impedit consequatur sint officia quam, error ea fuga debitis ex earum nostrum, eos, enim officiis? Libero quam iure suscipit obcaecati, voluptate atque ut blanditiis nisi. Magni nobis consectetur dolore alias unde sit dolorum sequi? Vero labore quidem cum repellat laborum cumque eligendi sed quis inventore distinctio, magnam quibusdam, saepe adipisci voluptatibus sit nulla beatae, hic recusandae! Corporis molestiae corrupti dicta assumenda asperiores minus sapiente neque illum ex nobis error tempora unde, soluta necessitatibus eveniet aspernatur quos quidem nostrum fuga omnis enim at. Odit quia, nihil atque qui consequuntur expedita, commodi non fuga omnis sapiente doloremque ullam voluptatibus cupiditate sequi officiis illo sint? Quas porro magni consequuntur suscipit facilis, odit eaque totam! Ea est placeat labore consequatur. Soluta.
+                        </p>
+                      </Section>
+            ))}
+            
+            
+                     
+            
+                    </ScrollableVerticalView>
+
+
+                {hasCustomComponents ? "has them" : "doesnt"}
+                <ModernButton
+                label="find em out"
+                variant="dev"
+                callback={() => console.log(allComponents, "AC's")}/>
+
+     <ModernButton
+                label="add  em out"
+                variant="dev"
+            callback={() => addComponent("test-id", <h1 key="test-key">test</h1>)} />
+     <ModernButton
+                label="add  em out"
+                variant="dev"
+            callback={() => addComponent("test-i2d", 
+                       <DropDown options={["hello","weary","luncbox"]}/>
+            )} />
+                {/* <PipesBg/> */}
+  <ModernButton
+                label="TOAST SOMETHING"
+                variant="dev"
+                callback={() => showOpenToast()} />
+
+            <ModernButton
+                label="TOAST SOMETHING amnnd confirm"
+                variant="dev"
+                callback={() => showOpenToastThatdoesntdisappear()} />
+
+
+            <ModernButton
+                label="SHOW FULL SCREEN TRANSITION"
+                variant="dev"
+                callback={() => openDarkModeThing()} />
+
+
+
+        <Divider/>
+{/* 
+        <TinderView>
+            <h1> test</h1>
+                  <h1> test</h1>
+
+                        <h1> test</h1>
+        </TinderView> */}
+        <DropDown options={["hello","weary","luncbox"]}/>
+
+
+<DrawText duration={12}>
+    <SVGText text="LONG"/>
+</DrawText>
+
+        </StandardPage>
+    )
     return (
 
         <>
@@ -107,7 +194,12 @@ const { startTransition, transitionState } = usePageTransition();
 
 
 
+<HamburgerButtonWrapper
 
+
+
+/>
+<h3>HAMBURGLAR</h3>
 
             <DarkModeAnimatedWithCoolDownToastButton />
 <SmallCareerTileWithModal/> <h2>before</h2>
@@ -146,6 +238,7 @@ HERE:
 />
 </DrawText>
 <StandardToggle type="modern"/>
+
 <ModernButton variant="natural" label="test"/>
 <br/>
 
@@ -195,7 +288,9 @@ HERE:
 
 
 
-<Post/>
+{/* <Post/> */}
+
+
 </VerticalScrollWithTracking>
  <DrawText duration={121.8} stagger={0.07}>
       <TextWPath_HOWDY width={250} />

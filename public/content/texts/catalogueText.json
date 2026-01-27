@@ -1,0 +1,61 @@
+{
+  "preamble": {
+  "sectionTitle": "Professional Profile",
+  "tags": ["IT", "Support", "Developer", "Data", "AI", "Machine Learning"],
+  "content": [
+    {
+      "content": "Odds and ends from the IT world, including scripts",
+      "highlight": false
+    },
+    {
+      "content": "(posted where allowed)",
+      "highlight": true
+    },
+    {
+      "content": "alongside",
+      "highlight": false
+    },
+    {
+      "content": "Machine Learning",
+      "highlight": true
+    },
+    {
+      "content": "and",
+      "highlight": false
+    },
+    {
+      "content": "Web Development projects.",
+      "highlight": true
+    },
+    {
+      "content": "There’s much more available on my",
+      "highlight": false
+    },
+    {
+      "content": "GitHub",
+      "to": "https://github.com/your-username",
+      "highlight": true
+    },
+    {
+      "content": ".",
+      "highlight": false
+    }
+  ]},
+  "introsection": {
+  "sectionTitle": "Professional Profile",
+  "tags": ["IT", "Support", "Developer", "Data", "AI", "Machine Learning"],
+  "content": [
+    {
+      "content": "There's",
+      "highlight": false
+    },
+    {
+      "content": "BlogPosts",
+      "highlight": true
+    },
+    {
+      "content": "and other links below to some in projects. It's a tad mishmash",
+      "highlight": false
+    }
+  ]}
+}

@@ -1,0 +1,204 @@
+.WorkPage {
+  height: 100%;
+  // width: 100%;
+  overflow: hidden;
+  position: relative;
+  color: var(--text-main);
+  // background-color: black;
+  // background-color: red;
+}
+
+.bgContainer {
+  // background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  // background-color: red;
+  right: 0;
+  width: 100;
+  height: 100%;
+}
+
+.bgOverlay {
+  background: linear-gradient(to top,
+      var(--bg) 0%,
+      var(--bg) 70%,
+      transparent 100%);
+  height: 100%;
+  width: 100%;
+}
+
+.fixedcontrolpanel {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+.introContent_d {
+  // background-attachment: red;
+  // height: 1000px;
+  // background-color: red;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  margin-bottom: 4rem;
+  justify-content: center;
+  // gap: 1rem;
+  // margin-left: 1rem;
+}
+
+.preamblecontainer {
+  // padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+.tinderstackcontainer {
+  height: 100%;
+  width: 100%;
+  padding: 4rem 2rem;
+
+  opacity: 0;
+  transform: scale(0.8);
+  animation: tinderIn 0.2s ease-out forwards;
+}
+
+@keyframes tinderIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+.splitSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .splitSection {
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+}
+
+.splitColumn {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* ----------------------------------------
+   Editorial / Newspaper Layout
+----------------------------------------- */
+.editorialLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: calc(45% - 1px);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.1) 10%,
+        rgba(0, 0, 0, 0.1) 90%,
+        rgba(0, 0, 0, 0) 100%);
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.editorialSidebar {
+  // position: sticky;
+  top: 100px;
+}
+
+.editorialContent {
+  padding-top: 1rem;
+}
+
+.article {
+  margin-bottom: 2rem;
+}
+
+.articleHeader {
+  font-family: inherit;
+  // font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  color: var(--text-color);
+}
+
+.articleBody {
+  // font-family: Georgia, 'Times New Roman', Times, serif; 
+  // font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: justify;
+  hyphens: auto;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.dropCapArticle {
+  .articleBody>p:first-of-type::first-letter {
+    float: left;
+    // font-size: 4.5rem;
+    line-height: 0.8;
+    font-weight: 700;
+    margin-right: 0.8rem;
+    margin-top: 0.2rem;
+    color: var(--accent-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+.editorialSeparator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  color: var(--accent-color);
+  // font-size: 1.5rem;
+  opacity: 0.6;
+
+  &::before,
+  &::after {
+    content: '';
+    height: 1px;
+    width: 50px;
+    background: currentColor;
+    margin: 0 1rem;
+  }
+}

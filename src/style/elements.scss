@@ -13,11 +13,11 @@
         border-color 0.2s ease-out,
         color 0.2s ease-out;
 
-    &::before {
-        content: '#';
-        opacity: 0.5;
-        margin-right: 0.1em;
-    }
+    // &::before {
+    //     content: '#';
+    //     opacity: 0.5;
+    //     margin-right: 0.1em;
+    // }
 
     &:hover {
         border-color: var(--accent-color);

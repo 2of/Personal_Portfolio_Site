@@ -9,16 +9,17 @@ export function useNavigateTo() {
   const navigate = useNavigate();
 
   const goToUrl = (url,animate=true) => {
-    console.log("TEST")
+
     if (!url) return;
 
     const trimmed = url.trim();
     if (/^https?:\/\//i.test(trimmed)) {
       window.location.href = trimmed;
-    } else if (/^www\./i.test(trimmed)) {
+  } else if (/^www\./i.test(trimmed)) {
       window.location.href = `https://${trimmed}`;
     } else {
       // internal route
+      console.log("TEST OF ITNERNEAL")
 
       if (animate) { 
         startTransition(trimmed.startsWith("/") ? trimmed : `/${trimmed}`)
@@ -33,6 +34,9 @@ export function useNavigateTo() {
   };
 
   return (to) => {
+
+        console.log("HELLO WORLK", to)
+
     if (!to || typeof to !== "string") return;
 
     const trimmed = to.trim();

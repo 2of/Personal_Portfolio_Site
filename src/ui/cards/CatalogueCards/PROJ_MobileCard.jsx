@@ -90,7 +90,7 @@ export const PROJCARD_Mobile = ({
             {links.map((l, i) => (
               <ModernButton
                 key={i}
-                variant="dev_chungus"
+                variant="natural_squared"
                 icon={getIcon(l.icon || "right")}
                 label={l.label}
                 callback={(e) => {

@@ -24,7 +24,7 @@ export const ChessPage = () => {
             label="Link To Tool"
             variant="dev"
             icon={getIcon("chess")}
-            callback={navigateTo(getLink("EloEstimator"))}
+            callback={() => navigateTo(getLink("EloEstimator"))}
             
             />
    },{label:"ChessLLM - Play Chess Against LLMs",
@@ -33,7 +33,7 @@ export const ChessPage = () => {
             label="Link To Tool"
             variant="dev"
             icon={getIcon("chess")}
-            callback={navigateTo(getLink("EloEstimator"))}
+            callback={() => navigateTo(getLink("chessLLM"))}
             
             />
    },{label:"Chess Bots that use weird AI methods",
@@ -42,7 +42,7 @@ export const ChessPage = () => {
             label="Link To Tool"
             variant="dev"
             icon={getIcon("chess")}
-            callback={navigateTo(getLink("EloEstimator"))}
+            callback={() => navigateTo(getLink("EloEstimator"))}
             
             />
    }

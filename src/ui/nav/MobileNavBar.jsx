@@ -7,20 +7,36 @@ import { useNav } from "../../contexts/NavContext";
 import { AboutCardSmall } from "../cards/AboutCard";
 import { useModal } from "../../contexts/ModalContext";
 import { ShareSheet } from "../misc/ShareSheet";
+import HamburgerButtonWrapper from "../misc/HamburgerMenuIconAnimated";
+import InfoButtonWrapper from "../misc/InfoButtonAnimated";
 
 export const MobileNavBar = () => {
-  const { ToggleMobileNav, MobileNavIsOpen,navstack } = useNavStack();
+  const { ToggleMobileNav, MobileNavIsOpen,navstack,allComponents, hasCustomComponents } = useNavStack();
     const { navDetails } = useNav();
+    
       const { showModal } = useModal();
   return (
     <div className={`${s.barContainer} ${false ? s.fullbar : s.floatingbar}    `}>
       <div className={s.left}>
-        <ModernButton
+
+               <div className={s.menubuttoncontainer}>
+                <HamburgerButtonWrapper
+                state={MobileNavIsOpen}
+                  onClickCallback={() => ToggleMobileNav()}
+                
+                />
+
+             
+
+                       </div>
+
+
+        {/* <ModernButton
           label="as"
        icon={getIcon(!MobileNavIsOpen ? "Menu" : "close")}
           variant="mobileNav"
           callback={() => ToggleMobileNav()}
-        />
+        /> */}
       </div>
 
       <div className={s.center}>
@@ -35,9 +51,33 @@ export const MobileNavBar = () => {
           icon={getIcon(MobileNavIsOpen ? "down" : "down")}
           variant="mobileNav"
         /> */}
+    {hasCustomComponents && <>
+    
+     {allComponents.map((C, i) => (
+      <div key={i} className="wrapper">
+        {/* Render the actual component saved in state */}
+        {C} 
+        
+        {/* Debug button */}
+        {/* <button onClick={() => console.log("Component Data:", C)}>
+          Log Component {i}
+        </button> */}
+      </div>
+    ))}
+    
+    </>}
+        {/* if (hasCustomComponents) { 
+          <h1>THERE"S SOEMTHIGN THERE</h1>
+        } */}
+
+           {/* <div className={s.menubuttoncontainer}> */}
 
 
-         <ModernButton
+   {/* <InfoButtonWrapper/> */}
+
+   {/* </div> */}
+
+   {!hasCustomComponents &&  <ModernButton
                            label=".info"
                            icon={getIcon("about")}
                            variant="mobileNav"
@@ -47,12 +87,18 @@ export const MobileNavBar = () => {
                                floatnav: true,
                                size: "medium"
                            })}
-                       />
+                       />   }
 
-                       <button
+       
+
+                
+
+       
+
+                       {/* <button
                        onClick={() => { console.log(navstack)}}>
                         test
-                       </button>
+                       </button> */}
                        {/* <ModernButton
                            label=".share"
                            variant="mobileNav"

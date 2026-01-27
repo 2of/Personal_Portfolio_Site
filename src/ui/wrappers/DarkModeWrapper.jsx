@@ -64,7 +64,7 @@ export const DarkModeAnimatedWithCoolDownToastButton = ({
 
     console.log("CURRENT COOKIE STATE:", userPref);
 
-    // 1️⃣ First click ever → play once, then disable
+
     if (userPref === null) {
       fancyToggle();
       set("playTransitionAnimation", false);
@@ -80,13 +80,12 @@ export const DarkModeAnimatedWithCoolDownToastButton = ({
       return;
     }
 
-    // 2️⃣ User explicitly wants animation
+
     if (userPref === true) {
       fancyToggle();
       return;
     }
 
-    // 3️⃣ User disabled animation
     simpleToggle();
   };
 

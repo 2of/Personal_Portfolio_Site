@@ -11,6 +11,8 @@ import { WorkPage } from "./pages/workPage";
 import AboutPage2 from "./pages/aboutPage";
 import { ConvertPage } from "./pages/converterPage";
 import { ToolsPage } from "./pages/toolsPage";
+import { ReleasesPage } from "./pages/releasesPage";
+import { CatPage } from "./pages/cataloguePage";
 export const routes = [
 
 
@@ -39,7 +41,7 @@ export const routes = [
   {
         path: "/about",
         title: "about",
-        icon: "about",
+        icon: "user",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
@@ -53,18 +55,18 @@ export const routes = [
     {
         path: "/projects",
         title: "projects",
-        icon: "about",
+        icon: "portfolio",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
-        element: <WorkPage />,
+        element: <CatPage />,
         bg: "main",
         scrollOverride: "true"
 
     },  {
         path: "/MonitorMinder",
         title: "deskshift",
-        icon: "about",
+        icon: "laptop",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
@@ -74,7 +76,7 @@ export const routes = [
     },{
         path: "/more",
         title: "more",
-        icon: "about",
+        icon: "columns",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
@@ -103,7 +105,20 @@ export const routes = [
         expose_mobile_nav: true,
         element: <ToolsPage />,
         bg: "main",
-        scrollOverride: "true"
+
+
+    },
+
+      {
+        path: "/release",
+        title: "releases",
+        icon: "columns",
+        nav: "fixed",
+        expose_desktop_nav: true,
+        expose_mobile_nav: true,
+        element: <ReleasesPage />,
+        bg: "main",
+
 
     },
 
@@ -125,6 +140,7 @@ export const routes = [
     title:"Project...",
      icon: "Catalogue",
      nav: "fixed",
+     scrollOverride: "true",
              expose_desktop_nav: false,
              expose_mobile_nav: false,
 
