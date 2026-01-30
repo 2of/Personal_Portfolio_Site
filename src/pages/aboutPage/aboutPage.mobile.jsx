@@ -211,6 +211,7 @@ const {showModal} = useModal();
           description={srcData.description}
           longdesc={srcData.longDescription.content}
           areatitle={srcData.areatitle}
+          ismobile = {screenSize === "sm"}
         />
       </div>
 

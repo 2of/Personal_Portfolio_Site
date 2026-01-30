@@ -14,8 +14,12 @@ import { DropDown } from "../standardControls/DropDown";
 export function PostContainerDesktop({ data, name = "i ddint get a name" }) {
     const sections = data?.sections ?? [];
     const [isStickyVisible, setIsStickyVisible] = useState(false);
-    const [viewType, setViewType] = useState("Split Column View");
-
+    const [viewType, setViewType] = useState("split");
+    const viewTypes = [{
+    value:"split", label:"Split Column View"
+  },
+    {value:"contiguous", label:"Contiguous View"
+  }]
     const { getArticleImageUrl } = useContent();
     const bgimage = getArticleImageUrl(name, data.heroImage);
 
@@ -45,7 +49,9 @@ export function PostContainerDesktop({ data, name = "i ddint get a name" }) {
                 herolinks={data.heroLinks}
                 artName={name}
                 viewtype={viewType}
+
                 setViewType={setViewType}
+                viewOptions={viewTypes}
             />
     
          <PostDesktopSection
@@ -61,39 +67,7 @@ export function PostContainerDesktop({ data, name = "i ddint get a name" }) {
                         </VerticalScrollWithTracking>
                         
     )
-    return (
-        <VerticalScrollWithTracking update={handleScroll}>
-            {/* 1. Main Scrollable Header */}
-            <PostContainerDesktopHeader
-                name={data.name}
-                title={data.title}
-                subtitle={data.subtitle}
-                heroimage={bgimage}
-                shortdesc={data.shortdesc}
-                author={data.author}
-                date={data.date}
-                extratext={data.extratext}
-                herolinks={data.heroLinks}
-                artName={name}
-                viewtype={viewType}
-                setViewType={setViewType}
-            />
-
-            {/* 2. Content */}
-            <PostDesktopSection
-                sections={sections}
-                artName={name}
-                viewtype={viewType}
-            />
-
-            {/* 3. Sticky Overlay Header */}
-            <PostStickyHeader
-                isVisible={isStickyVisible}
-                title={data.title}
-                name={data.name}
-            />
-        </VerticalScrollWithTracking>
-    );
+   
 }
 
 const PostDesktopSection = ({ sections, artName, viewtype }) => {
@@ -107,7 +81,7 @@ const PostDesktopSection = ({ sections, artName, viewtype }) => {
     });
 
     return (
-        <div className={`${styles.content} ${viewtype === "Split Column View" ? styles.multicolview : styles.contigview}`}>
+        <div className={`${styles.content} ${viewtype === "split" ? styles.multicolview : styles.contigview}`}>
             {chunks}
         </div>
     );
@@ -124,7 +98,8 @@ const PostContainerDesktopHeader = ({
     extratext,
     herolinks = [],
     viewtype,
-    setViewType
+    setViewType,
+    viewOptions
 }) => {
     const navigateTo = useNavigateTo();
     const { showModal } = useModal();
@@ -179,7 +154,7 @@ const PostContainerDesktopHeader = ({
                         callback={handleShare}
                     />
                     <DropDown
-                        options={["Split Column View", "Contiguous View"]}
+                        options={viewOptions}
                         value={viewtype}
                         onChange={setViewType}
                         placeholder="Select layout"

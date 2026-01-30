@@ -9,7 +9,7 @@
   background-color: var(--bg-l1);
   position: relative;
   overflow: hidden;
-  transition: 
+  transition:
     background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -47,10 +47,15 @@
   &:hover {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border-color: var(--accent-color);
+    // border-color: var(--accent-color);
 
-    &::before { opacity: 0.06; }
-    &::after  { opacity: 0.1; }
+    &::before {
+      opacity: 0.06;
+    }
+
+    &::after {
+      opacity: 0.1;
+    }
   }
 
   &:active {
@@ -74,11 +79,17 @@
     background-color: var(--accent-color);
     border-style: dotted;
 
-    * { color: var(--bg); }
+    * {
+      color: var(--bg);
+    }
 
-    &::after { opacity: 0.15; }
+    &::after {
+      opacity: 0.15;
+    }
 
-    .icon { filter: brightness(1.2); }
+    .icon {
+      filter: brightness(1.2);
+    }
   }
 }
 
@@ -102,32 +113,16 @@
 ------------------------- */
 
 .natural_large_touch {
-  min-height: 35px;
-  height: auto;
-  padding: 0.5rem 1.5rem;
-  // font-size: 1rem;
-  border-width: 1px;
-
-  // &::before {
-  //   background-image:
-  //     repeating-linear-gradient(
-  //       45deg,
-  //       transparent,
-  //       transparent 2px,
-  //       rgba(255, 255, 255, 0.02) 2px,
-  //       rgba(255, 255, 255, 0.02) 4px
-  //     ),
-  //     radial-gradient(circle at 30% 40%, transparent 1px, transparent 1px);
-  //   background-size: 6px 6px, 5px 5px;
-  //   opacity: 0.08;
-  // }
-
-  // &:hover {
-  //   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-
-  //   &::before { opacity: 0.15; }
-  //   &::after  { opacity: 0.15; }
-  // }
+  // background-color: rebeccapurple;
+  border-radius: 12px;
+  width: 100%;
+  display: flex;
+  min-height: 64px;
+  background-color: var(--bg-L3);
+  border: 1px solid var(--border-color);
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
 }
 
 /* -------------------------
@@ -139,20 +134,16 @@
 
   &::before {
     background-image:
-      repeating-linear-gradient(
-        0deg,
+      repeating-linear-gradient(0deg,
         transparent,
         transparent 1px,
         rgba(255, 255, 255, 0.015) 1px,
-        rgba(255, 255, 255, 0.015) 2px
-      ),
-      repeating-linear-gradient(
-        90deg,
+        rgba(255, 255, 255, 0.015) 2px),
+      repeating-linear-gradient(90deg,
         transparent,
         transparent 1px,
         rgba(255, 255, 255, 0.015) 1px,
-        rgba(255, 255, 255, 0.015) 2px
-      );
+        rgba(255, 255, 255, 0.015) 2px);
     background-size: 2px 2px;
     opacity: 0.05;
   }
@@ -161,14 +152,18 @@
     background-color: var(--accent-color);
     border-radius: 12px;
 
-    * { color: var(--bg); }
+    * {
+      color: var(--bg);
+    }
 
     &::before {
       opacity: 0.1;
       animation: shimmer 2s ease-in-out infinite;
     }
 
-    &::after { opacity: 0.15; }
+    &::after {
+      opacity: 0.15;
+    }
   }
 
   &:active {
@@ -189,10 +184,11 @@
   position: relative;
 
 
-  &.active { 
+  &.active {
     border: 1px solid var(--border-color);
 
   }
+
   &::before {
     background-image:
       radial-gradient(circle, rgba(255, 255, 255, 0.02) 0.5px, transparent 0.5px);
@@ -204,10 +200,17 @@
     background-color: var(--bg-l1);
     border-color: var(--accent-color);
 
-    &::before { opacity: 0.05; }
-    &::after  { opacity: 0.1; }
+    &::before {
+      opacity: 0.05;
+    }
 
-    .icon { filter: brightness(1.2); }
+    &::after {
+      opacity: 0.1;
+    }
+
+    .icon {
+      filter: brightness(1.2);
+    }
   }
 
   /* Active state (locked, no animation) */
@@ -230,14 +233,14 @@
 }
 
 
-.natural_large_touch_nav_menu { 
+.natural_large_touch_nav_menu {
   min-height: 48px;
   height: auto;
   padding: 1rem 1.5rem;
   font-size: 1rem;
   border-width: 1px;
-border-color: var(--border-color);
-    text-align: center;
+  border-color: var(--border-color);
+  text-align: center;
   width: 100%;
   background: none;
   display: flex;
@@ -246,14 +249,15 @@ border-color: var(--border-color);
   flex-direction: column;
 
   border-radius: 8px;
-//   * { 
-//     border: 1px solid red;
-//   }
+  //   * { 
+  //     border: 1px solid red;
+  //   }
 
-  &.active { 
+  &.active {
     border: 1px solid var(--accent-color);
 
   }
+
   &::before {
     background-image:
       radial-gradient(circle, rgba(255, 255, 255, 0.02) 0.5px, transparent 0.5px);
@@ -264,14 +268,12 @@ border-color: var(--border-color);
 }
 
 
-.lightOverride { 
+.lightOverride {}
 
-
-}
-.darkOverride { 
-        background-color: var(--dark-color);
-        // border-color: var(--border-color);
-    // * { 
-    //     color: red;
-    // }
+.darkOverride {
+  background-color: var(--dark-color);
+  // border-color: var(--border-color);
+  // * { 
+  //     color: red;
+  // }
 }

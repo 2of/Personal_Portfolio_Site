@@ -9,10 +9,10 @@ import styles from "./styles/DropDown.module.scss";
 
 export const DropDown = ({
   options = [],
-  variant  = "default", // outlined, default, floating, 
-  value = null,                 // ← controlled value
-  onChange = () => {},           // ← controlled handler
+  value = null,                 // selected value (primitive)
+  onChange = () => {},
   placeholder = "Select an option",
+  variant = "default",
   darkOverride = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,12 @@ export const DropDown = ({
       return el;
     })();
 
-  // Position menu relative to trigger
+  // Find selected option safely
+  const selectedOption = options.find(
+    (opt) => opt.value === value
+  );
+
+  // Position dropdown
   useLayoutEffect(() => {
     if (!isOpen || !triggerRef.current) return;
 
@@ -44,7 +49,7 @@ export const DropDown = ({
     });
   }, [isOpen]);
 
-  // Click outside (trigger + menu)
+  // Close on outside click
   useEffect(() => {
     if (!isOpen) return;
 
@@ -64,7 +69,7 @@ export const DropDown = ({
   }, [isOpen]);
 
   const handleSelect = (option) => {
-    onChange(option); // ← parent decides
+    onChange(option.value); // ✅ emit only value
     setIsOpen(false);
   };
 
@@ -85,7 +90,7 @@ export const DropDown = ({
           aria-expanded={isOpen}
         >
           <span className={styles.dropdownValue}>
-            {value ?? placeholder}
+            {selectedOption?.label ?? placeholder}
           </span>
 
           <svg
@@ -108,7 +113,7 @@ export const DropDown = ({
         </button>
       </div>
 
-      {/* Portal Menu */}
+      {/* Menu */}
       {isOpen &&
         createPortal(
           <div
@@ -117,18 +122,20 @@ export const DropDown = ({
             style={menuStyle}
             role="listbox"
           >
-            {options.map((option, i) => (
+            {options.map((option) => (
               <button
-                key={i}
+                key={option.value}
                 type="button"
                 role="option"
-                aria-selected={value === option}
+                aria-selected={value === option.value}
                 className={`${styles.dropdownItem} ${
-                  value === option ? styles.dropdownItemSelected : ""
+                  value === option.value
+                    ? styles.dropdownItemSelected
+                    : ""
                 }`}
                 onClick={() => handleSelect(option)}
               >
-                {option}
+                {option.label}
               </button>
             ))}
           </div>,

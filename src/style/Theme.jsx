@@ -3,20 +3,16 @@ export const baseTheme = {
   "--padding-medium": "15px",
   "--padding-large": "36px",
   "--spacing-small": "10px",
-
   "--font-size-base": "16px",
   "--font-size-lg": "18px",
   "--font-weight-bold": "600",
-
   "--navHeightDESKTOP": "6rem",
-
   "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
   "--mobileTopNavSafeArea": "4rem",
   "--maxWidth": "1480px",
-
   "--border-radius": "2px",
   "--blur-radius": "12px",
   "--text-dark": "#2c3e50",
@@ -25,98 +21,91 @@ export const baseTheme = {
 };
 
 export const lightTheme = {
-  // Technical drawing paper - crisp blueprints with bold refinement
-  "--bg": "#F8FAFC", // pristine drafting vellum with crisp clarity
-  "--bg-l1": "#EFF4F9", // tracing paper overlay with bold blue presence
-  "--bg-l2": "#E1ECF5", // layered drafts with strong definition
-  "--bg-l3": "#D0E0ED", // blueprint edge with bold contrast
-  "--bg-transparent": "rgba(248, 250, 252, 0.96)",
+  // Morning edition - bright newsprint with energetic presence
+  "--bg": "#FFFEF9", // warm white broadsheet with life
+  "--bg-l1": "#FFF9F0", // cream editorial stock
+  "--bg-l2": "#FFF3E5", // warm section breaks
+  "--bg-l3": "#FFEBD1", // golden column separation
+  "--bg-transparent": "rgba(255, 254, 249, 0.98)",
 
-  // Technical pen strokes - bold and precise with strong contrast
-  "--text-color": "#0F1E35", // bold fine liner black-blue with intensity
-  "--secondary-text": "#4A5A6F", // refined pencil marks with clarity
+  // Printer's ink - bold editorial authority
+  "--text-color": "#0A0A0A", // rich black ink with energy
+  "--secondary-text": "#3D3D3D", // lively secondary editorial
 
-  // Drafting surfaces - enhanced purity with bold definition
-  "--card-bg": "#FFFFFF", // immaculate paper sheet
-  "--border-color": "#5f6873", // bold grid lines with strong presence
-  
-  // Blueprint grid system - bold and sophisticated
-  "--grid-color": "#DEE8F2", // strong technical grid
-  "--guide-color": "#9FC4E0", // bold construction guides
-  "--dimension-line": "#5A9BC7", // strong dimension/measurement lines
+  // Editorial surfaces - warm high contrast stock
+  "--card-bg": "#FFFEF9", // warm brilliant surface
+  "--border-color": "#D4A574", // warm bronze column rules
 
-  // Technical blue - architect's pen with bold vibrancy
-  "--accent": "#2E7FC8", // bold technical blue with intensity
-  "--accent-color": "#FF5240", // vibrant coral accent with bold contrast
+  // Layout grid - playful editorial structure
+  "--grid-color": "#F5E6D3", // warm layout guides
+  "--guide-color": "#E0C9A8", // golden boundaries
+  "--dimension-line": "#C4A576", // bronze margin rules
 
-    "--accent-color-transparent" :"rgba(255,82,64,0.50)",
-  // Interactive technical marks - bold and engaging
-  "--link": "#1E6BA8", // deep technical blue with bold richness
-  "--hover-accent": "#3D8FD9", // luminous highlighted measurement
+  // Masthead - vibrant editorial statement
+  "--accent": "#E63946", // energetic coral-red with personality
+  "--accent-color": "#E63946", // lively editorial highlight
+  "--accent-color-transparent": "rgba(230, 57, 70, 0.20)",
 
-  // Featured sections - bold tracing paper
-  "--herobg": "#E6F3FF", // strong blueprint wash with presence
-  "--feature-bg": "#D9EDFF", // bold technical overlay
-  
-  // Precise, architectural shadows with bold depth
-  "--drop-shadow": 
-    "0 3px 6px rgba(15, 30, 53, 0.08), 0 1px 3px rgba(15, 30, 53, 0.06), 0 0 1px rgba(15, 30, 53, 0.04)",
-  "--card-shadow": 
-    "0 6px 16px rgba(15, 30, 53, 0.12), 0 3px 8px rgba(15, 30, 53, 0.08), 0 1px 3px rgba(15, 30, 53, 0.06)",
-  "--elevated-shadow":
-    "0 12px 32px rgba(15, 30, 53, 0.16), 0 6px 16px rgba(15, 30, 53, 0.12), 0 3px 8px rgba(15, 30, 53, 0.08)",
+  // Interactive editorial marks - playful engagement
+  "--link": "#D62839", // warm editorial red
+  "--hover-accent": "#FF4757", // vibrant masthead activation
 
-  // Inverse for overlays - bold refined depth
-  "--inverse-transparent": "rgba(15, 30, 53, 0.94)",
-  "--inverse-shadow": 
-    "0 16px 40px rgba(0, 0, 0, 0.20), 0 8px 20px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.12)",
+  // Featured sections - warm editorial space
+  "--herobg": "#FFF7EC", // inviting above-the-fold
+  "--feature-bg": "#FFEDD8", // cheerful special report
+
+  // Print quality shadows - pronounced editorial depth
+  "--drop-shadow": "0 3px 8px rgba(230, 57, 70, 0.12), 0 2px 4px rgba(10, 10, 10, 0.14), 0 1px 2px rgba(10, 10, 10, 0.10)",
+  "--card-shadow": "0 6px 18px rgba(230, 57, 70, 0.16), 0 4px 10px rgba(10, 10, 10, 0.18), 0 2px 6px rgba(10, 10, 10, 0.12)",
+  "--elevated-shadow": "0 12px 36px rgba(230, 57, 70, 0.22), 0 6px 18px rgba(10, 10, 10, 0.22), 0 3px 10px rgba(10, 10, 10, 0.16)",
+
+  // Inverse for overlays - stark editorial contrast
+  "--inverse-transparent": "rgba(10, 10, 10, 0.96)",
+  "--inverse-shadow": "0 16px 40px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(230, 57, 70, 0.18), 0 4px 12px rgba(0, 0, 0, 0.16)",
 };
 
 export const darkTheme = {
-  // Deep cosmic workspace - architect's midnight studio with bold refinement
-  "--bg": "#080B10", // bold deep space black with strong blue undertone
-  "--bg-l1": "#0F141A", // bold drafting table surface
-  "--bg-l2": "#18202C", // elevated drawing boards with bold depth
-  "--bg-l3": "#212A3A", // highest workspace with strong contrast
-  "--bg-transparent": "rgba(8, 11, 16, 0.98)",
+  // Evening edition - rich night reading with character
+  "--bg": "#0F0A08", // deep warm black editorial surface
+  "--bg-l1": "#1A1210", // elevated section with warmth
+  "--bg-l2": "#261D18", // cozy feature panel
+  "--bg-l3": "#352822", // inviting editorial zones
+  "--bg-transparent": "rgba(15, 10, 8, 0.98)",
 
-  // Luminous technical text - bold glowing blueprints
-  "--text-color": "#F5F9FC", // brilliant drafting clarity with bold presence
-  "--secondary-text": "#A8BDD2", // refined annotations with clarity
+  // Reversed type - brilliant editorial clarity
+  "--text-color": "#FFF9F0", // warm white reversed type
+  "--secondary-text": "#D4BFA8", // golden secondary editorial
 
-  // Workshop surfaces - bold sophistication
-  "--card-bg": "#0D1117", // bold matte drafting surface
-  "--border-color": "#364152", // strong defined edges
-  
-  // Technical grid - bold glowing in darkness
-  "--grid-color": "#151C28", // strong subtle dark grid
-  "--guide-color": "#455268", // bold construction guides
-  "--dimension-line": "#5A6F8A", // strong measurement lines
+  // Night reading surfaces - rich dark stock
+  "--card-bg": "#150D0A", // deep warm surface
+  "--border-color": "#6B5644", // bronze column rules
 
-  // Luminous technical blue - bold neon drafting light
-  "--accent": "#4AA3FF", // bold vibrant architect's blue
-  "--accent-color": "#4AA3FF",
-    "--accent-color-transparent" :"rgba(16,33,51,0.50)",
-  // Interactive glowing marks - bold and engaging
-  "--link": "#5CB5FF", // bold luminous highlighted technical blue
-  "--hover-accent": "#3A93F0", // focused measurement with bold intensity
+  // Evening layout grid - warm structure
+  "--grid-color": "#211814", // subtle layout guides
+  "--guide-color": "#2F241C", // cozy boundaries
+  "--dimension-line": "#574839", // warm margins
 
-  // Featured areas - bold illuminated drafting zones
-  "--herobg": "#131A24", // bold dark blueprint base
-  "--feature-bg": "#162030", // strong technical focus area
-  
-  // Dramatic studio lighting shadows with bold depth
-  "--drop-shadow": 
-    "0 6px 16px rgba(0, 0, 0, 0.5), 0 3px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3)",
-  "--card-shadow": 
-    "0 12px 32px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.5), 0 3px 8px rgba(0, 0, 0, 0.4)",
-  "--elevated-shadow":
-    "0 20px 60px rgba(0, 0, 0, 0.7), 0 10px 32px rgba(0, 0, 0, 0.6), 0 6px 16px rgba(74, 163, 255, 0.18)",
+  // Evening masthead - vibrant editorial accent
+  "--accent": "#FF6B7A", // lively coral-red with warmth
+  "--accent-color": "#FF6B7A",
+  "--accent-color-transparent": "rgba(255, 107, 122, 0.28)",
 
-  // Light overlay for modals - bold refined elegance
-  "--inverse-transparent": "rgba(248, 250, 252, 0.97)",
-  "--inverse-shadow": 
-    "0 12px 32px rgba(0, 0, 0, 0.16), 0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(0, 0, 0, 0.08)",
+  // Interactive evening marks - energetic visibility
+  "--link": "#FF8191", // luminous playful link
+  "--hover-accent": "#FF5566", // vibrant masthead red
+
+  // Featured evening areas - inviting zones
+  "--herobg": "#1A1310", // warm evening above-fold
+  "--feature-bg": "#241A16", // cozy evening features
+
+  // Evening editorial shadows - dramatic depth with color
+  "--drop-shadow": "0 6px 14px rgba(255, 107, 122, 0.20), 0 4px 8px rgba(0, 0, 0, 0.50), 0 2px 4px rgba(0, 0, 0, 0.40)",
+  "--card-shadow": "0 12px 32px rgba(255, 107, 122, 0.28), 0 6px 16px rgba(0, 0, 0, 0.60), 0 3px 8px rgba(0, 0, 0, 0.50)",
+  "--elevated-shadow": "0 24px 60px rgba(255, 107, 122, 0.35), 0 12px 30px rgba(0, 0, 0, 0.70), 0 6px 15px rgba(255, 107, 122, 0.30)",
+
+  // Light overlay for modals - warm editorial contrast
+  "--inverse-transparent": "rgba(255, 254, 249, 0.97)",
+  "--inverse-shadow": "0 12px 32px rgba(230, 57, 70, 0.18), 0 6px 16px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.12)",
 };
 
 export const inlineNavHeight = {

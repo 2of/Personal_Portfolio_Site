@@ -27,9 +27,7 @@
   gap: 1rem;
 }
 
-/* ----------------------------------------
-   Editorial / Newspaper Layout
------------------------------------------ */
+
 .editorialLayout {
   display: grid;
   grid-template-columns: 1fr 1.2fr; // Give text slightly more space
@@ -54,7 +52,7 @@
 
   @media (max-width: 1000px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    // gap: 3rem;
 
     &::after {
       display: none;
@@ -63,7 +61,7 @@
 }
 
 .editorialSidebar {
-  position: sticky;
+  // position: sticky;
   top: 100px;
 }
 

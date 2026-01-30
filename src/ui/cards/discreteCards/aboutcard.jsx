@@ -33,7 +33,7 @@ export const AboutCard = ({
 
   return (
     <div className={`${styles.cardContainer}
-    ${ismobile ? styles.MobileCard : styles.Desktopcard}
+    ${ismobile ? styles.DesktopCard : styles.MobileCard}
     
     `}>
 
@@ -47,9 +47,9 @@ export const AboutCard = ({
           <h2> About</h2>
           <h4 className={styles.title}>{title}</h4>
 
-          <p>
+
             <GetElTextEls elements={longdesc} />
-          </p>
+      
 
 
     </div>

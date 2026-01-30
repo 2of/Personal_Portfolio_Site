@@ -13,6 +13,7 @@ import { ConvertPage } from "./pages/converterPage";
 import { ToolsPage } from "./pages/toolsPage";
 import { ReleasesPage } from "./pages/releasesPage";
 import { CatPage } from "./pages/cataloguePage";
+import { EditorPage } from "./pages/editor/EditorPage";
 export const routes = [
 
 
@@ -81,6 +82,16 @@ export const routes = [
         expose_desktop_nav: true,
         expose_mobile_nav: true,
         element: <MorePage />,
+        bg: "main"
+
+    },
+    {
+        path: "/PostEditor",
+        title: "DEV - Post Editor",
+        icon: "write",
+        nav: "fixed",
+
+        element: <EditorPage />,
         bg: "main"
 
     },

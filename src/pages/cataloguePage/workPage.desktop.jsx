@@ -23,12 +23,16 @@ export const WorkPageDesktop = ({ allprojects, pageText }) => {
   const [viewType, setViewType] = useState("View As List");
   const { addComponent, removeComponent } = useNavStack();
   console.log("SDFSDF", pageText.preamble);
-
+  const listOptions = [{
+    value:"List", label:"View As List"
+  },
+    {value:"Stack", label:"View as Stack"
+  }]
   const navControlComponent = useMemo(
     () => (
       <DropDown
         key="work-view-selector" // Key helps React diffing
-        options={["View As List", "View As Stack"]}
+        options={listOptions}
         placeholder="Select layout"
         onChange={setViewType}
         value={viewType}
@@ -50,8 +54,8 @@ export const WorkPageDesktop = ({ allprojects, pageText }) => {
     return (
       <div className={styles.introContent_d}>
         {screenSize === "lg" && (
-          <DrawText stagger={7} strokeWidth={0.5} stroke="border" duration={12}>
-            <SVGText text="isoHello" width={800} height={200} />
+          <DrawText stagger={7} strokeWidth={1} stroke="border" duration={122}>
+            <SVGText text="isoHello" width={800} height={500} />
           </DrawText>
         )}
 
@@ -69,7 +73,7 @@ export const WorkPageDesktop = ({ allprojects, pageText }) => {
       <ScrollableVerticalView staggerStart>
         <Section key="intro" sticky>
           {header}
-          <Divider variant="dotted" />
+          {/* <Divider variant="dotted" /> */}
           <div className={styles.editorialLayout}>
             <div className={styles.editorialSidebar}>
               <h3>Projects here...</h3>
@@ -171,7 +175,7 @@ export const WorkPageDesktop = ({ allprojects, pageText }) => {
         <div className={styles.bgOverlay} />
       </div>
 
-      {viewType === "View As Stack" ? (
+      {viewType === "Stack" ? (
         <TinderyView
           header={<MainHeader_desktop screenSize={screenSize} />}
           projects={allprojects}

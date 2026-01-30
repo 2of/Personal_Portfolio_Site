@@ -19,15 +19,19 @@ import Divider from "../../ui/misc/Divider";
 
 export const WorkPageMobile = ({ allprojects, pageText }) => {
   const screenSize = useScreenSize();
-  const [viewType, setViewType] = useState("View As List");
+  const [viewType, setViewType] = useState("List");
   const { addComponent, removeComponent } = useNavStack();
   // console.log("!!!, allworkpagetext", allworkpagetext)
-
+  const listOptions = [{
+    value:"List", label:"View As List"
+  },
+    {value:"Stack", label:"View as Stack"
+  }]
   const navControlComponent = useMemo(
     () => (
       <DropDown
         key="work-view-selector" // Key helps React diffing
-        options={["View As List", "View As Stack"]}
+        options={listOptions}
         placeholder="Select layout"
         onChange={setViewType}
         value={viewType}
@@ -90,7 +94,7 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
         <Section key="intro" sticky>
           {header}
         </Section>
-
+<h4>TEST {viewType}</h4>
         {Object.entries(projects).map(
           ([sectionKey, sectionData], sectionIndex) => (
             <Section
@@ -193,7 +197,7 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
         <div className={styles.bgOverlay} />
       </div> */}
 
-      {viewType === "View As Stack" ? (
+      {viewType === "Stack" ? (
         <TinderyView
           header={<MainHeader_desktop screenSize={screenSize} />}
           projects={allprojects}
