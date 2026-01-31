@@ -66,7 +66,7 @@ export const HomePage = () => {
                 <span className={styles.highlight}>Machine Learning</span>,{' '}
                 <span className={styles.highlight}>Development</span> or{' '}
                 <span className={styles.highlight}>Software Engineering</span> roles....
-            </p>
+        </p>
 
 
             <div className={styles.ButtonContainer}>

@@ -14,6 +14,7 @@ import { ToolsPage } from "./pages/toolsPage";
 import { ReleasesPage } from "./pages/releasesPage";
 import { CatPage } from "./pages/cataloguePage";
 import { EditorPage } from "./pages/editor/EditorPage";
+import { DescPage } from "./pages/descPage";
 export const routes = [
 
 
@@ -39,7 +40,7 @@ export const routes = [
     //     scrollOverride: "true"
 
     // },
-  {
+    {
         path: "/about",
         title: "about",
         icon: "user",
@@ -52,7 +53,7 @@ export const routes = [
 
     },
 
-     
+
     {
         path: "/projects",
         title: "projects",
@@ -64,7 +65,18 @@ export const routes = [
         bg: "main",
         scrollOverride: "true"
 
-    },  {
+    }, {
+        path: "/component",
+        title: "bts",
+        icon: "laptop",
+        nav: "fixed",
+        expose_desktop_nav: true,
+        expose_mobile_nav: true,
+        element: <DescPage />,
+        bg: "main",
+        scrollOverride: "true"
+
+    }, {
         path: "/MonitorMinder",
         title: "deskshift",
         icon: "laptop",
@@ -74,7 +86,7 @@ export const routes = [
         element: <DeskShiftPage />,
         bg: "main"
 
-    },{
+    }, {
         path: "/more",
         title: "more",
         icon: "columns",
@@ -103,11 +115,11 @@ export const routes = [
         expose_desktop_nav: false,
         expose_mobile_nav: false,
         element: <SamplePage />,
-    bg: "main"
+        bg: "main"
 
     },
 
-      {
+    {
         path: "/tools",
         title: "tools",
         icon: "tool",
@@ -120,7 +132,7 @@ export const routes = [
 
     },
 
-      {
+    {
         path: "/release",
         title: "releases",
         icon: "columns",
@@ -133,7 +145,7 @@ export const routes = [
 
     },
 
-     {
+    {
         path: "/convert_svg_tool",
         title: "svg to useful thing",
         icon: "test",
@@ -141,31 +153,31 @@ export const routes = [
         expose_desktop_nav: false,
         expose_mobile_nav: false,
         element: <ConvertPage />,
-    bg: "main"
+        bg: "main"
 
     },
 
 
-      {
-    path: "/proj/:projectId",
-    title:"Project...",
-     icon: "Catalogue",
-     nav: "fixed",
-     scrollOverride: "true",
-             expose_desktop_nav: false,
-             expose_mobile_nav: false,
+    {
+        path: "/proj/:projectId",
+        title: "Project...",
+        icon: "Catalogue",
+        nav: "fixed",
+        scrollOverride: "true",
+        expose_desktop_nav: false,
+        expose_mobile_nav: false,
 
         element: <ArticlePage />,
         bg: "main"
 
 
 
-  },    {
-    path: "/chess",
-    title:"chess",
-     icon: "chess",
-     nav: "fixed",
-             expose_desktop_nav: true,
+    }, {
+        path: "/chess",
+        title: "chess",
+        icon: "chess",
+        nav: "fixed",
+        expose_desktop_nav: true,
         expose_mobile_nav: true,
 
         element: <ChessPage />,
@@ -173,15 +185,15 @@ export const routes = [
 
 
 
-  },
+    },
 
 
-   {
-    path: "/*",
-    title:"Lost",
-     icon: "map",
-     nav: "fixed",
-             expose_desktop_nav: false,
+    {
+        path: "/*",
+        title: "Lost",
+        icon: "map",
+        nav: "fixed",
+        expose_desktop_nav: false,
         expose_mobile_nav: false,
 
         element: <DefaultNotFound />,
@@ -189,7 +201,7 @@ export const routes = [
 
 
 
-  },
+    },
 
 
 

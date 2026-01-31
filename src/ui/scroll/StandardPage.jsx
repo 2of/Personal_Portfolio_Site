@@ -12,6 +12,7 @@ export const StandardPage = ({ children }) => {
         alignItems: "center",
         width: "100%",
         overflowX: "hidden",
+  
         // ...(screenSize==="sm" && { backgroundColor: "red"}),
       }}
     >

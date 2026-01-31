@@ -3,6 +3,8 @@ import styles from "./styles/PROJ_DatingCard.module.scss";
 import { useNavigateTo } from "../../../hooks/useNavigate";
 import getIcon from "../../../tools/iconRef";
 import { ModernButton } from "../../standardControls/button/Button";
+import { usePageTransition } from "../../../contexts/PageTransition";
+import { navigateTo } from "../../../tools/navigator";
 
 export const PROJCARD_DatingProfile = ({
   title,
@@ -14,10 +16,12 @@ export const PROJCARD_DatingProfile = ({
   inprogress,
 }) => {
   const gotoURL = useNavigateTo();
-
-  const handleLinkClick = (e, url) => {
-    e.stopPropagation();
-    gotoURL(url);
+const {startTransition} = usePageTransition();
+  const handleLinkClick = (url) => {
+    // alert('Test')
+    // e.stopPropagation();
+    console.log(url)
+    navigateTo(url);
   }
 
   const handleCardClick = () => {
@@ -79,9 +83,9 @@ export const PROJCARD_DatingProfile = ({
 
                   <ModernButton 
                   label ={l.label || "view"}
-                  variant="rounded"
+                  variant="dev"
                   icon={getIcon(l.icon || "go")}
-                           onClick={(e) => handleLinkClick(e, l.to)}
+                             callback={() => gotoURL(l.to)}
 
                   />
                   // <button

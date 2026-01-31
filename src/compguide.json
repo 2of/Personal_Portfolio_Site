@@ -1,0 +1,289 @@
+{
+    "meta": {
+        "version": "1.0",
+        "generatedAt": "2026-01-31"
+    },
+    "components": [
+        {
+            "name": "DropDown",
+            "path": "src/ui/standardControls/DropDown.jsx",
+            "description": "A customizable dropdown menu component.",
+            "props": [
+                {
+                    "name": "options",
+                    "type": "array",
+                    "default": "[]",
+                    "description": "Array of option objects {label, value}.",
+                    "required": false
+                },
+                {
+                    "name": "value",
+                    "type": "any",
+                    "default": "null",
+                    "description": "The currently selected value (primitive).",
+                    "required": false
+                },
+                {
+                    "name": "onChange",
+                    "type": "func",
+                    "default": "() => {}",
+                    "description": "Callback fired when an option is selected. Receives the option value.",
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "default": "\"Select an option\"",
+                    "description": "Text to display when no value is selected.",
+                    "required": false
+                },
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "default": "\"default\"",
+                    "description": "Visual style variant.",
+                    "required": false
+                },
+                {
+                    "name": "darkOverride",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Forces dark mode styling if true.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "ProgressBar",
+            "path": "src/ui/standardControls/ProgressBar.jsx",
+            "description": "A progress bar component with multiple visual styles.",
+            "props": [
+                {
+                    "name": "style",
+                    "type": "string",
+                    "default": "\"linear\"",
+                    "description": "Visual style of the progress bar.",
+                    "required": false
+                },
+                {
+                    "name": "animated",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether the progress bar should animate into view.",
+                    "required": false
+                },
+                {
+                    "name": "beginAnimate",
+                    "type": "boolean",
+                    "default": "undefined",
+                    "description": "Control flag to manually trigger animation.",
+                    "required": false
+                },
+                {
+                    "name": "val",
+                    "type": "number",
+                    "default": "0",
+                    "description": "Current value of the progress.",
+                    "required": false
+                },
+                {
+                    "name": "lowerBound",
+                    "type": "number",
+                    "default": "0",
+                    "description": "Minimum value of the range.",
+                    "required": false
+                },
+                {
+                    "name": "upperBound",
+                    "type": "number",
+                    "default": "100",
+                    "description": "Maximum value of the range.",
+                    "required": false
+                },
+                {
+                    "name": "showVal",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether to display the current numeric value.",
+                    "required": false
+                },
+                {
+                    "name": "showBounds",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether to display the lower and upper bounds.",
+                    "required": false
+                },
+                {
+                    "name": "label",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "Label text for the progress bar.",
+                    "required": false
+                },
+                {
+                    "name": "mappedtoinput",
+                    "type": "boolean",
+                    "default": "undefined",
+                    "description": "If true, disables smoothing for immediate feedback (e.g. when controlled by a slider).",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "linear",
+                "round",
+                "marker"
+            ]
+        },
+        {
+            "name": "TextInput",
+            "path": "src/ui/standardControls/TextInput.jsx",
+            "description": "A text input component with labeling and style variants.",
+            "props": [
+                {
+                    "name": "value",
+                    "type": "any",
+                    "default": "undefined",
+                    "description": "Input value.",
+                    "required": false
+                },
+                {
+                    "name": "onChange",
+                    "type": "func",
+                    "default": "undefined",
+                    "description": "Callback fired on change. Receives the new value string.",
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "Label text displayed above the input.",
+                    "required": false
+                },
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "default": "\"regular\"",
+                    "description": "Visual style variant.",
+                    "required": false
+                },
+                {
+                    "name": "showBorder",
+                    "type": "boolean",
+                    "default": "true",
+                    "description": "Whether to show the input border.",
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "default": "\"\"",
+                    "description": "Placeholder text.",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "default": "\"text\"",
+                    "description": "HTML input type (e.g., 'text', 'password').",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "HTML name and id attribute.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "regular",
+                "hero",
+                "mobile"
+            ]
+        },
+        {
+            "name": "Toggle",
+            "path": "src/ui/standardControls/Toggle.jsx",
+            "description": "A toggle switch component with numerous style variants.",
+            "props": [
+                {
+                    "name": "type",
+                    "type": "string",
+                    "default": "\"box\"",
+                    "description": "Visual style variant of the toggle.",
+                    "required": false
+                },
+                {
+                    "name": "callback",
+                    "type": "func",
+                    "default": "() => {}",
+                    "description": "Callback fired when toggled. Receives the new boolean state.",
+                    "required": false
+                },
+                {
+                    "name": "firsticon",
+                    "type": "node",
+                    "default": "undefined",
+                    "description": "Icon to display in the 'off' or primary position (depends on variant).",
+                    "required": false
+                },
+                {
+                    "name": "secondicon",
+                    "type": "node",
+                    "default": "undefined",
+                    "description": "Icon to display in the 'on' or secondary position (depends on variant).",
+                    "required": false
+                },
+                {
+                    "name": "checked",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Checked state of the toggle.",
+                    "required": false
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether the toggle is disabled.",
+                    "required": false
+                },
+                {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "default": "\"Standard toggle\"",
+                    "description": "Accessibility label.",
+                    "required": false
+                },
+                {
+                    "name": "className",
+                    "type": "string",
+                    "default": "\"\"",
+                    "description": "Additional CSS class names.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "box",
+                "pill",
+                "largepill",
+                "modern",
+                "minimal",
+                "outline",
+                "glass",
+                "neon",
+                "modern_unfilled",
+                "basic_small",
+                "utility",
+                "soft",
+                "dev",
+                "checkbox"
+            ]
+        }
+    ]
+}

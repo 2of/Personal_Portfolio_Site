@@ -1,0 +1,536 @@
+{
+    "meta": {
+        "version": "1.0"
+    },
+    "components": [
+        {
+            "name": "DropDown",
+            "path": "src/ui/standardControls/DropDown.jsx",
+            "description": "A customizable dropdown menu component.",
+            "props": [
+                {
+                    "name": "options",
+                    "type": "array",
+                    "default": "[]",
+                    "description": "Array of option objects {label, value}.",
+                    "required": false
+                },
+                {
+                    "name": "value",
+                    "type": "any",
+                    "default": "null",
+                    "description": "The currently selected value (primitive).",
+                    "required": false
+                },
+                {
+                    "name": "onChange",
+                    "type": "func",
+                    "default": "() => {}",
+                    "description": "Callback fired when an option is selected. Receives the option value.",
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "default": "\"Select an option\"",
+                    "description": "Text to display when no value is selected.",
+                    "required": false
+                },
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "default": "\"default\"",
+                    "description": "Visual style variant.",
+                    "required": false
+                },
+                {
+                    "name": "darkOverride",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Forces dark mode styling if true.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "ProgressBar",
+            "path": "src/ui/standardControls/ProgressBar.jsx",
+            "description": "A progress bar component with multiple visual styles.",
+            "props": [
+                {
+                    "name": "style",
+                    "type": "string",
+                    "default": "\"linear\"",
+                    "description": "Visual style of the progress bar.",
+                    "required": false
+                },
+                {
+                    "name": "animated",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether the progress bar should animate into view.",
+                    "required": false
+                },
+                {
+                    "name": "beginAnimate",
+                    "type": "boolean",
+                    "default": "undefined",
+                    "description": "Control flag to manually trigger animation.",
+                    "required": false
+                },
+                {
+                    "name": "val",
+                    "type": "number",
+                    "default": "0",
+                    "description": "Current value of the progress.",
+                    "required": false
+                },
+                {
+                    "name": "lowerBound",
+                    "type": "number",
+                    "default": "0",
+                    "description": "Minimum value of the range.",
+                    "required": false
+                },
+                {
+                    "name": "upperBound",
+                    "type": "number",
+                    "default": "100",
+                    "description": "Maximum value of the range.",
+                    "required": false
+                },
+                {
+                    "name": "showVal",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether to display the current numeric value.",
+                    "required": false
+                },
+                {
+                    "name": "showBounds",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether to display the lower and upper bounds.",
+                    "required": false
+                },
+                {
+                    "name": "label",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "Label text for the progress bar.",
+                    "required": false
+                },
+                {
+                    "name": "mappedtoinput",
+                    "type": "boolean",
+                    "default": "undefined",
+                    "description": "If true, disables smoothing for immediate feedback (e.g. when controlled by a slider).",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "linear",
+                "round",
+                "marker"
+            ]
+        },
+        {
+            "name": "TextInput",
+            "path": "src/ui/standardControls/TextInput.jsx",
+            "description": "A text input component with labeling and style variants.",
+            "props": [
+                {
+                    "name": "value",
+                    "type": "any",
+                    "default": "undefined",
+                    "description": "Input value.",
+                    "required": false
+                },
+                {
+                    "name": "onChange",
+                    "type": "func",
+                    "default": "undefined",
+                    "description": "Callback fired on change. Receives the new value string.",
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "Label text displayed above the input.",
+                    "required": false
+                },
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "default": "\"regular\"",
+                    "description": "Visual style variant.",
+                    "required": false
+                },
+                {
+                    "name": "showBorder",
+                    "type": "boolean",
+                    "default": "true",
+                    "description": "Whether to show the input border.",
+                    "required": false
+                },
+                {
+                    "name": "placeholder",
+                    "type": "string",
+                    "default": "\"\"",
+                    "description": "Placeholder text.",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "default": "\"text\"",
+                    "description": "HTML input type (e.g., 'text', 'password').",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "HTML name and id attribute.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "regular",
+                "hero",
+                "mobile"
+            ]
+        },
+        {
+            "name": "Toggle",
+            "path": "src/ui/standardControls/Toggle.jsx",
+            "description": "A toggle switch component with numerous style variants.",
+            "props": [
+                {
+                    "name": "type",
+                    "type": "string",
+                    "default": "\"box\"",
+                    "description": "Visual style variant of the toggle.",
+                    "required": false
+                },
+                {
+                    "name": "callback",
+                    "type": "func",
+                    "default": "() => {}",
+                    "description": "Callback fired when toggled. Receives the new boolean state.",
+                    "required": false
+                },
+                {
+                    "name": "firsticon",
+                    "type": "node",
+                    "default": "undefined",
+                    "description": "Icon to display in the 'off' or primary position (depends on variant).",
+                    "required": false
+                },
+                {
+                    "name": "secondicon",
+                    "type": "node",
+                    "default": "undefined",
+                    "description": "Icon to display in the 'on' or secondary position (depends on variant).",
+                    "required": false
+                },
+                {
+                    "name": "checked",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Checked state of the toggle.",
+                    "required": false
+                },
+                {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Whether the toggle is disabled.",
+                    "required": false
+                },
+                {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "default": "\"Standard toggle\"",
+                    "description": "Accessibility label.",
+                    "required": false
+                },
+                {
+                    "name": "className",
+                    "type": "string",
+                    "default": "\"\"",
+                    "description": "Additional CSS class names.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "box",
+                "pill",
+                "largepill",
+                "modern",
+                "minimal",
+                "outline",
+                "glass",
+                "neon",
+                "modern_unfilled",
+                "basic_small",
+                "utility",
+                "soft",
+                "dev",
+                "checkbox"
+            ]
+        },
+        {
+            "name": "ModernButton",
+            "path": "src/ui/standardControls/button/Button.jsx",
+            "description": "A flexible button component with callback linkage and extensive theming variants.",
+            "props": [
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "default": "\"default\"",
+                    "description": "Visual style variant.",
+                    "required": false
+                },
+                {
+                    "name": "callback",
+                    "type": "func",
+                    "default": "undefined",
+                    "description": "Function called on click.",
+                    "required": false
+                },
+                {
+                    "name": "link",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "URL to open in a new tab when clicked.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default",
+                "link",
+                "code",
+                "rounded",
+                "icon_only",
+                "featured",
+                "modern",
+                "dev",
+                "text",
+                "nav",
+                "natural",
+                "mobileNav"
+            ]
+        },
+        {
+            "name": "ComponentsWrappedtoImage",
+            "path": "src/ui/wrappers/ComponentsWrappedtoImage.jsx",
+            "description": "Wraps children components in a semi-circular layout next to an orbiting image.",
+            "props": [
+                {
+                    "name": "image",
+                    "type": "string",
+                    "default": "undefined",
+                    "description": "Source URL for the central image.",
+                    "required": true
+                },
+                {
+                    "name": "radius",
+                    "type": "number",
+                    "default": "10",
+                    "description": "Radius of the curve effect for child items.",
+                    "required": false
+                },
+                {
+                    "name": "gap",
+                    "type": "number",
+                    "default": "-50",
+                    "description": "Horizontal gap offset.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "DarkModeFancyTile",
+            "path": "src/ui/wrappers/DarkModeFancyTile.jsx",
+            "description": "A complex animated tile simulating a day/night cycle, used for toggling dark mode.",
+            "props": [
+                {
+                    "name": "grayscale",
+                    "type": "boolean",
+                    "default": "true",
+                    "description": "Whether to apply a grayscale filter in certain states.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "DarkModeWrapper",
+            "path": "src/ui/wrappers/DarkModeWrapper.jsx",
+            "description": "A specific toggle wrapper for controlling the application's dark mode.",
+            "props": [
+                {
+                    "name": "type",
+                    "type": "string",
+                    "default": "\"modern\"",
+                    "description": "The toggle style variant to use.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "modern"
+            ]
+        },
+        {
+            "name": "StandardPage",
+            "path": "src/ui/scroll/StandardPage.jsx",
+            "description": "A uniform page layout wrapper that handles centering and max-width.",
+            "props": [
+                {
+                    "name": "children",
+                    "type": "node",
+                    "default": "undefined",
+                    "description": "Page content.",
+                    "required": true
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "StandardTab",
+            "path": "src/ui/scroll/StandardTabView.jsx",
+            "description": "A tabbed view container for switching between multiple sub-components.",
+            "props": [
+                {
+                    "name": "tabs",
+                    "type": "object",
+                    "default": "{}",
+                    "description": "Map of tab titles to React components.",
+                    "required": true
+                },
+                {
+                    "name": "tabPosition",
+                    "type": "string",
+                    "default": "\"bottom\"",
+                    "description": "Position of the tab bar.",
+                    "required": false
+                },
+                {
+                    "name": "variant",
+                    "type": "string",
+                    "default": "\"outline\"",
+                    "description": "Visual style of the tabs.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "outline"
+            ]
+        },
+        {
+            "name": "TikTokMobileContainer",
+            "path": "src/ui/scroll/TikTokMobileContainer.jsx",
+            "description": "A snap-scrolling container optimized for mobile, similar to social media feeds.",
+            "props": [
+                {
+                    "name": "borders",
+                    "type": "boolean",
+                    "default": "undefined",
+                    "description": "Whether to verify section borders.",
+                    "required": false
+                },
+                {
+                    "name": "conductnext",
+                    "type": "number",
+                    "default": "undefined",
+                    "description": "Signal to scroll to the next section.",
+                    "required": false
+                },
+                {
+                    "name": "conductprev",
+                    "type": "number",
+                    "default": "undefined",
+                    "description": "Signal to scroll to the previous section.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "VerticalScrollingWithTracking",
+            "path": "src/ui/scroll/VerticalScrollingWithTracking.jsx",
+            "description": "A basic vertical scroll container that tracks scroll percentage.",
+            "props": [
+                {
+                    "name": "update",
+                    "type": "func",
+                    "default": "undefined",
+                    "description": "Callback receiving the current scroll percentage (0-100).",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        },
+        {
+            "name": "ScrollableVerticalView",
+            "path": "src/ui/scroll/VerticalScrollWithStickyHeaders.jsx",
+            "description": "A robust scroll view with support for sticky headers, velocity tracking, and staggered entry animations.",
+            "props": [
+                {
+                    "name": "trackVelocity",
+                    "type": "boolean",
+                    "default": "true",
+                    "description": "Enable scroll velocity tracking.",
+                    "required": false
+                },
+                {
+                    "name": "trackScrollPercent",
+                    "type": "boolean",
+                    "default": "undefined",
+                    "description": "Enable scroll percentage tracking.",
+                    "required": false
+                },
+                {
+                    "name": "staggerStart",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Apply a stagger effect to child entry.",
+                    "required": false
+                },
+                {
+                    "name": "alignCenter",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Center content horizontally.",
+                    "required": false
+                },
+                {
+                    "name": "displayTracker",
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Show a debug progress bar overlay.",
+                    "required": false
+                }
+            ],
+            "variants": [
+                "default"
+            ]
+        }
+    ]
+}

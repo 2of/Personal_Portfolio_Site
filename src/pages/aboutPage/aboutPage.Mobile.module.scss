@@ -284,3 +284,9 @@ max-height: 80vh;
         background: var(--accent-color-transparent);
     }
 }
+
+.stack { 
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}

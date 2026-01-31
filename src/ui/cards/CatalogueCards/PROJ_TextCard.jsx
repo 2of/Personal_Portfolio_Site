@@ -96,7 +96,7 @@ export const PROJCARD_Text = ({
           {links.map((l, i) => (
             <ModernButton
               key={i}
-              variant="natural"
+              variant="dev_chungus"
               icon={getIcon(l.icon || "right")}
               label={l.label}
               callback={() => gotoURL(l.to)}
