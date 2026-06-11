@@ -192,7 +192,7 @@ const PostContainerMobileHeader = ({
                         key={i}
                         label={link.title}
                         icon={getIcon(link.icon)}
-                        variant="natural"
+                        variant="Airline_Secondary"
                         darkOverride
                         callback={() => navigateTo(link.to)}
                     />

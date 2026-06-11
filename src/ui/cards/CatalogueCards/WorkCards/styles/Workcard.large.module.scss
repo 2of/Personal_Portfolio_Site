@@ -1,0 +1,129 @@
+.ContainerLarge {
+  width: 100%;
+  display: flex;
+  flex-direction: row; 
+  gap: 32px; 
+  padding: 24px 0; 
+  background: transparent; 
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+  }
+}
+
+.imgContainer {
+  // Increased width to 300px and height to 180px for a more balanced presence
+  flex: 0 0 300px; 
+  height: 180px; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px; 
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    flex: none;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  .ContainerLarge:hover & {
+    transform: scale(1.0);
+  }
+}
+
+.progresstag {
+  position: absolute;
+  top: 12px;
+  left: 12px; 
+  z-index: 10;
+  padding: 4px 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: var(--font-weight-bold);
+  border-radius: 20px;
+  background: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.metaHeader {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.date {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: var(--secondary-text); 
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+//   font-size: var(--font-size-xl); 
+  color: var(--text-color);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--secondary-text);
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: default;
+
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2; // Change this fella to allow more or fewer lines
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  margin-top: auto; // Pushes buttons to the bottom if description is short
+  padding-top: 8px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; 
+}

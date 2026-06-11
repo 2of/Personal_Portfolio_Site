@@ -1,0 +1,22 @@
+{
+  "Preamble": { 
+    "intro": "This website is quite all over the place",
+    "intro1": "This page explains some of the stuff you can use if you clone it"
+  },
+
+  "sections" : { 
+    
+    "scrollablevertical": "the ScrollableVerticalView also has Section components as children. Sections take in:",
+ 
+    "tablecoltitles" : ["prop", "values", "does"],
+     
+    "tablerows" : [
+      ["Header", "Component / Function (() => JSX)", "Becomes the header for each section, wrapped in styled layout containers"],
+      ["sticky", "boolean", "Fixes the section header context container to the top while scrolling"],
+      ["narrow", "boolean", "Applies a constrained max-width alignment variant to both the header and content areas"],
+      ["color", "\"bg\" | \"l1\" | \"l2\" | \"l3\" | \"dark\" | \"gradient\" | \"particles\" | string", "Determines the background styling layer, theme variables, or drops in background asset engines"],
+      ["animateIn", "boolean", "Flag cloned from root shell parent to trigger dynamic presentation keyframes"],
+      ["children", "ReactNode", "The target layout fragments, copy blocks, or inner component tree chunks to display"]
+    ]
+  }
+}

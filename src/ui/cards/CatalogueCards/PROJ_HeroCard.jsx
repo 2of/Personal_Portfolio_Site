@@ -1,109 +1,74 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import styles from "./styles/PROJ_HeroCard.module.scss";
 import defaultImg from "../../../assets/default.jpeg";
-import { navigateTo } from "../../../tools/navigator";
-import { ModernButton } from "../../standardControls/button/Button";
-import { useNavigate } from "react-router-dom";
-
-
 import { useNavigateTo } from "../../../hooks/useNavigate";
+import { ModernButton } from "../../standardControls/button/Button";
 import getIcon from "../../../tools/iconRef";
-import { BlackAndWhiteHoverReveal } from "../../images/BlackAndWhiteHoverReveal";
 
 export const PROJCARD_HeroCard = ({
-  title, description, date, tags, links, link, image, inprogress
+  title, description, date, tags, links, image, inprogress
 }) => {
   const gotoURL = useNavigateTo();
-  const [showButtons, setShowButtons] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const loadedImagesRef = useRef(new Set());
-
-  const handleImageLoad = (imageId) => {
-    loadedImagesRef.current.add(imageId);
-    if (loadedImagesRef.current.size === 2) {
-      requestAnimationFrame(() => {
-        setImagesLoaded(true);
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (!image) {
-      setImagesLoaded(true);
-      return;
-    }
-    loadedImagesRef.current.clear();
-    setImagesLoaded(false);
-  }, [image]);
+  const truncatedTags = tags?.slice(0, 8) ?? [];
+  const remaining = (tags?.length ?? 0) - truncatedTags.length;
 
   return (
-    <div 
-      className={`${styles.heroCard} StandardBoxInline ${imagesLoaded ? styles.imagesReady : styles.imagesLoading}`}
-      onMouseEnter={() => setShowButtons(true)}
-      onMouseLeave={() => setShowButtons(false)}
-    >
-      {inprogress && (
-        <div className={styles.badge}>
-          {getIcon("smile")}
-          <span>In Early Progress - But cool af</span>
-        </div>
-      )}
+    <div className={styles.card}>
 
       {image && (
-        <div className={styles.ImgContainer}>
-          <img
-            src={image}
-            alt={title}
-            className={styles.image}
-            loading="eager"
-            decoding="async"
-            onLoad={() => handleImageLoad('base')}
-            onError={() => handleImageLoad('base')}
-          />
-          <img
-            src={image}
-            alt=""
-            className={styles.imageCover}
-            loading="eager"
-            decoding="async"
-            aria-hidden="true"
-            onLoad={() => handleImageLoad('cover')}
-            onError={() => handleImageLoad('cover')}
-          />
+        <div className={styles.imageWrap}>
+          <img src={image || defaultImg} alt={title} className={styles.image} />
+          <div className={styles.imageOverlay} />
+          {inprogress && (
+            <span className={styles.progressBadge}>In Progress</span>
+          )}
         </div>
       )}
 
+      <div className={styles.body}>
 
-      <div className={`${styles.ContentWrapper} ${showButtons ? styles.fadeback : ""}`}>
-        <div className={styles.Header}>
-          <h2 className={styles.Title}>{title}</h2>
-          <span className={styles.date}>{date}</span>
-        </div>
-
-        <p className={styles.Description}>{description}</p>
- <div className={`${styles.fff} tagContainer`}>
-            {tags?.map((tag, i) => (
-              <span key={i} className={` tag `}>{tag}</span>
-            ))}
+        <div className={styles.header}>
+          <div className={styles.meta}>
+            <span className={styles.date}>{date}</span>
+            {inprogress && !image && (
+              <span className={styles.progressBadge}>In Progress</span>
+            )}
           </div>
-
-         
-
-         
-      </div>
-       <div className={`${styles.linkGroup} ${!showButtons ? styles.hideButtons : styles.showButtons}`}>
-            {links?.map((l, i) => (
-              <ModernButton
-                key={i}
-                variant="dev"
-                icon={getIcon(l.icon || 'right')}
-                label={l.label}
-                callback={() => gotoURL(l.to)}
-              />
-            ))}
-
-
+          <h2 className={styles.title}>{title}</h2>
         </div>
+
+        <p className={styles.description}>{description}</p>
+
+        <div className={styles.footer}>
+          {truncatedTags.length > 0 && (
+            <div className={styles.tags}>
+              {truncatedTags.map((tag, i) => (
+                <span key={i} className={styles.tag}>{tag}</span>
+              ))}
+              {remaining > 0 && (
+                <span className={`${styles.tag} ${styles.tagMore}`}>
+                  +{remaining}
+                </span>
+              )}
+            </div>
+          )}
+
+          {links?.length > 0 && (
+            <div className={styles.links}>
+              {links.map((l, i) => (
+                <ModernButton
+                  key={i}
+                  variant={i === 0 ? "nav_Tertiary" : "nav_Primary"}
+                  icon={getIcon(l.icon || "right")}
+                  label={l.label}
+                  callback={() => gotoURL(l.to)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+      </div>
     </div>
   );
 };

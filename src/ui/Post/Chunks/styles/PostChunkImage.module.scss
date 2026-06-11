@@ -1,0 +1,17 @@
+.container { 
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+        // padding: 1rem;
+    // background-color: var(--bg-l3);
+}
+.imageCaption{ 
+    font-size: 0.8rem;
+
+    margin-top: 0;
+    font-style: italic;
+    // background-color: beige;
+    padding: 1rem;
+    padding-top: 0;
+}

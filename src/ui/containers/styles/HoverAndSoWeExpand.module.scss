@@ -1,0 +1,106 @@
+.stubBox {
+  display: inline-flex;
+  position: relative;
+}
+
+.portalOverlay {
+  position: fixed;
+  z-index: 100000;
+  pointer-events: none;
+}
+
+.portalInnerContainer {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: var(--border-radius, 0px);
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--bg-transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow, 0 8px 32px rgba(0,0,0,0.1));
+    z-index: -1;
+    
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.3, 1), 
+                transform 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  &.expanded::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &.horizontal {
+    flex-direction: row;
+    
+    .expandedPane {
+      grid-template-columns: 0fr;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    &.expanded {
+      .expandedPane {
+        grid-template-columns: 1fr;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    
+    .expandedPane {
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    &.expanded {
+      .expandedPane {
+        grid-template-rows: 1fr;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.expandedPane {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  transition: grid-template-columns 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.3s ease, 
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.innerContent {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}

@@ -1,47 +1,109 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./styles/StandardTab.module.scss";
+import { ModernButton } from "../standardControls/button/Button";
+import getIcon from "../../tools/iconRef";
+import GlassPushOverlay from "../containers/GlassContainer";
+import { BouncyButtonRow } from "../misc/BouncyButtonsRow";
 
 export const StandardTab = ({
   tabs = {},
-  tabPosition = "bottom",
-  variant = "outline", // default variant
+  tabPosition = "top",
+  variant = "outline",
 }) => {
   const tabKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabKeys[0]);
-  const tabRefs = useRef({});
+  const [hoveredTab, setHoveredTab] = useState(null);
 
   const ActiveComponent = tabs[activeTab];
 
-  // Determine which variant-specific button class to use
-  const variantButtonClass = `${variant}-tabButton`;
 
+  const isPeeking = hoveredTab && hoveredTab !== activeTab;
+  
   return (
     <div
-      className={`${styles.StandardTabContainer} ${
-        tabPosition === "bottom" ? styles.bottom : ""
-      } ${styles[variant]}`}
-    >
-  
+      className={`
+        ${styles.StandardTabContainer}
+        ${tabPosition === "bottom" ? styles.bottom : ""}
+        ${styles[variant]}
 
-      <div className={styles.tabContent}>
-        {ActiveComponent ? <ActiveComponent /> : null}
+      `}
+    >
+      <div
+        className={`
+          ${styles.tabContent}
+          ${isPeeking ? styles.peekHint : ""}
+        `}
+      >
+        {ActiveComponent && (
+          <div key={activeTab} className={styles.tabPanel}>
+            <ActiveComponent />
+          </div>
+        )}
       </div>
-      
-          <div className={styles.tabList}>
-        {tabKeys.map((title) => (
-          <button
-            key={title}
-            ref={(el) => (tabRefs.current[title] = el)}
-            className={`${styles.tabButton} ${styles[variantButtonClass]} ${
-              activeTab === title ? styles.active : ""
-            }`}
-            data-label={title} // for glitch-outline flicker
-            onClick={() => setActiveTab(title)}
-          >
-            {title}
-          </button>
-        ))}
+
+{/* 
+  <GlassPushOverlay
+            showShine={false}> */}
+  {/* <button onClick={() => console.log(tabs)}>
+    click me 
+  </button> */}
+
+
+    
+
+      <div className={`${styles.tabList}        `}>
+
+
+
+        <BouncyButtonRow
+        variant="tab"
+          buttons={tabKeys.map((title) =>{ 
+            const isActive = activeTab === title;
+
+            return ( 
+                {
+                  label: title, 
+                  callback: () => (setActiveTab(title)),
+                  isActive: isActive
+                }
+            )
+          }) }
+
+
+/>
+        {/* {tabKeys.map((title) => {
+          const isActive = activeTab === title;
+          return (
+
+
+            <ModernButton
+            variant="Airline_Secondary"
+            icon={getIcon(title)}
+            label={title} 
+            callback={() => setActiveTab(title)}
+            active = {isActive}
+            onMouseEnter={() => setHoveredTab(title)}
+            onMouseLeave={() => setHoveredTab(null)}
+             />
+            // <button
+            //   key={title}
+            //   className={`
+            //     ${styles.tabButton}
+            //     ${isActive ? styles.active : ""}
+            //     ${isActive && variant === "glass" ? "MaterialL2" : "MaterialL2"}
+            //     ${hoveredTab === title && !isActive ? styles.hovered : ""}
+            //   `}
+            //   onClick={() => setActiveTab(title)}
+            //   onMouseEnter={() => setHoveredTab(title)}
+            //   onMouseLeave={() => setHoveredTab(null)}
+            // >
+            //   {title}
+            // </button>
+          );
+        })} */}
       </div>
+
+      {/* </GlassPushOverlay> */}
     </div>
   );
 };

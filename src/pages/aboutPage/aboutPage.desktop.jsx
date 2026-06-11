@@ -27,6 +27,7 @@ import { GetElTextEls } from "../../tools/textUnpack";
 import s from "./aboutPage.Desktop.module.scss";
 import { AboutCard } from "../../ui/cards/discreteCards/aboutcard";
 import GlassPushOverlay from "../../ui/containers/GlassContainer";
+import { HoverAndSoWeExpandToAnotherComponent } from "../../ui/containers/HoverAndSoWeExpandToAnotherComponent";
 
 
 const ExpandAllToggle = memo(({ checked, onToggle }) => (
@@ -121,24 +122,24 @@ export function AboutPageDesktop({
   textItems,
 }) {
   if (!hasLoaded) return <Loader fillparent />;
-
+// horizontalhorir
   return (
 
     <>
-      <div className={` ${s.bgContainer} bg-dots-vellum`}>
+      {/* <div className={` ${s.bgContainer} bg-dots-vellum`}> */}
 
-        <div className={s.bgOverlay} />
+        {/* <div className={s.bgOverlay} /> */}
 
         {/* <PegboardBackground/> */}
         {/* <AsciiArt art={asciiArtWindow}  direction="top-down" maxOpacity={0.4}/> */}
-      </div>
+      {/* </div> */}
 
-      <ScrollableVerticalView animateIn staggerStart>
+      <ScrollableVerticalView animateIn staggerStart trackScrollPercent>
         {/* HERO */}
         <Section>
 
-          <div className={s.editorialLayout}>
-            <div className={s.editorialSidebar}>
+          {/* <div className={s.editorialLayout}> */}
+            {/* <div className={s.editorialSidebar}> */}
               <AboutCard
                 title={srcData.title}
                 subtitle={srcData.subtitle}
@@ -146,17 +147,17 @@ export function AboutPageDesktop({
                 longdesc={srcData.longDescription.content}
                 areatitle={srcData.areatitle}
               />
-            </div>
+            {/* </div> */}
 
-            <div className={s.editorialContent}>
-              <article className={`${s.article} ${s.dropCapArticle}`}>
+            <div className={`${s.editorialContent} AIRLINEBOX_DotMatrix`}>
+              {/* <article className={`${s.article} ${s.dropCapArticle}`}>
                 <h3>About ... in general</h3>
 
                   {GetElTextEls({ elements: textItems.preamble?.content ?? [] })}
       
-              </article>
+              </article> */}
 
-              <div className={s.editorialSeparator}>
+              {/* <div className={s.editorialSeparator}>
                 <span>✦</span>
               </div>
 
@@ -165,19 +166,19 @@ export function AboutPageDesktop({
     
                   {GetElTextEls({ elements: textItems.concisebout?.content ?? [] })}
     
-              </article>
+              </article> */}
             </div>
-          </div>
+          {/* </div> */}
 
 
 
           {/* <AboutHero textItems={textItems} /> */}
         </Section>
 
-        {/* <Section> 
+        <Section> 
 
              <div className={s.splitSection}>
-                <div className={s.splitColumn}>
+                <div className={`${s.splitColumn} AIRLINEBOX_DotMatrix`}>
                    <h4>About ... in general .. </h4>
            {GetElTextEls({ elements: textItems.preamble?.content ?? [] })}
           </div>
@@ -186,7 +187,7 @@ export function AboutPageDesktop({
            {GetElTextEls({ elements: textItems.concisebout?.content ?? [] })}
           </div>
              </div>
-      </Section> */}
+      </Section>
         <Section
           sticky
           Header={() => (
@@ -208,12 +209,21 @@ export function AboutPageDesktop({
 
             <StandardGrid columns={4} gap="md">
               {skillItems.map((skill, i) => (
-                <StandardGrid.Item key={skill.id ?? i} variant="square">
+                  
 
-                  <GlassPushOverlay scaleFactor={1} spiciness={2}>
+
+                <StandardGrid.Item key={skill.id ?? i} variant="square">
+                    <HoverAndSoWeExpandToAnotherComponent
+                    idle = {<h3>test</h3>}
+                    expanded = { 
+
+<GlassPushOverlay scaleFactor={1} spiciness={2}>
                     <SkillCard chunk={skill} />
 
                   </GlassPushOverlay>
+
+                    }
+                  />
 
                 </StandardGrid.Item>
               ))}
@@ -224,11 +234,32 @@ export function AboutPageDesktop({
 
         </Section>
         {/* CAREER + QUALS */}
+
+
+ <Section sticky
+          Header={() => (
+            <StandardHeader
+              textb1="A "
+              texthighlight="Blurb"
+              variant="regular"
+            />
+          )}
+        >
+ <article className={`${s.article} ${s.dropCapArticle}`}>
+                {/* <h3>About ... in general</h3> */}
+
+                  {GetElTextEls({ elements: textItems.preamble?.content ?? [] })}
+      
+              </article> 
+
+        </Section>
+             
+              
         <Section sticky
           Header={() => (
             <StandardHeader
-              textb1="skills"
-              texthighlight="+ expertise"
+              textb1="Quals "
+              texthighlight="& What I've Been Doing"
               variant="regular"
             />
           )}
@@ -243,6 +274,27 @@ export function AboutPageDesktop({
             </div>
           </div>
         </Section>
+
+
+         {/* <Section sticky
+          Header={() => (
+            <StandardHeader
+              textb1="No, This site isn't "
+              texthighlight="Vibecoded"
+              variant="regular"
+            />
+          )}
+        >
+ <article className={s.article}> */}
+                {/* <h3>What's [Next] .... or why is this website here?</h3> */}
+    
+                  {/* {GetElTextEls({ elements: textItems.concisebout?.content ?? [] })}
+    
+              </article> 
+
+        </Section> */}
+
+
 
         {/* SKILLS  and other SJIALL*/}
 

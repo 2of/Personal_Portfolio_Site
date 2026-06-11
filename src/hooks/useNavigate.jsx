@@ -35,19 +35,19 @@ export function useNavigateTo() {
 
   return (to) => {
 
-        console.log("HELLO WORLK", to)
+        // console.log("HELLO WORLK", to)
 
     if (!to || typeof to !== "string") return;
 
     const trimmed = to.trim();
 
-    // Direct URL or internal route
+    // Direct URL or internal route ya
     if (trimmed.startsWith("/") || /^https?:\/\//i.test(trimmed) || /^www\./i.test(trimmed)) {
       goToUrl(trimmed);
       return;
     }
 
-    // Lookup key in links.json
+    //  links.json
     const linkFromJson = getLink(trimmed);
     if (linkFromJson) {
       goToUrl(linkFromJson);
@@ -55,6 +55,6 @@ export function useNavigateTo() {
     }
 
     // If key not found, do nothing
-    console.warn(`No link found for key: "${trimmed}"`);
+    console.warn(`No link found fo the r key: "${trimmed}"`);
   };
 }

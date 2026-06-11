@@ -1,0 +1,105 @@
+$dock-timing: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+
+.outerContainer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 899;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    
+    transition: 
+
+
+        top $dock-timing,
+        padding $dock-timing;
+
+    &.float { 
+        top: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    &.fullwidth { 
+        top: 1rem;
+        padding: 0;
+    }
+
+    // * { 
+    //     color: var(--lightusualtext);
+    // }
+}
+
+.innerContainer {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: var(--navHeight);
+    width: 100%;
+    transition: 
+        max-width $dock-timing,
+        border-radius $dock-timing,
+        box-shadow $dock-timing;
+
+    &.float {
+        max-width: var(--maxWidth);
+        border-radius: 100px;
+    
+        // border: 1px solid var(--border-color);
+        // box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+    }
+
+    &.fullwidth {
+        // max-width: 100%;
+        border-radius: 0;
+        border: none;
+        // background-color: none;
+       
+        // border-bottom: 1px solid var(--border-color);
+        // box-shadow: 0 4px 20px -12px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--maxWidth);
+    padding: 0 1rem;
+    z-index: 10;
+    height: 100%;
+}
+
+.bg { 
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    transition: border-radius $dock-timing;
+
+    .float & {
+        border-radius: 100px;
+    }
+
+    .fullwidth & {
+        border-radius: 0;
+    }
+}
+
+.left, .right, .UtilityIcons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.outlinks {
+    display: flex;
+    align-items: center;
+    // background-color: var(--bg-l3);
+    border-radius: 100px;
+    padding: 4px;
+    margin: 0 0.5rem;
+}

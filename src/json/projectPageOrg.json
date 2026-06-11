@@ -1,0 +1,52 @@
+{
+    "featured" : "geo",
+    "sections" : [{ 
+            "variant": "regular",
+        "sectionId" : "1",
+        "sectionTitleA" : "Larger ",
+        "sectionTitleB" : "Projects",
+        "sectionBlurb" : "",
+        "sectionProjects" : [
+                   "geo",
+            "ds"
+     
+     
+        ]
+
+    },
+{ 
+        "sectionId" : "2",
+                    "variant": "large",
+        "sectionTitleA" : "other",
+        "sectionTitleB" : "things",
+        "sectionBlurb" : "",
+        "sectionProjects" : [
+
+                 "monitorMinder",
+            "portfolio",
+                   "dict",
+                               "pixelart",
+            "chrome-Retail",
+            "chrome-AZURECP"
+        ]
+
+    },
+{ 
+        "sectionId" : "3",
+                    "variant": "dense",
+        "sectionTitleA" : "things from ",
+        "sectionTitleB" : "undergrad",
+        "sectionBlurb" : "",
+        "sectionProjects" : [
+            "Stats_reg_ML",
+            "nodeJS",
+            "RGB-cam",
+            "MassiveData",
+            "HTTP_C",
+            "Weather",
+            "Algorithm"
+        ]
+
+    }]
+
+}

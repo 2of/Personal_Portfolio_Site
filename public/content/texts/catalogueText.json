@@ -1,4 +1,19 @@
 {
+
+
+  "Header" : { 
+    "test" : "SDFDS",
+    "langs" : [
+      {"label" : "python"},
+      {"label" : "JS",     "icon" : "Web"},
+      {"label" : "REACT",     "icon" : "Web"},
+      
+      
+
+    {"label" : "TensorFlow",     "icon" : "AI"},
+    {"label" : "PyTorch",     "icon" : "AI"}          
+    ]
+  },
   "preamble": {
   "sectionTitle": "Professional Profile",
   "tags": ["IT", "Support", "Developer", "Data", "AI", "Machine Learning"],

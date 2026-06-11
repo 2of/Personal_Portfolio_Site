@@ -61,12 +61,12 @@ export const BasicTile = ({
 
 const ExpandableCareerTile = ({
     position = "",
-    company = "Tech Innovaasdftors Inc.",
+    company = "things Inc.",
     duration = "Jan 2021 - Present",
     location = "Remote",
     doing = [
-        "Developed and maintained full-stack web applications.",
-        "Collaborated with cross-functional teams to deliver high-quality products.",
+        "Developed web applications.",
+        "stuff",
     ],
     techStack = ["React", "Node.js", "AWS"],
     icon = null,
@@ -297,7 +297,7 @@ const ExpandableCareerTile = ({
             {!alwaysexpand && hovered && coords && createPortal(
                 <div
                     ref={cloneRef}
-                    className={`      ${styles.hoverClone} ${animateIn ? styles.FullReveal : ""} ${isAnimating ? styles.animating : ""}             StandardBoxL2 `}
+                    className={`      ${styles.hoverClone} ${animateIn ? styles.FullReveal : ""} ${isAnimating ? styles.animating : ""}             MaterialL2 `}
                     style={{
                         top: `${coords.top}px`,
                         left: `${coords.left}px`,

@@ -74,7 +74,7 @@
 // }
 
 .articleHeader {
-  font-family: inherit; // Use system or specific serif if available
+  // font-family: inherit; // Use system or specific serif if available
   // font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -110,7 +110,7 @@
     margin-right: 0.8rem;
     margin-top: 0.2rem;
     color: var(--accent-color);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; // Contrast font for drop cap
+    // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; // Contrast font for drop cap
   }
 }
 

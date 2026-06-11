@@ -18,6 +18,7 @@ import {
   FaLaptopCode,
   FaArrowRight,
   FaArrowCircleLeft,
+  FaHandPeace,
 FaProjectDiagram,
   FaInfoCircle,
   FaEnvelope,
@@ -91,14 +92,20 @@ FaProjectDiagram,
   FaSwift,
   FaApple,
   FaGooglePlay,
+  FaSearch,
+
+  FaBrain
+
+
 } from "react-icons/fa";
-import { FaP, FaPencil, FaSailboat } from "react-icons/fa6";
+import { FaExplosion, FaP, FaPencil, FaSailboat, FaUpwork } from "react-icons/fa6";
 
 const getIcon = (iconName = "default") => {
   const iconMap = {
     home: <FaHome />,
     about: <FaInfoCircle />,
     user: <FaUser />,
+    search: <FaSearch/>,
     settings: <FaCog />,
     article: <FaRegFileAlt />, // Outline
     video: <FaVideo />,
@@ -110,6 +117,10 @@ const getIcon = (iconName = "default") => {
     email: <FaRegEnvelope />,
     tools: <FaToolbox />,
     tasks: <FaTasks />,
+    career: <FaBriefcase/>,
+    qualifications: <FaGraduationCap/>,
+    skills : <FaBrain/>,
+    featured: <FaExplosion/>,
 
     star: <FaRegStar />, // Outline star
     moon: <FaRegMoon />, // Outline moon
@@ -184,7 +195,9 @@ const getIcon = (iconName = "default") => {
     store: <FaStore/>,
     laptop: <FaLaptopCode/>,
     person: <FaPersonBooth/>,
-    user: <FaUserAstronaut/>
+    user: <FaUserAstronaut/>,
+    peace: <FaHandPeace/>,
+    dropdown: <FaChevronDown/>
   };
 
   return iconMap[iconName.toLowerCase()] || <FaAlignCenter />;

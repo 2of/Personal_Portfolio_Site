@@ -140,7 +140,7 @@ const PostContainerDesktopHeader = ({
                             key={i}
                             label={link.title}
                             icon={getIcon(link.icon)}
-                            variant="natural"
+                            variant="Airline_Secondary"
                             darkOverride
                             callback={() => navigateTo(link.to)}
                         />
@@ -149,7 +149,7 @@ const PostContainerDesktopHeader = ({
                     <ModernButton
                         label="Share"
                         icon={getIcon("Share")}
-                        variant="natural"
+                        variant="Airline_Secondary"
                         darkOverride
                         callback={handleShare}
                     />
@@ -174,7 +174,7 @@ const PostContainerDesktopHeader = ({
 
 const PostStickyHeader = ({ isVisible, title, name }) => {
     return (
-        <div className={`${styles.stickyHeader} ${isVisible ? styles.isVisible : ''}`}>
+        <div className={`${styles.stickyHeader} MaterialL1 ${isVisible ? styles.isVisible : ''}`}>
             <h3 className={styles.titleCollapsed}>{title || name}</h3>
             <div className={styles.collapsedActions}>
                 {/* Could add mini share here if wanted */}
@@ -188,7 +188,7 @@ const MemoizedHeader = memo(
     PostContainerDesktopHeader,
     (prev, next) => {
         return (
-            prev.viewtype === next.viewtype // 👈 THIS is the key
+            prev.viewtype === next.viewtype 
         );
     }
 );

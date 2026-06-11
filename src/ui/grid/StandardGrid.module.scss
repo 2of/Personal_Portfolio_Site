@@ -1,81 +1,88 @@
+// ─────────────────────────────────────────────────────────────
+// SYSTEM LAYOUT MODULES — ALL CONFIGURATIONS
+// ─────────────────────────────────────────────────────────────
 .grid {
   display: grid;
-  gap: 1rem; // fixed gap now
-  // background-color: orange;
-  // width: 100%;
-}
-
-.template-hero {
-  // Mobile default (phones)
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(280px, 1fr)
-  );
-  
-
-  // Tablet & up
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(500px, 1fr)
-    );
-  }
-}
-
-/* LARGE: auto-fill, max 2 columns */
-.template-large {
-  // background-color: red; 
- grid-template-columns: repeat(
-    auto-fit,
-    minmax(600px, 1fr)
-  );
-  // max-width: calc(2 * 400px);
-}
-
-/* REGULAR: auto-fill, max 3 columns */
-.template-regular {
-  // background-color: blue;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(100%, 280px), 1fr)
-  );
-  // max-width: calc(3 * 280px);
-}
-
-.template-text { 
-  // background-color: red;
-
-  .item { 
-    // max-width: 500px;
-  }
-}
-.template-nav {
-  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-  // background-color: beige;
+  gap: var(--grid-gap, 1.5rem);
   width: 100%;
-grid-gap: 1rem; /* Optional: increase gap between items */
-  .item { 
+}
 
-    width: 100%;
+// ── 1. LARGE (Full-width, single column editorial) ───────────
+.template-large {
+  grid-template-columns: 1fr;
+}
+
+// ── 2. FEATURED (Full-width, single column accent showcase) ──
+.template-featured {
+  grid-template-columns: 1fr;
+}
+
+// ── 3. REGULAR (Strict dual column split configuration) ──────
+.template-regular {
+  grid-template-columns: 1fr;
+  
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.item {
-  // width: 100%;
-  
-  // background-color: red;
+// ── 4. DENSE (High efficiency 3-column micro gallery) ────────
+.template-dense {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 180px), 1fr)
+  );
+  gap: 0.75rem; 
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* Optional animation */
+// ── 5. TEXT (Dense, dashboard-oriented multi-column matrix) ─
+.template-text {
+  grid-template-columns: repeat(2, 1fr);
+  
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1400px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+// ── 6. MOBILE (Enforced vertical card collection stack) ──────
+.template-mobile {
+  grid-template-columns: 1fr;
+}
+
+
+// ─────────────────────────────────────────────────────────────
+// COMPONENT STRUCTURAL BOUNDS & ENGINES
+// ─────────────────────────────────────────────────────────────
+.item {
+  width: 100%;
+  position: relative;
+}
+
+/* Fluid reveal choreography */
 .animatedContainer > .item {
   opacity: 0;
-  animation: fadeUp 400ms ease forwards;
+  animation: fadeUp 500ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  
+  // Scaffolding fallback loop for statically compiled nodes 
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 45}ms;
+    }
+  }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;

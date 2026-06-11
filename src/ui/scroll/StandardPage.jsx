@@ -3,32 +3,34 @@ import { useScreenSize } from "../../contexts/ScreenSizeContext";
 
 export const StandardPage = ({ children }) => {
   const screenSize = useScreenSize();
+  const isMobile = screenSize === "sm";
 
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         width: "100%",
-        overflowX: "hidden",
-  
-        // ...(screenSize==="sm" && { backgroundColor: "red"}),
+        minHeight: "100vh",
+        overflowX: "hidden", // Cuts off ghost margins
+        boxSizing: "border-box",
+        paddingTop: "4vh",
+        paddingBottom: "4rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
       }}
     >
-    {/* <h1>test test test test {screenSize}</h1> */}
       <div
         style={{
           width: "100%",
           maxWidth: "1200px",
-          margin: "0 auto",
-          display: "grid",
-          gap: "1rem",
+          boxSizing: "border-box",
+          padding: isMobile ? "0 1rem" : "0 2rem",
+          display: "flex",
           flexDirection: "column",
-          // backgroundColor: "red",
-          // padding:"1rem",
-            ...(screenSize=="sm" && {    padding: "1rem"}),
-            ...(screenSize!=="sm" && {    padding: "1rem"}),
+          gap: "1rem",
+          // ── THE HORIZONTAL FIXES ──
+          minWidth: 0,         // Forces flex children to shrink below content size
+          overflowX: "hidden"  // Prevents wide child components from expanding this column
         }}
       >
         {children}

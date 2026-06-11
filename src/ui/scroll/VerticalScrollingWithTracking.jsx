@@ -21,7 +21,7 @@ export const VerticalScrollWithTracking = ({ update, children }) => {
     if (update) update(newPercent);
   };
 
-  // Optional: track scroll if the user resizes the window
+
   useEffect(() => {
     const node = containerRef.current;
     if (!node) return;
@@ -44,7 +44,8 @@ export const VerticalScrollWithTracking = ({ update, children }) => {
       {children}
 
       {/* Optional: display scroll percent */}
-      {/* <div
+      <h3>ooga booga</h3>
+      <div
         style={{
           position: "fixed",
           top: 10,
@@ -56,7 +57,7 @@ export const VerticalScrollWithTracking = ({ update, children }) => {
         }}
       >
         {percent.toFixed(0)}%
-      </div> */}
+      </div>
     </div>
   );
 };

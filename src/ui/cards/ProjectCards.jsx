@@ -2,10 +2,7 @@ import React from "react";
 import styles from "./ProjectCards.module.scss";
 import defaultImg from "../../assets/default.jpeg";
 
-/**
- * Helper to handle link navigation
- * Priority: uses first link in the 'links' array or the 'link' string
- */
+
 const handleNavigation = (project) => {
     const target = project.links?.[0]?.to || project.link;
     if (target) {

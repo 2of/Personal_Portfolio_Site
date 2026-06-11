@@ -1,0 +1,198 @@
+%material-base {
+  transition: 
+    background var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease),
+    backdrop-filter var(--duration) var(--ease);
+}
+
+// 1. The Luxury Glass Master Mixin
+@mixin crazy-glass($bg-color, $blur: 40px, $opacity: 0.65, $saturate: 220%) {
+  // We drop the opacity lower to let light bleed through, but hyper-saturate it 
+  // so the colors passing underneath pop with an organic, liquid iridescence.
+  background: color-mix(in srgb, $bg-color, transparent (100% - ($opacity * 100%)));
+  
+  backdrop-filter: blur($blur) saturate($saturate) brightness(1.02);
+  -webkit-backdrop-filter: blur($blur) saturate($saturate) brightness(1.02);
+  
+  // The magic is in the double inset rim: One pure white top edge light reflection,
+  // and one subtle surrounding inner bounds highlight.
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),      // Specular glare reflection
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),    // Sub-pixel edge refraction rim
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    var(--drop-shadow);
+}
+
+.MaterialL1 {
+  @extend %material-base;
+  @include crazy-glass(var(--bg-l1), 32px, 0.72, 180%); 
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--border-radius);
+}
+
+.MaterialL1ForceDark {
+  @extend %material-base;
+  // A premium deep smoked obsidian glass
+  @include crazy-glass(#0b0b10, 45px, 0.60, 240%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--border-radius);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+    var(--drop-shadow);
+}
+
+.MaterialL2 {
+  @extend %material-base;
+  @include crazy-glass(var(--bg-transparent), 48px, 0.55, 260%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.MaterialL3 {
+  @extend %material-base;
+  // High density polished glass block
+  @include crazy-glass(var(--bg-l3), 24px, 0.82, 200%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+
+  &:hover {
+    // Blends the accent color directly into the glass molecular pane on hover
+    background: color-mix(in srgb, var(--bg-l3), var(--accent-color) 6%);
+    border-color: var(--accent-color);
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+      0 8px 24px color-mix(in srgb, var(--accent-color), transparent 88%);
+  }
+}
+
+// 2. The Masterpiece MaterialNav
+.MaterialNav {
+  @extend %material-base;
+  // Deep fluid optics: Maximum blur and extreme color amplification
+  @include crazy-glass(var(--bg), 50px, 0.68, 280%); 
+  
+  // High contrast refraction borders
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: calc(var(--border-radius) * 1.8);
+  
+  // Complex stacking box-shadows to float seamlessly off the display canvas
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.10),
+    0 16px 40px rgba(0, 0, 0, 0.16),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 0 1px color-mix(in srgb, var(--accent-color), transparent 94%);
+
+  // Layout readiness for variable elements/scaling
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  padding: var(--padding-small) var(--padding-medium);
+  
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.MaterialSunken {
+  // Deep etched/carved glass lane
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    inset 0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(0, 0, 0, 0.15),
+    0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.BorderSubtle {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.BorderStrong {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.MaterialColoursGlow {
+  @extend %material-base;
+  @include crazy-glass(var(--bg-l1), 40px, 0.60, 300%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+
+  // Prismatic dispersion field built directly beneath the crystal face
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: conic-gradient(
+      from 200deg at 70% -10%,
+      rgba(255, 50,  80,  0.25),
+      rgba(255, 140, 0,   0.20),
+      rgba(30,  120, 255, 0.25),
+      rgba(160, 60,  255, 0.25),
+      rgba(255, 30,  180, 0.20),
+      rgba(255, 50,  80,  0.25)
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 140% 140% at 55% -10%,
+      black 20%,
+      rgba(0, 0, 0, 0.4) 60%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 12px 32px color-mix(in srgb, var(--accent-color), transparent 85%),
+    0 4px 48px rgba(255, 80, 180, 0.18),
+    var(--drop-shadow);
+
+  &:hover {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+      0 16px 40px color-mix(in srgb, var(--accent-color), transparent 75%),
+      0 4px 64px rgba(255, 80, 180, 0.28),
+      var(--drop-shadow);
+  }
+}
+
+.MaterialInset {
+  @extend %material-base;
+  border-radius: var(--border-radius);
+  background: color-mix(in srgb, var(--bg-l1), black 12%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow:
+    inset 0 4px 16px rgba(0, 0, 0, 0.35),
+    inset 0 1px 2px rgba(0, 0, 0, 0.2),
+    0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.MaterialOverlay {
+  @extend %material-base;
+  border-radius: var(--border-radius);
+  // Ultra thick slab crystal glass
+  @include crazy-glass(var(--bg), 64px, 0.50, 320%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 24px 64px rgba(0, 0, 0, 0.28),
+    0 48px 96px rgba(0, 0, 0, 0.18);
+}

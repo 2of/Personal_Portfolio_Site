@@ -31,7 +31,7 @@ export const DefaultNotFound = () => {
       <div className={s.wrapper}>
 
         {/* BIG 404 */}
-        <div className={s.code}>
+        <div className={`${s.code} ColorText1`}>
           404
         </div>
 

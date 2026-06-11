@@ -8,6 +8,7 @@ const StandardGrid = ({
   className = '',
   ...props
 }) => {
+  // Completely flat implementation relying on CSS Grid mapping
   const containerClasses = [
     styles.grid,
     styles[`template-${template}`],
@@ -15,13 +16,14 @@ const StandardGrid = ({
     className
   ].filter(Boolean).join(' ');
 
+  // Inject animation delays sequentially if animated flag is true
   const renderedChildren = animated
     ? React.Children.map(children, (child, index) =>
         React.isValidElement(child)
           ? React.cloneElement(child, {
               style: {
                 ...child.props.style,
-                animationDelay: `${index * 80}ms`
+                animationDelay: `${index * 85}ms` // Smooth staggered step orchestration
               }
             })
           : child

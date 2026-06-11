@@ -7,15 +7,15 @@ import styles from "./ArticleMultiCol.module.scss"
 import clsx from "clsx";
 import ImageHandle from "../../images/ImageHandle";
 import { useNavigate } from "react-router-dom";
-// Paragraph Section
+// Paragraph Sections
 export const ParagraphSection = ({ text, className }) => {
   const parseMath = (expr) => {
-    // Replace superscripts: x^{2} to x<sup>2</sup> 
+
     expr = expr.replace(/([a-zA-Z0-9]+)\^\{([^}]+)\}/g, (_, base, sup) => {
       return `${base}<sup>${sup}</sup>`;
     });
 
-    // Replace subscripts: x_{2} to x<sub>2</sub>
+    // x_{2} to x<sub>2</sub> :_ ))) 
     expr = expr.replace(/([a-zA-Z0-9]+)_\{([^}]+)\}/g, (_, base, sub) => {
       return `${base}<sub>${sub}</sub>`;
     });
@@ -38,7 +38,7 @@ export const ParagraphSection = ({ text, className }) => {
       } else {
         return part;
       }
-    });
+  });
   };
 
   return <p className={className}>{parseText(text)}</p>;

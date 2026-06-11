@@ -1,0 +1,113 @@
+/* --- Large Card Structural Layout Module --- */
+
+.cardFrame {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 280px; 
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// --------------------------------------------------------------------------
+// OPTION A: SIDE POSITIONING MATRIX
+// --------------------------------------------------------------------------
+.layoutWrapperSide {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    flex-direction: row;
+
+    .imagePanelSide {
+        position: relative;
+        width: 240px;
+        min-width: 240px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------
+// OPTION B: TOP POSITIONING MATRIX
+// --------------------------------------------------------------------------
+.layoutWrapperTop {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    flex-direction: column;
+
+    .imagePanelTop {
+        position: relative;
+        width: 100%;
+        height: 180px; 
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    :global(.DATASTRIP_Divider) {
+        width: 100%;
+        height: 20px;
+        flex-shrink: 0;
+        border-left: none;
+        border-right: none;
+        border-top: var(--ds-stroke-thin);
+        border-bottom: var(--ds-stroke-thin);
+    }
+}
+
+/* --- Shared Inner Content Workspace Pane --- */
+.mainContentPane {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 24px; 
+    min-width: 0;
+}
+
+/* Typography line restraints */
+.descriptionBox {
+    margin: 0; // Removed bottom margin since .spacer handles spacing now
+    display: -webkit-box;
+    WebkitLineClamp: 5; 
+    WebkitBoxOrient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
+/* The space capture node */
+.spacer { 
+    flex-grow: 1; /* Now works perfectly since the footer margin is cleared */
+    min-height: 16px; // Ensures a baseline gap even if content overflows
+}
+
+.stack { 
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    
+    // CRITICAL FIX: Overrides the global utility default that was breaking the flex engine
+    margin-top: 0 !important; 
+}
+
+.buttonCluster { 
+    display: flex;
+    gap: 0.25rem;
+    width: 100%;
+    margin-top: 8px; // Clean breakout separation between tags and buttons
+}

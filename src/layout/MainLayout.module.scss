@@ -5,6 +5,18 @@
     width: 100vw;
     overflow: hidden;
     position: relative;
+    
+    /* 1. Smoothly transition the background color/opacity of the main layout if needed */
+    transition: background-color 0.4s ease;
+
+    /* 2. Target the inner frame ONLY when the parent has the modal class */
+    &.ModalFadeDesktopBack {
+        .DesktopFrame {
+            // transform: scale(1.45); 
+  
+            // filter: blur(2px);     
+        }
+    }
 }
 
 .ContentWrapper {
@@ -19,7 +31,7 @@
 .Content {
     // Legacy/Shared
     flex-grow: 1;
-    margin: 1rem 1rem 1rem 0;
+    // margin: 1rem 1rem 1rem 0;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
@@ -27,26 +39,66 @@
 }
 
 .DesktopFrame {
-    // Outer "Box": Stable, holds background, border-radius (via class), and CROPS transition
-    flex-grow: 1;
-    margin: 1rem 1rem 1rem 0;
+    // Outer "Box": St
+
     position: relative;
-    overflow: hidden; // Allows cropping of absolute children (TransitionCover)
+    overflow: hidden;
+    overflow: hidden; 
     border-radius: inherit; // If parent has rad? No, StandardBoxL2 adds it.
 
     // From DesktopContent
     // width: 100%;
-    background-color: var(--bg-l1);
+    // background-color: var(--bg-l1);
     display: flex; // To hold scroller
+    border-radius: 12px;
     // background-color: red;
     flex-direction: column;
+
+        transform: scale(1);
+        transition: all 0.4s ease;
+
+
+//         &.ModalFadeDesktopBack { 
+//     transform: scale(2);
+// }
+
+
+&.material_desktopframestyle { 
+    // background-color: orange;
+
 }
 
+
+&.floating_desktopframestyle { 
+    // background-color: orange;
+     border: 1px solid var(--border-color);
+         margin: 10rem 10rem 10rem 10rem;
+}
+
+
+&.stacked_desktopframestyle { 
+    // background-color: orange;
+     border: 1px solid var(--border-color);
+         margin: 1rem 1rem 1rem 0;
+}
+
+
+}
+
+
+.DesktopFrame {
+    flex-grow: 1;
+    min-height: 0; // this fucker
+    position: relative;
+    overflow: hidden;
+}
+
+
+
 .DesktopScrollArea {
-    // Inner "Page": Keyed, scrolls, has padding
     flex-grow: 1;
     width: 100%;
-    height: 100%;
+    // height: 100%;  ← remove this, it fights flex-grow
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
@@ -57,7 +109,7 @@
     // It was used in MainLayout.jsx. We replace it.
     width: 100%;
     backface-visibility: hidden;
-    background-color: var(--bg-l1);
+    // background-color: var(--bg-l1);
     position: relative;
 }
 
@@ -65,7 +117,7 @@
     display: flex;
     flex-direction: column;
     // height: 100vh;
-    width: 100vw;
+    // width: 100vw;
     position: relative;
 
     // background-color: red;

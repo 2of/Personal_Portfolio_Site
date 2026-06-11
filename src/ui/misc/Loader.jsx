@@ -1,33 +1,43 @@
 import React from "react";
 import styles from "./styles/loader.module.scss";
+import { DrawText, SVGText } from "./TextPath";
 
 
 
 
-// export function Loader({ size = 3, text = "loading" , fillparent = false}) {
-//   const totalDots = size * size;
-//   const dots = Array.from({ length: totalDots });
+export function Loader({ size = 3, text = "loading" , fillparent = false}) {
+  const totalDots = size * size;
+  const dots = Array.from({ length: totalDots });
 
-//   return (
-//     <div className={`${styles.container} ${fillparent && styles.fillpage}`}>
-//       <div className={styles.grid} style={{ '--grid-size': size }}>
-//         {dots.map((_, i) => (
-//           <div
-//             key={i}
-//             className={styles.dot}
-//             style={{
-//               "--x": i % size,
-//               "--y": Math.floor(i / size),
-//             }}
-//           />
-//         ))}
-//       </div>
-//       <span className={styles.label}>{text}</span>
-//     </div>
-//   );
-// }
+  return (
+    <div className={`${styles.container} ${fillparent && styles.fillpage}`}>
+      <div className={styles.grid} style={{ '--grid-size': size }}>
+        {dots.map((_, i) => (
+          <div
+            key={i}
+            className={styles.dot}
+            style={{
+              "--x": i % size,
+              "--y": Math.floor(i / size),
+            }}
+          />
+        ))}
+      </div>
+      <span className={styles.label}>{text}</span>
+    </div>
+  );
+}
 
-export function Loader({ size = 13, text = "loading", fillparent = false }) {
+export function Loader2({ size = 13, text = "loading", fillparent = false }) {
+
+
+  // return ( 
+  //       <div className={""}>
+  //        <DrawText stagger={7} strokeWidth={0.1} stroke="bprder" duration={4}>
+  //               <SVGText text="loading" width={800} height={200} />
+  //             </DrawText>
+  //       </div>
+  // )
   return (
     <div
       style={{

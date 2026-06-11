@@ -15,7 +15,7 @@ export const NaturalButton = ({
 }) => {
 
 
-  // Map variant prop to SCSS class
+
   let variantClass = "";
   if (variant === "natural") variantClass = styles.natural;
   if (variant === "natural_icon_only") variantClass = styles.natural_icon_only;
@@ -24,6 +24,7 @@ export const NaturalButton = ({
   if (variant === "natural_squared") variantClass = styles.natural_squared;
   if (variant === "natural_wipe") variantClass = styles.natural_wipe;
   if (variant === "natural_large_touch_nav_menu") variantClass = styles.natural_large_touch_nav_menu;
+  if (variant === "expandbutton") variantClass = styles.expandbutton;
 
   return (
     <button
@@ -33,8 +34,17 @@ export const NaturalButton = ({
       {...props}
     >
 
-        {/* test  {active ? "TSET" : "SDF"} */}
-      {variant === "natural_wipe" ? (
+      {/* test  {active ? "TSET" : "SDF"} */}
+      {variant === "expandbutton" ? (
+        <>
+          {icon && <span className={styles.icon}>{icon}</span>}
+          {label && (
+            <span className={styles.expandLabelWrapper}>
+              <span className={styles.expandLabelInner}>{label}</span>
+            </span>
+          )}
+        </>
+      ) : variant === "natural_wipe" ? (
         <>
           <span className={styles.buttoncontent}>
             {icon && <span className={styles.icon}>{icon}</span>}

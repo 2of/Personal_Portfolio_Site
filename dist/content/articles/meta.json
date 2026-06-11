@@ -4,12 +4,11 @@
     "heroImage": "",
     "description": "lorem ipsum"
   },
-    "ds": {
-    "dirname": "ds",
+  "portfolio": {
+    "dirname": "portfolio",
     "heroImage": "",
     "description": "lorem ipsum"
   },
-
   "other": {
     "dirname": "other",
     "heroImage": "",

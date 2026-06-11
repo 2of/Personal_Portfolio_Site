@@ -5,38 +5,68 @@ export const TextInput = ({
   value,
   onChange,
   title,
-  variant = "regular", // "hero", "regular", or "mobile"
+  variant = "airline", // "regular", "glass", "box", or "airline"
   showBorder = true,
   placeholder = "",
   type = "text",
   name,
+  className = "",
   ...props
 }) => {
   
-  // Combine dynamic styles
+  const getVariantClass = () => {
+    switch (variant) {
+      case "glass":
+        return styles.variantGlass;
+      case "box":
+        return styles.variantBox;
+      case "airline":
+        return styles.variantAirline;
+      case "regular":
+      default:
+        return styles.variantRegular;
+    }
+  };
+
+  // Maps clean string inputs or falls back safely
+  const materialClass = variant === "glass" ? "MaterialL1" : "";
+
   const containerClasses = [
     styles.inputContainer,
-    styles[variant],
-    !showBorder ? styles.noBorder : ""
-  ].join(" ").trim();
+    getVariantClass(),
+    !showBorder ? styles.noBorder : "",
+    materialClass,
+    className
+  ].filter(Boolean).join(" ");
 
   return (
     <div className={containerClasses}>
       {title && (
-        <label className={styles.label} htmlFor={name}>
-          {title}
-        </label>
+        variant === "airline" ? (
+          /* Uses global data structure token for terminal theme headers */
+          <div className={`${styles.airlineMetaHeader} DATASTRIP_MetaHeader`}>
+            <span>{title}</span>
+            <span className={styles.systemTag}>SYS//INP</span>
+          </div>
+        ) : (
+          <label className={styles.label} htmlFor={name}>
+            {title}
+          </label>
+        )
       )}
-      <input
-        {...props}
-        id={name}
-        name={name}
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        className={styles.inputElement}
-        onChange={(e) => onChange(e.target.value)}
-      />
+      
+      <div className={variant === "airline" ? "DATASTRIP_TerminalBody" : styles.inputWrapper}>
+        <input
+          {...props}
+          id={name}
+          name={name}
+          type={type}
+          value={value}
+          placeholder={placeholder || variant}
+          className={`${styles.inputElement} ${variant === "airline" ? styles.airlineInput : ""}`}
+          onChange={(e) => onChange(e.target.value)}
+        />
+      </div>
     </div>
   );
 };

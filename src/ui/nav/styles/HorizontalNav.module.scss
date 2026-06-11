@@ -1,0 +1,318 @@
+// HorizontalNav.module.scss
+
+.HorizontalNavOuter {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  
+
+  &.horizontal {
+    // bottom: 24px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 1rem;
+    // height: var(--navHeight);
+    // background-color: var(--bg);
+    background-color: transparent;
+    background-color: var(--bg-l1);
+    border-bottom: 1px solid var(--border-color);
+    // padding-top: 1rem;
+  }
+
+  &.vertical {
+    top: 0;
+    bottom: 0;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+  }
+}
+
+.HorizontalNavContainer {
+  pointer-events: auto;
+  display: flex;
+
+  margin: 10px;
+  background: var(--bg-l1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+    // box-shadow: var(--elevated-shadow, 0 10px 40px rgba(0, 0, 0, 0.2));
+  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // border-radius: var(--border-radius, 0px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  border-radius: 99px;
+  // background-color: blue;
+  width: var(--maxWidth);
+  
+  .horizontal & {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    // width: var(--maxWidth);
+    animation: floatUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  }
+
+  .vertical & {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    animation: floatRight 0.8s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  }
+}
+
+.LogoSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  animation-delay: 0.1s;
+
+  .horizontal & {
+    padding: 0 0.5rem;
+  }
+  .vertical & {
+    padding: 0.5rem 0;
+  }
+}
+
+.growySeparator {
+  background-color: var(--text-color);
+  opacity: 0.15;
+  transform-origin: center;
+  animation: lineGrow 0.6s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  animation-delay: 0.2s;
+flex-grow: 1;
+//   width: 100px;
+//   height: 100%;
+// background-color: red;
+  }
+
+.Separator {
+  background-color: var(--text-color);
+  opacity: 0.15;
+  transform-origin: center;
+  animation: lineGrow 0.6s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  animation-delay: 0.2s;
+
+  .horizontal & {
+    width: 1px;
+    height: 24px;
+    margin: 0 0.5rem;
+  }
+  .vertical & {
+    width: 24px;
+    height: 1px;
+    margin: 0.5rem 0;
+  }
+}
+
+.RouteIcons,
+.ExternalIcons,
+.UtilityIcons {
+  display: flex;
+  gap: 0.25rem;
+
+  .horizontal & {
+    flex-direction: row;
+  }
+  .vertical & {
+    flex-direction: column;
+  }
+}
+
+.NavIconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  .horizontal &:hover {
+    // transform: translateY(-3px);
+  }
+  .vertical &:hover {
+    // transform: translateX(3px);
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.ActivePip {
+  position: absolute;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 8px var(--accent-color-transparent);
+
+  .horizontal & {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+  }
+  
+  .vertical & {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+  }
+}
+
+.horizontal .NavIconWrap.active .ActivePip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px) scale(1.2);
+}
+
+.vertical .NavIconWrap.active .ActivePip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-2px) scale(1.2);
+}
+
+.OverflowTray {
+  position: absolute;
+  background: var(--bg-transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 240px;
+  
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: var(--border-radius, 0px);
+  box-shadow: var(--elevated-shadow, 0 10px 40px rgba(0, 0, 0, 0.2));
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary-text);
+    padding-top: 0.5rem;
+  }
+
+  .horizontal & {
+    bottom: calc(100% + 16px);
+    right: 0;
+    transform: translateY(20px) scale(0.95);
+    transform-origin: bottom right;
+
+    &.open {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .vertical & {
+    top: auto;
+    bottom: 0px; 
+    left: calc(100% + 16px);
+    transform: translateX(-20px) scale(0.95);
+    transform-origin: bottom left;
+
+    &.open {
+      transform: translateX(0) scale(1);
+    }
+  }
+}
+
+.OverflowSection {
+  display: flex;
+//   flex-direction: column;
+  gap: 0.5rem;
+}
+
+.OverflowDivider {
+  height: 1px;
+  background-color: var(--text-color);
+  opacity: 0.1;
+  margin: 0.5rem 0;
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatRight {
+  0% { opacity: 0; transform: translateX(-40px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.5) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes lineGrow {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 0.15; }
+}
+
+@media (max-width: 768px) {
+  .horizontal.HorizontalNavOuter {
+    bottom: 12px;
+  }
+  .vertical.HorizontalNavOuter {
+    left: 12px;
+  }
+  
+  .ExternalIcons {
+    display: none;
+  }
+  
+  .horizontal .OverflowTray {
+    right: 50%;
+    transform: translateX(50%) translateY(20px) scale(0.95);
+    transform-origin: bottom center;
+    
+    &.open {
+      transform: translateX(50%) translateY(0) scale(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .HorizontalNavContainer,
+  .LogoSlot,
+  .Separator,
+  .NavIconWrap {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .OverflowTray {
+    transition: opacity 0.2s ease;
+    transform: none !important;
+    
+    &.open {
+      transform: none !important;
+    }
+  }
+}

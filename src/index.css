@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after {
@@ -15,23 +14,26 @@ html {
 
 body {
   /*  */
-    /* font-family:  monospace; */
-      /* font-family: system-ui, sans-serif; */
+  /* font-family:  monospace; */
+  /* font-family: system-ui, sans-serif; */
   font-size: var(--text-base);
   line-height: var(--leading-normal);
 
-  background-color: var(--bg);
+     background-color: var(--bg);
+  
+}
+
+
 
   * {
     color: var(--text-color);
   }
+
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
-  transition:
-    background-color var(--duration-slow) var(--ease-out),
-    color var(--duration-slow) var(--ease-out);
+  transition: background-color var(--duration-slow) var(--ease-out),
+  color var(--duration-slow) var(--ease-out);
 
 
 }
- 

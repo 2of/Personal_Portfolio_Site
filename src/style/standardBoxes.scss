@@ -1,321 +1,66 @@
-/* =====================================
-   STANDARD BOX SYSTEM
-   Minimal / Versatile Base Styles
-   ===================================== */
-
-/* =============================
-   L1 — Minimal / Borderless
-   ============================= */
-.StandardBoxL1 {
-  position: relative;
-  // padding: 1rem;
-  background: transparent;
-  transition: background 0.2s ease-out;
-
-  &:hover {
-    background: var(--bg-l1);
-  }
+// --- Theme Tokens ---
+:root {
+    --glass-blur: 24px;
+    --glass-alpha: 0.15;
+    --primary-rgb: 100, 140, 255;
+    // Use soft tints rather than muddy grays
+    --surface-tint: rgba(255, 255, 255, 0.05); 
 }
 
-/* =============================
-   L2 — Thin Border
-   ============================= */
-.StandardBoxL2 {
-  // padding: 1rem;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  background-color: var(--bg-transparent);
-  backdrop-filter: blur(2px);
-  // background-color: red;
-  transition: border-color 0.2s ease-out;
-
-  &:hover {
-    // border-color: var(--accent-color);
-  }
+// --- Core Glass % ---
+%glass {
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    background: rgba(255, 255, 255, var(--glass-alpha));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* =============================
-   L3 — Dashed Border
-   ============================= */
-.StandardBoxL3 {
-  // padding: 0rem 1rem;
-  background: transparent;
-  border: 1px dashed var(--border-color);
-  border-radius: 2px;
-  transition: border-color 0.2s ease-out;
-
-  &:hover {
-    // border-color: var(--accent-color);
-  }
+// --- Elevation (The M3 way) ---
+%surfaceElevation {
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.2);
 }
 
-/* =============================
-   Interactive Modifier
-   ============================= */
-.StandardBoxClickable {
-  // cursor: pointer;
-  user-select: none;
-
-  &:active {
-    opacity: 0.9;
-  }
+// --- Surface Layers ---
+.StandardBox {
+    @extend %glass;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* =============================
-   Code Block
-   ============================= */
-.StandardBoxCode {
-  
-  font-size: 0.85rem;
-  padding: 1rem;
-  background: var(--bg-l1);
-  border-left: 2px solid var(--accent-color);
-  overflow-x: auto;
+.StandardBoxL1 { 
+    @extend .StandardBox; 
+    background: rgba(255, 255, 255, 0.03); 
 }
 
-/* =============================
-   Terminal Style
-   ============================= */
-.StandardBoxTerminal {
-  
-  font-size: 0.85rem;
-  // padding: 0.75rem 1rem;
-  background: transparent;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--secondary-text);
-  transition: border-color 0.2s ease-out;
-
-  &:hover {
-    border-color: var(--accent-color);
-  }
+.StandardBoxL2 { 
+    @extend .StandardBox; 
+    @extend %surfaceElevation; 
+    background: rgba(255, 255, 255, 0.06); 
 }
 
-/* =============================
-   Inline / Tag Style
-   ============================= */
-.StandardBoxInline {
-  display: inline-block;
-  
-  // font-size: 0.85rem;
-  // padding: 0.2rem 0.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 2px;
-  transition: border-color 0.15s ease-out;
-
-  &:hover {
-    border-color: var(--accent-color);
-  }
+.StandardBoxL3 { 
+    @extend .StandardBox; 
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.09); 
 }
 
-/* =============================
-   Glass / Blur
-   ============================= */
 .StandardBoxFloat {
-  // padding: 1rem;
-  background: var(--bg-transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  transition: border-color 0.2s ease-out;
-
-  &:hover {
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* =============================
-   Ghost / Fade on Hover
-   ============================= */
-.StandardBoxGhost {
-  padding: 1rem;
-  background: transparent;
-  opacity: 0.7;
-  transition: opacity 0.2s ease-out;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-/* =============================
-   Dotted Lines (top/bottom)
-   ============================= */
-.StandardBoxDotted {
-  // padding: 1rem;
-  background: transparent;
-  position: relative;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: repeating-linear-gradient(90deg,
-        var(--border-color) 0,
-        var(--border-color) 2px,
-        transparent 2px,
-        transparent 6px);
-    opacity: 0.3;
-  }
-
-  &::before {
-    top: 0;
-  }
-
-  &::after {
-    bottom: 0;
-  }
-}
-
-/* =============================
-   Top Accent Bar
-   ============================= */
-.StandardBoxTopAccent {
-  padding: 1rem;
-  background: var(--bg-l1);
-  border-radius: 4px;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--accent-color);
-    opacity: 0.5;
-    border-radius: 4px 4px 0 0;
-  }
-}
-
-/* =============================
-   Left Accent Bar
-   ============================= */
-.StandardBoxLeftAccent {
-  padding: 1rem;
-  padding-left: 1.25rem;
-  background: transparent;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent-color);
-    opacity: 0.4;
-  }
-}
-
-/* =============================
-   Underline Only
-   ============================= */
-.StandardBoxUnderline {
-  padding: 0.75rem 0;
-  background: transparent;
-  border-bottom: 1px solid var(--border-color);
-  transition: border-color 0.2s ease-out;
-
-  &:hover {
-    border-color: var(--accent-color);
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-/* =============================
-   Quote Style
-   ============================= */
-.StandardBoxQuote {
-  padding: 1rem;
-  padding-left: 1.5rem;
-  background: transparent;
-  border-left: 2px solid var(--border-color);
-  font-style: italic;
-  color: var(--secondary-text);
-}
-
-/* =============================
-   Numbered / Steps
-   ============================= */
-.StandardBoxNumbered {
-  padding: 1rem;
-  padding-left: 2.5rem;
-  background: transparent;
-  position: relative;
-  counter-increment: box-counter;
-
-  &::before {
-    content: counter(box-counter, decimal-leading-zero);
-    position: absolute;
-    left: 0;
-    top: 1rem;
+    @extend %glass;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
     
-    font-size: 0.7rem;
-    color: var(--secondary-text);
-    opacity: 0.5;
-  }
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
 }
 
-.StandardBoxNumberedContainer {
-  counter-reset: box-counter;
+.StandardBoxClickable {
+    cursor: pointer;
+    // Subtle "State Layer" using white/tint instead of solid color
+    &:hover { background: rgba(255, 255, 255, 0.08); }
+    &:active { background: rgba(255, 255, 255, 0.12); transform: scale(0.98); }
 }
-
-/* =============================
-   Focus State Modifier
-   ============================= */
-.StandardBoxFocused {
-  border-color: var(--accent-color) !important;
-}
-
-/* =============================
-   Reduced Motion
-   ============================= */
-
-
-
-.StandardBoxPaper1 {
-  background-image: url("../assets/tiles/black-paper.png");
-  background-repeat: repeat;
-  background-color: var(--accent-color);
-}
-
-
-
-@media (prefers-reduced-motion: reduce) {
-
-  .StandardBoxL1,
-  .StandardBoxL2,
-  .StandardBoxL3,
-  .StandardBoxTerminal,
-  .StandardBoxInline,
-  .StandardBoxFloat,
-  .StandardBoxGhost,
-  .StandardBoxUnderline {
-    transition: none;
-  }
-}
-
-
-
-// .StandardBoxPad { 
-//   padding: 1rem;
-//   padding-top: 0rem;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   // background-color: magenta;
-
-//   // * { 
-//   //   border: 1px solid black;
-//   // }
-// }

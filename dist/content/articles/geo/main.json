@@ -2,7 +2,7 @@
   "name": "Noah King",
   "title": "Neighbourhood Scale Geolocalization w/ latent image features using aggregate models and Attention",
   "subtitle": "A Short Summary of my Geolocalization Project for a 20k^2 area, achieving ~1.3km precision; an improvement over the image distribution",
-  "heroImage": "/Writeups/GEO/hero.png",
+  "heroImage": "hero.png",
   "shortDesc" : "Noah King - Master's Project - GeoLocale Estimation using Machine Learning",
   "author" : "Noah King",
   "date" : "February 2025" ,
@@ -29,6 +29,50 @@
     }
   ],
   "sections": [
+
+     {
+      "name": "Here's a really brief overview. It's a lot easier to follwo the links...",
+      "type": "text",
+      "boost": true,
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Essentially, I designed an ML approach to figuring out where a photo was taken given some street level images... Essentially, it's just GeoGuessr. But.. Automated... and really specific"
+        },
+         {
+          "type": "image",
+          "src": "main.png",
+          "alt": "Example of HSV histogram extraction from an image, showing hue, saturation, and value distributions, and a truncated sample embedding."
+        },
+
+          {
+          "type": "paragraph",
+          "text": "I set the scope to being City Scale, I ended up with a 20km^2 area from Chicago (I'll link the Mapilliary project below, although they still rate limit to 1img per second... and I ended up requiring about 150k for what I was doing). P.S. The dataset, including the feature vectors  I made (see later), I can share with you "
+        },
+
+          {
+          "type": "image",
+          "src": "density.png",
+          "alt": "Example of HSV histogram extraction from an image, showing hue, saturation, and value distributions, and a truncated sample embedding."
+        },
+       
+
+
+
+        {
+          "type": "pills",
+          "pills": ["Geolocation", "Machine Learning", "Deep Learning", "Attention Mechanisms", "Object Detection", "OCR", "Chicago", "Multi-neighborhood scale", "Geoinformative Features"]
+        }
+      ]
+    },
+{
+      "name": "Generated AI text herin",
+      "type": "text",
+      "boost": true,
+      "items": [{
+          "type": "paragraph",
+          "text": "Follow the link above for the thesis, otherwise, here's an AI generated summary of the paper... It's okay"
+        }]},
     {
       "name": "Essentially, It's an ML approach to GeoGuessr in two parts. Latent feature extraction + Psuedo Ensemble of ML/AI Models for GeoLocalization from explicit features ",
       "type": "text",
@@ -203,7 +247,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Conceptual diagram of a detection pipeline, showing CNN, transformer encoder-decoder, and bipartite matching loss."
         },
         {
@@ -229,7 +273,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Illustration of CRAFT-based text detection in complex scenes, showing horizontal, curved, and arbitrary text examples."
         },
         {
@@ -255,7 +299,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Example of HSV histogram extraction from an image, showing hue, saturation, and value distributions, and a truncated sample embedding."
         },
         {
@@ -272,7 +316,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Diagram illustrating the overall learning process, from input image through embedding generation, multiple machine learning models (including attention), clustering, and final averaged output."
         },
         {
@@ -316,7 +360,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Diagram showing the architecture of the signage-only neural network, both with and without an attention layer, processing text and color histograms."
         },
         {
@@ -349,7 +393,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Detailed diagram of the full image model with multi-head attention, showing text, class names, and color histogram inputs merging before batch normalization and dense layers."
         },
         {
@@ -391,7 +435,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Conceptual diagram of the K-means clustering pipeline, showing class names vector, one-hot encode, text embeddings, concatenation, normalization, and K-means training."
         },
         {
@@ -418,7 +462,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Graph showing the comparison of Test MSE over epochs for models with and without attention, often indicating higher MSE with attention."
         },
         {
@@ -435,7 +479,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Graph showing the SSD score per K for the Elbow Method, with a zig-zagging trend indicating poor separability and no clear optimal K."
         },
         {
@@ -452,7 +496,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "Heatmap showing the density of predicted locations by the model, heavily concentrated in areas with high original dataset density."
         },
         {
@@ -515,7 +559,7 @@
         },
         {
           "type": "image",
-          "src": "/Writeups/GEO/img/sampleImages.png",
+          "src": "sampleImages.png",
           "alt": "3D plot showing the evolution of weight distribution in a batch normalization layer over 50 epochs, indicating stability or learning patterns."
         },
         {

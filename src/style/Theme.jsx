@@ -7,7 +7,7 @@ export const baseTheme = {
   "--font-size-lg": "18px",
   "--font-weight-bold": "600",
   "--navHeightDESKTOP": "6rem",
-  "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP)",
+  "--content-heightDESKTOP": "calc(100vh - var(--navHeightDESKTOP))",
   "--navHeight": "4rem",
   "--content-height": "calc(100vh - var(--navHeight))",
   "--content-height-half": "calc(0.5 * (100vh - var(--navHeight)))",
@@ -21,91 +21,75 @@ export const baseTheme = {
 };
 
 export const lightTheme = {
-  // Morning edition - bright newsprint with energetic presence
-  "--bg": "#FFFEF9", // warm white broadsheet with life
-  "--bg-l1": "#FFF9F0", // cream editorial stock
-  "--bg-l2": "#FFF3E5", // warm section breaks
-  "--bg-l3": "#FFEBD1", // golden column separation
-  "--bg-transparent": "rgba(255, 254, 249, 0.98)",
+  "--bg":              "#FAFAF8",
+  "--bg-l1":           "#F5F4F0",
+  "--bg-l2":           "#EDECEA",
+  "--bg-l3":           "#E4E3DF",
+  "--bg-transparent":  "rgba(250, 250, 248, 0.97)",
 
-  // Printer's ink - bold editorial authority
-  "--text-color": "#0A0A0A", // rich black ink with energy
-  "--secondary-text": "#3D3D3D", // lively secondary editorial
+  "--text-color":      "#111110",
+  "--secondary-text":  "#4A4A47",
 
-  // Editorial surfaces - warm high contrast stock
-  "--card-bg": "#FFFEF9", // warm brilliant surface
-  "--border-color": "#D4A574", // warm bronze column rules
+  "--card-bg":         "#FAFAF8",
+  "--border-color":    "#DDDCDA",
+  "--border-strong":   "#C4C3BF",
 
-  // Layout grid - playful editorial structure
-  "--grid-color": "#F5E6D3", // warm layout guides
-  "--guide-color": "#E0C9A8", // golden boundaries
-  "--dimension-line": "#C4A576", // bronze margin rules
+  "--grid-color":      "#EDECEA",
+  "--guide-color":     "#E0DFDB",
+  "--dimension-line":  "#C8C7C3",
 
-  // Masthead - vibrant editorial statement
-  "--accent": "#E63946", // energetic coral-red with personality
-  "--accent-color": "#E63946", // lively editorial highlight
-  "--accent-color-transparent": "rgba(230, 57, 70, 0.20)",
+  // "--accent":                    "#34942d",
+  "--accent-color":              "#77b143",
+  "--accent-color-transparent":  "rgba(193, 40, 27, 0.12)",
 
-  // Interactive editorial marks - playful engagement
-  "--link": "#D62839", // warm editorial red
-  "--hover-accent": "#FF4757", // vibrant masthead activation
+  "--link":        "#C1281B",
+  "--hover-accent":"#A01F15",
 
-  // Featured sections - warm editorial space
-  "--herobg": "#FFF7EC", // inviting above-the-fold
-  "--feature-bg": "#FFEDD8", // cheerful special report
+  "--herobg":     "#F5F4F0",
+  "--feature-bg": "#EDECEA",
 
-  // Print quality shadows - pronounced editorial depth
-  "--drop-shadow": "0 3px 8px rgba(230, 57, 70, 0.12), 0 2px 4px rgba(10, 10, 10, 0.14), 0 1px 2px rgba(10, 10, 10, 0.10)",
-  "--card-shadow": "0 6px 18px rgba(230, 57, 70, 0.16), 0 4px 10px rgba(10, 10, 10, 0.18), 0 2px 6px rgba(10, 10, 10, 0.12)",
-  "--elevated-shadow": "0 12px 36px rgba(230, 57, 70, 0.22), 0 6px 18px rgba(10, 10, 10, 0.22), 0 3px 10px rgba(10, 10, 10, 0.16)",
+  "--drop-shadow":     "0 1px 3px rgba(17, 17, 16, 0.08), 0 2px 8px rgba(17, 17, 16, 0.06)",
+  "--card-shadow":     "0 2px 8px rgba(17, 17, 16, 0.08), 0 6px 24px rgba(17, 17, 16, 0.06)",
+  "--elevated-shadow": "0 8px 24px rgba(17, 17, 16, 0.10), 0 24px 56px rgba(17, 17, 16, 0.08)",
 
-  // Inverse for overlays - stark editorial contrast
-  "--inverse-transparent": "rgba(10, 10, 10, 0.96)",
-  "--inverse-shadow": "0 16px 40px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(230, 57, 70, 0.18), 0 4px 12px rgba(0, 0, 0, 0.16)",
+  "--inverse-transparent": "rgba(17, 17, 16, 0.96)",
+  "--inverse-shadow":      "0 16px 48px rgba(0, 0, 0, 0.22), 0 6px 16px rgba(0, 0, 0, 0.14)",
 };
 
 export const darkTheme = {
-  // Evening edition - rich night reading with character
-  "--bg": "#0F0A08", // deep warm black editorial surface
-  "--bg-l1": "#1A1210", // elevated section with warmth
-  "--bg-l2": "#261D18", // cozy feature panel
-  "--bg-l3": "#352822", // inviting editorial zones
-  "--bg-transparent": "rgba(15, 10, 8, 0.98)",
+  "--bg":              "#111110",
+  "--bg-l1":           "#1A1A19",
+  "--bg-l2":           "#222221",
+  "--bg-l3":           "#2C2C2A",
+  "--bg-transparent":  "rgba(17, 17, 16, 0.97)",
 
-  // Reversed type - brilliant editorial clarity
-  "--text-color": "#FFF9F0", // warm white reversed type
-  "--secondary-text": "#D4BFA8", // golden secondary editorial
+  "--text-color":      "#F0EFEB",
+  "--secondary-text":  "#9A9994",
 
-  // Night reading surfaces - rich dark stock
-  "--card-bg": "#150D0A", // deep warm surface
-  "--border-color": "#6B5644", // bronze column rules
+  "--card-bg":         "#1A1A19",
+  "--border-color":    "#2E2E2C",
+  "--border-strong":   "#3D3D3A",
 
-  // Evening layout grid - warm structure
-  "--grid-color": "#211814", // subtle layout guides
-  "--guide-color": "#2F241C", // cozy boundaries
-  "--dimension-line": "#574839", // warm margins
+  "--grid-color":      "#1E1E1D",
+  "--guide-color":     "#262625",
+  "--dimension-line":  "#3A3A38",
 
-  // Evening masthead - vibrant editorial accent
-  "--accent": "#FF6B7A", // lively coral-red with warmth
-  "--accent-color": "#FF6B7A",
-  "--accent-color-transparent": "rgba(255, 107, 122, 0.28)",
+  "--accent":                    "#E8453A",
+  "--accent-color":              "#E8453A",
+  "--accent-color-transparent":  "rgba(232, 69, 58, 0.18)",
 
-  // Interactive evening marks - energetic visibility
-  "--link": "#FF8191", // luminous playful link
-  "--hover-accent": "#FF5566", // vibrant masthead red
+  "--link":        "#E8453A",
+  "--hover-accent":"#FF5A4F",
 
-  // Featured evening areas - inviting zones
-  "--herobg": "#1A1310", // warm evening above-fold
-  "--feature-bg": "#241A16", // cozy evening features
+  "--herobg":     "#161615",
+  "--feature-bg": "#1E1E1D",
 
-  // Evening editorial shadows - dramatic depth with color
-  "--drop-shadow": "0 6px 14px rgba(255, 107, 122, 0.20), 0 4px 8px rgba(0, 0, 0, 0.50), 0 2px 4px rgba(0, 0, 0, 0.40)",
-  "--card-shadow": "0 12px 32px rgba(255, 107, 122, 0.28), 0 6px 16px rgba(0, 0, 0, 0.60), 0 3px 8px rgba(0, 0, 0, 0.50)",
-  "--elevated-shadow": "0 24px 60px rgba(255, 107, 122, 0.35), 0 12px 30px rgba(0, 0, 0, 0.70), 0 6px 15px rgba(255, 107, 122, 0.30)",
+  "--drop-shadow":     "0 1px 3px rgba(0, 0, 0, 0.30), 0 2px 8px rgba(0, 0, 0, 0.24)",
+  "--card-shadow":     "0 2px 8px rgba(0, 0, 0, 0.32), 0 8px 28px rgba(0, 0, 0, 0.28)",
+  "--elevated-shadow": "0 8px 24px rgba(0, 0, 0, 0.40), 0 28px 64px rgba(0, 0, 0, 0.36)",
 
-  // Light overlay for modals - warm editorial contrast
-  "--inverse-transparent": "rgba(255, 254, 249, 0.97)",
-  "--inverse-shadow": "0 12px 32px rgba(230, 57, 70, 0.18), 0 6px 16px rgba(0, 0, 0, 0.16), 0 3px 10px rgba(0, 0, 0, 0.12)",
+  "--inverse-transparent": "rgba(240, 239, 235, 0.97)",
+  "--inverse-shadow":      "0 12px 32px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.10)",
 };
 
 export const inlineNavHeight = {

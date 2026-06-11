@@ -16,8 +16,10 @@ import { usePageTransition } from "../contexts/PageTransition.jsx";
 
 
 
-export const HomePage = () => {
-    const navigate = useNavigate();
+export const HomePageItems = () => { 
+
+
+       const navigate = useNavigate();
         const { startTransition, transitionState } = usePageTransition();
     // const { getLink } = useGlobalContext();
     
@@ -42,21 +44,10 @@ export const HomePage = () => {
     const wrapperClass = isMobile ? styles.mobileinfobar : styles.infobar;
     const btnType = isMobile ? "icon_only" : "code_small";
 
-    return (
 
-        <>
-
-         
-
-
-
-
-
-
-            <div className={styles.CenteredContainer}> 
-
-
-            <h1 className={styles.title}>
+    
+return (<>
+      <h1 className={styles.title}>
                 <p>Hello</p> <p className={styles.highlight}>There</p>
             </h1>
 
@@ -81,6 +72,27 @@ export const HomePage = () => {
                 {/* <StandardButton label={"meta"} type={"code"} /> */}
             </div>
 
+</>)
+
+}
+
+export const HomePage = () => {
+ 
+    return (
+
+        <>
+
+         
+
+
+
+
+
+
+            <div className={styles.CenteredContainer}> 
+
+                <HomePageItems/>
+      
                 
             </div>
         </>

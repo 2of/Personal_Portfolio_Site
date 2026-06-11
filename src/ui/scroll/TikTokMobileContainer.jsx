@@ -131,7 +131,13 @@ export const PagedScrollContainer = ({ children, borders, totalSections, conduct
                                 sectionHeight === "half" ? styles.halfSection : ""}
                                 ${
                             sectionHeight === "quarter" ? styles.quarterSection : ""}
-                            } ${borders ? styles.bottomBorder : ""}`}
+                            } 
+                            
+                             ${
+                            sectionHeight === "third" ? styles.thirdSection : ""}
+                            }${borders ? styles.bottomBorder : ""}`}
+
+
                         >
                             {bgImage && (
                                 <div

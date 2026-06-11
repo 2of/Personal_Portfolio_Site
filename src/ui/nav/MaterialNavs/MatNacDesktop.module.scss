@@ -1,0 +1,148 @@
+.platter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+
+  &.freePlace { 
+    background-color: red;
+    position: relative;
+  }
+}
+
+
+// Default base structure for side platters
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 999px;
+  padding: 7px;
+  position: relative;
+  
+  // Layer isolation for side translation loops
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+// Central main navigation layout anchor
+.navWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+// Inner aesthetic skin backing the primary layout menu
+.navBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 0;
+  
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+// Foreground item track
+.navContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 7px;
+}
+
+// Custom dimension setups for the Logo frame context
+.logoPlatter {
+  padding: 14px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+
+  svg, i {
+    font-size: 20px;
+  }
+}
+
+.navItem {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  
+  will-change: transform, background-color, color;
+  transition: background-color 0.25s ease, color 0.2s ease;
+
+  svg, i {
+    font-size: 20px;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &.active {
+    font-weight: 500;
+
+    svg, i {
+      transform: scale(1.15);
+    }
+  }
+
+  &.iconOnly {
+    padding: 14px;
+    justify-content: center;
+    
+    &:hover {
+      svg, i {
+        transform: scale(1.12);
+      }
+    }
+  }
+}
+
+.navdivider { 
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 24px;
+  width: 1px;
+  border-radius: 1px;
+  margin: 0 8px;
+}
+
+.CustomComponentContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.customWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

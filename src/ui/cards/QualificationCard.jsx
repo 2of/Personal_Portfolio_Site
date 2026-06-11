@@ -13,7 +13,7 @@ const QualificationCard = ({
     icon = null
 }) => {
     return (
-        <div className={`${styles.tile} group ${blur && styles.blur} StandardBoxL2`}>
+        <div className={`${styles.tile} group ${blur && styles.blur} StandardBoxL1`}>
             <div className={styles.content}>
                 {/* Award icon */}
                 <div className={styles.iconWrapper}>

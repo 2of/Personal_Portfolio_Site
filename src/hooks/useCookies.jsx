@@ -27,12 +27,14 @@ export function useCookies() {
     return value;
   }, []);
 
+
+  const getcookie = get; 
 const set = useCallback((name, value, options = {}) => {
   if (typeof document === "undefined") return;
 
   const {
     path = "/",
-    maxAge = FIVE_HOURS, // ✅ default to 5 hours
+    maxAge = FIVE_HOURS, // default to 5 hours because its nothing
     expires,
     sameSite = "Lax",
     secure = false,
@@ -50,6 +52,7 @@ const set = useCallback((name, value, options = {}) => {
   document.cookie = cookie;
 }, []);
 
+const setcookie = set; 
   const remove = useCallback((name, path = "/") => {
     if (typeof document === "undefined") return;
     document.cookie = `${name}=; max-age=0; path=${path}`;
@@ -88,5 +91,7 @@ const set = useCallback((name, value, options = {}) => {
   // Alias for remove
   const deleteCookie = remove;
 
-  return { get, set, remove, deleteCookie, deleteAll, getAll };
+  //get cookie and set cookie because I was dumb and made duplicates
+
+  return { get, set, getcookie, remove, deleteCookie, deleteAll, getAll };
 }

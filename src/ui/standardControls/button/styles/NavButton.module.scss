@@ -1,0 +1,205 @@
+$radius-pill: 100px;
+$radius-sm: 10px;
+
+// Mixin to enforce forced dark mode
+@mixin enforceDark {
+    &[data-force-dark="true"] {
+        background: var(--darkBG);
+        color: var(--lightusualtext);
+        
+        // Prevent flashing by using a transparent border/outline by default
+        outline: 0.5px solid transparent; 
+
+        &:hover {
+            background: var(--darkBG);
+            filter: brightness(1.2);
+            outline-color: var(--lightusualtext);
+        }
+
+        &.active {
+            outline-color: var(--lightusualtext);
+            background: var(--darkBG);
+        }
+        
+        .icon, .label {
+            color: var(--lightusualtext);
+        }
+    }
+}
+
+%navBase {
+    // font-mono removed
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: all 0.18s ease;
+    
+    // Fix: Default transparent border to prevent layout jumping/flashing
+    border: 0.5px solid transparent;
+    outline: 0.5px solid transparent;
+
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .icon, .label {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.activeDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1D9E75;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.navPrimary {
+    @extend %navBase;
+    @include enforceDark;
+    color: var(--color-text-secondary);
+    padding: 8px 14px;
+    border-radius: $radius-pill;
+    gap: 5px;
+
+    &[data-size="sm"] { font-size: 12px; padding: 6px 11px; }
+
+    &:hover {
+        color: var(--text-color);
+        background: var(--bg-l2);
+        outline-color: var(--accent-color);
+    }
+
+    &.active {
+        color: var(--text-color);
+        border-color: var(--text-color);
+    }
+}
+
+
+
+
+.navStacked {
+    @extend %navBase;
+    @include enforceDark;
+    color: var(--color-text-secondary);
+    padding: 8px 14px;
+    border-radius: $radius-pill;
+    gap: 5px;
+    
+    flex-direction: column;
+
+    &[data-size="sm"] { font-size: 12px; padding: 6px 11px; }
+
+    &:hover {
+        color: var(--text-color);
+        // background: var(--bg-l2);
+        outline-color: var(--accent-color);
+    }
+
+    &.active {
+        color: var(--text-color);
+        // border-color: var(--text-color);
+    }
+}
+
+
+
+.navOutline { 
+    @extend %navBase;
+    @include enforceDark;
+    color: var(--color-text-secondary);
+    padding: 8px 14px;
+    border-radius: $radius-pill;
+    gap: 5px;
+    
+    // Always show outline, just change color to prevent flash
+    outline-color: var(--text-color);
+
+    &:hover {
+        outline-color: var(--accent-color);
+    }
+
+    &.active {
+        background: var(--bg-l2);
+        outline-color: var(--text-color);
+    }
+}
+
+.navSecondary {
+    @extend %navBase;
+    @include enforceDark;
+    padding: 7px 13px;
+    border-radius: $radius-pill;
+    gap: 5px;
+
+    &:hover {
+        background: var(--bg);
+        outline-color: var(--border-color);
+    }
+
+    &.active {
+        outline-color: var(--border-color);
+    }
+}
+
+.navTertiary {
+    @extend %navBase;
+    @include enforceDark;
+    color: var(--text-color); 
+    padding: 7px 14px;
+    border-radius: $radius-pill;
+    gap: 5px;
+
+    &:hover { opacity: 0.85; }
+}
+
+.navIconOnly {
+    @extend %navBase;
+    @include enforceDark;
+    padding: 8px;
+    border-radius: $radius-sm;
+
+
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+  background: none;
+  
+  border: none;
+  // Square padding creates a perfect circle when border-radius is 999px
+  padding: 14px;
+  
+  // Ensure icon maintains stable dimensions
+  min-width: 48px;  // Matches your logoPlatter base for visual symmetry
+  min-height: 48px;
+
+  svg, i {
+    // Standardize icon sizing
+    font-size: 20px;
+    
+    // Smooth interaction response
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &:hover {
+    svg, i {
+      // The "jelly" scale effect on hover
+      transform: scale(1.12);
+    }
+  }
+
+  &:active {
+    transform: scale(0.96); // Physical "press" feedback
+  }
+}

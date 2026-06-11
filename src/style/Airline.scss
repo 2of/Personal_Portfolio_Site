@@ -1,0 +1,329 @@
+/* ==========================================================================
+   AIRLINE FOUNDATION SYSTEM (CARGO MANIFEST - CLEAN TRANSPARENT)
+   ========================================================================== */
+
+:root {
+    --ds-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --ds-font-mono: "Geist Mono", "JetBrains Mono", SFMono-Regular, monospace;
+    
+    /* Strict alignment to your native core system tokens */
+    --ds-bg-main: var(--bg);
+    --ds-text: var(--text-color);
+    --ds-accent: var(--accent-color);
+    
+    /* Razor-thin structural line definitions using your exact color variables */
+    --ds-stroke-thin: 0.5px solid color-mix(in srgb, var(--ds-text, currentColor) 25%, transparent);
+    --ds-stroke-accent: 0.5px solid var(--ds-accent);
+}
+
+/* --- Luggage Tag Typographic & Structural Tokens --- */
+%dataBase {
+    font-family: var(--ds-font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Precision machine-punch hole for luggage cord feeds */
+%luggagePunch {
+    mask-image: radial-gradient(circle at 0% 50%, transparent 10px, black 10.5px);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
+
+/* --- Reusable Global Layout Components --- */
+
+.DATASTRIP_Container {
+    // @extend %luggagePunch;
+    display: flex;
+    background: var(--ds-bg-main);
+    border: var(--ds-stroke-thin);
+    border-radius: 1px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 3px; /* Creates the distinct dual-inset frame */
+    // box-shadow: 2px 2px 0px color-mix(in srgb, var(--ds-text, #000) 15%, transparent);
+    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 0.5px dashed color-mix(in srgb, var(--ds-text, currentColor) 10%, transparent);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    &:hover {
+        border-color: var(--ds-accent);
+        // box-shadow: 2px 2px 0px color-mix(in srgb, var(--ds-accent) 30%, transparent);
+    }
+
+    &.isHighlight {
+        border-color: var(--ds-accent);
+        background: repeating-linear-gradient(
+            -45deg,
+            var(--ds-bg-main),
+            var(--ds-bg-main) 8px,
+            color-mix(in srgb, var(--ds-accent) 3%, transparent) 8px,
+            color-mix(in srgb, var(--ds-accent) 3%, transparent) 16px
+        );
+    }
+}
+
+/* High-density layout splitter with micro-thin diagonal tracking hashes */
+.DATASTRIP_Divider {
+    width: 20px;
+    border-left: var(--ds-stroke-thin);
+    border-right: var(--ds-stroke-thin);
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 3px,
+        color-mix(in srgb, var(--ds-text, currentColor) 15%, transparent) 3px,
+        color-mix(in srgb, var(--ds-text, currentColor) 15%, transparent) 4px
+    );
+    background-color: var(--ds-bg-main);
+    flex-shrink: 0;
+}
+
+.DATASTRIP_TerminalBody {
+    flex-grow: 1;
+    background: transparent;
+    border: var(--ds-stroke-thin);
+    padding: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    /* Micro-fine technical diagonal mesh pattern */
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            135deg,
+            transparent,
+            transparent 16px,
+            color-mix(in srgb, var(--ds-text, currentColor) 1.5%, transparent) 16px,
+            color-mix(in srgb, var(--ds-text, currentColor) 1.5%, transparent) 17px
+        );
+        pointer-events: none;
+    }
+}
+
+.DATASTRIP_MetaHeader {
+    @extend %dataBase;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--ds-accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 6px;
+    margin-bottom: 12px;
+    background: color-mix(in srgb, var(--ds-text, currentColor) 4%, transparent);
+    border: var(--ds-stroke-thin);
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '■';
+        font-size: 7px;
+        color: var(--ds-accent);
+        margin-right: 4px;
+    }
+}
+
+.DATASTRIP_Status {
+    @extend %dataBase;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    background: color-mix(in srgb, var(--ds-accent) 12%, transparent);
+    border: var(--ds-stroke-accent);
+    color: var(--ds-accent);
+}
+
+/* --- Compact Freight Strip Row --- */
+
+.DATASTRIP_CompactContainer {
+    display: flex;
+    flex-direction: column;
+    background: var(--ds-bg-main);
+    border: 0.5px dashed color-mix(in srgb, var(--ds-text, currentColor) 30%, transparent);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 2px;
+
+    &:hover {
+        border-style: solid;
+        border-color: var(--ds-accent);
+    }
+}
+
+.DATASTRIP_TopDivider {
+    height: 6px;
+    width: 100%;
+    border-bottom: var(--ds-stroke-thin);
+    background: repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, var(--ds-text, currentColor) 20%, transparent),
+        color-mix(in srgb, var(--ds-text, currentColor) 20%, transparent) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+}
+
+.DATASTRIP_CompactBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: transparent;
+    gap: 12px;
+
+    .DATASTRIP_MetaHeader {
+        font-size: 8px;
+        background: transparent;
+        border: none;
+        border-right: 1px dashed color-mix(in srgb, var(--ds-text, currentColor) 25%, transparent);
+        padding: 0 10px 0 0;
+        margin-bottom: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1px;
+        
+        &::before { content: 'QTY//1'; font-size: 8px; color: color-mix(in srgb, var(--ds-text, currentColor) 50%, transparent); }
+    }
+
+    .DATASTRIP_Status {
+        font-size: 8px;
+        padding: 1px 5px;
+        background: transparent;
+        border: var(--ds-stroke-thin);
+        color: color-mix(in srgb, var(--ds-text, currentColor) 80%, transparent);
+    }
+}
+
+/* --- Internal Core Content Elements --- */
+
+.DATASTRIP_ImageWrap {
+    position: relative;
+    width: 140px;
+    min-width: 140px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: var(--ds-stroke-thin);
+
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+    }
+
+    .DATASTRIP_Status {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        border-right: none;
+        border-left: none;
+        border-bottom: none;
+        background: color-mix(in srgb, var(--ds-bg-main) 95%, transparent);
+    }
+}
+
+.DATASTRIP_Title {
+    font-family: var(--ds-font-sans);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px 0;
+    color: color-mix(in srgb, var(--ds-text) 95%, transparent);
+
+    &.compact {
+        font-family: var(--ds-font-mono);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+}
+
+.DATASTRIP_Description {
+    font-family: var(--ds-font-sans);
+    font-size: 0.825rem;
+    line-height: 1.4;
+    color: color-mix(in srgb, var(--ds-text) 70%, transparent);
+    margin: 0 0 14px 0;
+    flex-grow: 1;
+
+    &.compact {
+        font-size: 0.775rem;
+    }
+}
+
+.DATASTRIP_Footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 0.5px dashed color-mix(in srgb, var(--ds-text, currentColor) 20%, transparent);
+}
+
+.DATASTRIP_Tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+
+    .tag {
+        @extend %dataBase;
+        font-size: 8.5px;
+        font-weight: 600;
+        padding: 1px 5px;
+        background: transparent;
+        border: var(--ds-stroke-thin);
+        color: color-mix(in srgb, var(--ds-text, currentColor) 75%, transparent);
+
+        &More {
+            border-style: dashed;
+            color: var(--ds-accent);
+            border-color: var(--ds-accent);
+        }
+    }
+}
+
+/* Micro-fine printed document barcode simulation block */
+.DATASTRIP_Barcode {
+    width: 60px;
+    height: 20px;
+    opacity: 0.65;
+    background: repeating-linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--ds-text, currentColor) 85%, transparent),
+        color-mix(in srgb, var(--ds-text, currentColor) 85%, transparent) 1px,
+        transparent 1px,
+        transparent 3px,
+        color-mix(in srgb, var(--ds-text, currentColor) 85%, transparent) 3px,
+        color-mix(in srgb, var(--ds-text, currentColor) 85%, transparent) 4px,
+        transparent 4px,
+        transparent 6px
+    );
+    
+    &.compact {
+        height: 14px;
+        width: 45px;
+    }
+}

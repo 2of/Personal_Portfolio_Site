@@ -1,0 +1,139 @@
+.rowCard {
+  display: grid;
+  /* Image | Content Area | Aesthetic Flourish */
+  grid-template-columns: 240px 1fr 48px; 
+  gap: 0; 
+  padding: 0; 
+  background: color-mix(in srgb, var(--bg-l1) 12%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--border-color) 25%, transparent);
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  min-height: 180px; /* Slightly taller for buttons */
+
+  &:hover {
+    background: color-mix(in srgb, var(--bg-l1) 22%, transparent);
+    border-color: var(--accent-color);
+    
+    .flourishStrip::after {
+      opacity: 0.8;
+      transform: translateY(-5px);
+    }
+  }
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 180px 1fr 40px;
+  }
+}
+
+/* 1. Controlled Viewport */
+.imageViewport {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-right: 0.5px solid color-mix(in srgb, var(--border-color) 20%, transparent);
+  background: #000;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) brightness(0.7) contrast(1.1);
+    transition: all 0.5s ease;
+  }
+
+  .rowCard:hover & img {
+    filter: grayscale(0.4) brightness(0.9) contrast(1);
+    transform: scale(1.03);
+  }
+}
+
+/* 2. Content Stack */
+.contentColumn {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow: hidden;
+}
+
+.tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border: 0.5px solid color-mix(in srgb, var(--accent-color) 30%, transparent);
+    background: color-mix(in srgb, var(--accent-color) 5%, transparent);
+    color: var(--accent-color);
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  opacity: 0.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 90%;
+}
+
+/* 3. Action Row */
+.footerActions {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 0.5px dashed color-mix(in srgb, var(--border-color) 20%, transparent);
+}
+
+/* 4. The Flourish Strip */
+.flourishStrip {
+  height: 100%;
+  border-left: 0.5px solid color-mix(in srgb, var(--border-color) 25%, transparent);
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    color-mix(in srgb, var(--border-color) 8%, transparent) 8px,
+    color-mix(in srgb, var(--border-color) 8%, transparent) 9px
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    // content: ":-)";
+    writing-mode: vertical-rl;
+    // add stuff here like tags idl? looks cool tho
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 4px;
+    opacity: 0.2;
+    transition: all 0.3s ease;
+  }
+}

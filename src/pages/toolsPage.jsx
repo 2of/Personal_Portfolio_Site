@@ -27,6 +27,8 @@ export const ToolsPage = () => {
         <h3>
             Most of these tools are just things I used frequently and wanted hosted somewhere
         </h3>
+
+        <a>These are mostly front end junk</a>
         {Object.values(tools).map((tool, i) => (
           <GenericCard
             key={i}              // better: a stable id if you have one

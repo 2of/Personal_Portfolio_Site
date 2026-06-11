@@ -1,68 +1,124 @@
+
 .inputContainer {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  background-color: var(--bg);
-
-  .label {
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--text-color);
-    // font-family: inherit;
-  }
-
-  .inputElement {
-    width: 100%;
-    outline: none;
-    transition: all 0.2s ease-in-out;
-    background-color: var(--bg);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-
-    &::placeholder {
-      color: var(--text-color);
-      opacity: 0.5;
-    }
-
-    &:focus {
-      border-color: var(--accent-color);
-      // Subtle glow using the accent color
-      box-shadow: 0 0 0 3px rgba(var(--accent-color), 0.1); 
-    }
-  }
-
-  // Variants
-  &.hero {
-    .inputElement {
-      padding: 18px 24px;
-      font-size: 1.25rem;
-      border-radius: 12px;
-    }
-    .label { font-size: 1.1rem; }
-  }
-
-  &.regular {
-    .inputElement {
-      padding: 12px 16px;
-      font-size: 1rem;
-    }
-  }
-
-  &.mobile {
-    .inputElement {
-      padding: 14px;
-      font-size: 16px; // Standard to prevent iOS zoom
-    }
-  }
-
-  // Border Toggle
+  position: relative;
+  width: 100%;  box-sizing: border-box;
+  
   &.noBorder {
-    .inputElement {
-      border: 1px solid transparent;
-      padding-left: 0;
-      padding-right: 0;
-      &:focus { border-color: transparent; }
-    }
+    border: none !important;
+    background: transparent !important;
+    &::before, &::after { display: none !important; }
+  }
+}
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-color, #fff);
+  opacity: 0.85;
+}
+
+.inputElement {
+  width: 100%; 
+  outline: none;
+  background: transparent;
+  border: none;
+  color: var(--text-color, #fff);
+  font-size: 0.95rem;
+  padding: 4px 0;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--text-color, #fff) 35%, transparent);
+  }
+}
+
+/* ── VARIANT TEMPLATES ────────────────────────────────────────────────── */
+
+/* 1. REGULAR VARIANT */
+.variantRegular {
+  .inputElement {
+    border-bottom: 1px solid color-mix(in srgb, var(--text-color, #fff) 20%, transparent);
+    transition: border-color 0.15s ease;
+  }
+  
+  &:focus-within .inputElement {
+    border-bottom-color: var(--accent-color, #0070f3);
+  }
+}
+
+/* 2. GLASS VARIANT */
+.variantGlass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+
+  &:focus-within {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
+  }
+}
+
+.variantBox {
+  background: var(--bg-secondary, #1a1a1a);
+  border: 1px solid color-mix(in srgb, var(--text-color, #fff) 15%, transparent);
+  border-radius: 4px;
+  padding: 10px 14px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &:focus-within {
+    border-color: var(--accent-color, #0070f3);
+    background: var(--bg-primary, #111);
+  }
+}
+
+/* 4. AIRLINE CARGO MANIFEST VARIANT */
+.variantAirline {
+  background: var(--bg, #000);
+  border: 0.5px dashed color-mix(in srgb, var(--text-color, #fff) 30%, transparent);
+  padding: 4px;
+  border-radius: 1px;
+  transition: border-color 0.15s ease-out;
+
+  &:focus-within {
+    border-style: solid;
+    border-color: var(--accent-color, #ffaa00);
+  }
+
+  .airlineMetaHeader {
+    margin-bottom: 4px;
+    background: color-mix(in srgb, var(--text-color, #fff) 4%, transparent);
+    border: 0.5px solid color-mix(in srgb, var(--text-color, #fff) 25%, transparent);
+  }
+
+  .systemTag {
+    font-size: 7.5px;
+    opacity: 0.6;
+    color: var(--text-color, #fff);
+  }
+
+  .airlineInput {
+    font-family: "Geist Mono", "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-color, #fff);
+    padding: 8px 4px;
+    position: relative;
+    z-index: 2; /* Ensures text renders over the background technical pseudo-meshes */
   }
 }

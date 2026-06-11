@@ -19,7 +19,7 @@ export const DarkModeWrapper = ({ type = "modern" }) => {
         type={type}
         checked={darkMode}
         callback={() => toggleDarkMode}
-      // firsticon={getIcon("moon")}
+      firsticon={getIcon("moon")}
       // secondicon={getIcon("sun")}
       />
 
@@ -92,7 +92,7 @@ export const DarkModeAnimatedWithCoolDownToastButton = ({
   return (
     <ModernButton
       label={darkMode ? lightstr : darkstr}
-      icon={icon ? getIcon("chess") : undefined}
+      icon={darkMode ? getIcon("moon") : getIcon("sun")}
       variant={buttonvariantstr}
       callback={() => handleClick()}
     />

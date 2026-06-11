@@ -1,0 +1,72 @@
+/* --- Structural Layout Module --- */
+
+.cardFrame {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 80px; // Increased structural footprint to make it feel bigger
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.layoutWrapper {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+}
+
+/* Structural left vertical column data strip */
+.sideDataBar {
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    span {
+        font-size: 8px;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+    }
+}
+
+/* Asymmetric Main Content Shell */
+.mainTerminalBody {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px; // Generous internal spacing to add weight
+    position: relative;
+    gap: 24px;
+    min-width: 0;
+}
+
+.coreDataSegment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.titleGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+/* Action alignment panel */
+.actionHub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}

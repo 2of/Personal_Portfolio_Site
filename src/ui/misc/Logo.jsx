@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 // import { useAppTheme } from "../../contexts/ThemeContext.jsx";
 import { useAppTheme } from "../../contexts/ThemeContext.jsx";
 import { useNavigateTo } from "../../hooks/useNavigate.jsx";
-export const Logo = ({ variant = "small", alwaysTrack = false }) => {
+export const Logo = ({ variant = "small", singleRow,  alwaysTrack = false }) => {
     const isLarge = variant === "large";
     const containerRef = useRef(null);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -15,14 +15,14 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
         const container = containerRef.current;
         if (!container) return;
 
-        // For always tracking: listen on the whole window
+        // For always tracking: listen on the whole window....
         const target = alwaysTrack ? window : container;
 
         const handleMouseMove = (e) => {
             const rect = container.getBoundingClientRect();
 
             // When alwaysTrack is true:
-            // if mouse not inside the element, we still use center as origin
+            // if mouse not inside the element, we still use (center ish ) as origin
             const inside =
                 e.clientX >= rect.left &&
                 e.clientX <= rect.right &&
@@ -32,7 +32,7 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
             let localX = e.clientX - rect.left - rect.width / 2;
             let localY = e.clientY - rect.top - rect.height / 2;
 
-            // If mouse is outside but alwaysTrack = true, still track but clamp gently
+            // If mouse is outside but alwaysTrack = true, still track but clamp nice gentle track in out 
             if (!inside && alwaysTrack) {
                 // Track normally, but don't create weird huge numbers
                 localX = localX / 1.2;
@@ -91,7 +91,7 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
 
         if (!tracking) return { x: 0, y: 0, scale: 1, rotate: 0 };
 
-        const letterWidth = isLarge ? 20 : 14;
+        const letterWidth = isLarge ? 20 : 4;
         const letterX = (index - totalLetters / 2) * letterWidth;
         const dx = mousePos.x - letterX;
         const dy = mousePos.y;
@@ -122,11 +122,13 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
                 style={{
                     position: "relative",
                     display: "flex",
+                    // backgroundColor:"red",
+
                     flexDirection: "column",
                     alignItems: "center",
                     cursor: "pointer",
                     userSelect: "none",
-                    padding: "1rem",
+                    // padding: "1rem",
                     transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
                     transformStyle: "preserve-3d",
                     transform: clicked ? "scale(0.95)" : "scale(1)",
@@ -135,11 +137,12 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
                 {/* Main text */}
                 <div
                     style={{
-                        fontSize: isLarge ? "1.5rem" : "1rem",
-                        fontWeight: "bold",
+                        fontSize: isLarge ? "1.5rem" : "0.8rem",
+                        // fontWeight: "bold",
                         display: "flex",
                         position: "relative",
-                        letterSpacing: tracking ? "0.05em" : "0",
+                                            // backgroundColor:"green",
+                        // letterSpacing: tracking ? "0.05em" : "0",
                         transition: "letter-spacing 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
                     }}
                 >
@@ -148,8 +151,10 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
                         return (
                             <span
                                 key={i}
+                                
                                 style={{
                                     display: "inline-block",
+                                        //  backgroundColor:"blue",
                                     transition: "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
                                     transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.scale})`,
                                     color: tracking
@@ -168,11 +173,12 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
                 </div>
 
                 {/* Subtitle */}
+                {!singleRow && 
                 <div
                     style={{
-                        fontSize: isLarge ? "0.75rem" : "0.65rem",
+                        fontSize: isLarge ? "0.75rem" : "0.5rem",
                         color: tracking ? getColor("--accent-color") : getColor("--text-color"),
-                        marginTop: "0.25rem",
+                        // marginTop: "0.25rem",
                         transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
                         transform: `translateX(${mousePos.x * 0.08}px) translateY(${mousePos.y * 0.05
                             }px)`,
@@ -181,6 +187,7 @@ export const Logo = ({ variant = "small", alwaysTrack = false }) => {
                 >
                     {subText}
                 </div>
+}
             </div>
         </div>
     );

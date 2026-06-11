@@ -1,0 +1,285 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.title {
+  font-size: 12px;
+  opacity: 0.55;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  pointer-events: none;
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.input {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.preview {
+  font-size: 12px;
+  min-width: 28px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+/* — default — */
+.default {
+  .track {
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border-color);
+    }
+  }
+
+  .input {
+    &::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border-color);
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--text-color);
+      margin-top: -5px;
+      transition: transform 0.1s;
+    }
+    &:hover::-webkit-slider-thumb { transform: scale(1.2); }
+    &::-moz-range-track {
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border-color);
+    }
+    &::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--text-color);
+    }
+  }
+
+  .fill { display: none; }
+  .preview { color: var(--accent-color); }
+}
+
+// — airline —
+.airline {
+  position: relative;
+
+  .track {
+    height: 32px; /* Touch-friendly container zone */
+    display: flex;
+    align-items: center; /* Absolutely centers everything vertically */
+    position: relative;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0; 
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 2px;
+      background: none;
+      /* Unfilled right-side track */
+      border-top: 2px dashed var(--border-color);
+      z-index: 0;
+    }
+  }
+
+  .input {
+    width: 100%;
+    height: 32px; 
+    position: absolute; 
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); /* Centers the entire input over the line */
+    margin: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+
+    &::-webkit-slider-runnable-track { 
+      background: transparent; 
+      height: 2px; /* Force track height to look identical to the design line */
+    }
+    &::-moz-range-track { 
+      background: transparent; 
+      height: 2px; 
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 16px;
+      border-radius: 8px; /* Capsule pill */
+      background: var(--text-color);
+      border: none;
+      cursor: grab;
+      
+      /* Since track height is 2px and thumb is 16px: 
+         Formula: (track_height / 2) - (thumb_height / 2) 
+         (2 / 2) - (16 / 2) = 1 - 8 = -7px */
+      margin-top: -7px; 
+      
+      transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.12s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+    
+    &:active::-webkit-slider-thumb {
+      cursor: grabbing;
+      background: var(--accent-color);
+      background-color:transparent;
+      border: 1px dotted var(--accent-color);
+      backdrop-filter: blur(12px);
+      transform: scale(2.35); /* Grows smoothly on slide */
+    }
+
+    &::-moz-range-thumb {
+      width: 24px;
+      height: 16px;
+      border-radius: 8px;
+      background: var(--text-color);
+      border: none;
+      cursor: grab;
+      
+      /* Firefox naturally centers thumbs over a defined track height */
+      transform: translateY(0); 
+      
+      transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.12s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+    
+    &:active::-moz-range-thumb {
+      cursor: grabbing;
+      background: var(--accent-color);
+      transform: scale(1.35);
+    }
+  }
+
+  /* Left-side fill: sits exactly under the thumb, vertically centered */
+  .fill {
+    height: 2px;
+    background: var(--text-color);
+    border-radius: 1px;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .preview {
+    color: var(--accent-color);
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* — box — */
+.box {
+  .track::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border-color);
+  }
+
+  .input {
+    &::-webkit-slider-runnable-track {
+      height: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 18px;
+      background: var(--text-color);
+      border: none;
+      border-radius: 0;
+      margin-top: -7px;
+      transition: background 0.1s;
+    }
+    &:hover::-webkit-slider-thumb { background: var(--accent-color); }
+    &::-moz-range-track {
+      height: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border-color);
+    }
+    &::-moz-range-thumb {
+      width: 12px;
+      height: 18px;
+      background: var(--text-color);
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  .fill { display: none; }
+  .preview {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 12px;
+  }
+}

@@ -7,7 +7,10 @@ const DarkModeContext = createContext({
 
 export const useDarkMode = () => useContext(DarkModeContext);
 
-// ---- cookie helpers ----
+
+
+// okay tried to augment this to my cookies, got a stacking issue in the prociders.
+// easy to fix..EASIER to tod this 
 const getCookie = (name) => {
   const match = document.cookie.match(
     new RegExp("(^| )" + name + "=([^;]+)")

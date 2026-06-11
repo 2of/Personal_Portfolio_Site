@@ -1,0 +1,52 @@
+.rowContainer {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  align-items: center;
+
+  &.tab {
+    gap: 2px;
+    padding: 4px;
+    border-radius: 10px;
+  }
+}
+
+.deformButton {
+  padding: 0.85rem 2rem;
+  border-radius: 28px;
+  background: var(--surface-variant);
+  border: 1px solid transparent;
+  cursor: pointer;
+  will-change: transform, background, box-shadow;
+  transform-origin: center;
+  transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+              background 0.2s ease,
+              box-shadow 0.2s ease;
+
+  &:active {
+    transform: scale(0.92) !important;
+  }
+
+  &.tab {
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    transition: transform 0.15s ease-out, background 0.15s ease;
+    border-radius: 24px;
+    &:active {
+      transform: scale(0.98) !important;
+    }
+  }
+  &:hover { 
+   outline: 1px solid var(--border-color);
+  }
+  &.highlight {
+    background: var(--accent-color);
+    // color: var(--on-primary-container);
+
+    // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+}

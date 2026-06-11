@@ -1,0 +1,228 @@
+* { 
+}
+
+%base {
+  font-family: var(--ds-font-mono, "Courier New", monospace);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  -webkit-font-smoothing: antialiased;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 18px;
+
+  border-radius: 0;
+  border: 1px solid var(--text-color, var(--ds-text)); 
+  background: transparent;
+  color: var(--text-color, var(--ds-text));
+  
+  cursor: pointer;
+  white-space: nowrap;
+  line-height: 1;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden; 
+  
+  transition: border-color 0.3s ease;
+
+  * {
+    color: inherit;
+  }
+
+  .contentBase {
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+    position: relative;
+    z-index: 0;
+  }
+
+  .sweepLayer {
+    position: absolute;
+    inset: -1px; // Ensure it covers the border smoothly
+    display: inline-flex;
+    align-items: inherit;
+    justify-content: inherit;
+    gap: inherit;
+    padding: inherit;
+    
+    background: var(--text-color, var(--ds-text));
+    color: var(--bg, #fff);
+    
+    -webkit-clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.3s cubic-bezier(0.16, 1, 0.3, 1), -webkit-clip-path 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+
+  &:hover .sweepLayer,
+  &[aria-pressed="true"] .sweepLayer { 
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+  }
+
+  &:focus-visible {
+    outline: 1px dashed color-mix(in srgb, var(--text-color, var(--ds-text)) 50%, transparent);
+    outline-offset: 4px;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    border-style: dashed;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.variantPrimary {
+  @extend %base;
+  background: var(--text-color, var(--ds-text));
+  color: var(--bg, #fff);
+
+  .sweepLayer { 
+    background: var(--bg, #fff);
+    color: var(--text-color, var(--ds-text));
+  }
+}
+
+.LargeFillVariant {
+  @extend %base;
+  border: 1px dashed color-mix(in srgb, var(--text-color, var(--ds-text)) 40%, transparent);
+  padding: 14px 24px; 
+  font-size: 12px;
+
+  &:hover,
+  &[aria-pressed="true"] { 
+    border-style: solid;
+    border-color: var(--text-color, var(--ds-text));
+  }
+}
+
+.variantSecondary {
+  @extend %base;
+}
+
+.variantGhost {
+  @extend %base;
+  border-color: transparent;
+  color: color-mix(in srgb, var(--text-color, var(--ds-text)) 70%, transparent);
+
+  .sweepLayer { 
+    background: color-mix(in srgb, var(--text-color, var(--ds-text)) 8%, transparent); 
+    color: var(--text-color, var(--ds-text));
+  }
+
+  &:hover,
+  &[aria-pressed="true"] { 
+    border-color: color-mix(in srgb, var(--text-color, var(--ds-text)) 15%, transparent);
+  }
+}
+
+.variantDanger {
+  @extend %base;
+  border-color: color-mix(in srgb, var(--ds-danger) 50%, transparent);
+  color: var(--ds-danger);
+
+  .sweepLayer { 
+    background: var(--ds-danger);
+    color: var(--bg, #fff);
+  }
+
+  &:hover,
+  &[aria-pressed="true"] { 
+    border-color: var(--ds-danger);
+  }
+}
+
+.variantSuccess {
+  @extend %base;
+  border-color: color-mix(in srgb, var(--ds-success) 50%, transparent);
+  color: var(--ds-success);
+
+  .sweepLayer { 
+    background: var(--ds-success);
+    color: var(--bg, #fff);
+  }
+
+  &:hover,
+  &[aria-pressed="true"] { 
+    border-color: var(--ds-success);
+  }
+}
+
+.variantNav {
+  @extend %base;
+  font-size: 11px;
+  padding: 12px 20px;
+  
+  border: none;
+  // Ticket stub marker
+  border-left: 2px solid color-mix(in srgb, var(--text-color, var(--ds-text)) 15%, transparent);
+  color: color-mix(in srgb, var(--text-color, var(--ds-text)) 60%, transparent);
+  
+  display: flex;
+  justify-content: flex-start;
+
+  .sweepLayer { 
+    background: color-mix(in srgb, var(--text-color, var(--ds-text)) 4%, transparent); 
+    color: var(--text-color, var(--ds-text));
+  }
+  
+  &:hover, 
+  &[aria-pressed="true"] { 
+    border-left-color: var(--text-color, var(--ds-text));
+  }
+
+  &[aria-pressed="true"] {
+    border-left-color: var(--ds-accent);
+  }
+}
+
+.variantIconOnly {
+  @extend %base;
+  padding: 0; 
+  width: 36px;
+  height: 36px;
+  gap: 0;
+}
+
+.LargeTouchVariant { 
+  // border-color: transparent;
+  // color: color-mix(in srgb, var(--text-color, var(--ds-text)) 65%, transparent);
+ @extend %base;
+  border: 1px dashed color-mix(in srgb, var(--text-color, var(--ds-text)) 40%, transparent);
+  padding: 14px 24px; 
+  font-size: 12px;
+
+  
+}
+.variantIconGhost {
+  @extend %base;
+  border-color: transparent;
+  color: color-mix(in srgb, var(--text-color, var(--ds-text)) 65%, transparent);
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  gap: 0;
+
+  .sweepLayer { 
+    background: color-mix(in srgb, var(--text-color, var(--ds-text)) 5%, transparent); 
+    color: var(--text-color, var(--ds-text));
+  }
+
+  &:hover,
+  &[aria-pressed="true"] { 
+    border-color: color-mix(in srgb, var(--text-color, var(--ds-text)) 15%, transparent);
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 15px;
+}

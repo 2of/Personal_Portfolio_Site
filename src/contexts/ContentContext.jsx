@@ -3,7 +3,14 @@ import AboutJSON from "../../public/content/texts/about.json";
 import metaJSON from "../../public/content/articles/meta.json"
 import WorkPageJSON from "../../public/content/texts/catalogueText.json";
 import ProjData from "../json/projects.json"
+import ProjWorkCatalogueStructure from "../json/projectPageOrg.json"
+import projectsMeta from "../json/projectsmeta.json"
+import projOrganization from "../json/projectPageOrg.json"
+import AboutWebsiteContent from "../../public/content/texts/aboutSite.json"
 const ContentContext = createContext(null);
+
+
+
 
 
 export const useContent = () => {
@@ -13,26 +20,34 @@ export const useContent = () => {
 };
 
 
+
+
 export const ContentProvider = ({ children }) => {
   const mapping = {
     about: AboutJSON,
     work: ProjData,
-    workText: WorkPageJSON
+    workText: WorkPageJSON,
+    projectsMeta: projectsMeta,
+    pageOrganization: projOrganization,
+    aboutSite: AboutWebsiteContent
   };
 
-  // Memoize get to ensure stable identity
+  // Memoize get to ensure stable identity and stop this reloadded nonsens
   const get = useCallback((which) => {
     return new Promise((resolve) => {
-      console.log("this", mapping);
+      // console.log("this", mapping);
       setTimeout(() => {
         resolve(mapping[which] ?? null);
       }, 200);
     });
-  }, []); // Empty dependency array as mapping is constant inside scope but we might want to move mapping to a ref or outside if it was dynamic. 
-  // Actually, mapping is recreated every render here. Ideally mapping should be outside or memoized.
-  // For now, let's keep it simple and just rely on the fact that mapping *content* doesn't change.
-  // Wait, if mapping is defined inside the component, it's a new object every time.
-  // So useCallback for 'get' will capture the 'mapping' from the first render if deps is [], which is fine if mapping is constant.
+  }, []); 
+
+
+  const getSingleArticleMetaData= ((which) => { 
+    return (projectsMeta[which] || {} )
+  })
+
+  
 
   async function getArticle(dirname) {
     const res = await fetch(`/content/articles/${dirname}/main.json`);
@@ -51,8 +66,9 @@ export const ContentProvider = ({ children }) => {
     return `/content/articles/${dirname}/images/${imageName}`;
   }
 
+
   const value = useMemo(
-    () => ({ get, getArticle, getArticleImageUrl }),
+    () => ({ get, getArticle, getArticleImageUrl,getSingleArticleMetaData }),
     [get],
   );
 

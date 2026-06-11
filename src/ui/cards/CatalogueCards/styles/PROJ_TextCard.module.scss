@@ -4,8 +4,17 @@
   flex-direction: column;
   gap: 0.75rem;
   height: 100%;
-  // padding: 1.25rem;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  transition: all var(--duration) var(--ease);
+
+  &:hover {
+    background: var(--bg-l1);
+    border-color: var(--border-strong);
+    box-shadow: var(--card-shadow);
+    transform: translateY(-2px);
+  }
 }
 
 // ✨ LAYOUT VARIATIONS
@@ -55,9 +64,10 @@
 .ImgContainer {
   position: relative;
   width: 100%;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--drop-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 }
@@ -173,11 +183,11 @@ font-style: italic;
     font-size: 0.7rem;
     font-weight: 500;
     padding: 0.35rem 0.75rem;
-    border-radius: 999px;
-    background: var(--surface-muted);
-    color: var(--text-secondary);
+    border-radius: var(--border-radius);
+    background: var(--bg-l2);
+    color: var(--secondary-text);
     opacity: 0.9;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-strong);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
 

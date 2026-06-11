@@ -17,7 +17,7 @@ const typeOptions = [
   { value: "external_link", label: "External Link" },
 ];
 
-// Moved out of HeaderForm to preserve focus
+
 const HeaderForm = ({ workingJSON = {}, onChange = () => {} }) => {
   const [formData, setFormData] = useState({
     name: workingJSON.name || "",
@@ -197,7 +197,7 @@ const HeroLinkHandler = ({ heroLinks, setHeroLinks }) => {
             selectedValue={data.type}
             onChange={(val) => updateHeroLink(i, "type", val)}
             options={typeOptions}
-            variant="icon"
+            variant="dev"
           />
 
           <StandardDropdown

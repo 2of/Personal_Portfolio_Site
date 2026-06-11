@@ -1,99 +1,90 @@
-.cardContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // padding: clamp(1rem, 2vw, 1.5rem);
+// ─── Overlays & Backgrounds ────────────────────────────────────────────────
 
-    // padding-top: 2rem;
-  // padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  display: flex;
-  
-  flex-direction: column;
-  align-items: flex-start;
-
-  gap: clamp(0.875rem, 1.5vw, 1.125rem);
-  // background-color: red;
+.bgOverlay {
   width: 100%;
   height: 100%;
-
-
+  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 40%, transparent 100%);
 }
 
-/* 📱 MOBILE */
-.MobileCard {
-  justify-content: center;
-  // background-color: red;
+// ─── Page Layout ────────────────────────────────────────────────────────────
 
-  
-  
-  padding: 1rem;
-.image {
-// width: 90%;
-  max-width: 70%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  border: 1px solid var(--border-color);
-}
-}
-
-
-.DesktopCard { 
-
-    justify-content: flex-end;
-
-
-.image {
-// width: 90%;
-  max-width: 70%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  border: 1px solid var(--border-color);
-}
-}
-
-
-.mobileActions {
+.sidebyside {
   display: flex;
-  gap: 0.625rem;
-  margin-top: clamp(0.875rem, 1.5vw, 1.25rem);
+  align-items: flex-start;
+  min-height: 500px;
+
+  > * {
+    flex: 1;
+  }
 }
 
-/* Shared */
-.title {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+// ─── Tab Content ────────────────────────────────────────────────────────────
+
+.tabContainer {
+  height: 100%;
+  width: 100%;
 }
 
-.subtitle {
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
-  opacity: 0.7;
-  letter-spacing: 0.01em;
+// ─── Skills Scroller ────────────────────────────────────────────────────────
+
+.scrollerParentForVertView {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  max-height: 500px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
 }
 
-.description {
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-  max-width: 48ch;
+// ─── Skill Section Header ───────────────────────────────────────────────────
+
+.skillBox {
+  width: 100%;
 }
 
-.area {
-  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
-  opacity: 0.55;
-  letter-spacing: 0.02em;
-  margin-top: 0.25rem;
-}
-
-.buttonContainer {
+.skillHeader {
   display: flex;
-  gap: 0.625rem;
   align-items: center;
-  justify-self: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--bg-l1);
+  border-bottom: 1px solid var(--border-color);
+}
+
+// ─── Skill Tags ─────────────────────────────────────────────────────────────
+
+.skilltags {
+  display: flex;
   flex-wrap: wrap;
-  margin-top: 0.5rem;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.skillItem {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  color: var(--secondary-text);
+  background: transparent;
+  transition:
+    border-color 0.2s ease-out,
+    color 0.2s ease-out;
+
+  &:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+  }
+  &.active {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: var(--accent-color-transparent);
+  }
 }

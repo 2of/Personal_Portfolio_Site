@@ -37,17 +37,17 @@ export function AboutPageMobile({
   const [scrollToNextMobileSection, setscrollToNextMobileSection] = useState(0);
   const [scrollToPrevMobileSection, setscrollToPrevMobileSection] = useState(0);
   const { addButton, removeButton } = useNavStack();
+
+    const { addComponent, removeComponent } = useNavStack();
   const { screenSize } = useScreenSize();
-const {showModal} = useModal();
+  const { showModal } = useModal();
   const triggerNext = () => {
     setscrollToNextMobileSection((prev) => prev + 1);
-
   };
   let dataEntries = [1, 23];
 
   const triggerPrev = () => {
     setscrollToPrevMobileSection((prev) => prev + 1);
-
   };
 
   console.log("SKILL ITEMS", skillItems);
@@ -135,24 +135,19 @@ const {showModal} = useModal();
       <>
         <div className={s.scrollerParentForVertView}>
           <ScrollableVerticalView>
-
             <Section
-            key={1002}
-            sticky
+              key={1002}
+              sticky
               Header={() => (
-                    <span className={s.skillHeader}>
-                      {getIcon("user")}
-                            Things I can do
-                 
-                    </span>
-                  )}
-                  
-                  
-                  >
-    
+                <span className={s.skillHeader}>
+                  {getIcon("user")}
+                  Things I can do
+                </span>
+              )}
+            >
               <h4>I'm sure i've forgotten something....</h4>
-              <br/>
-                    <h4>scroll for more {getIcon("down")} </h4>
+              <br />
+              <h4>scroll for more {getIcon("down")} </h4>
             </Section>
             {skillItems.map((skillChunk, i) => {
               return (
@@ -165,27 +160,21 @@ const {showModal} = useModal();
                         {" "}
                         {getIcon(skillChunk.icon)} {skillChunk.header}
                       </span>
-                    
-                 
                     </div>
                   )}
                 >
-                 <div className={s.skilltags}>
-     {skillChunk.skills.map((skill, j) => (
-                        <div key={j} className={s.skillItem}>
-                          {skill}
-                        </div>
-                      ))}
-
+                  <div className={s.skilltags}>
+                    {skillChunk.skills.map((skill, j) => (
+                      <div key={j} className={s.skillItem}>
+                        {skill}
                       </div>
-
+                    ))}
+                  </div>
                 </Section>
               );
             })}
 
-            <h4>
-              There's a Guarantee I've forgotten something...
-            </h4>
+            <h4>There's a Guarantee I've forgotten something...</h4>
           </ScrollableVerticalView>
         </div>
       </>
@@ -211,48 +200,56 @@ const {showModal} = useModal();
           description={srcData.description}
           longdesc={srcData.longDescription.content}
           areatitle={srcData.areatitle}
-          ismobile = {screenSize === "sm"}
+          ismobile={screenSize === "sm"}
         />
       </div>
 
-
-<div sectionHeight="quarter" key="standard-header-1">
-          {/* <ModernButton
+      <div sectionHeight="quarter" key="standard-header-1">
+        {/* <ModernButton
           label="About this site"
           variant="natural"
         /> */}
 
-
-<div className={s.buttoncluster}>
- <ModernButton
-          label="About Me (some More)"
-          variant="natural_large_touch"
-          icon={getIcon("dunno")}
-              callback={() => showModal({
-                                title: "About This Website",
-                                content: <>
-                                 {GetElTextEls({ elements: textItems.preamble?.content ?? [] })}
-                                 </>,
-                                // floatnav: true,
-                                size: "medium"
-                            })}
-        />
-         <ModernButton
-          label="About This Website"
-          variant="natural_large_touch"
-                    icon={getIcon("dunno")}
-              callback={() => showModal({
-                                title: "About This Website",
-                                content: <>
-                                 {GetElTextEls({ elements: textItems.concisebout?.content ?? [] })}
-                                 </>,
-                                // floatnav: true,
-                                size: "medium"
-                            })}
-        />
-
-</div>
-       
+        <div className={s.buttoncluster}>
+          <ModernButton
+            label="About Me (some More)"
+            variant="natural_large_touch"
+            icon={getIcon("dunno")}
+            callback={() =>
+              showModal({
+                title: "About This Website",
+                content: (
+                  <>
+                    {GetElTextEls({
+                      elements: textItems.preamble?.content ?? [],
+                    })}
+                  </>
+                ),
+                // floatnav: true,
+                size: "medium",
+              })
+            }
+          />
+          <ModernButton
+            label="About This Website"
+            variant="natural_large_touch"
+            icon={getIcon("dunno")}
+            callback={() =>
+              showModal({
+                title: "About This Website",
+                content: (
+                  <>
+                    {GetElTextEls({
+                      elements: textItems.concisebout?.content ?? [],
+                    })}
+                  </>
+                ),
+                // floatnav: true,
+                size: "medium",
+              })
+            }
+          />
+        </div>
       </div>
       {/* <div sectionHeight="half" key="standard-header-1">
         <div className={`${s.MobileFS} ${s.TextChunk} StandardBoxL3`}>

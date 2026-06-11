@@ -8,6 +8,7 @@ import StandardGrid from "../grid/StandardGrid";
 import { ModernButton } from "../standardControls/button/Button";
 import getIcon from "../../tools/iconRef";
 import { DarkModeAnimatedWithCoolDownToastButton } from "../wrappers/DarkModeWrapper";
+import { HandWrittenLabel } from "../misc/HandWrittenLabel";
 
 // Memoized MobileNavMenu to prevent re-renders unless necessary
 const MobileNavMenu = React.memo(({ direction }) => {
@@ -84,12 +85,12 @@ const MobileNavMenu = React.memo(({ direction }) => {
         setIsAnimatingIn(false);
       }, 10);
       
-      // Close context after animation starts (so menu stays visible)
+      // Close context after animation starts (so menu stays visible and doesnt jank 
       const closeContextTimer = setTimeout(() => {
         exitNavRef.current();
       }, 50);
       
-      // Unmount after animation completes (300ms for transition + small buffer)
+
       if (animationTimeoutRef.current) {
         clearTimeout(animationTimeoutRef.current);
       }
@@ -145,6 +146,10 @@ const MobileNavMenu = React.memo(({ direction }) => {
       className={`${s.MobileNavMenuContainer} ${isAnimatingIn ? s.fadeIn : ''}`}
     > 
       <div className={s.content}>
+
+        {/* <h1>Howdy!</h1> */}
+        {/* <h3>I like that you're here</h3> */}
+        <HandWrittenLabel text="Go navigate somewhere" rotate={150} variant="curveLeft" />
         <StandardGrid template="nav"> 
           {routeButtons}
         </StandardGrid>
@@ -152,7 +157,7 @@ const MobileNavMenu = React.memo(({ direction }) => {
 
       <div className={s.footer}>
 
-        
+                {/* <HandWrittenLabel text="Hire me ? " arrowBefore rotate={150} variant="curveRight" /> */}
         <div className={s.socialLinks}>
           <ModernButton
             icon={getIcon("github")}

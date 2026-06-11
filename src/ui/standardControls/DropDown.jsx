@@ -6,6 +6,11 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles/DropDown.module.scss";
+import { useScreenSize } from "../../contexts/ScreenSizeContext";
+import { ModernButton } from "./button/Button";
+import { useMatch } from "react-router-dom";
+import { useModal } from "../../contexts/ModalContext";
+import getIcon from "../../tools/iconRef";
 
 export const DropDown = ({
   options = [],
@@ -14,12 +19,17 @@ export const DropDown = ({
   placeholder = "Select an option",
   variant = "default",
   darkOverride = false,
+  blurbTextForMobile = "",
+  fsButtonlabel = "No prop?",
+  icon = null
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [menuStyle, setMenuStyle] = useState({});
   const triggerRef = useRef(null);
   const menuRef = useRef(null);
-
+  const screenSize = useScreenSize();
+  const {showModal, hideModal} = useModal();
+    const isMobile = (screenSize === "sm")
   // Ensure portal root exists
   const portalRoot =
     document.getElementById("dropdown-root") ||
@@ -30,7 +40,7 @@ export const DropDown = ({
       return el;
     })();
 
-  // Find selected option safely
+  // Find selected option safely :__ 
   const selectedOption = options.find(
     (opt) => opt.value === value
   );
@@ -69,13 +79,80 @@ export const DropDown = ({
   }, [isOpen]);
 
   const handleSelect = (option) => {
-    onChange(option.value); // ✅ emit only value
+    onChange(option.value); 
     setIsOpen(false);
+    hideModal(); // oh look a bug to fix later... or i just neve rput a dropdown in a modal...
   };
 
+  if (screenSize === "sm") { 
+
+
+
+  return (
+      <ModernButton
+      label={fsButtonlabel}
+      variant="AirLine_LargeFilll"
+      icon = {icon || getIcon("dropdown")}
+      callback={() => { 
+        showModal({
+
+title: "Select",
+size: "small",
+          content: (<>
+
+
+          <div className={styles.ModalButtons}>
+            {options.map((opt) => ( 
+              <ModernButton 
+                label={opt.value}
+                variant="AirLine_LargeFilll"
+                callback={() => handleSelect(opt)}
+              
+              
+              
+              />
+            ))}
+          </div>
+          
+           {/* <div
+            ref={menuRef}
+            className={`${styles.dropdownMenu} ${styles.dropdownMenuOpen}`}
+            style={menuStyle}
+            role="listbox"
+          >
+            {options.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                role="option"
+                aria-selected={value === option.value}
+                className={`${styles.dropdownItem} ${
+                  value === option.value
+                    ? styles.dropdownItemSelected
+                    : ""
+                }`}
+                onClick={() => handleSelect(option)}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>, */}
+          
+          </>)
+        })
+      }}
+      
+      
+      />
+
+
+  )  }
   return (
     <>
+        {/* return ("HELLO") */}
+        {isMobile && <h3>test</h3>}
       {/* Trigger */}
+      {/* yeah idk how datatheme works here btu thanks stackofverlw */}
       <div
         className={styles.dropdown}
         data-theme={darkOverride ? "dark" : "light"}
@@ -117,7 +194,7 @@ export const DropDown = ({
       {isOpen &&
         createPortal(
           <div
-            ref={menuRef}
+        ref={menuRef}
             className={`${styles.dropdownMenu} ${styles.dropdownMenuOpen}`}
             style={menuStyle}
             role="listbox"

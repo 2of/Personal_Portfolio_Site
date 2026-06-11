@@ -1,0 +1,193 @@
+{
+"ds" :  {
+
+    "title": "Machine Learning to Defeat Dark Souls Bosses",
+        "tags": [
+          "Tensorflow",
+          "Machine Learning",
+          "lua",
+          "python",
+          "Cheat Engine",
+          "RL"
+        ],
+        "primaryLink": "/proj/ds",
+        "links": [{ "label": "repo", "to": "darksoulsRepo" },   { "label": "read about it", "to": "/proj/ds", "icon": "game" }],
+        "description": "only just the first boss (tutorial fight)  Because this boss can be beaten without any complex movement/ planning / spacing (i.e. just forward / back / attack and block as movement is all relative to the 'lock on' )CheatEngine used to hook the game, CV and ML used to extract features, determine locations etc. Wrap for Reinforcement learnign w/ environment resets through cheat engine. Also attempting simple NN state w. pausing etc",
+        "date": "2025-02-15",
+        "inprogress": true,
+        "image": "game.png"
+},
+
+"geo" : { 
+     "title": "Master's Project: CityScale Geolocalization",
+        "highlight": true,
+        "tags": [
+          "AI",
+          "Tensorflow",
+          "Large Data Processing",
+          "Data PipeLining",
+          "Transfer Learning",
+          "Fine Tuning",
+          "HyperParameter tuning",
+          "Model design and implementation",
+          "Lots of maths",
+          "ensemble learning",
+          "clustering",
+          "Attention Networks",
+          "CNN networks",
+          "Single GPU"
+        ],
+        "primaryLink": "/proj/geo",
+        "links": [
+          { "label": "Repo", "to": "georepo", "icon": "github" },
+          { "label": "proposal", "to": "geothesis", "icon": "book" },
+          { "label": "thesis", "to": "geothesis", "icon": "book" },
+          { "label": "blogpost", "to": "/proj/geo", "icon": "book" }
+        ],
+        "description": "It's essentially a 'Geuguessr Bot' ... Using a psuedo ensemble of machine learning methods to improve significantly on a src distirbution about a 20km^2 area.",
+        "date": "2025-05-15",
+            "image": "masters.png"
+      
+},
+
+"monitorMinder" : {
+
+    "title": "DeskShift - Monitor Minder",
+        "tags": ["swift", "macbook", "utility"],
+        "primaryLink": "/MonitorMinder",
+        "links": [
+          { "label": "github", "to": "monitorminderrepo", "icon": "github" },
+          { "label": "site", "to": "monitormindersite", "icon": "store" },
+                   { "label": "Info", "to": "/MonitorMinder", "icon": "about" }
+        ],
+        "description": "WFH / Office monitor configuration utility. Applies customization profiles based on a user's monitor configuration",
+        "date": "2025-01-01",
+            "image": "laptop.png"
+      
+    },
+
+   "dict" : {
+        "title": "Legictionary.xyz",
+        "tags": ["ML", "REACT", "AI"],
+        "links": [
+          { "label": "github", "to": "monitorminderrepo", "icon": "github" },
+          { "label": "site", "to": "monitormindersite", "icon": "store" },
+                   { "label": "Info", "to": "/MonitorMinder", "icon": "about" }
+        ],
+        "description": "A fun little website that uses some custom models for morphene analysis, generating  plausible 'definitions', composition, pronounciations based on real words. Clustering for plausible definitions",
+        "date": "2025-01-01",
+            "image": "scrabble.png"
+      
+      },
+      "pixelart" : { 
+        "title": "Machine Learning Pixel Art Generator",
+        "tags": ["ML", "Clustering", "JS + REACT"],
+        "links": [{ "label": "Live Tool", "to": "https://2of.github.io/Colour-Extractor-Image-Web/" }],
+        "description": "Clustering for colour extraction + rebuild",
+        "date": "2025-07-01",
+          "image": "pixel-art.png"
+      },
+      "portfolio" :  {
+        "title": "Personal Portfolio Website(s) (i.e. this website...)",
+        "tags": ["web", "REACT", "JS" , "CSS & SCSS", "Custom Hooks", "REST" , "responsive mobile design", "Responsive general design", "Cool things"],
+        "links": [
+          { "label": "Repo", "to": "georepo", "icon": "github" },
+          { "label": "UI Lib", "to": "geothesis", "icon": "code" },
+          { "label": "BlogPost About", "to": "/proj/portfolio", "icon": "go" }
+        ],
+        "description": "The site you are currently viewing. It's not much to say 'hey this website is a portfolio piece' ... but there's a lot of stuff here. It's also been spun off into it's own hook/context/ui lib",
+        "date": "2025-02-15",
+                "image": "window.jpg"
+      },
+
+      "chrome-AZURECP" : { 
+ "title": "Chrome Extension - Exchange Online / Azure Copy / Paste",
+        "tags": ["ManifestV3"],
+        "links": [
+          {
+            "label": "Chrome Store",
+            "icon": "chrome",
+            "to": "chrome_exo"
+          }
+        ],
+        "description": "Sanity for IT people",
+        "date": "2025-08-15",
+        "image": "chrome.png"
+      },
+      "chrome-Retail" : { 
+          "title": "Chrome Extension - Retailer Filter Fix (no more marketplace)",
+        "tags": ["manifestV3", "URL Param Override"],
+        "links": [
+          {
+            "label": "Chrome Store",
+            "icon": "chrome",
+            "to": "chrome_warehouse"
+          }
+        ],
+        "description": "Sanity for... Shoppers?",
+        "date": "2025-08-15",
+        "image": "chrome.png"
+      },
+      "UI-Lib" : { 
+        "title": "Custom React UI / Context LIB " ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "uilibrepo" },{ "label": "WIP- LOCAL WIKI", "to": "/component" }],
+        "description": "Turns out the stuff I wrote for this website is handy...",
+        "date": "2025-04-20"
+      },
+      "Stats_reg_ML" : { 
+         "title": "Stats, Regression Analysis (Machine Learning Bits)",
+        "tags": ["Regression Analysis", "R", "Statistical Inference", "Random Trees, Clustering", "Machine Learning", "Data Wrangling"],
+        "links": [
+          { "label": "Work Repo 2", "icon":  "github", "to": "uni_stats1" },
+          { "label": "Work Repo 1", "icon":  "github","to": "uni_stats2" }
+        ],
+        "description": "R for regression anaylsis, statistical analysis and Machine Learning",
+        "date": "2025-03-10",
+        "inprogress": false
+      },
+      "nodeJS" : {
+ "title": "NodeJS Petition Website + Vue Front End",
+        "tags": ["REST", "SQL", "JS", "Node", "API Design"],
+        "links": [{ "label": "Repo", "to": "uni_nodeJS" }],
+        "description": "Repo For NodeJS Backend Only (Vue frontend is lost media!). ",
+        "date": "2025-04-05"
+      },
+
+      "RGB-cam" : { 
+ "title": "RGB Camera HID",
+        "tags": ["Computer Vision", "Machine Learning" , "Python", "HID", "Image Pipeline", "CV2"],
+        "links": [{ "label": "repo", "to": "uni_RGBHands" }],
+        "description": "A 3 prong pipeline that takes an RGB webcam frame, runs it into mediapipe hands, runs that into a custom 1:1 HID inputs. Also displays cropped hand output",
+        "date": "2025-04-20"
+      }, 
+      "MassiveData" : { 
+ "title": "Massive Data Processing",
+        "tags": ["Hadoop", "Spark", "Map/Reduce", "Juypter Notebooks", "Python", "Distributed Programming", "Machine Learning", "Collaborative Filtering Etc"],
+        "links": [{ "label": "Repo 1", "to": "uni_MassiveData" }],
+        "description": "Work around large distributed datasets, Map/reduce. Model selection /  determination ",
+        "date": "2025-04-20"
+      },
+      "HTTP_C" : { 
+ "title": "HTTP Downloader <C> from scratch" ,
+        "tags": ["C", "FiFo Queues", "Low Level Programming"],
+        "links": [{ "label": "docs", "to": "uni_HTTP_Downloader" }],
+        "description": "A raw C implementation of a multithreaded HTTP 1.0 Downloader",
+        "date": "2025-04-20"
+      },
+      "Weather" : { 
+         "title": "Massive Data Weather Analysis" ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "A high-concurrency API that processes social media feeds to detect market sentiment in real-time.",
+        "date": "2025-04-20"
+    },
+    "Algorithm" : { 
+          "title": "Algorithm Analysis, Computability, Cryptography Things" ,
+        "tags": ["NLP", "FastAPI"],
+        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "description": "Just lumping these together",
+        "date": "2025-04-20"
+}
+
+}

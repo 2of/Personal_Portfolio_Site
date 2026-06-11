@@ -147,3 +147,61 @@
 .testtest { 
   background-color: black;
 }
+
+
+.airline-terminal-grid {
+    background-color: var(--bg);
+    background-image:
+        // Major Horizontal Accent Strips (Like split-flap tracks)
+        linear-gradient(var(--bg-l3) 1.5px, transparent 1.5px),
+        // Minor Layout Grid
+        linear-gradient(var(--bg-l2) 0.5px, transparent 0.5px),
+        linear-gradient(90deg, var(--bg-l2) 0.5px, transparent 0.5px);
+    
+    // Vertical zones span 120px (standard data column blocks)
+    // Horizontal tracking lines stay tight at 24px and 120px anchors
+    background-size: 
+        100% 120px, 
+        120px 24px, 
+        120px 24px;
+        
+    background-position: 0 0;
+}
+
+
+.airline-manifest-vellum {
+    background-color: var(--bg);
+    background-image:
+        // Intermittent vertical coupon boundaries (Tear lines)
+        linear-gradient(90deg, var(--bg-l3) 1px, transparent 1px),
+        // Repeating architectural datastrip dots
+        radial-gradient(circle, var(--bg-l2) 1px, transparent 1px);
+        
+    background-size: 
+        360px 100%,  // Ticket width columns
+        12px 12px;   // Crisp micro-dot tracking
+        
+    background-position: 
+        0 0, 
+        6px 6px;
+}
+
+
+.airline-radar-fade {
+    background-color: var(--bg);
+    background-image:
+        // Precise structural tick marks
+        linear-gradient(var(--bg-l2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-l2) 1px, transparent 1px),
+        // Minimal 45deg cross-matrix tracking lines
+        repeating-linear-gradient(45deg, var(--bg-l1) 0, var(--bg-l1) 0.5px, transparent 0, transparent 40px);
+        
+    background-size: 
+        40px 40px, 
+        40px 40px, 
+        100% 100%;
+        
+    // Fades out the technical grid elements in the viewport center for pristine content readability
+    mask-image: radial-gradient(circle at center, transparent 20%, black 90%);
+    -webkit-mask-image: radial-gradient(circle at center, transparent 20%, black 90%);
+}

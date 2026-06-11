@@ -25,14 +25,14 @@ export const StackedDesktopNav = () => {
     const { startTransition, transitionState } = usePageTransition();
     const navigate = useNavigate();
     const location = useLocation();
-    const { darkMode, toggleDarkMode ,ClearFullScreenTransition, StartFullScreenTransition,fullscreentransition} = useDarkMode();
+    const { darkMode, toggleDarkMode, ClearFullScreenTransition, StartFullScreenTransition, fullscreentransition } = useDarkMode();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [showCollapsedIcons, setShowCollapsedIcons] = useState(false);
     const { showModal } = useModal();
-      const { ToggleMobileNav, MobileNavIsOpen,navstack,allComponents, addComponent, hasCustomComponents } = useNavStack();
-    
+    const { ToggleMobileNav, MobileNavIsOpen, navstack, allComponents, addComponent, hasCustomComponents } = useNavStack();
+
     const navigateTo = useNavigateTo();
-      const { getFlag } = useAppState();
+    const { getFlag } = useAppState();
 
     const handleInfoModa2l = () => {
         alert("ETST")
@@ -43,6 +43,7 @@ export const StackedDesktopNav = () => {
 
     }
 
+    const BUTTONVARIANT = "code_small"
 
     const handleInfoModal = () => {
         showModal({
@@ -78,78 +79,80 @@ export const StackedDesktopNav = () => {
     }, [isCollapsed]);
 
     return (
-        <nav className={`${s.NavContainer} ${isCollapsed ? s.collapsed : ''}`}>
-            {/* Toggle Button */}
-            <ModernButton
-            // label={ !isCollapsed ? "collapse" : "" }
-                icon={isCollapsed ? getIcon("menu") : getIcon("collapse")}
-                variant="dev_simple"
-                callback={handleToggle}
-                tooltip={isCollapsed ? "Expand" : "Collapse"}
-            />
+
+        <div className={`${s.NavOuterContainer}`}>
+            <nav className={`${s.NavContainer} ${s.isFloat}  ${isCollapsed ? s.collapsed : ''}`}>
+                {/* Toggle Button */}
+                <ModernButton
+                    // label={ !isCollapsed ? "collapse" : "" }
+                    icon={isCollapsed ? getIcon("menu") : getIcon("collapse")}
+                    variant="dev_simple"
+                    callback={handleToggle}
+                    tooltip={isCollapsed ? "Expand" : "Collapse"}
+                />
 
 
-            {isCollapsed && (
-                <div className={`${s.CollapsedIcons} ${showCollapsedIcons ? s.visible : ''}`}>
-                    <ModernButton
-                        icon={getIcon("github")}
-                        variant="dev_simple"
-                        callback={() => window.open(getLink("github"), "_blank")}
-                        tooltip="GitHub"
-                    />
-                    <ModernButton
-                        icon={getIcon("linkedin")}
-                        variant="dev_simple"
-                        callback={() => window.open(getLink("linkedin"), "_blank")}
-                        tooltip="LinkedIn"
-                    />
-                    <ModernButton
-                        icon={getIcon(darkMode ? "sun" : "moon")}
-                        variant="dev_simple"
-                        callback={toggleDarkMode}
-                        tooltip={darkMode ? "Light mode" : "Dark mode"}
-                    />
-                </div>
-            )}
+                {isCollapsed && (
+                    <div className={`${s.CollapsedIcons} ${showCollapsedIcons ? s.visible : ''}`}>
+                        <ModernButton
+                            icon={getIcon("github")}
+                            variant="dev_simple"
+                            callback={() => window.open(getLink("github"), "_blank")}
+                            tooltip="GitHub"
+                        />
+                        <ModernButton
+                            icon={getIcon("linkedin")}
+                            variant="dev_simple"
+                            callback={() => window.open(getLink("linkedin"), "_blank")}
+                            tooltip="LinkedIn"
+                        />
+                        <ModernButton
+                            icon={getIcon(darkMode ? "sun" : "moon")}
+                            variant="dev_simple"
+                            callback={toggleDarkMode}
+                            tooltip={darkMode ? "Light mode" : "Dark mode"}
+                        />
+                    </div>
+                )}
 
-            {/* Expanded Nav Content */}
-            <div className={s.NavItems}>
+                {/* Expanded Nav Content */}
+                <div className={s.NavItems}>
 
-                <div className={s.logocontainer}>
-    <Logo />
+                    <div className={s.logocontainer}>
+                        <Logo />
 
-                </div>
+                    </div>
 
-                <div className={s.Divider} />
-                {/* <span className={s.textChunk}>
+                    <div className={s.Divider} />
+                    {/* <span className={s.textChunk}>
                     this is my personal portfolio site!, feel free to have a peep around....
                 </span>
                 <div className={s.Divider} /> */}
-                <div className={s.NavSection}>
-                    {routes.filter(x => x.expose_desktop_nav)
-                    
-                    
-                    .map((route, idx) => (
-                        <ModernButton
-                            key={idx}
-                            variant="natural_nav"
-                            label={`.${route.title}`}
-                            active={location.pathname === route.path}
-                            callback={() => startTransition(route.path)}
-                        />
-                    ))}
-                </div>
+                    <div className={s.NavSection}>
+                        {routes.filter(x => x.expose_desktop_nav)
 
-                <div className={s.Divider} />
 
-                <div className={s.NavSection}>
-                    <ModernButton label=".resume" variant="natural_nav" external link={getLink("resume")} />
-                    <ModernButton label=".linkedin" variant="natural_nav" external link={getLink("linkedin")} />
-                    <ModernButton label=".github" variant="natural_nav" external link={getLink("github")} />
-                </div>
+                            .map((route, idx) => (
+                                <ModernButton
+                                    key={idx}
+                   variant={BUTTONVARIANT}
+                                    label={`.${route.title}`}
+                                    active={location.pathname === route.path}
+                                    callback={() => startTransition(route.path)}
+                                />
+                            ))}
+                    </div>
 
-                <div className={s.Divider} />
-                        {/* <div className={s.DarkModeTileContainer}>
+                    <div className={s.Divider} />
+
+                    <div className={s.NavSection}>
+                        <ModernButton label=".resume"            variant={BUTTONVARIANT} external link={getLink("resume")} />
+                        <ModernButton label=".linkedin"            variant={BUTTONVARIANT} external link={getLink("linkedin")} />
+                        <ModernButton label=".github"            variant={BUTTONVARIANT} external link={getLink("github")} />
+                    </div>
+
+                    <div className={s.Divider} />
+                    {/* <div className={s.DarkModeTileContainer}>
 
 
                         <DarkModeTile/>
@@ -157,105 +160,106 @@ export const StackedDesktopNav = () => {
 
                       <div className={s.Divider} /> */}
 
-                {/* <ModernButton
+                    {/* <ModernButton
                     label={darkMode ? ".light" : ".dark"}
-                    variant="code_small"
+                    variant="BUTTONVARIANT"
                     callback={toggleDarkMode}
                 /> */}
 
-                      <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr="natural_nav" darkstr=".dark" lightstr=".light"/>
+                    <DarkModeAnimatedWithCoolDownToastButton buttonvariantstr={BUTTONVARIANT} darkstr=".dark" lightstr=".light" />
 
-                <ModernButton
-                    label=".info"
-                    variant="natural_nav"
-                     callback={() => showModal({
-                        title: "About This Website",
-                        content: <AboutCardSmall />,
-                        // floatnav: true,
-                        size: "medium"
-                    })}
-                />
+                    <ModernButton
+                        label=".info"
+           variant={BUTTONVARIANT}
+                        callback={() => showModal({
+                            title: "About This Website",
+                            content: <AboutCardSmall />,
+                            // floatnav: true,
+                            size: "medium"
+                        })}
+                    />
 
-                 <ModernButton
-                    label=".!Construction"
-                    variant="natural_nav"
-                    callback={() => showModal({
-                        title: "Under construction",
-                        content: <p>
-                            FYI this site is still a slight WIP, it's being migrated from the old site in more/oldsites
-                        </p>,
-     
-                        size: "small"
-                    })}
-                />
+                    <ModernButton
+           variant={BUTTONVARIANT}
+                        callback={() => showModal({
+                            title: "Under construction",
+                            content: <p>
+                                FYI this site is still a slight WIP, it's being migrated from the old site in more/oldsites
+                            </p>,
 
-                <ModernButton
-                    label=".share"
-                    variant="natural_nav"
-                    callback={() => showModal({
-                        title: "TEST",
-                        content: <ShareSheet />,
-                        floatnav: true,
-                        size: "small"
-                    })}
-                />
+                            size: "small"
+                        })}
+                    />
+
+                    <ModernButton
+                        label=".share"
+                 variant={BUTTONVARIANT}
+                        callback={() => showModal({
+                            title: "TEST",
+                            content: <ShareSheet />,
+                            floatnav: true,
+                            size: "small"
+                        })}
+                    />
 
 
-{/* {hasCustomComponents && <h3>test</h3>} */}
-                       {hasCustomComponents && (
-  <div className={s.CustomComponentContainer}>
-  <div className={s.Divider} />
-    <h4>Page Controls</h4>
-    
-    {/* <h3>Custom Components Found:</h3> */}
-    {allComponents.map((C, i) => (
-      <div key={i} className="wrapper">
-        {/* Render the actual component saved in state */}
-        {C} 
-        
-        {/* Debug button */}
-        {/* <button onClick={() => console.log("Component Data:", C)}>
+                    {/* {hasCustomComponents && <h3>test</h3>} */}
+                    {hasCustomComponents && (
+                        <div className={s.CustomComponentContainer}>
+                            <div className={s.Divider} />
+                            <h4>Page Controls</h4>
+
+                            {/* <h3>Custom Components Found:</h3> */}
+                            {allComponents.map((C, i) => (
+                                <div key={i} className="wrapper">
+                                    {/* Render the actual component saved in state */}
+                                    {C}
+
+                                    {/* Debug button */}
+                                    {/* <button onClick={() => console.log("Component Data:", C)}>
           Log Component {i}
         </button> */}
-      </div>
-    ))}
-  </div>
-)}
-            {getFlag("dev") &&
-            <>
-                        <div className={s.Divider} />
-                        <h4>Dev crap --- This may be disabled in /more</h4>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {getFlag("dev") &&
+                        <>
+                            <div className={s.Divider} />
+                            <h4>Dev crap --- This may be disabled in /more</h4>
 
-                        {/* <p> </p> */}
-              <ModernButton
-                    label=".cookies manager"
-                    variant="natural_nav"
-                    callback={() => showModal({
-                        title: "Cookies",
-                        content: <CookieManagerForm />,
-                        floatnav: false,
-                        size: "medium"
-                    })}
-                />
-
-
-
-                <ModernButton
-                    label=".Junk and Crap"
-                    variant="natural_nav"
-              callback={() => navigate("/sample")}
-                     active={location.pathname === "/sample"}
-                />
-            <h4> {fullscreentransition ? "FS" : "WAIT" }</h4>
-            
-            </>
-         
-                
-                }
+                            {/* <p> </p> */}
+                            <ModernButton
+                                label=".cookies manager"
+                                variant={BUTTONVARIANT}
+                                callback={() => showModal({
+                                    title: "Cookies",
+                                    content: <CookieManagerForm />,
+                                    floatnav: false,
+                                    size: "medium"
+                                })}
+                            />
 
 
-                {/* <DarkModeTile/> */}
-            </div>
-        </nav>
+
+                            <ModernButton
+                                label=".Junk and Crap"
+                       variant={BUTTONVARIANT}
+                                callback={() => navigate("/sample")}
+                                active={location.pathname === "/sample"}
+                            />
+                            <h4> {fullscreentransition ? "FS" : "WAIT"}</h4>
+
+                        </>
+
+
+                    }
+
+
+                    {/* <DarkModeTile/> */}
+                </div>
+            </nav>
+
+        </div>
     );
 };

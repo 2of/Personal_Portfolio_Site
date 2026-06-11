@@ -4,7 +4,7 @@ import styles from "./styles/RowView.module.scss";
 export const RowView = ({ rows = [], mobile }) => {
   return (
     <div
-      className={`${styles.rowViewPlatter} ${mobile ? styles.mobile : ""}`}
+      className={`${styles.rowViewPlatter}    MaterialL3 ${mobile ? styles.mobile : ""}`}
     >
       {rows.map((item, index) => {
         const hasComponent = !!item.component;
@@ -15,6 +15,7 @@ export const RowView = ({ rows = [], mobile }) => {
             key={index}
             className={`
               ${styles.row}
+
               ${!hasComponent && !hasParagraph ? styles.justLabel : ""}
               ${!hasComponent && hasParagraph ? styles.labelAndParagraph : ""}
               ${hasComponent && !hasParagraph ? styles.labelAndComponent : ""}

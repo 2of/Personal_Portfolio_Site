@@ -1,7 +1,45 @@
 {
-  "title": "welcome",
-  "subtitle": "I'm Noah and this is my Portfolio Catalogue Site",
-  "description": "The site is written from scratch",
+  "title": "What is this place?",
+  "subtitle": "I'm an IT Tech / Developer and I make the odd fun thing",
+  "longDescription": {
+  "sectionTitle": "Professional Profile",
+  "tags": ["IT", "Support", "Developer", "Data", "AI", "Machine Learning"],
+  "content": [
+    {
+      "content": "IT Engineer",
+      "highlight": false
+    },
+    {
+      "content": "Graduate Developer",
+      "highlight": false
+    },
+    {
+      "content": "with a specialization in Data, AI and Machine Learning.",
+      "to": "/data-ai-ml",
+      "highlight": false
+    },
+    {
+      "content": "I’ve spent the last 4 years working across a wide range of roles, from Helpdesk IT support to installing P2P Mikrotik systems on dairy sheds.",
+      "highlight": false
+    },
+      {
+      "content": "I recently returned to university to complete a "
+ 
+    },
+
+
+    {
+      "content": "Master of Artificial Intelligence.",
+      "to": "/master-of-artificial-intelligence",
+      "highlight": false
+    },
+    {
+      "content": "I’m now seeking Development, Analyst, and Data roles that allow me to put these skills to use in a commercial context",
+      "highlight": false
+    }
+  ]
+  },
+  "description": "... & this is my little website",
   "areatitle": "Here's some Links to get started",
   "career"  : [
 
@@ -145,6 +183,59 @@
         { "content": "roles..... This website is a bit of fun, Feel free to look around at my projects and work history", "highlight": false }
       ]
     },
+"aboutthewebsite": {
+  "tags": [],
+  "content": [
+    { "content": "So... about this website... I made this ", "highlight": false },
+    { "content": "more or less", "highlight": true },
+    { "content": " from scratch. I just wanted to learn react (When I started wokring on this)  and now there's a bunch of handy stuff here that I made recently.. and a bunch of stuff that's years old but looked cool.", "highlight": false },
+    { "content": "There's about (I think?) 13 different providers, a bunch of custom hooks etc. There's ", "highlight": false },
+    { "content": "oodles", "highlight": true },
+    { "content": " of junk too, it's not super well written. It fetches from the public folder in it's own repo... because github pages is ", "highlight": false },
+    { "content": "a free host,", "highlight": true },
+    { "content": "That's about it", "highlight": false },
+    { "content": ".. Oh also, the custom format + rough editor for articles / posts is in here too under", "highlight": false },
+    { "content": " /editor", "highlight": true },
+    { "content": ".. Oh and what about generative AI use? ... well duh.. of course I used it. CSS is a pain in the butt afterall... ", "highlight": false },
+    { "content": "dont use cursor / google antivgravity because it breaks everything", "highlight": true },
+    { "content": " but I do use copilot & claude once im sure i understand something (or if im stuck, cmon, it's 2025 we're honest) ", "highlight": false },
+    { "content": "Look, I used chatgpt to turn this string of text into a JSON object that has my highlight tags... like im not gonna sit here and do that manualyl when chatgpt is just there... provided it hasnt' added any random words or what not.... ", "highlight": true },
+    {"content": "That said I used chatgpt extensively for my LaTeX stuff at uni and it insists on rewriting your words... Like, I just want you to fix my syntax not rewrite my nonsense into your nonsense", "highlight": false }
+  ]
+},
+
+
+
+  "concisebout": {
+    "tags": [],
+    "content": [
+      { "content": "This site just hosts a few tools and links for convenience. ", "highlight": false },
+      { "content": "It's built with React and SCSS", "highlight": true },
+      { "content": ", no fancy libraries except the router. ", "highlight": false },
+
+      { "content": "It supports consuming external APIs for post and article data, ", "highlight": false },
+      { "content": "but everything is hosted on GitHub Pages", "highlight": true },
+      { "content": " from the /public directory. ", "highlight": false },
+
+      { "content": "The site is fully responsive and includes fun animations. ", "highlight": false },
+      { "content": "As needed, I’ve been turning this into its own  ", "highlight": false },
+
+      {
+        "content": "UI library.",
+        "to": "uilibrepo"
+      },
+
+        { "content": "Checkout the", "highlight": false },    {
+        "content": "repo",
+        "to": "portfoliorepo"
+      },
+   { "content": "or the ", "highlight": false },    {
+        "content": "post",
+        "to": "/proj/portfolio"
+      }
+    ]
+  },
+
 
  
     "career_transition": {
@@ -172,7 +263,9 @@
         { "content": "IMPORTANT", "highlight": true },
         { "content": "Read carefully", "highlight": false }
       ]
-    },  "experience": {
+    }, 
+    
+    "experience": {
       "tags": ["IT", "Healthcare", "Education", "Networking", "Azure", "Entra", "Google Admin", "Systems"],
       "content": [
         { "content": "I’ve delivered", "highlight": false },
@@ -192,7 +285,34 @@
         { "content": "and implementing", "highlight": false },
         { "content": "medium-sized business IT environments.", "highlight": true }
       ]
+    }, 
+    
+    
+    "programmingdata": {
+      "tags": ["IT", "Healthcare", "Education", "Networking", "Azure", "Entra", "Google Admin", "Systems"],
+      "content": [
+        { "content": "I can work with languages including", "highlight": false },
+        { "content": "Python, JS, C, C++, Java", "highlight": true },
+        { "content": ", libraries / frameworks such as", "highlight": false },
+        { "content": "Tensorflow, Pandas, Pytorch, Hadoop, Apache Spark, REACT, VUE ", "highlight": true },
+        { "content": "and", "highlight": false },
+        { "content": "education", "highlight": true },
+        { "content": "in New Zealand.", "highlight": false },
+
+        { "content": "My experience spans", "highlight": false },
+        { "content": "enterprise networking,", "highlight": true },
+        { "content": "Azure and Entra administration,", "highlight": true },
+        { "content": "Microsoft 365,", "highlight": true },
+        { "content": "Google Admin,", "highlight": true },
+        { "content": "DNS and network architecture design,", "highlight": true },
+        { "content": "and implementing", "highlight": false },
+        { "content": "medium-sized business IT environments.", "highlight": true }
+      ]
     }
+
+
   }
+
+
 
 }

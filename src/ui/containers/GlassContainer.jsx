@@ -7,7 +7,7 @@ const GlassPushOverlay = ({
   spiciness = 2,
   showHover = true,
   scaleFactor = 1.1,
-  mouseEnterCallback,
+mouseEnterCallback,
   mouseLeaveCallback,
   showShine = true, // Rename to match casing convention
   showDeform = true, 

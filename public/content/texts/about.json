@@ -1,6 +1,6 @@
 {
-  "title": "Hi, I'm Noah",
-  "subtitle": "I'm an IT Engineer, Support Worker and Graduate Developer with a Specialization in Data, AI and Machine Learning. I've spent the last 4 years doing everything from Helpdesk IT to Installing P2P Microtik Systems on Dairy Sheds. I recently went back to Uni for my Master of Artifical Intelligence and I'm looking for Development, Analyst and Data roles that put that to use",
+  "title": "What is this place?",
+  "subtitle": "I'm Noah, I'm an IT Tech and Developer over in New Zealand...  This site is where I host my stuff!",
   "longDescription": {
   "sectionTitle": "Professional Profile",
   "tags": ["IT", "Support", "Developer", "Data", "AI", "Machine Learning"],
@@ -232,7 +232,10 @@
    { "content": "or the ", "highlight": false },    {
         "content": "post",
         "to": "/proj/portfolio"
-      }
+      },
+
+            { "content": "Hate that in 2026 an AI disclaimer is necessary?. I've used gen. AI for the css here a lot, but most of this site was made the old-school way (i.e stack overflow...)   ", "highlight": false },
+                        { "content": "Finally, you might wonder 'why is everything so inconsistent'... I use this site as a playgrond for all sorts of stuff. see /extras for a taster ... It's more about volume than quality here (although the quality is alright)", "highlight": false }
     ]
   },
 
@@ -251,7 +254,11 @@
         { "content": "software development,", "highlight": true },
         { "content": "data engineering,", "highlight": true },
         { "content": "or", "highlight": false },
-        { "content": "machine learning.", "highlight": true }
+        { "content": "machine learning.", "highlight": true },
+        { "content": "I have a", "highlight": false },
+        { "content": "Master of Artifical Intelligence", "highlight": true },
+        { "content": " & ", "highlight": false },
+        { "content": "A BSc in Computer Science", "highlight": true }
       ]
     },
 
@@ -266,7 +273,7 @@
     },  "experience": {
       "tags": ["IT", "Healthcare", "Education", "Networking", "Azure", "Entra", "Google Admin", "Systems"],
       "content": [
-        { "content": "I’ve delivered", "highlight": false },
+        { "content": "In the IT world: I’ve delivered", "highlight": false },
         { "content": "IT support", "highlight": true },
         { "content": "and project contracts across", "highlight": false },
         { "content": "healthcare", "highlight": true },
@@ -283,7 +290,26 @@
         { "content": "and implementing", "highlight": false },
         { "content": "medium-sized business IT environments.", "highlight": true }
       ]
+    },
+    "programmingdata": {
+      "tags": ["IT", "Healthcare", "Education", "Networking", "Azure", "Entra", "Google Admin", "Systems"],
+      "content": [
+        { "content": "I can work with languages including", "highlight": false },
+        { "content": "Python, JS, C, C++, Java", "highlight": true },
+        { "content": ", libraries / frameworks such as", "highlight": false },
+        { "content": "R, Tensorflow, Pandas, Pytorch, Node, Hadoop, Apache Spark, REACT, VUE & REST APIs, SQL", "highlight": true },
+        { "content": "and use tools such as", "highlight": false },
+        { "content": "Git, Powershell (eugh), ", "highlight": true },
+                { "content": "Not to mention a rough but functional go at", "highlight": false },
+        { "content": "Swift, Kotlin, C#, VB ", "highlight": true },
+                        { "content": "And we can't forget all of the ", "highlight": false },
+                     { "content": " data science, machine learning and algorithm design and analysis", "highlight": true },           
+                                          { "content": "bits and bobs", "highlight": false }
+                    ]
     }
+
   }
+
+
 
 }

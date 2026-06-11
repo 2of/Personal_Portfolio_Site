@@ -1,162 +1,158 @@
-// ✨ HERO CARD - Newspaper/Editorial Style
-.heroCard {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 500px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  cursor: pointer;
+// PROJ_HeroCard.module.scss
 
-  &.imagesLoading {
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 16px;
+    border: 0.5px solid var(--border-color);
+    background: var(--bg-l1);
+    overflow: hidden;
+    transition: border-color 0.18s;
 
-    .image,
-    .imageCover {
-      opacity: 0;
+    &:hover {
+        border-color: var(--accent-color);
     }
-  }
 
-  &.imagesReady {
-
-    .image,
-    .imageCover {
-      opacity: 1;
-      transition: opacity 0.4s ease;
+    &:hover .image {
+        transform: scale(1.03);
     }
-  }
 
+    &:hover .title {
+        color: var(--accent-color);
+    }
 }
 
-// ✨ BADGE - Clean Editorial Badge
-.badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  background: var(--bg);
-  border: 1px solid var(--border-color);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+// ── Image ────────────────────────────────────────────────
+.imageWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+    background: var(--bg-l2);
 }
 
-// ✨ IMAGE CONTAINER - Clean, No Overlay
-.ImgContainer {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  background: var(--bg-l1);
-  flex-shrink: 0;
-
-  .image {
+.image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
+    display: block;
+    transition: transform 0.5s ease;
+}
 
-  .imageCover {
+// subtle bottom fade so body text sits cleanly against image
+.imageOverlay {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%) brightness(0.9);
-    opacity: 0;
-    z-index: 1;
-    transition: opacity 0.4s ease;
-  }
+    background: linear-gradient(to bottom, transparent 50%, var(--bg-l1) 100%);
+    pointer-events: none;
 }
 
-// ✨ CONTENT WRAPPER - Clean Layout Below Image
-.ContentWrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  color: var(--text-color);
-  gap: 1.25rem;
-  background: var(--surface);
-  flex: 1;
-
-  &.fadeback {
-    opacity: 0.98;
-  }
+.progressBadge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--accent-color);
+    background: var(--accent-color-transparent);
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 0.5px solid var(--accent-color);
 }
 
-// ✨ HEADER - Editorial Style
-.Header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--border-color);
+// ── Body ─────────────────────────────────────────────────
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 28px 28px;
 }
 
-// ✨ TITLE - Newspaper Headline
-.Title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--text-color);
-  transition: color 0.3s ease;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-  font-family: var(--font-serif, Georgia, serif);
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--border-color);
 }
 
-// ✨ DATE - Editorial Metadata
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .date {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--secondary-text);
 }
 
-// ✨ DESCRIPTION - Body Copy
-.Description {
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--text-primary);
-  opacity: 0.9;
+.title {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    color: var(--text-color);
+    margin: 0;
+    transition: color 0.18s;
 }
 
-// ✨ LINK GROUP - Below Content
-.linkGroup {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  transition: all 0.4s ease;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-color);
-
-  &.hideButtons {
-    opacity: 0.7;
-  }
-
-  &.showButtons {
-    opacity: 1;
-  }
+.description {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--secondary-text);
+    margin: 0;
 }
 
-// ✨ TAG CONTAINER
-.fff.tagContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+// ── Footer ────────────────────────────────────────────────
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.tag {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: var(--secondary-text);
+    background: var(--bg-l2);
+    border: 0.5px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s;
+
+    &:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+    }
+}
+
+.tagMore {
+    color: var(--accent-color);
+    background: var(--accent-color-transparent);
+    border-color: transparent;
+
+    &:hover {
+        border-color: var(--accent-color);
+    }
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 4px;
+    border-top: 0.5px solid var(--border-color);
 }

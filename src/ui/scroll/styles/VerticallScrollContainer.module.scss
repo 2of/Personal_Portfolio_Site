@@ -6,21 +6,11 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-//   background-color: orange;
   padding: 0;
   margin: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background-color: red;
-//   justify-content: center;
-
-
-
-  * { 
-    // outline: 1px solid pink;
-  }
 }
 
 .staggerSpacer {
@@ -59,20 +49,28 @@
 .contentColumn {
   display: flex;
   flex-direction: column;
-  // background-color: beige;
-
-//   max-width: var(--maxWidth, 1200px);
-//   margin: 0 auto;
-//   padding: 0 1rem;
   width: 100%;
-//   @media (max-width: 480px) {
-//     padding: 0 0.75rem;
-//   }
+}
 
-  &.desktop { 
+.outermostSection { 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sectionContainer { 
     max-width: 1200px;
-    padding: 0 2rem;
+    width: min(100%, 1200px);
   }
+
+  &.growFirst { 
+    padding-top: 10vh;
+  }
+}
+
+.bottomSpacer {
+  height: calc(2 * var(--navHeight));
+  flex-shrink: 0;
 }
 
 .section {
@@ -80,31 +78,47 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content:center;
-  
+  align-content: center;
   margin-bottom: 2rem;
   scroll-margin-top: 1rem;
-    // background-color: red;
-    // margin: 10rem;
-  .chunk { 
-    // background-color: blue;
-    
-  }
-  
+
   .sectionGradContainer {
     position: absolute;
     inset: 0;
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
-    // background-color: green;
   }
-  
-//   &.desktop {
-//     @media (min-width: 1025px) {
-//       margin-bottom: 3rem;
-//     }
-//   }
+}
+
+.collapsibleWrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+
+  .sectionContent {
+    min-height: 0;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 1rem;
+    transition: 
+      opacity 0.25s ease, 
+      padding 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 1;
+  }
+
+  &.collapsed {
+    grid-template-rows: 0fr;
+
+    .sectionContent {
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
 }
 
 .sectionHeaderContainer {
@@ -112,9 +126,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  // background-color: beige;
   z-index: 10;
   isolation: isolate;
+  cursor: default; // Explicitly forces the default arrow mouse cursor normally
+
+  &.CanCollapse { 
+    cursor: pointer; // ONLY applies the hand pointer here when toggled on
+  }
   
   &.stickyHeader {
     position: sticky;
@@ -126,8 +144,6 @@
       border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-      
   }
   
   .headerContentContainer {
@@ -139,24 +155,14 @@
   }
 }
 
-.sectionContent {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 2rem;
-  // background-color: red;
-  padding: 1rem;
-    // padding: 1rem;
-}
-
 .progressBarOverlay {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  padding: 0.75rem 1rem;
-  background: var(--bg-l1);
+  padding: 0.5rem 1rem;
+  background: var(--bg);
   border: 1px solid var(--border-color);
-  border-radius: 99px;
+  box-shadow: var(--elevated-shadow, 0 10px 40px rgba(0, 0, 0, 0.2));
   z-index: 100;
   pointer-events: none;
   display: flex;

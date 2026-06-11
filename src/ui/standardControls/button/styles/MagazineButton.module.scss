@@ -1,0 +1,175 @@
+$ease-ink: cubic-bezier(0.25, 0.1, 0.15, 1.0);
+
+@mixin size-sm { font-size: 0.7rem;  letter-spacing: 0.16em; padding: 0.35em 0.9em; gap: 0.4em; }
+@mixin size-md { font-size: 0.78rem; letter-spacing: 0.14em; padding: 0.5em 1.2em;  gap: 0.5em; }
+@mixin size-lg { font-size: 0.88rem; letter-spacing: 0.12em; padding: 0.65em 1.6em; gap: 0.6em; }
+
+@mixin apply-sizes {
+    &[data-size="sm"] { @include size-sm; }
+    &[data-size="md"] { @include size-md; }
+    &[data-size="lg"] { @include size-lg; }
+}
+
+%base {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    border:          none;
+    background:      none;
+    cursor:          pointer;
+    // text-transform:  uppercase;
+    // font-family:     var(--font-display, 'Playfair Display', Georgia, serif);
+    font-weight:     700;
+    // font-style:      normal;
+    text-decoration: none;
+    white-space:     nowrap;
+    position:        relative;
+    transition:
+        color            0.2s $ease-ink,
+        background-color 0.2s $ease-ink,
+        border-color     0.2s $ease-ink,
+        opacity          0.15s ease;
+
+    @include apply-sizes;
+    @include size-md;
+
+    &.disabled,
+    &:disabled {
+        opacity:        0.35;
+        cursor:         not-allowed;
+        pointer-events: none;
+    }
+}
+
+.icon {
+    display:     flex;
+    align-items: center;
+    flex-shrink: 0;
+    line-height: 1;
+
+    svg {
+        width:  1em;
+        height: 1em;
+    }
+}
+
+.label {
+    position: relative;
+}
+
+.activeDot {
+    width:         6px;
+    height:        6px;
+    border-radius: 50%;
+    background:    var(--accent);
+    flex-shrink:   0;
+    animation:     dotPop 0.25s $ease-ink both;
+}
+
+@keyframes dotPop {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.mag_primary {
+    @extend %base;
+ background: var(--text-color);
+
+  border: none;
+//   font-family: $font-sans;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  font-weight: bold;
+  cursor: pointer;
+
+  * { 
+      color: var(--bg);
+  }
+   
+
+    &:hover .label::after {
+        width: 100%;
+    }
+
+    &.active {
+        color: var(--accent);
+
+        .label::after {
+            width:      100%;
+            background: var(--accent);
+            height:     2px;
+        }
+
+        .icon { color: var(--accent); }
+    }
+}
+
+.mag_secondary {
+    @extend %base;
+
+    color:         var(--text-color);
+    background:    transparent;
+    border:        1.5px solid var(--bgl3);
+    border-radius: 0;
+
+    &::before {
+        content:          '';
+        position:         absolute;
+        inset:            0;
+        background:       var(--bgl2);
+        transform:        scaleY(0);
+        transform-origin: bottom center;
+        transition:       transform 0.25s $ease-ink;
+        z-index:          0;
+    }
+
+    .icon,
+    .label {
+        position:   relative;
+        z-index:    1;
+        transition: color 0.25s $ease-ink;
+    }
+
+    &:hover {
+        border-color: var(--text-color);
+        &::before { transform: scaleY(0.06); }
+    }
+
+    &.active {
+        border-color: var(--accent);
+
+        &::before {
+            background: var(--accent);
+            transform:  scaleY(1);
+        }
+
+        .icon,
+        .label { color: var(--bg); }
+    }
+}
+
+.mag_iconOnly {
+    @extend %base;
+
+    color:         var(--bgl3);
+    background:    transparent;
+    border:        1.5px solid transparent;
+    border-radius: 0;
+    padding:       0.5em;
+    aspect-ratio:  1 / 1;
+
+    &[data-size="sm"] { font-size: 0.85rem; padding: 0.4em; gap: 0; }
+    &[data-size="md"] { font-size: 1rem;    padding: 0.5em; gap: 0; }
+    &[data-size="lg"] { font-size: 1.2rem;  padding: 0.6em; gap: 0; }
+
+    &:hover {
+        color:        var(--text-color);
+        border-color: var(--bgl3);
+    }
+
+    &.active {
+        color:        var(--accent);
+        border-color: var(--accent);
+    }
+}

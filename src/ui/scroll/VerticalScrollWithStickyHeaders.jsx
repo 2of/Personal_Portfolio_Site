@@ -4,40 +4,47 @@ import styles from "./styles/VerticallScrollContainer.module.scss";
 import ProgressBar from "../standardControls/ProgressBar.jsx";
 import { useScreenSize } from "../../contexts/ScreenSizeContext.jsx";
 import { baseTheme } from "../../style/Theme.jsx";
-// import {
-//   useIsMenuFloatingDesktop,
-//   useIsMenuFloatingMobile,
-// } from "../../../../contexts/RouteContext.jsx";
-// import { useNavStack } from "../../../../contexts/NavStackContext.jsx";
-// import TrackedGradientBG from "../../../Background/TrackedGradientBg.jsx";
-
+import GradientBG from "../bg/GradientBG.jsx";
 import { useAppTheme } from "../../contexts/ThemeContext.jsx";
 import { useNav } from "../../contexts/NavContext.jsx";
-// import Particles from "../../../Background/Particles.jsx";
 
 export const Section = ({
   Header,
   children,
   sticky,
   narrow,
-  color = "bg",
+  color = "",
   index,
   isFirst,
-  animateIn
-
+  animateIn,
+  collapsed = false,
+  clickHeaderToCollapse = true
 }) => {
-
-  console.log("RENDER THE SCROLLER VIEW") // so fun thing, this print stops crazy re
+  console.log("RENDER THE SCROLLER VIEW");
   const { getColor } = useAppTheme();
   const screenSize = useScreenSize();
+  
+  const [collapseSection, setCollapse] = useState(collapsed);
+
+
+  useEffect(() => { 
+    setCollapse(collapsed);
+  }, [collapsed]); 
+
+  const handleCollapseClick = () => { 
+    if (clickHeaderToCollapse) {
+      setCollapse(prev => !prev);
+    }
+  };
+
   const headerClass = clsx(styles.sectionHeaderContainer, {
     [styles.stickyHeader]: sticky,
     [styles.narrow]: narrow,
+    [styles.CanCollapse]: clickHeaderToCollapse 
   });
 
   const contentClass = clsx(styles.sectionContent, {
     [styles.narrow]: narrow,
-
     [screenSize === "sm"]: "mobile"
   });
 
@@ -48,7 +55,6 @@ export const Section = ({
       if (color === "l1") return getColor("--bg-l1");
       if (color === "l3") return getColor("--bg-l3");
       if (color === "dark") return baseTheme["--darkbg"];
-
       if (color === "accent") return 2;
     }
     return color;
@@ -56,42 +62,34 @@ export const Section = ({
 
   return (
     <section
-      className={`${styles.section} ${isFirst && styles.growFirst} ${screenSize !== "sm" && styles.desktop}`}
+      className={`${styles.outermostSection} ${isFirst && styles.growFirst} ${screenSize !== "sm" && styles.desktop}`}
       style={{ background: displaycolor() }}
     >
-      {/* <h1>tewst {isFirst ? "YES" : " NO" }</h1> */}
       {displaycolor() === "gradient" && (
         <div className={styles.sectionGradContainer}>
-          {/* <h1>test</h1> */}
-
-          <TrackedGradientBG />
+          <GradientBG/>
         </div>
       )}
 
       {displaycolor() === "particles" && (
         <div className={styles.sectionGradContainer}>
-          {/* <h1>test</h1> */}
-
           <Particles />
         </div>
       )}
+
       <div className={styles.sectionContainer}>
-        {/* TODO - this  */}
-        {/* <h1>{animateIn ? "in with " : "nothing"} {index}</h1> */}
         {Header && (
-          <div className={headerClass}>
-            <div
-              className={`${styles.headerContentContainer} ${screenSize === "sm" && styles.mobile}`}
-            >
+          <div className={headerClass} onClick={handleCollapseClick}>
+            <div className={`${styles.headerContentContainer} ${screenSize === "sm" && styles.mobile}`}>
               <Header />
             </div>
           </div>
         )}
-        <div className={contentClass}>
 
-          {children}
-
-
+        <div className={`${styles.collapsibleWrapper} ${collapseSection ? styles.collapsed : ""}`}>
+          <div className={contentClass}>
+            {children}
+          </div>
         </div>
       </div>
     </section>
@@ -106,35 +104,24 @@ export const ScrollableVerticalView = ({
   alignCenter = false,
   animateIn = false,
   debug = false,
-    updateScrollPercentExt = null,
-    updateScrollPixAmountExt = null,
-    displayTracker = false
+  updateScrollPercentExt = null,
+  updateScrollPixAmountExt = null,
+  displayTracker = false
 }) => {
   const scrollRef = useRef(null);
   const [normalizedVelocity, setNormalizedVelocity] = useState(0);
   const [direction, setDirection] = useState("None");
   const [scrollPercent, setScrollPercent] = useState(0);
-  //   const { isDev } = useGlobalContext;
-  //   const isStaggeredForNav = useIsMenuFloatingDesktop();
-  //   const isMenuFloatingMobile = useIsMenuFloatingMobile();
-  const isMenuFloatingMobile = false;
-  const isStaggeredForNav = true;
   const screenSize = useScreenSize();
   const MAX_SCROLL_VELOCITY = 3000;
 
-  const { isNavBgTransparent, setNavBgTransparent } = useNav();
+  const { setNavStuckToTop } = useNav();
 
-  // useEffect(() => {
-  //   if (!trackScrollPercent) return;
-
-  //   const shouldBeTransparent = scrollPercent > 0.4;
-  //   if (isNavBgTransparent !== shouldBeTransparent) {
-  //     setNavBgTransparent(shouldBeTransparent);
-  //   }
-  // }, [scrollPercent, isNavBgTransparent, trackScrollPercent]);
+  useEffect(() => { 
+     setNavStuckToTop(false);  
+  }, [setNavStuckToTop]);
 
   useEffect(() => {
-    // If we aren't tracking percent, and we aren't debugging velocity, we don't need this listener
     if ((!trackVelocity && !trackScrollPercent) || (!trackScrollPercent && !debug)) return;
 
     let lastScrollTop = 0;
@@ -149,7 +136,6 @@ export const ScrollableVerticalView = ({
       const deltaY = scrollTop - lastScrollTop;
       const deltaTime = now - lastTime || 1;
 
-      // Only update state for velocity if we are in debug mode
       if (trackVelocity && debug) {
         const rawVelocity = (deltaY / deltaTime) * 1000;
         const absVelocity = Math.abs(rawVelocity);
@@ -162,17 +148,21 @@ export const ScrollableVerticalView = ({
       }
 
       if (trackScrollPercent) {
-
-      
         const scrollHeight = el.scrollHeight - el.clientHeight;
         const percent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        
+        if (updateScrollPercentExt) {
+          updateScrollPercentExt(percent);
+        }
 
-          if (updateScrollPercentExt) {
-          updateScrollPercentExt(percent)
+        if (percent > 0.1) {
+          setNavStuckToTop(true);  
+        } else  {
+          setNavStuckToTop(false);
         }
 
         if (updateScrollPixAmountExt) {
-          updateScrollPixAmountExt(scrollTop)
+          updateScrollPixAmountExt(scrollTop);
         }
         setScrollPercent(Math.min(Math.max(percent, 0), 100).toFixed(1));
       }
@@ -182,17 +172,13 @@ export const ScrollableVerticalView = ({
     el?.addEventListener("scroll", handleScroll);
 
     return () => el?.removeEventListener("scroll", handleScroll);
-  }, [trackVelocity, trackScrollPercent, debug]);
+  }, [trackVelocity, trackScrollPercent, debug, updateScrollPercentExt, updateScrollPixAmountExt, setNavStuckToTop]);
 
   const containerClass = clsx(
     styles.scrollContainer,
-
     screenSize === "sm" && styles.padBottomForMobileFriendliness,
-    trackVelocity
-      ? styles.scrollContainerVelocity
-      : styles.scrollContainerBounce,
-    screenSize !== "sm" && !isStaggeredForNav && styles.paddedforNavBarDesktop,
-    screenSize === "sm" && isMenuFloatingMobile && styles.paddedforNavBarMobile,
+    trackVelocity ? styles.scrollContainerVelocity : styles.scrollContainerBounce,
+    screenSize !== "sm" && styles.paddedforNavBarDesktop,
     alignCenter && styles.alignCenter,
   );
 
@@ -216,20 +202,6 @@ export const ScrollableVerticalView = ({
 
   return (
     <div ref={scrollRef} className={containerClass}>
-      {false && (trackVelocity || trackScrollPercent) && (
-        <div className={styles.velocityInfo}>
-          {trackVelocity && (
-            <>
-              Velocity: {normalizedVelocity} | Direction: {direction}
-            </>
-          )}
-          {trackVelocity && trackScrollPercent && (
-            <span style={{ margin: "0 0.5rem" }}>|</span>
-          )}
-          {trackScrollPercent && <>Scrolled: {scrollPercent}%</>}
-        </div>
-      )}
-
       {displayTracker && (
         <div className={styles.progressBarOverlay}>
           <ProgressBar
@@ -239,8 +211,6 @@ export const ScrollableVerticalView = ({
             val={scrollPercent}
             mappedtoinput
           />
-          {/* <h1>test</h1> */}
-          {/* {scrollPercent} */}
         </div>
       )}
       <div
@@ -253,9 +223,9 @@ export const ScrollableVerticalView = ({
         {staggerStart && <div className={styles.staggerSpacer} />}
         <div className={styles.chunk}>
           {enhancedChildren}
-
+          <div className={styles.bottomSpacer} />
         </div>
-
+        <div className={styles.bottomSpacer} />
       </div>
     </div>
   );

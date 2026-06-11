@@ -7,12 +7,12 @@ export const useModal = () => useContext(ModalContext);
 export const ModalMenuProvider = ({ children }) => {
   const [modalState, setModalState] = useState({
     open: false,
-    type: "default",       // e.g. "article", "confirm", "custom"
+    type: "default",       
     title: "",
     content: null,     
-    size: "",    // can be JSX or string
-    buttons: [],           // optional buttons
-    extraData: null,       // flexible field for anything
+    size: "",    // can be JSX or string wahtever
+    buttons: [],           // optional buttons get put in top bar
+    extraData: null,      
     floatnav: false
   });
 

@@ -80,7 +80,7 @@ export const ShareSheet = ({
 
   return (
     <div
-      className={`${styles.dialog} ${
+      className={`${styles.dialog}   ${
         screenSize === "sm" ? styles.sm : styles.fulldialogue
       }`}
     >

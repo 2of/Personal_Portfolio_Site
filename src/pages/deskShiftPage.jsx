@@ -10,6 +10,7 @@ import DS2 from "../../public/content/discretepages/deskShift/DS2.png"
 import DS3 from "../../public/content/discretepages/deskShift/DS3.jpg"
 import ImageHandle from "../ui/images/ImageHandle";
 import { DrawText, SVGText, TextWPath_DeskShift } from "../ui/misc/TextPath";
+import { StandardPage } from "../ui/scroll/StandardPage";
 
 
 
@@ -18,6 +19,11 @@ export const DeskShiftPage = () => {
     const {getLink} = useLinks();
     const goToUrl = useNavigateTo();
   return (
+
+    <StandardPage>
+
+
+
     <div className={s.container}>
         
       
@@ -109,5 +115,7 @@ export const DeskShiftPage = () => {
         </div>
       </section>
     </div>
+
+        </StandardPage>
   );
 };

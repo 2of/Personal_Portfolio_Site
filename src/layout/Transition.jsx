@@ -15,7 +15,7 @@ export const TransitionCover = ({ state = "idle" }) => {
         // width: "100vw",
         // height: "100vh",
         pointerEvents: isActive ? "all" : "none",
-        zIndex: 999999,
+        zIndex: 900,
         overflow: "hidden",
       }}
     >

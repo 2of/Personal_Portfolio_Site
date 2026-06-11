@@ -4,7 +4,9 @@
 @use './style/layout';
 @use './style/bg';
 @use './style/transition';
-
+@use './style/materials';
+@use './style/Newspaper';
+@use './style/Airline';
 
 /* transition.scss */
 
@@ -28,6 +30,7 @@
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
+  // background-color: red;
 
 }
 

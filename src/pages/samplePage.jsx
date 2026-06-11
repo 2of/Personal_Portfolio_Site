@@ -46,17 +46,31 @@ import { StandardPage } from "../ui/scroll/StandardPage";
 import { DropDown } from "../ui/standardControls/DropDown";
 import TinderView from "../ui/containers/TinderCards";
 import { useNavStack } from "../contexts/NavigationButtonsStack";
+import { HoverAndSoWeExpandToAnotherComponent } from "../ui/containers/HoverAndSoWeExpandToAnotherComponent";
+import { Logo } from "../ui/misc/Logo";
+import { useTooltip } from "../contexts/ToolTipContext";
+import GradientBG from "../ui/bg/GradientBG";
+import TextHoverFontChangePara from "../ui/misc/TextHoverParaFontChanger";
+import { useCookies } from "../hooks/useCookies";
+import { HandWrittenLabel } from "../ui/misc/HandWrittenLabel";
+import { StandardRangeInput } from "../ui/standardControls/StandardRangeInput";
+import { MaterialNav } from "../ui/nav/MaterialNavs/MatNavDesktop";
+import { BouncyButtonRow } from "../ui/misc/BouncyButtonsRow";
+
 // import { PipesBg } from "../ui/bg/PipesBg";
 
 
 export const SamplePage = () => {
     const { navDetails } = useNav();
     const navigateTo = useNavigateTo();
+    const {get, set} = useCookies()
+    
+    // const {darkMode} = useDarkMode();
     const [email, setEmail] = useState("");
     const { setFlag, getFlag, getState, clearFlag } = useAppState();
     const { getArticle, getArticleImageUrl } = useContent();
     const { showToast } = useToast();
-
+  const [rotatey, setrotatey] = useState(0);
 const { startTransition, transitionState } = usePageTransition();
     const { darkMode, toggleDarkMode, ClearFullScreenTransition, StartFullScreenTransition, fullscreentransition } = useDarkMode();
     const dohandlearticle = async () => {
@@ -65,6 +79,7 @@ const { startTransition, transitionState } = usePageTransition();
         console.log(article);
     };
 
+    const { setTooltip } = useTooltip();
   const { ToggleMobileNav, MobileNavIsOpen,navstack,allComponents, addComponent, hasCustomComponents } = useNavStack();
 
     const { getLink } = useLinks();
@@ -92,34 +107,292 @@ const { startTransition, transitionState } = usePageTransition();
         StartFullScreenTransition();
     }
 
+// Use a string to match your tab identifiers
+const [activeTab, setActiveTab] = useState("one");
 
+const bouncytabs = [
+  { label: "one",   id: "one" },
+  { label: "two",   id: "two" },
+  { label: "three", id: "three" },
+  { label: "four",  id: "four" }
+];
+
+
+  const [KP, setKP] = useState(0.22);
+  const [KS, setKS] = useState(0.28);
+  const [DP, setDP] = useState(0.55);
+  const [DS, setDS] = useState(0.50);
+  
+
+
+// Map your buttons so the component receives a simple boolean
+const buttonsWithState = bouncytabs.map((btn) => ({
+  ...btn,
+  isActive: activeTab === btn.id,
+  callback: () => setActiveTab(btn.id)
+}));
+const setTab = (tab) => { 
+    setCurrentBoucnyTabActive(tab)
+}
+
+// const [bouncy]
+
+
+const { tooltip } = useTooltip();
+
+const fakeroutes = [ {
+        path: "/about",
+        title: "About",
+        icon: "user",
+        nav: "fixed",
+        expose_desktop_nav: true,
+        expose_mobile_nav: true,
+        // element: <AboutPage2 />,
+        bg: "planes",
+        scrollOverride: "true"
+
+    },
+
+]
 
     return (
         <StandardPage>
 
+
+
+                <ModernButton
+
+                label="add nav variant cookie with value 'stacked' "
+                callback={()=>{
+
+                    set("navvariant","stacked", {})
+                    
+                }}
+
+                />
+
+
+
+                            <HandWrittenLabel text="OOOOSDFDSFDS"
+                            rotate={rotatey}/>
+
+
+
+<HandWrittenLabel text="REF_MANIFEST" variant="curveLeft" rotate={rotatey} />
+
+<HandWrittenLabel text="CARGO_LOAD_SEC" variant="curveRight" rotate={rotatey} />
+
+<HandWrittenLabel text="TRACK_ROUTE" variant="straight" rotate={rotatey} />
+
+        <StandardRangeInput
+          lowerbound={0}
+          upperbound={360}
+          value={rotatey}
+          showPreview
+          title={"rotatey"}
+          updatefunc={setrotatey}
+          naponEvery={1}
+          variant="airline"
+        />
+
+<h3>Bouncy Button {activeTab} </h3>
+
+<div className="physics-tuner-grid">
+  <h4>Position Stiffness (KP)</h4>
+  <StandardRangeInput 
+    showPreview 
+    variant="airline" 
+    upperbound={1.0} 
+    lower={0.01} 
+        snaponEvery={0.01}
+    value={KP} 
+    updatefunc={setKP} 
+  />
+
+  <h4>Scale Stiffness (KS)</h4>
+  <StandardRangeInput 
+    showPreview 
+    variant="airline" 
+    upperbound={1.0} 
+    lower={0.001} 
+    value={KS} 
+    snaponEvery={0.01}
+    updatefunc={setKS} 
+  />
+
+  <h4>Position Damping (DP)</h4>
+  <StandardRangeInput 
+    showPreview 
+    variant="airline" 
+    upperbound={0.99} 
+    lower={0.1} 
+    value={DP} 
+        snaponEvery={0.01}
+    updatefunc={setDP} 
+  />
+
+  <h4>Scale Damping (DS)</h4>
+  <StandardRangeInput 
+    showPreview 
+    variant="airline" 
+    upperbound={0.99} 
+        snaponEvery={0.01}
+    lower={0.1} 
+    value={DS} 
+    updatefunc={setDS} 
+  />
+</div>
+<BouncyButtonRow
+  variant="tab"
+  physics = {{
+    KP: KP
+  }}
+  ks={0.55}
+  ds={0.72}
+  scaleImpulse={0.8}
+  speedFactor={0.4}
+  neighbour1={0.55}
+  neighbour2={0.20}
+  buttons={buttonsWithState}
+/>
+<h3>Material Nav changes</h3>
+
+<MaterialNav overrideposition dontactuallynav/>
+<h3>Bouncybuttons</h3>
+<BouncyButtonRow buttons={[
+    {callback: () => (console.log("asdfds")),
+        label : "test"
+    }, {callback: () => (console.log("asdfds")),
+        label: "test"
+    }, {callback: () => (console.log("asdfds")),
+        label : "test"
+    },
+]}/>
+
+
+<div style={{height:"100px", width:"100px"}} className="MaterialColoursGlow"/>
+
+<div style={{height:"100px", width:"100px"}} className="MaterialInset"/>
+
+<div style={{height:"100px", width:"100px"}} className="MaterialOverlay"/>
+
+<div style={{height:"100px", width:"100px"}} className="MaterialSunken"/>
+<div style={{height:"100px", width:"100px"}} className="MaterialColoursGlow"/>
+      <ModernButton
+                        variant={"Magazine_Primary"}
+                        label="hello everyone"/>      <ModernButton
+                        variant={"Magazine_Primary"}
+                        label="hello everyone"/>
+                    <article className="DATASTRIP_Container">
+    <div style={{ flex: 1, padding: '16px' }}>
+        <header className="DATASTRIP_MetaHeader">System_Manifest // 001</header>
+        <h3>Project Title</h3>
+        <p>Technical description text here...</p>
+        <span className="DATASTRIP_Status">Active</span>
+    </div>
+    
+    <div className="DATASTRIP_Divider" />
+    
+    <div className="DATASTRIP_VerticalInfo">
+        <div>
+            <div className="label">Index</div>
+            <div className="value">A7</div>
+        </div>
+        <div>
+            <div className="label">Year</div>
+            <div className="value">2026</div>
+        </div>
+    </div>
+</article>
+
+         <HandWrittenLabel rotate={120}>
+                   <a>test</a>
+                      </HandWrittenLabel>
+
+
+
+<article className="DATASTRIP_Container">
+    <div style={{ flex: 1, padding: '16px' }}>
+        <header className="DATASTRIP_MetaHeader">System_Manifest // 001</header>
+        <h3>Project Title</h3>
+        <p>Technical description text here...</p>
+        <span className="DATASTRIP_Status">Active</span>
+    </div>
+    
+    <div className="DATASTRIP_Divider" />
+    
+    <div className="DATASTRIP_VerticalInfo">
+        <div>
+            <div className="label">Index</div>
+            <div className="value">A7</div>
+        </div>
+        <div>
+            <div className="label">Year</div>
+            <div className="value">2026</div>
+        </div>
+    </div>
+</article>
+
+{/* <GradientBG/> */}
+
+                    <div class="MaterialL1 BorderSubtle">
+                        test
+  <div className="MaterialL2 BorderFull">
+
+
+<TextHoverFontChangePara  fontSize={12} text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, nam fuga amet id praesentium blanditiis labore libero obcaecati, animi magni, sequi quasi pariatur. Vel, praesentium id! Dicta eum consequuntur voluptates repudiandae blanditiis? Ut dolor beatae sunt, pariatur, quis maxime itaque minima temporibus deleniti aspernatur animi vel? Ratione repellat ut molestiae consectetur assumenda unde quis deserunt, dolorum cupiditate, ea sequi nulla iusto iste eaque pariatur, expedita quas perferendis architecto maxime saepe distinctio atque? Facere assumenda ad ea amet! Saepe iusto porro, doloribus eligendi deleniti aperiam autem qui quos sed cum hic tempora alias dolor rerum, minima exercitationem natus. Aut, pariatur iure?"/>
+
+
+
+    test
+    <div className="MaterialL3 BorderFullInset">chip</div>
+  </div>
+</div>
+
+<div style={{ position: "relative", height: "400px" }}>
+
+</div>
+
+
+<h3>ToolTips</h3>
+
+<h3> it's currently just {tooltip} </h3>
+<ModernButton
+                label="Show me a tooltip"
+                variant="dev"
+                callback={() => setTooltip("Apples ")}
+/>
+
+<ModernButton
+                label="Show me a tooltip"
+                variant="dev"
+                callback={() => setTooltip("Bananas ")}
+/>
+
+{/* <MaterialNav/> */}
+
+<StandardRangeInput
+upperbound={2}
+lowerbound={-1}
+
+
+></StandardRangeInput>
+
+<h3>Material Nav Above</h3>
+<DarkModeTile/>
+
+
+
+<h3>DARK MODE STUFF</h3>
+
+<ModernButton
+variant="Airline_Primary"
+label="Print dakr mode stuff"
+callback={() => console.log(darkMode)}/>
+
+<h4>HERE IS THE XPANDOS</h4>
+<HoverAndSoWeExpandToAnotherComponent idle={<h1>test</h1>} expanded={<Logo/>}/>
                 
-
-                    <ScrollableVerticalView staggerStart>
-            
-                      {Array.from({ length: 3 }).map((_, i) => (
-              <Section
-                      key={i}
-                      sticky={true}
-                      Header = {() => (<h1>header header</h1>)}
-                      >
-            
-            
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel dolore recusandae, cupiditate magnam quo consequuntur ratione facilis velit soluta eos. Amet iste odio, quidem ab atque ea provident ducimus voluptatibus fugit maxime hic impedit culpa molestiae fuga, dolores mollitia accusamus suscipit, in quibusdam. Ratione excepturi sapiente quisquam eos reprehenderit. Esse, soluta rerum. Hic voluptatem at, ipsum earum dicta vel repudiandae itaque repellat beatae adipisci. Voluptate architecto earum vitae, iste sequi molestiae aut, nostrum iure repellendus aspernatur eligendi provident assumenda laborum dolore! Harum explicabo impedit consequatur sint officia quam, error ea fuga debitis ex earum nostrum, eos, enim officiis? Libero quam iure suscipit obcaecati, voluptate atque ut blanditiis nisi. Magni nobis consectetur dolore alias unde sit dolorum sequi? Vero labore quidem cum repellat laborum cumque eligendi sed quis inventore distinctio, magnam quibusdam, saepe adipisci voluptatibus sit nulla beatae, hic recusandae! Corporis molestiae corrupti dicta assumenda asperiores minus sapiente neque illum ex nobis error tempora unde, soluta necessitatibus eveniet aspernatur quos quidem nostrum fuga omnis enim at. Odit quia, nihil atque qui consequuntur expedita, commodi non fuga omnis sapiente doloremque ullam voluptatibus cupiditate sequi officiis illo sint? Quas porro magni consequuntur suscipit facilis, odit eaque totam! Ea est placeat labore consequatur. Soluta.
-                        </p>
-                      </Section>
-            ))}
-            
-            
-                     
-            
-                    </ScrollableVerticalView>
-
 
                 {hasCustomComponents ? "has them" : "doesnt"}
                 <ModernButton
@@ -203,6 +476,8 @@ const { startTransition, transitionState } = usePageTransition();
 
             <DarkModeAnimatedWithCoolDownToastButton />
 <SmallCareerTileWithModal/> <h2>before</h2>
+
+
             <ModernButton
                 label="TOAST SOMETHING"
                 variant="dev"

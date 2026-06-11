@@ -35,8 +35,10 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
+  // background-color: magenta;
   justify-content: center;
   overflow: hidden;
   // background-color: blue;
@@ -52,15 +54,20 @@
 }
 
 .halfSection {
-  height: 50%; /* Changed from vh to % to respect parent */
+  height: 50%; 
   position: relative;
 }
 
 .quarterSection {
-  height: 25%; /* Changed from vh to % to respect parent */
+  height: 25%; 
   position: relative;
 }
 
+
+.thirdSection {
+  height: 33%; 
+  position: relative;
+}
 .bgImage {
   position: absolute;
   top: 0;
@@ -79,8 +86,10 @@
   position: relative;
   z-index: 1;
   flex: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   width: 100%;
 }

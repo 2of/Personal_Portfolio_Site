@@ -1,11 +1,9 @@
-{ "Things I'm Working on": {
-    "title": "Things that  ",
-    "title_highlight": "I am Working On",
-    "variant": "text",
-    "projects": [
-    
-  
-    {
+{ 
+  "Main": {
+    "title": "Things  ",
+    "title_highlight": "I have Created",
+    "variant": "large",
+    "projects": [ {
         "title": "Machine Learning to Defeat Dark Souls Bosses",
         "tags": [
           "Tensorflow",
@@ -19,17 +17,12 @@
         "description": "only just the first boss (tutorial fight)  Because this boss can be beaten without any complex movement/ planning / spacing (i.e. just forward / back / attack and block as movement is all relative to the 'lock on' )CheatEngine used to hook the game, CV and ML used to extract features, determine locations etc. Wrap for Reinforcement learnign w/ environment resets through cheat engine. Also attempting simple NN state w. pausing etc",
         "date": "2025-02-15",
         "inprogress": true,
-        "image": "asylumdemon.png"
-      }
-    ]
-  },
-  "Main": {
-    "title": "The ",
-    "title_highlight": "Bigger Things",
-    "variant": "regular",
-    "projects": [
+        "image": "game.png"
+      },
       {
+
         "title": "Master's Project: CityScale Geolocalization",
+        "highlight": true,
         "tags": [
           "AI",
           "Tensorflow",
@@ -53,7 +46,9 @@
           { "label": "blogpost", "to": "/proj/geo", "icon": "book" }
         ],
         "description": "It's essentially a 'Geuguessr Bot' ... Using a psuedo ensemble of machine learning methods to improve significantly on a src distirbution about a 20km^2 area.",
-        "date": "2025-05-15"
+        "date": "2025-05-15",
+            "image": "masters.png"
+      
       },
       {
         "title": "DeskShift - Monitor Minder",
@@ -64,7 +59,29 @@
                    { "label": "Info", "to": "/MonitorMinder", "icon": "about" }
         ],
         "description": "WFH / Office monitor configuration utility. Applies customization profiles based on a user's monitor configuration",
-        "date": "2025-01-01"
+        "date": "2025-01-01",
+            "image": "laptop.png"
+      
+      }, {
+        "title": "Legictionary.xyz",
+        "tags": ["ML", "REACT", "AI"],
+        "links": [
+          { "label": "github", "to": "monitorminderrepo", "icon": "github" },
+          { "label": "site", "to": "monitormindersite", "icon": "store" },
+                   { "label": "Info", "to": "/MonitorMinder", "icon": "about" }
+        ],
+        "description": "A fun little website that uses some custom models for morphene analysis, generating  plausible 'definitions', composition, pronounciations based on real words. Clustering for plausible definitions",
+        "date": "2025-01-01",
+            "image": "scrabble.png"
+      
+      },
+      {
+        "title": "Machine Learning Pixel Art Generator",
+        "tags": ["ML", "Clustering", "JS + REACT"],
+        "links": [{ "label": "Live Tool", "to": "https://2of.github.io/Colour-Extractor-Image-Web/" }],
+        "description": "Clustering for colour extraction + rebuild",
+        "date": "2025-07-01",
+          "image": "pixel-art.png"
       },
       {
         "title": "Personal Portfolio Website(s) (i.e. this website...)",
@@ -75,44 +92,13 @@
           { "label": "BlogPost About", "to": "/proj/portfolio", "icon": "go" }
         ],
         "description": "The site you are currently viewing. It's not much to say 'hey this website is a portfolio piece' ... but there's a lot of stuff here. It's also been spun off into it's own hook/context/ui lib",
-        "date": "2025-02-15"
-      }
-    ]
-  },
-
-  "Tools": { 
-
-
-   "title": "Handy",
-    "title_highlight": "Tools",
-    "variant": "regular",
-    "projects": [
-      {
-        "title": "Free Chess ELO Estimation Tool",
-        "tags": [
-          "Tensorflow",
-          "Machine Learning",
-          "lua",
-          "python",
-          "real time combat",
-          "Kinda reinforcement learning"
-        ],
-        "links": [{ "label": "live", "to": "https://myportfolio.com" }],
-        "description": "Trained w/ 33m games, free alternative to the elo estimation tool on chess.com. Usually you'd need to check in with stockfish at each step to make this determination, but there's so much data through the lichess database that we get pretty close. Hosted on github pages",
         "date": "2025-02-15",
-        "image": "asylumdemon.png"
-      },
-      {
-        "title": "Machine Learning Pixel Art Generator",
-        "tags": ["ML", "Clustering", "JS + REACT"],
-        "links": [{ "label": "Live Tool", "to": "https://social-hub.io" }],
-        "description": "Clustering for colour extraction + rebuild",
-        "date": "2025-07-01",
-        
-        "image": "pixels.png"
+                "image": "window.jpg"
       }
     ]
   },
+
+
 
   "Odds and ends, Tools you may like": {
     "title": "Odds &  ",
@@ -127,7 +113,7 @@
           {
             "label": "Chrome Store",
             "icon": "chrome",
-            "to": "https://components.dev"
+            "to": "chrome_exo"
           }
         ],
         "description": "Sanity for IT people",
@@ -141,7 +127,7 @@
           {
             "label": "Chrome Store",
             "icon": "chrome",
-            "to": "https://components.dev"
+            "to": "chrome_warehouse"
           }
         ],
         "description": "Sanity for... Shoppers?",
@@ -151,7 +137,7 @@
        {
         "title": "Custom React UI / Context LIB " ,
         "tags": ["NLP", "FastAPI"],
-        "links": [{ "label": "docs", "to": "/api/docs" }],
+        "links": [{ "label": "docs", "to": "uilibrepo" },{ "label": "WIP- LOCAL WIKI", "to": "/component" }],
         "description": "Turns out the stuff I wrote for this website is handy...",
         "date": "2025-04-20"
       }

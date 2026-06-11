@@ -1,0 +1,119 @@
+{
+  "name": "ML for Beating the Asylum Demon",
+  "title": "IN PROGRESS: Machine Learning to kill the Asylum Demon in Dark Souls 1",
+  "subtitle": "Uses only CV + Machine Learning",
+  "heroImage": "hero.png",
+  "shortDesc": "A vision-only ML experiment attempting to beat the Dark Souls 1 tutorial boss without engine access or a clean RL environment.",
+  "author": "Me",
+  "date": "2025",
+  "tools": ["Computer Vision", "CheatEngine", "Python"],
+  "extratext": "This was a bad idea. Im trying to do it anyway.",
+  "heroLinks": [],
+  "sections": [
+    {
+      "name": "What Is This?",
+      "type": "text",
+      "boost": true,
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "The goal here is to build a machine learning model that can beat the Dark Souls 1 tutorial boss: the Asylum Demon."
+        },
+        {
+          "type": "paragraph",
+          "text": "In theory this is trivial, you *can* beat this boss by backing forward and backward, only using R1 attacks and strafing. Souls games have this lockon thing where if you are 'locked on' strafing is about cartesian coordinates centered on the lock on"
+        },
+        {
+          "type": "highlight",
+          "text": "You'd think reinforcement learnng, but I tried to get a few instances going in VMs... I have one RTX 3080 :( "
+        },
+        {
+          "type": "paragraph",
+          "text": "The game is way too heavy and opaque to just wrap in a standard RL loop, so instead we're going to do computer vision and kinda extract away the 'beating the boss' part (i.e. luck ) ."
+        },
+               {
+          "type": "paragraph",
+          "text": "Other note: This page is regularly automatically recreated using an LLM into the thingies.dev (my own thanks) json template for articles, so much of this is from the google doc I put ideas and thinking into."
+        }
+      ]
+    },
+    {
+      "name": "How I Even Talk to the Game",
+      "type": "text",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "All state information is extracted using computer vision. The model sees what the player sees, and that’s it. No engine hooks, no internal values, no mercy."
+        },
+        {
+          "type": "paragraph",
+          "text": "though.... CheatEngine does the annoying shit  needed to make this usable: resetting the environment, pausing the game, teleporting the player, freezing health, etc. We're explicitly not gonna get states from memory"
+        },
+        {
+          "type": "paragraph",
+          "text": "This basically lets me fake an episodic environment, even though the game kinda obviously was not designed for this rubbish."
+        },
+         {
+          "type": "title",
+          "text": "This is a rough outline of the forward pass / architecture etc."
+        },
+        {
+          "type": "image",
+          "src": "fwd.png",
+          "alt": "Forward pass of the vision-based model watching the Asylum Demon."
+        }
+      ]
+    },
+    {
+      "name": "So… What’s the Loss Function?",
+      "type": "text",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Yeah. This is the hard part."
+        },
+        {
+          "type": "paragraph",
+          "text": "Health loss is the obvious signal, but it turns out that just not dying isn’t enough to define \"playing well.\" You can be alive and still completely borked."
+        },
+        {
+          "type": "paragraph",
+          "text": "Loss of control is a real thing here. If the camera is spinning, locked onto nothing, or pointed at the floor, the run is basically over until rrelocked on."
+        },
+        {
+          "type": "highlight",
+          "text": "So the loss function combines health loss with penalties for camera instability and general loss of control"
+        }
+      ]
+    },
+    {
+      "name": "TL;DR",
+      "type": "text",
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "I have optical flow done, got some clipping done"
+        },
+        {
+          "type": "paragraph",
+          "text": "idea:  be lazy af, strafe strafe in r1 out straf strafe and that's the pattern. instead of moves, do these precomputed moves."
+        },
+        {
+          "type": "pills",
+          "pills": [
+            "Machine Learning",
+            "Computer Vision",
+            "Game AI",
+            "Dark Souls",
+            "Reinforcement Learning (Sort Of)",
+            "Bad Ideas"
+          ]
+        }
+      ]
+    }
+  ],
+  "link": {
+    "text": "View Project",
+    "url": ""
+  }
+}

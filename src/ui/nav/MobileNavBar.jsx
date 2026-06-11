@@ -9,6 +9,7 @@ import { useModal } from "../../contexts/ModalContext";
 import { ShareSheet } from "../misc/ShareSheet";
 import HamburgerButtonWrapper from "../misc/HamburgerMenuIconAnimated";
 import InfoButtonWrapper from "../misc/InfoButtonAnimated";
+import { HandWrittenLabel } from "../misc/HandWrittenLabel";
 
 export const MobileNavBar = () => {
   const { ToggleMobileNav, MobileNavIsOpen,navstack,allComponents, hasCustomComponents } = useNavStack();
@@ -16,7 +17,7 @@ export const MobileNavBar = () => {
     
       const { showModal } = useModal();
   return (
-    <div className={`${s.barContainer} ${false ? s.fullbar : s.floatingbar}    `}>
+    <div className={`${s.barContainer} ${false ? s.fullbar : s.floatingbar}  MaterialL2  `}>
       <div className={s.left}>
 
                <div className={s.menubuttoncontainer}>
@@ -42,7 +43,9 @@ export const MobileNavBar = () => {
       <div className={s.center}>
         {/* {MobileNavIsOpen ? "OPEN" : "CLOSE"} */}
 
-        .{navDetails.path || "thingies"}
+        {/* .{navDetails.path || "thingies"} */}
+
+        <HandWrittenLabel text={navDetails.path || "thingies.dev"} arrow={false}rotate={180} variant="CurveLeft"/>
       </div>
 
       <div className={s.right}>

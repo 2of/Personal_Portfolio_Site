@@ -15,6 +15,11 @@ import { ReleasesPage } from "./pages/releasesPage";
 import { CatPage } from "./pages/cataloguePage";
 import { EditorPage } from "./pages/editor/EditorPage";
 import { DescPage } from "./pages/descPage";
+import { NewsPaperPage } from "./layout/NewsPaper";
+import { MaterialsPage } from "./pages/MaterialsPage";
+import { PlanesPage } from "./pages/PlanesPage";
+import { JiggleTunerPage } from "./pages/JiggleTunerPage";
+
 export const routes = [
 
 
@@ -25,9 +30,11 @@ export const routes = [
         nav: "fixed",
         expose_desktop_nav: false,
         expose_mobile_nav: true,
+                bg: "planes",
         element: <HomePage />
 
     },
+
     // {
     //     path: "/about",
     //     title: "about",
@@ -42,21 +49,21 @@ export const routes = [
     // },
     {
         path: "/about",
-        title: "about",
+        title: "About",
         icon: "user",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
         element: <AboutPage2 />,
-        bg: "main",
+        bg: "planes",
         scrollOverride: "true"
 
     },
 
 
     {
-        path: "/projects",
-        title: "projects",
+        path: "/projects", 
+        title: "things",
         icon: "portfolio",
         nav: "fixed",
         expose_desktop_nav: true,
@@ -67,34 +74,76 @@ export const routes = [
 
     }, {
         path: "/component",
-        title: "bts",
+        title: "COMPONENT USAGE AND GUIDE ..",
         icon: "laptop",
         nav: "fixed",
-        expose_desktop_nav: true,
-        expose_mobile_nav: true,
+        expose_desktop_nav: false,
+        expose_mobile_nav: false,
         element: <DescPage />,
         bg: "main",
         scrollOverride: "true"
 
-    }, {
+    },
+
+
+    {
+        path: "/planespage",
+        title: "planes",
+        icon: "plane",
+        nav: "fixed",
+        expose_desktop_nav: false,
+        expose_mobile_nav: false,
+        element: <PlanesPage />,
+        bg: "Airline2",
+        scrollOverride: "true"
+
+    },
+  {
+        path: "/JiggleTuner",
+        title: "JiggleTuner",
+        icon: "plane",
+        nav: "fixed",
+        expose_desktop_nav: false,
+        expose_mobile_nav: false,
+        element: <JiggleTunerPage />,
+        bg: "vellum",
+        scrollOverride: "true"
+
+    },
+
+
+    //  {
+    //     path: "/newspaper",
+    //     title: "NP",
+    //     icon: "read",
+    //     nav: "fixed",
+    //     expose_desktop_nav: true,
+    //     expose_mobile_nav: true,
+    //     element: <NewsPaperPage />,
+    //     bg: "main"
+
+    // }, 
+
+
+    {
         path: "/MonitorMinder",
         title: "deskshift",
         icon: "laptop",
         nav: "fixed",
         expose_desktop_nav: true,
-        expose_mobile_nav: true,
+        expose_mobile_nav: false,
         element: <DeskShiftPage />,
-        bg: "main"
+        bg: "vellum"
 
     }, {
         path: "/more",
-        title: "more",
-        icon: "columns",
+        title: "extras",
+        icon: "settings",
         nav: "fixed",
         expose_desktop_nav: true,
         expose_mobile_nav: true,
         element: <MorePage />,
-        bg: "main"
+        bg: "vellum"
 
     },
     {
@@ -118,6 +167,18 @@ export const routes = [
         bg: "main"
 
     },
+    {
+        path: "/visdesignswatches",
+        title: "swatches",
+        icon: "test",
+        nav: "fixed",
+        expose_desktop_nav: false,
+        expose_mobile_nav: false,
+        element: <MaterialsPage />,
+        bg: "main"
+
+    },
+
 
     {
         path: "/tools",
@@ -132,18 +193,18 @@ export const routes = [
 
     },
 
-    {
-        path: "/release",
-        title: "releases",
-        icon: "columns",
-        nav: "fixed",
-        expose_desktop_nav: true,
-        expose_mobile_nav: true,
-        element: <ReleasesPage />,
-        bg: "main",
+    // {
+    //     path: "/release",
+    //     title: "releases",
+    //     icon: "columns",
+    //     nav: "fixed",
+    //     expose_desktop_nav: true,
+    //     expose_mobile_nav: true,
+    //     element: <ReleasesPage />,
+    //     bg: "main",
 
 
-    },
+    // },
 
     {
         path: "/convert_svg_tool",
@@ -172,20 +233,22 @@ export const routes = [
 
 
 
-    }, {
-        path: "/chess",
-        title: "chess",
-        icon: "chess",
-        nav: "fixed",
-        expose_desktop_nav: true,
-        expose_mobile_nav: true,
-
-        element: <ChessPage />,
-        bg: "main"
-
-
-
     },
+
+    // {
+    //     path: "/chess",
+    //     title: "chess",
+    //     icon: "chess",
+    //     nav: "fixed",
+    //     expose_desktop_nav: true,
+    //     expose_mobile_nav: true,
+
+    //     element: <ChessPage />,
+    //     bg: "main"
+
+
+
+    // },
 
 
     {

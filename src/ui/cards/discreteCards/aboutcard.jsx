@@ -37,14 +37,14 @@ export const AboutCard = ({
     
     `}>
 
-      <img
+      {/* <img
               src={profileImage}
               alt={title}
               className={styles.image}
-            />
+            /> */}
 
           {/* <OrbitPicture image={profileImage} /> */}
-          <h2> About</h2>
+          {/* <h2> About</h2> */}
           <h4 className={styles.title}>{title}</h4>
 
 

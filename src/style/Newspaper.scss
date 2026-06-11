@@ -1,0 +1,380 @@
+// ==========================================================================
+// NEWSPAPER DESIGN SYSTEM (PRINT & BROADSHEET LAYOUTS)
+// ==========================================================================
+
+// --- 1. CORE VARIABLES ---
+// Traditional newsprint tones and editorial font stacks
+
+$newsprint-bg: #f4f1ea;        // Classic low-contrast paper patina
+$newsprint-ink: #111111;       // High carbon density print black
+$newsprint-ink-muted: #444444; // Secondary editorial text
+$newsprint-lead: #666666;      // Metadata / Datelines
+$newsprint-border: #c2beb6;    // Structural alignment guides
+
+$font-serif: "Times New Roman", Times, Georgia, serif;
+$font-sans: "Helvetica Neue", Arial, sans-serif; // Used strictly for small tracking headers
+$font-display: "Playfair Display", "Times New Roman", serif;
+
+// --- 2. GLOBAL RESET & BASE WORKSPACE ---
+.newspaper-workspace {
+  background-color: $newsprint-bg;
+  color: $newsprint-ink;
+  font-family: $font-serif;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+// --- 3. CONTAINERS & CORES ---
+.np-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid rgba($newsprint-ink, 0.15);
+  padding: 24px;
+  background-color: $newsprint-bg;
+}
+
+// --- 4. MASTHEAD & HEADER SYSTEMS ---
+.np-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+
+  // Thick and thin classic framing rules
+  &.np-rule-double-bottom {
+    border-bottom: 4px double $newsprint-ink;
+  }
+
+  .np-top-bar, .np-sub-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: $newsprint-ink;
+  }
+
+  .np-top-bar {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: $font-sans;
+    border-bottom: 1px solid $newsprint-ink;
+    padding-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .np-masthead-title {
+    font-family: $font-display;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin: 12px 0 6px 0;
+    letter-spacing: -1.5px;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .np-sub-bar {
+    border-top: 1px solid $newsprint-ink;
+    padding: 6px 0;
+    font-weight: bold;
+    font-variant-numeric: oldstyle-nums;
+  }
+}
+
+// --- 5. EDITORIAL TYPOGRAPHY & LAYOUT STYLES ---
+.np-headline-main {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.np-headline-sub {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-style: italic;
+  margin: 0 0 15px 0;
+  color: $newsprint-ink-muted;
+}
+
+.np-headline-section {
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-bottom: 1px solid $newsprint-ink;
+  padding-bottom: 2px;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.np-text-block {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 0 0 12px 0;
+  hyphens: auto; // Ensures proper print text wraps on tight widths
+
+  p {
+    text-indent: 1.5rem; // Traditional indent instead of paragraph margins
+    margin: 0;
+    
+    &:first-of-type {
+      text-indent: 0; // First paragraph has no indent
+    }
+  }
+}
+
+// Drops 2-3 lines deep cleanly inside text blocks
+.np-drop-cap {
+  float: left;
+  font-size: 3.8rem;
+  line-height: 0.75;
+  padding-top: 6px;
+  padding-right: 8px;
+  font-weight: bold;
+  font-family: $font-display;
+}
+
+.np-dateline {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-family: $font-sans;
+  margin-right: 4px;
+  
+  &::after {
+    content: " — ";
+  }
+}
+
+// --- 6. ASYMMETRIC GRID & COLUMNS ---
+// Explicit layouts imitating physical column plates
+
+.np-grid-main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+// Reusable structural columns
+.np-col-3  { grid-column: span 3; }
+.np-col-4  { grid-column: span 4; }
+.np-col-6  { grid-column: span 6; }
+.np-col-8  { grid-column: span 8; }
+.np-col-9  { grid-column: span 9; }
+.np-col-12 { grid-column: span 12; }
+
+// Column divider modifications
+.np-border-right {
+  border-right: 1px solid $newsprint-ink;
+  padding-right: 15px;
+}
+
+.np-border-right-dashed {
+  border-right: 1px dashed lighten($newsprint-ink, 40%);
+  padding-right: 15px;
+}
+
+// Multi-column continuous text flows (Native browser print formatting)
+.np-columns-2 {
+  column-count: 2;
+  column-gap: 16px;
+  column-rule: 1px solid rgba($newsprint-ink, 0.2);
+  text-align: justify;
+}
+
+.np-columns-3 {
+  column-count: 3;
+  column-gap: 14px;
+  column-rule: 1px dashed rgba($newsprint-ink, 0.2);
+  text-align: justify;
+}
+
+// --- 7. NOTICES, UTILITIES & FOOTERS ---
+.np-editorial-box {
+  margin-top: 15px;
+  border: 1px solid $newsprint-ink;
+  padding: 10px;
+  background-color: darken($newsprint-bg, 3%);
+  
+  &.np-dashed {
+    border-style: dashed;
+  }
+}
+
+.np-divider-double {
+  border: 0;
+  border-top: 4px double $newsprint-ink;
+  margin: 20px 0;
+}
+
+.np-divider-single {
+  border: 0;
+  border-top: 1px solid $newsprint-ink;
+  margin: 15px 0;
+}
+
+.np-footer {
+  border-top: 4px double $newsprint-ink;
+  margin-top: 40px;
+  padding-top: 8px;
+  text-align: center;
+  font-family: $font-sans;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+// --- 8. RESPONSIVE SCALE-DOWN BREAKPOINT ---
+@media (max-width: 768px) {
+  .np-grid-main {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .np-border-right, .np-border-right-dashed {
+    border-right: none;
+    border-bottom: 1px dashed lighten($newsprint-ink, 40%);
+    padding-right: 0;
+    padding-bottom: 15px;
+  }
+
+  .np-columns-2, .np-columns-3 {
+    column-count: 1;
+  }
+}// Append these rules directly into your existing Newspaper.scss
+
+
+// so i generated this. full disclosure thanks
+.np-article-block {
+  display: inline-block; // Avoids page-break column fragmentation in broadsheets
+  width: 100%;
+  border-bottom: 1px dashed rgba($newsprint-ink, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.np-item-headline {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.np-item-meta {
+  font-family: $font-sans;
+  font-size: 0.72rem;
+  color: $newsprint-lead;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px 0;
+}
+
+.np-text-block-justified {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.np-badge-inline {
+  font-family: $font-sans;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #a32a2a; // Editorial warning red tint
+}
+
+.np-article-links {
+  font-size: 0.8rem;
+  font-family: $font-sans;
+  
+  .np-print-link {
+    color: $newsprint-ink;
+    text-decoration: none;
+    margin-right: 6px;
+    font-weight: bold;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Custom input mechanics styled to look like flat block stamps
+.np-search-box-print {
+  border: 1px solid $newsprint-ink;
+  padding: 10px;
+  background-color: rgba($newsprint-ink, 0.02);
+  margin-bottom: 15px;
+}
+
+.np-input-print {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid $newsprint-ink;
+  font-family: $font-serif;
+  font-size: 1rem;
+  padding: 4px;
+  color: $newsprint-ink;
+  outline: none;
+
+  &::placeholder {
+    font-style: italic;
+    color: rgba($newsprint-ink, 0.4);
+  }
+}
+
+.np-btn-print {
+  background: $newsprint-ink;
+  color: $newsprint-bg;
+  border: none;
+  font-family: $font-sans;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background: lighten($newsprint-ink, 15%);
+  }
+}
+
+.np-tag-btn-print {
+  background: transparent;
+  border: 1px solid rgba($newsprint-ink, 0.3);
+  text-align: left;
+  font-family: $font-serif;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  width: 100%;
+
+  &.active, &:hover {
+    background: rgba($newsprint-ink, 0.08);
+    border-color: $newsprint-ink;
+    font-weight: bold;
+  }
+}
+
+.np-pulse {
+  font-size: 0.85rem;
+  font-style: italic;
+  animation: printBlink 1.5s infinite;
+}
+
+@keyframes printBlink {
+  50% { opacity: 0.4; }
+}

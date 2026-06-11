@@ -21,6 +21,8 @@ import { NavStackProvider } from "./NavigationButtonsStack";
 import { ToastMenuProvider } from "./ToastContext";
 import { StateProvider } from "./StateContext";
 import { TransitionProvider } from "./PageTransition";
+import { ToolTip } from "../ui/misc/Tooltip";
+import { TooltipProvider } from "./ToolTipContext";
 
 function InnerThemeWrapper({ children }) {
     const { darkMode: isDark } = useDarkMode();
@@ -53,6 +55,7 @@ export const ContextWrapper = ({ children }) => {
     return (
         <DarkModeProvider>
             <StateProvider>
+                <TooltipProvider>
                 <ScreenSizeProvider>
                     <TransitionProvider>
 
@@ -81,7 +84,7 @@ export const ContextWrapper = ({ children }) => {
                         </ToastMenuProvider>
                     </TransitionProvider>
                 </ScreenSizeProvider>
-
+</TooltipProvider>
             </StateProvider>
         </DarkModeProvider>
     );

@@ -8,8 +8,18 @@
     // background-color: red;
 }
 
+
+.previewSandbox {
+    height: auto;
+    min-height: 48px;
+    overflow: visible;
+    position: relative;
+    overscroll-behavior: contain;
+}
+
+
 .wikiContainer {
-    font-family: "Georgia", "Times New Roman", serif;
+    // font-family: "Georgia", "Times New Roman", serif;
     color: var(--text-color);
     line-height: 1.6;
     max-width: 800px;
@@ -21,7 +31,7 @@
     h4,
     h5,
     h6 {
-        font-family: "Georgia", "Times New Roman", serif;
+        // font-family: "Georgia", "Times New Roman", serif;
         font-weight: 700;
         margin-bottom: 0.5em;
         color: var(--text-color);
@@ -72,7 +82,7 @@
 .variantGrid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 2rem;
     width: 100%;
 }

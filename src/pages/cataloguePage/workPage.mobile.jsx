@@ -16,31 +16,36 @@ import { DrawText, SVGText } from "../../ui/misc/TextPath";
 import TinderView from "../../ui/containers/TinderCards";
 import { useNavStack } from "../../contexts/NavigationButtonsStack";
 import Divider from "../../ui/misc/Divider";
+import { PagedScrollContainer } from "../../ui/scroll/TikTokMobileContainer";
+import getIcon from "../../tools/iconRef";
+import ScrollUpHintBg from "../../ui/bg/UpArrows";
 
-export const WorkPageMobile = ({ allprojects, pageText }) => {
+export const WorkPageMobile = ({ allprojects, pageText,viewstate }) => {
   const screenSize = useScreenSize();
-  const [viewType, setViewType] = useState("List");
+  const [viewType, setViewType] = useState(viewstate || "List");
   const { addComponent, removeComponent } = useNavStack();
   // console.log("!!!, allworkpagetext", allworkpagetext)
   const listOptions = [{
     value:"List", label:"View As List"
+  }, {value:"Stack", label:"View as Tinder"
   },
-    {value:"Stack", label:"View as Stack"
+    {value:"TikTok", label:"View as TikTok"
   }]
-  const navControlComponent = useMemo(
-    () => (
-      <DropDown
-        key="work-view-selector" // Key helps React diffing
-        options={listOptions}
-        placeholder="Select layout"
-        onChange={setViewType}
-        value={viewType}
-      />
-    ),
-    [viewType],
-  ); // Dependencies: only recreate if viewType changes
-  // thanks to our AI overlords for fixing that issue ...
-
+const navControlComponent = useMemo(
+  () => (
+    <DropDown
+      key="work-view-selector"
+      options={listOptions}
+      
+      placeholder="Select layout"
+      onChange={setViewType}
+      value={viewType}
+      fsButtonlabel="View"
+      // icon={getIcon("peace")}
+    />
+  ),
+  [viewType, screenSize], // < screem soize her eso that mobile re renders recalc
+);
   useEffect(() => {
     addComponent("work-page-control", navControlComponent);
 
@@ -49,7 +54,7 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
     };
   }, [addComponent, removeComponent, navControlComponent]);
 
-  const renderCard = (project, index, sectionVariant) => {
+ const renderCard = (project, index, sectionVariant, percentVisible = null) => {
     return (
       <Card
         variant={sectionVariant}
@@ -62,7 +67,8 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
         links={project.links}
         inprogress={project.inprogress}
         image={project.image}
-        useMobile={screenSize !== "sm"} // okay so cheaty cheaty i prefer not to override
+        percentvisible={percentVisible}
+        useMobile={screenSize !== "sm"}
       />
     );
   };
@@ -77,7 +83,7 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
         )}
 
         {screenSize === "sm" && (
-          <DrawText stagger={7} strokeWidth={0.5} duration={12} stroke="border">
+          <DrawText stagger={7} strokeWidth={1} duration={12} >
             <SVGText text="isoHello" width={300} height={200} />
           </DrawText>
         )}
@@ -94,17 +100,21 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
         <Section key="intro" sticky>
           {header}
         </Section>
-<h4>TEST {viewType}</h4>
+{/* <h4>TEST {viewType}</h4> */}
         {Object.entries(projects).map(
           ([sectionKey, sectionData], sectionIndex) => (
             <Section
               key={sectionKey}
-              sticky
+              // sticky
+
+                                    // Header = {() => (<h1>Collapsable Header</h1>)}
+
+                                    
               Header={() => (
                 <StandardHeader
                   textb1={sectionData.title}
                   texthighlight={sectionData.title_highlight}
-                  variant="regular"
+                  variant="large"
                 />
               )}
             >
@@ -131,7 +141,7 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
   const TinderyView = ({ header, projects }) => {
     const [dowiggle, setdowiggle] = useState(false);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
-    function getSectionHeaderByCardIndex(cardIndex) {
+  function getSectionHeaderByCardIndex(cardIndex) {
       if (currentCardIndex == 0) {
         return null;
       }
@@ -190,24 +200,79 @@ export const WorkPageMobile = ({ allprojects, pageText }) => {
     );
   };
 
-  // --- RENDER ---
-  return (
-    <div className={styles.WorkPage}>
-      {/* <div className={` ${styles.bgContainer} bg-grid-blueprint `}>
-        <div className={styles.bgOverlay} />
-      </div> */}
 
-      {viewType === "Stack" ? (
-        <TinderyView
-          header={<MainHeader_desktop screenSize={screenSize} />}
-          projects={allprojects}
-        />
-      ) : (
-        <ScrollableView
-          header={<MainHeader_desktop screenSize={screenSize} />}
-          projects={allprojects}
-        />
-      )}
-    </div>
+  const TikTokView = ({ header, screenSize, projects }) => { 
+
+  const flattenedProjectSlides = useMemo(() => {
+    const slides = [];
+    
+    Object.entries(projects).forEach(([sectionKey, sectionData]) => {
+      sectionData.projects.forEach((project, projectIndex) => {
+        slides.push({
+          project,
+          projectIndex,
+          variant: sectionData.variant,
+          uniqueKey: `slide-${sectionKey}-${project.title || projectIndex}`
+        });
+      });
+    });
+    
+    return slides;
+  }, [projects]);
+
+  return (
+ <PagedScrollContainer>
+        {/* Replace standard div targets with your scroll element wrapper if necessary */}
+        <div sectionHeight="full" key="np-tiktok-cover-slide">
+          
+          {({ percentVisible }) => (
+            <div className={styles.sectionContainer} style={{ opacity: percentVisible }}>
+
+              <div className={styles.bgcontainerforSlideHintFS}>
+              <ScrollUpHintBg/>
+
+              </div>
+              {header}
+
+              
+            </div>
+          )}
+        </div>
+
+        {flattenedProjectSlides.map((slide) => {
+          return (
+            <div sectionHeight="full" key={slide.uniqueKey}>
+              {({ percentVisible }) => (
+                <div className={styles.sectionContainer} >
+                  {renderCard(slide.project, slide.projectIndex, "tiktok", percentVisible)}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </PagedScrollContainer>
   );
+};
+
+  switch(viewType) { 
+    case "Stack": 
+      return (  <TinderyView
+          header={<MainHeader_desktop screenSize={screenSize} />}
+          projects={allprojects}
+        /> )
+    case "TikTok" : 
+      return (<TikTokView
+      
+      header={<MainHeader_desktop screenSize={screenSize} />}
+          projects={allprojects}
+          
+          />)
+    default: 
+     return (<ScrollableView
+          header={<MainHeader_desktop screenSize={screenSize} />}
+          projects={allprojects}
+        />)
+
+  }
+ 
 };

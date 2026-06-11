@@ -14,18 +14,19 @@ export const TransitionProvider = ({ children }) => {
   const isRunningRef = useRef(false);
   const screenSize = useScreenSize();
 
+  let inTime = 200
+  let outTime = inTime + 300
+  const startTransition = (path = null, callback = null) => {
 
-  const startTransition = (path = null) => {
-
-    if (screenSize === "sm") {
-      // Direct navigation on small screens
-      navigate(path);
-      return;
-    }
+    // if (screenSize === "sm") {
+    //   // Direct navigation on small screens lazy
+    //   navigate(path);
+    //   return;
+    // }
 
 
     if (isRunningRef.current) return;
-    console.log("PATH", path)
+    console.log("PATH", path, callback)
 
     isRunningRef.current = true;
     setTargetPath(path);
@@ -36,13 +37,23 @@ export const TransitionProvider = ({ children }) => {
 
     setTimeout(() => {
       // placeholder for navigate(path)
+      // do not do if no path
+     
+      if (callback) { 
+        callback()
+      }
+
+       if (!path) { 
+        return
+      }
+
       navigate(path);
-    }, 200);
+    }, inTime);
 
 
     setTimeout(() => {
       setTransitionState("uncovering");
-    }, 400);
+    }, outTime);
 
    
     setTimeout(() => {

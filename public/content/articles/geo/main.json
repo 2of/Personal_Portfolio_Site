@@ -29,6 +29,50 @@
     }
   ],
   "sections": [
+
+     {
+      "name": "Here's a really brief overview. It's a lot easier to follwo the links...",
+      "type": "text",
+      "boost": true,
+      "items": [
+        {
+          "type": "paragraph",
+          "text": "Essentially, I designed an ML approach to figuring out where a photo was taken given some street level images... Essentially, it's just GeoGuessr. But.. Automated... and really specific"
+        },
+         {
+          "type": "image",
+          "src": "main.png",
+          "alt": "Example of HSV histogram extraction from an image, showing hue, saturation, and value distributions, and a truncated sample embedding."
+        },
+
+          {
+          "type": "paragraph",
+          "text": "I set the scope to being City Scale, I ended up with a 20km^2 area from Chicago (I'll link the Mapilliary project below, although they still rate limit to 1img per second... and I ended up requiring about 150k for what I was doing). P.S. The dataset, including the feature vectors  I made (see later), I can share with you "
+        },
+
+          {
+          "type": "image",
+          "src": "density.png",
+          "alt": "Example of HSV histogram extraction from an image, showing hue, saturation, and value distributions, and a truncated sample embedding."
+        },
+       
+
+
+
+        {
+          "type": "pills",
+          "pills": ["Geolocation", "Machine Learning", "Deep Learning", "Attention Mechanisms", "Object Detection", "OCR", "Chicago", "Multi-neighborhood scale", "Geoinformative Features"]
+        }
+      ]
+    },
+{
+      "name": "Generated AI text herin",
+      "type": "text",
+      "boost": true,
+      "items": [{
+          "type": "paragraph",
+          "text": "Follow the link above for the thesis, otherwise, here's an AI generated summary of the paper... It's okay"
+        }]},
     {
       "name": "Essentially, It's an ML approach to GeoGuessr in two parts. Latent feature extraction + Psuedo Ensemble of ML/AI Models for GeoLocalization from explicit features ",
       "type": "text",

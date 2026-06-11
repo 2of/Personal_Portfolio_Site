@@ -16,7 +16,7 @@ export const Toast = () => {
     AUTO_DISMISS_MS / 1000
   );
 
-  // Enter animation
+  // Entry 
   useEffect(() => {
     if (toastState.open) {
       setMounted(false);
@@ -25,7 +25,7 @@ export const Toast = () => {
     }
   }, [toastState.open]);
 
-  // Countdown + auto-dismiss
+  // Countdown and then do the  auto-dismiss
   useEffect(() => {
     console.log("TOAST CAME TO LIFE WITH ", toastState)
     if (!toastState.open) return;
@@ -51,7 +51,7 @@ export const Toast = () => {
     };
   }, [toastState.open]);
 
-  // Exit animation
+  // Exis
   useEffect(() => {
     if (!animatingOut) return;
 
@@ -73,6 +73,7 @@ export const Toast = () => {
   return ReactDOM.createPortal(
     <div
       className={`${styles.toast}
+      StandardBoxL2
         ${mounted ? styles.toastIn : ""}
         ${animatingOut ? styles.toastOut : ""}`}
       // onClick={handleCloseAnimation}

@@ -4,26 +4,26 @@ import { StandardPage } from "../ui/scroll/StandardPage";
 import { GenericCard } from "../ui/cards/GenericCard";
 
 const rels = {
-  pixelart: {
+  chromemarket: {
     title: "Chrome Extension - No More MarketPlace ",
     description:
-    "upload an image & turn it in to pixel art using k means clustering",
-    link: "pixelarttool",
-  }, svgConverter: {
+    "Casual Chrome extension",
+    link: "chrome_warehouse",
+  }, chromeAD: {
     title: "Chrome Extension - MS AaD Copy/Paste Tool",
     description:
-      "Just converts svg's from https://text-to-svg.com/cutive-mono-font-to-svg",
-    link: "/convert_svg_tool",
+      "Handy IT tool",
+    link: "chrome_exo",
   },  deskshift: {
     title: "MacOS - DeskShift Utility",
     description:
-      "Just converts svg's from https://text-to-svg.com/cutive-mono-font-to-svg",
-    link: "/convert_svg_tool",
-  },  deskshift: {
+      "MacOS wfh tool",
+    link: "monitorminderrepo",
+  },  npm: {
     title: "NPM - JankUILib",
     description:
-      "Just converts svg's from https://text-to-svg.com/cutive-mono-font-to-svg",
-    link: "/convert_svg_tool",
+      "Actually... this is really behidn the times ",
+    link: "UILibRepo",
   }, 
 };
 

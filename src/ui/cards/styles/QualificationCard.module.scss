@@ -17,7 +17,7 @@
 
     &.blur {
         backdrop-filter: blur(4px);
-        background-color: var(--bg-transparent);
+        // background-color: var(--bg-transparent);
     }
 
     .iconWrapper {
@@ -28,7 +28,7 @@
         .iconGlow {
             position: absolute;
             inset: 0;
-            border-radius: 50%;
+            // border-radius: 50%;
             background: radial-gradient(circle at center,
                     rgba(255, 215, 0, 0.2),
                     rgba(255, 215, 0, 0.1) 60%,

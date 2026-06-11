@@ -51,3 +51,24 @@
     flex-direction: column;
     text-align: center;
 }
+
+.bgcontainerforSlideHintFS { 
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    // background-color: red;
+
+    
+    // background-color: green;
+    // background-color: red;
+
+}
+
+.sectionContainer { 
+    // background-color: orange;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -34,8 +34,8 @@ export const Post = ({postdata,artName,fetchpostfromtitle}) => {
 
  const Page = useMemo(() => {
     return screenSize !== "sm"
-      ? <PostContainerDesktop  data={data}  name = {artName}/> :
-   <PostContainerMobile  data={data}  name = {artName} />;
+      ? <PostContainerDesktop  data={data}  name = {artName}/>
+      : <PostContainerMobile  data={data}  name = {artName} />;
   }, [screenSize, data]);
 
   return Page;

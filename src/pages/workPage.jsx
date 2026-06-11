@@ -81,13 +81,6 @@ export const WorkPage = () => {
                           />
       </div>
 
-      <div className={` ${styles.bgContainer} bg-grid-blueprint `}>
-
-        <div className={styles.bgOverlay} />
-
-        {/* <PegboardBackground/> */}
-        {/* <AsciiArt art={asciiArtWindow}  direction="top-down" maxOpacity={0.4}/> */}
-      </div>
 
 
 
@@ -163,9 +156,9 @@ export const WorkPage = () => {
 
 
 
-            {/* <Divider /> */}
-            {/* <p>I've made a bunch of things</p> */}
-            {/* <p>Each project is categorized by sector and technical complexity.</p> */}
+            <Divider />
+            <p>I've made a bunch of things</p>
+            <p>Each project is categorized by sector and technical complexity.</p>
             {/* </div> */}
           </Section>
 
@@ -217,7 +210,7 @@ const MainHeader_desktop = ({screenSize}) => {
     <div className={styles.introContent_d}>
 
       {screenSize === "lg" && 
-          <DrawText stagger={7} strokeWidth={0.5}  stroke="border" duration={12}>
+          <DrawText stagger={7} strokeWidth={5}  stroke="border" duration={12}>
         {/* <TextToSvgComponent_Projects width={250} /> */}
         <SVGText text="isoHello" width={800} height={400} />
       </DrawText>
@@ -227,7 +220,7 @@ const MainHeader_desktop = ({screenSize}) => {
         {screenSize === "md" && 
  <DrawText stagger={7} strokeWidth={0.5} duration={12} stroke="border">
   <SVGText
-    text="isoHello"
+    text="re"
     width={500}
     height={400}
     // fill="#f20707"
@@ -240,8 +233,8 @@ const MainHeader_desktop = ({screenSize}) => {
 
 
 
-      <p>I've made a bunch of things</p>
-      <p>This page is a bit of a mishmash and isn't cohesive.</p>
+      {/* <p>I've made a bunch of things</p>
+      <p>This page is a bit of a mishmash and isn't cohesive.</p> */}
 
      
       

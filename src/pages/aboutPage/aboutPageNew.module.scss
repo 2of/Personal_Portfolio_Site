@@ -1,0 +1,178 @@
+// ─── Magazine Layout ────────────────────────────────────────────────────────
+
+.page {
+  position: relative;
+  padding: 4rem 5%;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  // min-height: 100vh;
+}
+
+.pageBg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:  
+    radial-gradient(circle at 10% 20%, color-mix(in srgb, var(--accent-color) 8%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, color-mix(in srgb, var(--accent-color) 5%, transparent) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.sidebyside {
+  display: grid;
+  grid-template-columns: minmax(350px, 1fr) minmax(0, 1.8fr);
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .sidebyside {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.leftCol {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  // background-color: red;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.greeting {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.greetingSub {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  min-height: 500px;
+}
+
+// ─── Tab Content ────────────────────────────────────────────────────────────
+
+.tabContainer {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// ─── Skills ─────────────────────────────────────────────────────────────────
+
+.scrollerParentForVertView {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollableViewInset {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.skillsContainer {
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.skillBox {
+  width: 100%;
+}
+
+.skillHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+  background: color-mix(in srgb, var(--bg-l1) 80%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skillsIntro {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  color: var(--secondary-text);
+
+  p {
+    margin: 0;
+  }
+}
+
+.skilltags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 1rem;
+}
+
+.siteTabContainer {
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.siteTabHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+  border-bottom: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--bg-l1) 80%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.siteTabContent {
+  padding: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.featContainer {
+  padding: 0;
+  color: var(--secondary-text);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}

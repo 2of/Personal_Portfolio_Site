@@ -1,5 +1,7 @@
 import styles from "./styles/CodeButton.module.scss"
 import getIcon from "../../../tools/iconRef";
+import { useTheme } from "../../../contexts/ThemeProvider";
+import { useTooltip } from "../../../contexts/ToolTipContext";
 
 export const CodeButton = ({
     label,
@@ -12,10 +14,11 @@ export const CodeButton = ({
     fixedwhitemode,
     fixeddarkmode,
     external,
+
     active
 }) => {
     const externalIcon = external ? getIcon("external") : null;
-
+    const { setTooltip } = useTooltip();
     // return (<h1>teasst</h1>)
     switch (variant) {
         case "code":
@@ -29,7 +32,7 @@ export const CodeButton = ({
             return (
                 <div
                     type="button"
-                    className={codeClasses}
+              className={`${codeClasses} text-iata`}
                     disabled={disabled}
                     title={tooltip}
                     onClick={onClick}
@@ -64,11 +67,17 @@ export const CodeButton = ({
             return (
                 <div
                     type="button"
-                    className={codeSmallClasses}
+                    className={`${codeSmallClasses} text-iata`}
                     disabled={disabled}
                     title={tooltip}
                     onClick={onClick}
+
+                      onMouseEnter={() => setTooltip(tooltip || null)}
+                    onMouseLeave={() => setTooltip(null)}
+
+
                 >
+
 
                     <div className={styles.l1}>
                         {icon}

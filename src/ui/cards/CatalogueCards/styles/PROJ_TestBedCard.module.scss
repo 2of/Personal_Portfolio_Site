@@ -1,0 +1,215 @@
+// ============================================================
+// PROJCARD_TestBedCard.module.scss
+// Large glassmorphic project card — MaterialL2 + BorderFull
+// ============================================================
+
+
+
+// ── Tokens ───────────────────────────────────────────────
+
+$radius:         16px;
+$radius-pill:    999px;
+
+$text-primary:   rgba(255, 255, 255, 0.92);
+$text-secondary: rgba(255, 255, 255, 0.55);
+$text-tertiary:  rgba(255, 255, 255, 0.35);
+
+$accent:         rgba(160, 140, 255, 0.85);
+$accent-glow:    rgba(140, 110, 255, 0.25);
+
+$ease:           cubic-bezier(0.4, 0, 0.2, 1);
+
+// ── Card shell ───────────────────────────────────────────
+// MaterialL2 + BorderFull applied in JSX as global classes.
+// This handles layout, sizing, hover, and children only.
+
+.textCard {
+  position: relative;
+  border-radius: $radius;
+  overflow: hidden;
+  container-type: inline-size;
+  transition: transform 0.22s $ease, box-shadow 0.22s $ease;
+
+ 
+}
+
+
+.verticalLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontalLayout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  .ImgContainer {
+    flex: 0 0 42%;
+    max-width: 42%;
+  }
+}
+
+
+
+.ImgContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image_top .ImgContainer  { border-radius: $radius $radius 0 0; aspect-ratio: 16 / 9; }
+.image_left .ImgContainer { border-radius: $radius 0 0 $radius; min-height: 200px; }
+.image_right .ImgContainer{ border-radius: 0 $radius $radius 0; min-height: 200px; }
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s $ease;
+
+  .textCard:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+//   background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+
+  .image_left &,
+  .image_right & {
+    // background: linear-gradient(to right, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%);
+  }
+}
+
+
+
+.content {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+
+
+.accentBar {
+  width: 2.5rem;
+  height: 3px;
+  border-radius: $radius-pill;
+  background: $accent;
+  box-shadow: 0 0 12px 2px $accent-glow;
+  flex-shrink: 0;
+  margin-bottom: 0.1rem;
+}
+
+
+
+.title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  margin: 0;
+  transition: color 0.2s $ease;
+
+  &:hover { color: $accent; }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: $text-tertiary;
+  letter-spacing: 0.04em;
+}
+
+.inProgress {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(140, 230, 180, 0.85);
+  background: rgba(60, 180, 120, 0.12);
+  border: 0.5px solid rgba(80, 200, 140, 0.3);
+  padding: 0.2rem 0.65rem;
+  border-radius: $radius-pill;
+}
+
+.description {
+  font-size: 0.875rem;
+
+  line-height: 1.65;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+
+  &.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
+
+// ── Tags ─────────────────────────────────────────────────
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.1rem;
+}
+
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: $radius-pill;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+
+  transition: color 0.2s $ease;
+
+//   &:hover { color: $text-primary; }
+}
+
+
+
+
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+
+
+@container (max-width: 500px) {
+  .horizontalLayout {
+    flex-direction: column;
+
+    .ImgContainer {
+      flex: none;
+      max-width: 100%;
+      min-height: unset;
+      aspect-ratio: 16 / 9;
+      border-radius: $radius $radius 0 0 !important;
+    }
+  }
+}
